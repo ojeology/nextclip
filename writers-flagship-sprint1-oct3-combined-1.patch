@@ -1,0 +1,1361 @@
+diff --git a/assets/writer-portfolio-builder.css b/assets/writer-portfolio-builder.css
+new file mode 100644
+index 00000000..37993ffa
+--- /dev/null
++++ b/assets/writer-portfolio-builder.css
+@@ -0,0 +1,44 @@
++.wpb-shell{max-width:1220px;margin-inline:auto}
++.wpb-intro{max-width:78ch;margin:0 0 22px}
++.wpb-layout{display:grid;grid-template-columns:minmax(0,1.03fr) minmax(300px,.97fr);align-items:start;gap:clamp(20px,3vw,38px)}
++.wpb-form{min-width:0}
++.wpb-fieldset,.wpb-sample{min-width:0;margin:0 0 18px;padding:16px;border:1px solid #d7ddd5;border-radius:14px;background:rgba(255,255,255,.48)}
++.wpb-fieldset legend,.wpb-sample legend{padding:0 7px;font-weight:750}
++.wpb-form label{display:block;margin:0 0 13px;font-size:14px;font-weight:650}
++.wpb-form input,.wpb-form textarea{display:block;width:100%;margin-top:6px;padding:10px 12px;border:1px solid #c7d0c6;border-radius:8px;background:#fff;color:#17211b;font:inherit;font-size:15px;line-height:1.45}
++.wpb-form textarea{resize:vertical}
++.wpb-form input:focus,.wpb-form textarea:focus{outline:3px solid rgba(41,104,70,.2);border-color:#296846}
++.wpb-help{margin:-5px 0 12px;color:#526157;font-size:13px}
++.wpb-sample{position:relative;padding-top:20px}
++.wpb-sample .wpb-remove{margin-top:4px}
++.wpb-actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 10px}
++.wpb-actions button:disabled,.wpb-form button:disabled{opacity:.55;cursor:not-allowed}
++.wpb-status,.wpb-warning{min-height:1.5em;margin:10px 0;color:#33493b;font-size:14px}
++.wpb-warning{color:#873e13;font-weight:650}
++.wpb-preview-panel{position:sticky;top:16px;min-width:0}
++.wpb-preview-panel>h2{margin:0 0 5px;font-size:19px}
++.wpb-preview-panel>p{margin:0 0 12px;color:#526157;font-size:13px}
++.wpb-preview{min-height:260px;padding:clamp(12px,2vw,22px);border:1px solid #d7ddd5;border-radius:16px;background:#eef2ec;overflow-wrap:anywhere}
++.wpb-preview .wpb-portfolio{max-width:none;margin:0;padding:clamp(18px,3vw,32px);border:1px solid #dbe3dc;border-radius:13px;background:#fff;color:#1b2822;box-shadow:0 10px 30px rgba(22,49,35,.07);font:15px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
++.wpb-preview .wpb-header{padding-bottom:22px;border-bottom:1px solid #dbe3dc}
++.wpb-preview .wpb-eyebrow{margin:0 0 9px;color:#235842;font-size:10px;font-weight:800;letter-spacing:.16em}
++.wpb-preview .wpb-header h3{margin:0;font:700 clamp(30px,4vw,44px)/1.06 Georgia,"Times New Roman",serif;letter-spacing:-.035em;overflow-wrap:anywhere}
++.wpb-preview .wpb-tagline{margin:11px 0 0;font-size:17px;font-weight:650;line-height:1.35}
++.wpb-preview .wpb-location{margin:7px 0 0;color:#5a6a61;font-size:13px}
++.wpb-preview .wpb-bio{margin:15px 0 0;font-size:15px}
++.wpb-preview .wpb-tags{display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:15px 0 0;list-style:none}
++.wpb-preview .wpb-tags li{padding:4px 9px;border:1px solid #b9d3c1;border-radius:999px;background:#f4faf5;color:#28543b;font-size:11px;font-weight:650}
++.wpb-preview .wpb-work{padding:21px 0 4px}
++.wpb-preview .wpb-work h4,.wpb-preview .wpb-contact h4{margin:0 0 11px;font:700 21px/1.2 Georgia,"Times New Roman",serif}
++.wpb-preview .wpb-sample-grid{display:grid;grid-template-columns:1fr;gap:8px}
++.wpb-preview .wpb-sample-card{padding:12px 14px;border:1px solid #dbe3dc;border-radius:10px;background:#fbfcfa;overflow-wrap:anywhere}
++.wpb-preview .wpb-sample-card h5{margin:0;font-size:15px;line-height:1.4}
++.wpb-preview .wpb-sample-card a,.wpb-preview .wpb-contact a{color:#235842;text-decoration-thickness:1px;text-underline-offset:3px}
++.wpb-preview .wpb-publication{margin:5px 0 0;color:#5a6a61;font-size:12px;font-weight:650}
++.wpb-preview .wpb-sample-card p:not(.wpb-publication){margin:8px 0 0;color:#435249;font-size:13px}
++.wpb-preview .wpb-contact{margin-top:19px;padding-top:17px;border-top:1px solid #dbe3dc}
++.wpb-preview .wpb-contact nav{display:flex;flex-wrap:wrap;gap:8px 18px}
++.wpb-preview .wpb-contact a{font-size:13px;font-weight:700}
++.wpb-preview .wpb-placeholder{color:#718078;font-size:13px;font-style:italic}
++@media(max-width:900px){.wpb-layout{grid-template-columns:1fr}.wpb-preview-panel{position:static;grid-row:2}}
++@media print{.wpb-preview-panel{position:static}}
+diff --git a/assets/writer-portfolio-builder.js b/assets/writer-portfolio-builder.js
+new file mode 100644
+index 00000000..44216111
+--- /dev/null
++++ b/assets/writer-portfolio-builder.js
+@@ -0,0 +1,243 @@
++(() => {
++  "use strict";
++
++  const form = document.getElementById("wpb-form");
++  if (!form) return;
++
++  const preview = document.getElementById("wpb-preview");
++  const samplesHost = document.getElementById("wpb-samples");
++  const status = document.getElementById("wpb-status");
++  const linkWarning = document.getElementById("wpb-link-warning");
++  const nameInput = document.getElementById("wpb-name");
++  const downloadButton = document.getElementById("wpb-download");
++  const resetButton = document.getElementById("wpb-reset");
++  const addButton = document.getElementById("wpb-add-sample");
++  if (!preview || !samplesHost || !status || !nameInput || !downloadButton || !resetButton || !addButton) return;
++
++  const MAX_SAMPLES = 12;
++  const escapeHTML = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
++    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
++  })[char]);
++
++  function safeWebURL(value) {
++    const raw = String(value ?? "").trim();
++    if (!raw) return "";
++    if (/^[a-z][a-z\d+.-]*:/i.test(raw) && !/^https?:\/\//i.test(raw)) return "";
++    const candidate = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
++    try {
++      const url = new URL(candidate);
++      if (!["http:", "https:"].includes(url.protocol) || !url.hostname || url.username || url.password) return "";
++      return url.href;
++    } catch (_) {
++      return "";
++    }
++  }
++
++  function fieldValue(id) {
++    const field = document.getElementById(id);
++    return field ? field.value.trim() : "";
++  }
++
++  function readPortfolio() {
++    const invalidLinks = [];
++    const email = fieldValue("wpb-email");
++    const websiteInput = fieldValue("wpb-website");
++    const profileInput = fieldValue("wpb-profile");
++    const website = safeWebURL(websiteInput);
++    const profile = safeWebURL(profileInput);
++    if (websiteInput && !website) invalidLinks.push("website");
++    if (profileInput && !profile) invalidLinks.push("profile");
++
++    const samples = [...samplesHost.querySelectorAll("[data-wpb-sample]")].map((row) => {
++      const title = row.querySelector('[data-wpb-field="title"]')?.value.trim() || "";
++      const publication = row.querySelector('[data-wpb-field="publication"]')?.value.trim() || "";
++      const urlInput = row.querySelector('[data-wpb-field="url"]')?.value.trim() || "";
++      const summary = row.querySelector('[data-wpb-field="summary"]')?.value.trim() || "";
++      const url = safeWebURL(urlInput);
++      if (urlInput && !url) invalidLinks.push("sample");
++      if (title || publication || urlInput || summary) {
++        return { title, publication, url, summary };
++      }
++      return null;
++    }).filter(Boolean);
++
++    return {
++      name: fieldValue("wpb-name"),
++      tagline: fieldValue("wpb-tagline"),
++      location: fieldValue("wpb-location"),
++      bio: fieldValue("wpb-bio"),
++      focus: fieldValue("wpb-focus").split(/[\n,]/).map((item) => item.trim()).filter(Boolean).slice(0, 12),
++      samples,
++      email,
++      website,
++      profile,
++      invalidLinks
++    };
++  }
++
++  function renderPortfolio(data, previewMode = false) {
++    const name = data.name || (previewMode ? "Your name" : "Writer");
++    const nameHeading = previewMode ? "h3" : "h1";
++    const sectionHeading = previewMode ? "h4" : "h2";
++    const sampleHeading = previewMode ? "h5" : "h3";
++    const tagline = data.tagline || (previewMode ? "Add a one-line description of what you write." : "");
++    const bio = data.bio || (previewMode ? "Add a concise bio to show an editor who you are and what you cover." : "");
++    const focusHTML = data.focus.length
++      ? `<ul class="wpb-tags" aria-label="Writing areas">${data.focus.map((item) => `<li>${escapeHTML(item)}</li>`).join("")}</ul>`
++      : (previewMode ? '<p class="wpb-placeholder">Your writing areas can appear here.</p>' : "");
++    const sampleHTML = data.samples.length
++      ? `<section class="wpb-work"><${sectionHeading}>Selected work</${sectionHeading}><div class="wpb-sample-grid">${data.samples.map((sample) => {
++          const title = sample.title || sample.publication || "Writing sample";
++          const titleHTML = sample.url
++            ? `<a href="${escapeHTML(sample.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(title)} <span aria-hidden="true">↗</span></a>`
++            : escapeHTML(title);
++          const publicationHTML = sample.publication && sample.title
++            ? `<p class="wpb-publication">${escapeHTML(sample.publication)}</p>` : "";
++          const summaryHTML = sample.summary ? `<p>${escapeHTML(sample.summary)}</p>` : "";
++          return `<article class="wpb-sample-card"><${sampleHeading}>${titleHTML}</${sampleHeading}>${publicationHTML}${summaryHTML}</article>`;
++        }).join("")}</div></section>`
++      : (previewMode ? '<p class="wpb-placeholder">Add a published clip, a public sample, or a link to your work to show it here.</p>' : "");
++
++    const contactLinks = [];
++    if (data.email) {
++      const emailHref = `mailto:${encodeURIComponent(data.email)}`;
++      contactLinks.push(`<a href="${escapeHTML(emailHref)}">Email me</a>`);
++    }
++    if (data.website) contactLinks.push(`<a href="${escapeHTML(data.website)}" target="_blank" rel="noopener noreferrer">Website <span aria-hidden="true">↗</span></a>`);
++    if (data.profile) contactLinks.push(`<a href="${escapeHTML(data.profile)}" target="_blank" rel="noopener noreferrer">More about me <span aria-hidden="true">↗</span></a>`);
++    const contactHTML = contactLinks.length
++      ? `<footer class="wpb-contact"><${sectionHeading}>Get in touch</${sectionHeading}><nav aria-label="Contact and profile links">${contactLinks.join("")}</nav></footer>`
++      : (previewMode ? '<footer class="wpb-placeholder">Add an email or public profile if you want editors to contact you.</footer>' : "");
++
++    return `<article class="wpb-portfolio"><header class="wpb-header"><p class="wpb-eyebrow">WRITING PORTFOLIO</p><${nameHeading}>${escapeHTML(name)}</${nameHeading}>${tagline ? `<p class="wpb-tagline">${escapeHTML(tagline)}</p>` : ""}${data.location ? `<p class="wpb-location">${escapeHTML(data.location)}</p>` : ""}${bio ? `<p class="wpb-bio">${escapeHTML(bio)}</p>` : ""}${focusHTML}</header>${sampleHTML}${contactHTML}</article>`;
++  }
++
++  const PORTFOLIO_CSS = `
++    :root{color-scheme:light;--ink:#1b2822;--muted:#5a6a61;--line:#dbe3dc;--paper:#fff;--wash:#f3f6f2;--green:#235842;--accent:#d7f0df}
++    *{box-sizing:border-box}
++    body{margin:0;background:var(--wash);color:var(--ink);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
++    .wpb-portfolio{max-width:920px;margin:clamp(18px,5vw,64px) auto;padding:clamp(22px,5vw,56px);background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 56px rgba(22,49,35,.08)}
++    .wpb-header{padding:0 0 30px;border-bottom:1px solid var(--line)}
++    .wpb-eyebrow{margin:0 0 12px;color:var(--green);font-size:12px;font-weight:800;letter-spacing:.16em}
++    .wpb-header h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(36px,7vw,64px);line-height:1.04;letter-spacing:-.035em;overflow-wrap:anywhere}
++    .wpb-tagline{margin:14px 0 0;font-size:clamp(18px,2.5vw,24px);font-weight:650;line-height:1.35}
++    .wpb-location{margin:8px 0 0;color:var(--muted);font-size:14px}
++    .wpb-bio{max-width:68ch;margin:20px 0 0;font-size:17px}
++    .wpb-tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:18px 0 0;list-style:none}
++    .wpb-tags li{padding:5px 11px;border:1px solid #b9d3c1;border-radius:999px;background:#f4faf5;color:#28543b;font-size:13px;font-weight:650}
++    .wpb-work{padding:28px 0 8px}
++    .wpb-work h2,.wpb-contact h2{margin:0 0 14px;font-family:Georgia,"Times New Roman",serif;font-size:26px;line-height:1.2}
++    .wpb-sample-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}
++    .wpb-sample-card{padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:#fbfcfa;overflow-wrap:anywhere}
++    .wpb-sample-card h3{margin:0;font-size:17px;line-height:1.4}
++    .wpb-sample-card a,.wpb-contact a{color:var(--green);text-decoration-thickness:1px;text-underline-offset:3px}
++    .wpb-publication{margin:6px 0 0;color:var(--muted);font-size:13px;font-weight:650}
++    .wpb-sample-card p:not(.wpb-publication){margin:10px 0 0;color:#435249;font-size:14px}
++    .wpb-contact{margin-top:24px;padding-top:22px;border-top:1px solid var(--line)}
++    .wpb-contact nav{display:flex;flex-wrap:wrap;gap:10px 22px}
++    .wpb-contact a{font-weight:700}
++    .wpb-placeholder{color:#718078;font-style:italic}
++    @media print{body{background:#fff}.wpb-portfolio{max-width:none;margin:0;padding:0;border:0;border-radius:0;box-shadow:none}a{color:inherit}}
++  `;
++
++  function makeDocument(data) {
++    const description = (data.bio || data.tagline || `Writing portfolio for ${data.name}`).slice(0, 160);
++    return `<!doctype html>
++<html lang="en">
++<head>
++<meta charset="utf-8">
++<meta name="viewport" content="width=device-width,initial-scale=1">
++<meta name="description" content="${escapeHTML(description)}">
++<title>${escapeHTML(data.name)} — writing portfolio</title>
++<style>${PORTFOLIO_CSS}</style>
++</head>
++<body>
++${renderPortfolio(data, false)}
++</body>
++</html>`;
++  }
++
++  function updateRows() {
++    const rows = [...samplesHost.querySelectorAll("[data-wpb-sample]")];
++    rows.forEach((row, index) => {
++      const legend = row.querySelector("legend");
++      const remove = row.querySelector("[data-remove-sample]");
++      if (legend) legend.textContent = `Sample ${index + 1}`;
++      if (remove) remove.disabled = rows.length <= 1;
++    });
++    addButton.disabled = rows.length >= MAX_SAMPLES;
++    addButton.textContent = rows.length >= MAX_SAMPLES ? `Maximum ${MAX_SAMPLES} samples` : "+ Add another sample";
++  }
++
++  function addSampleRow() {
++    const row = document.createElement("fieldset");
++    row.className = "wpb-sample";
++    row.dataset.wpbSample = "";
++    row.innerHTML = `<legend>Sample</legend>
++      <label>Title <input type="text" data-wpb-field="title" maxlength="100" placeholder="Title of the piece"></label>
++      <label>Publication / client <input type="text" data-wpb-field="publication" maxlength="100" placeholder="Where it appeared (optional)"></label>
++      <label>Public link <input type="url" data-wpb-field="url" maxlength="500" placeholder="https://example.com/your-piece" inputmode="url"></label>
++      <label>One-line note <textarea data-wpb-field="summary" rows="2" maxlength="400" placeholder="What this sample demonstrates (optional)"></textarea></label>
++      <button class="btn secondary wpb-remove" type="button" data-remove-sample>Remove this sample</button>`;
++    samplesHost.appendChild(row);
++    updateRows();
++    row.querySelector('[data-wpb-field="title"]')?.focus();
++  }
++
++  function refresh() {
++    const data = readPortfolio();
++    preview.innerHTML = renderPortfolio(data, true);
++    if (linkWarning) {
++      linkWarning.hidden = data.invalidLinks.length === 0;
++      linkWarning.textContent = data.invalidLinks.length
++        ? "One or more links could not be checked. Only valid http or https links will be clickable in your portfolio."
++        : "";
++    }
++  }
++
++  form.addEventListener("input", refresh);
++  form.addEventListener("change", refresh);
++  form.addEventListener("click", (event) => {
++    const remove = event.target.closest("[data-remove-sample]");
++    if (!remove || remove.disabled) return;
++    remove.closest("[data-wpb-sample]")?.remove();
++    updateRows();
++    refresh();
++  });
++
++  addButton.addEventListener("click", addSampleRow);
++
++  resetButton.addEventListener("click", () => {
++    form.reset();
++    [...samplesHost.querySelectorAll("[data-wpb-sample]")].slice(1).forEach((row) => row.remove());
++    updateRows();
++    refresh();
++    status.textContent = "Form cleared. Nothing was stored.";
++    nameInput.focus();
++  });
++
++  downloadButton.addEventListener("click", () => {
++    const data = readPortfolio();
++    if (!data.name) {
++      status.textContent = "Add your name or professional byline before downloading.";
++      nameInput.focus();
++      return;
++    }
++    const blob = new Blob([makeDocument(data)], { type: "text/html;charset=utf-8" });
++    const objectURL = URL.createObjectURL(blob);
++    const link = document.createElement("a");
++    const slug = data.name.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "writer";
++    link.href = objectURL;
++    link.download = `${slug}-writing-portfolio.html`;
++    document.body.appendChild(link);
++    link.click();
++    link.remove();
++    window.setTimeout(() => URL.revokeObjectURL(objectURL), 1000);
++    status.textContent = data.invalidLinks.length
++      ? "Portfolio downloaded. Check the links that were left unlinked, then edit and download again. Your details stayed in this browser."
++      : "Portfolio downloaded as a standalone HTML file. Your details stayed in this browser.";
++  });
++
++  updateRows();
++  refresh();
++})();
+diff --git a/bing-indexing-queue.txt b/bing-indexing-queue.txt
+index e18b9963..a711b03d 100644
+--- a/bing-indexing-queue.txt
++++ b/bing-indexing-queue.txt
+@@ -1,3 +1,7 @@
++https://thebryme.com/writers/writing/dublin-review/
++https://thebryme.com/writers/writing/khoreo/
++https://thebryme.com/writers/writing/smokelong-quarterly/
++https://thebryme.com/writers/writing/the-dark-magazine/
+ https://thebryme.com/entertainment/movie/ip-man-2/
+ https://thebryme.com/entertainment/movie/ip-man/
+ https://thebryme.com/entertainment/movie/iron-man-2/
+diff --git a/content/hub/guides/how-to-build-a-writing-portfolio.md b/content/hub/guides/how-to-build-a-writing-portfolio.md
+index 24450604..77849c70 100644
+--- a/content/hub/guides/how-to-build-a-writing-portfolio.md
++++ b/content/hub/guides/how-to-build-a-writing-portfolio.md
+@@ -4,7 +4,7 @@ description: Create a small, relevant set of samples that makes editors want to
+ section: writing-for-publication
+ level: intermediate
+ keywords: [portfolio, samples, clips, freelance]
+-tools: [writing-checklist-generator]
++tools: [portfolio-builder, writing-checklist-generator]
+ related: [how-to-write-a-query-letter, how-to-get-your-first-paid-writer-gig]
+ updated: 2026-09-04
+ ---
+diff --git a/content/hub/pub-countries.json b/content/hub/pub-countries.json
+index 27ddafa2..f7e8c4fa 100644
+--- a/content/hub/pub-countries.json
++++ b/content/hub/pub-countries.json
+@@ -1198,5 +1198,21 @@
+   "kweli-journal": {
+     "base": "",
+     "label": "International"
++  },
++  "smokelong-quarterly": {
++    "base": "US",
++    "label": "United States"
++  },
++  "khoreo": {
++    "base": "",
++    "label": "International"
++  },
++  "dublin-review": {
++    "base": "IE",
++    "label": "Ireland"
++  },
++  "the-dark-magazine": {
++    "base": "",
++    "label": "International"
+   }
+ }
+diff --git a/content/hub/tool-content.json b/content/hub/tool-content.json
+index 4614bcbf..a365d820 100644
+--- a/content/hub/tool-content.json
++++ b/content/hub/tool-content.json
+@@ -271,5 +271,11 @@
+     "howto": "Add each commission with its due date and check the list as work lands. Storage is local to this browser: clearing site data clears the list, so export anything you cannot afford to lose.",
+     "why": "Missed deadlines end client relationships faster than bad prose does. A list you will actually look at - because it takes one click - is the system that survives busy weeks.",
+     "know": "Add the internal deadline a day before the real one - the tracker records what you tell it, and a one-day buffer converts near-misses into on-time deliveries."
++  },
++  "portfolio-builder": {
++    "what": "Turns the information you choose to share — a short bio, writing areas, selected clips and contact links — into a simple, responsive portfolio page. It exports one standalone HTML file with its styling included.",
++    "howto": "Add your professional name, a focused bio and the topics or formats you want to be hired for. Add a few relevant public samples, then preview the result and download the HTML. Host that file yourself if you want a public page; the builder does not publish it for you.",
++    "why": "Editors and clients need to see evidence quickly. A focused, link-first portfolio makes relevant work easier to assess and update, without requiring a website account or a complex design tool. The guide to [building a writing portfolio](/learn/writing-for-publication/how-to-build-a-writing-portfolio/) covers what to include and how to choose samples.",
++    "know": "This tool makes no network requests and does not save form data in local storage. The page is created in this browser and downloaded only when you ask. Use links you are allowed to share, check them before sending, and leave out private drafts or personal contact details you do not want public."
+   }
+ }
+diff --git a/content/hub/tools.json b/content/hub/tools.json
+index 817df11b..6381c466 100644
+--- a/content/hub/tools.json
++++ b/content/hub/tools.json
+@@ -320,6 +320,15 @@
+       "category": "work",
+       "description": "A pre-submission sanity check for writers: length, sentence load, evidence of clips, the clear ask, filler and passive markers — ten rule-based checks with a fix for each. Nothing is uploaded, and no AI writes a word for you."
+     },
++    {
++      "id": "portfolio-builder",
++      "title": "Writing portfolio builder",
++      "short": "Turn your bio and public clips into a clean portfolio page you can host anywhere.",
++      "category": "work",
++      "description": "Build a writing portfolio from your bio, focus areas, public clips and contact links. Preview it live and export a standalone HTML file; your details stay in this browser.",
++      "seo_title": "Writing portfolio builder — free, private tool | BRYME",
++      "seo_desc": "Build a writing portfolio from your bio, focus areas and clips. Preview it and download a standalone HTML file; nothing is uploaded."
++    },
+     {
+       "id": "tax-estimator",
+       "title": "Freelance tax set-aside estimator",
+@@ -349,4 +358,4 @@
+       "category": "work"
+     }
+   ]
+-}
+\ No newline at end of file
++}
+diff --git a/content/index-allowlist.json b/content/index-allowlist.json
+index f1f53ea9..169d9d60 100644
+--- a/content/index-allowlist.json
++++ b/content/index-allowlist.json
+@@ -1,5 +1,5 @@
+ {
+-  "version": 25,
++  "version": 26,
+   "policy": "BRYME Writing Hub: every indexable route is a genuine, useful writing guide (how-to, worked example, or dos & don'ts), a free in-browser tool, a research-backed paid-writing opportunity (100+ verified), a maintenance hub or a core trust/about page. No thin or filler pages.",
+   "routes": [
+     "/",
+@@ -319,6 +319,7 @@
+     "/tools/pdf-editor/",
+     "/tools/pdf-to-text/",
+     "/tools/pitch-checker/",
++    "/tools/portfolio-builder/",
+     "/tools/random-writing-prompt/",
+     "/tools/readability-score/",
+     "/tools/reading-time/",
+@@ -449,6 +450,7 @@
+     "/writing/diabolical-plots/",
+     "/writing/dialogue-earth/",
+     "/writing/doek-literary-magazine/",
++    "/writing/dublin-review/",
+     "/writing/earth-island-journal/",
+     "/writing/east-asia-forum/",
+     "/writing/eater/",
+@@ -510,6 +512,7 @@
+     "/writing/jabberwock-review/",
+     "/writing/kenyon-review/",
+     "/writing/khoreo-fiction/",
++    "/writing/khoreo/",
+     "/writing/kill-your-darlings/",
+     "/writing/kudu/",
+     "/writing/kweli-journal/",
+@@ -604,6 +607,7 @@
+     "/writing/shoreline-of-infinity/",
+     "/writing/slate/",
+     "/writing/smashing-magazine/",
++    "/writing/smokelong-quarterly/",
+     "/writing/soflopojo/",
+     "/writing/solarpunk-magazine/",
+     "/writing/space-and-time/",
+@@ -618,6 +622,7 @@
+     "/writing/the-aurora-journal/",
+     "/writing/the-baltimore-review/",
+     "/writing/the-caravan/",
++    "/writing/the-dark-magazine/",
+     "/writing/the-dolomite-review/",
+     "/writing/the-drift/",
+     "/writing/the-elephant/",
+diff --git a/content/opportunities.json b/content/opportunities.json
+index 8b5a203c..f86f9670 100644
+--- a/content/opportunities.json
++++ b/content/opportunities.json
+@@ -1,5 +1,5 @@
+ {
+-  "updatedAt": "2026-10-02",
++  "updatedAt": "2026-10-03",
+   "disclaimer": "Information can change. Payment rates, submission requirements, eligibility, deadlines and response times are subject to change. Always check the publication's official guidelines before submitting. BRYME verifies listings as carefully as possible but does not guarantee acceptance or payment.",
+   "earningCategories": [
+     {
+@@ -1473,19 +1473,19 @@
+       "vertical": "writing",
+       "publication": "Vox",
+       "title": "First Person (personal essays)",
+-      "seoTitle": "Vox First Person: not listed on the current official pitch page",
+-      "excerpt": "Older Vox essays pointed writers to firstperson@vox.com. The official How to pitch Vox page checked on 19 August 2026 does not list First Person among sections taking freelance pitches. Do not treat that old address as a live market. Current official freelance doors on that page are Future Perfect and Climate.",
++      "seoTitle": "Vox First Person submissions: current status",
++      "excerpt": "Vox’s current pitch guide does not list First Person as a freelance section. Its old firstperson@vox.com address may be outdated; verify before pitching.",
+       "officialUrl": "https://www.vox.com/how-to-pitch-vox-pitching-guidelines",
+       "applyUrl": "https://www.vox.com/how-to-pitch-vox-pitching-guidelines",
+       "applyEmail": null,
+       "applyMethod": "Do not email First Person as if it is open — re-read the official pitch page",
+       "sources": [
+         {
+-          "name": "How to pitch Vox (official, current)",
++          "name": "How to pitch Vox (official; rechecked 2026-10-03)",
+           "url": "https://www.vox.com/how-to-pitch-vox-pitching-guidelines"
+         }
+       ],
+-      "lastVerified": "2026-08-19",
++      "lastVerified": "2026-10-03",
+       "publishedAt": "2026-08-19",
+       "eligibility": {
+         "summary": "Not applicable until First Person is listed again on the official pitch page.",
+@@ -1534,8 +1534,9 @@
+       ],
+       "rights": "Not stated for First Person on the current official page.",
+       "howToSubmit": [
+-        "Do not treat First Person as open on 19 August 2026.",
+-        "Use the official Future Perfect or Climate cards if those sections match your idea."
++        "Do not treat First Person as open on 3 October 2026; the current official Vox pitch guide does not list it as a freelance section.",
++        "Do not use the old firstperson@vox.com address as a verified current route.",
++        "Use the official Future Perfect or Climate pitch instructions only if your idea fits one of those sections."
+       ],
+       "keywords": [
+         "vox",
+@@ -3788,7 +3789,7 @@
+     {
+       "status": "published",
+       "vertical": "writing",
+-      "lastVerified": "2026-08-19",
++      "lastVerified": "2026-10-03",
+       "publishedAt": "2026-08-19",
+       "experience": "not-stated",
+       "editorExperience": {
+@@ -3798,20 +3799,20 @@
+       "slug": "the-offing-wit-tea",
+       "publication": "The Offing",
+       "title": "Wit Tea — humour",
+-      "seoTitle": "The Offing Wit Tea: $25–$100, open to 1 Oct 2026",
+-      "excerpt": "The Offing’s humour department, Wit Tea, is open through 1 October 2026. Official contributor fee is $25–$100 depending on department and length. No submission fee in 2026. Comedic work in any genre, no more than 8 pages. AI only if it is an intentional, disclosed critique of AI.",
++      "seoTitle": "The Offing Wit Tea submissions: window closed",
++      "excerpt": "The Offing’s Wit Tea window ended October 1, 2026. Its next opening is unconfirmed; check the official manager for currently open sections.",
+       "officialUrl": "https://theoffingmag.com/submit/submission_guidelines/",
+       "applyUrl": "https://theoffingmag.submittable.com/submit",
+       "applyEmail": null,
+-      "applyMethod": "Submittable — Wit Tea",
++      "applyMethod": "Check the current Submittable department list; the Wit Tea category has expired.",
+       "sources": [
+         {
+-          "name": "The Offing — Submission Guidelines (official)",
++          "name": "The Offing — Submission Guidelines (official; checked 2026-10-03)",
+           "url": "https://theoffingmag.com/submit/submission_guidelines/"
+         },
+         {
+-          "name": "The Offing — Submittable (official)",
+-          "url": "https://theoffingmag.submittable.com/submit"
++          "name": "The Offing — Wit Tea Submission Manager (official; expired, checked 2026-10-03)",
++          "url": "https://theoffingmag.submittable.com/submit/38407/wit-tea"
+         }
+       ],
+       "eligibility": {
+@@ -3843,7 +3844,7 @@
+         "band": "3-plus-months",
+         "official": true
+       },
+-      "submissionStatus": "deadline",
++      "submissionStatus": "closed",
+       "deadline": {
+         "date": "2026-10-01",
+         "display": "Wit Tea listed as ending 1 October 2026",
+@@ -3866,8 +3867,9 @@
+       ],
+       "rights": "First serial rights worldwide in English and non-exclusive anthology rights. Contributor retains other rights and must cite The Offing if relicensed.",
+       "howToSubmit": [
+-        "Read https://theoffingmag.com/submit/submission_guidelines/.",
+-        "Submit Wit Tea via https://theoffingmag.submittable.com/submit."
++        "The Wit Tea Submittable category expired after 1 October 2026; The Offing says departments not listed in the manager are not currently accepting.",
++        "Check https://theoffingmag.submittable.com/submit for departments that are currently open.",
++        "Do not submit through the expired Wit Tea category link."
+       ],
+       "keywords": [
+         "the offing",
+@@ -28003,6 +28005,386 @@
+       ],
+       "simultaneousSubmissions": "accepted",
+       "simultaneousNote": "Simultaneous submissions are acceptable as long as they are indicated as such. Authors must immediately notify the editors if said work has been selected for publication in another periodical, either in print or online. — https://www.kwelijournal.org/submit (read 2026-10-02)"
++    },
++    {
++      "status": "published",
++      "vertical": "writing",
++      "lastVerified": "2026-10-03",
++      "publishedAt": "2026-10-03",
++      "experience": "not-stated",
++      "editorExperience": {
++        "status": "not-yet-submitted"
++      },
++      "id": "smokelong-quarterly",
++      "slug": "smokelong-quarterly",
++      "publication": "SmokeLong Quarterly",
++      "title": "Flash fiction and flash creative nonfiction up to 1,000 words",
++      "seoTitle": "SmokeLong Quarterly submissions: $100–$150",
++      "excerpt": "SmokeLong publishes flash up to 1,000 words and pays $100, or $150 if you grant audio rights. See reading windows and anonymous-submission rules.",
++      "officialUrl": "https://www.smokelong.com/guidelines/",
++      "applyUrl": "https://smokelong.submittable.com/Submit",
++      "applyEmail": null,
++      "applyMethod": "Online via Submittable during reading periods",
++      "sources": [
++        {
++          "name": "SmokeLong Quarterly — Guidelines (official)",
++          "url": "https://www.smokelong.com/guidelines/"
++        }
++      ],
++      "eligibility": {
++        "summary": "No stated country restriction. SmokeLong reads internationally and assigns every submission to two editors anonymously.",
++        "mode": "not-stated",
++        "includesRegions": [],
++        "allowsDiaspora": true,
++        "notStated": true
++      },
++      "writingTypes": [
++        "fiction",
++        "creative-nonfiction"
++      ],
++      "writingTypeLabel": "Flash fiction and flash creative nonfiction",
++      "pay": {
++        "currency": "USD",
++        "amountMin": 100,
++        "amountMax": 150,
++        "display": "$100 per story, or $150 with audio rights",
++        "conditions": "Official guidelines: payment is $100/$150 with audio, issued upon publication in the quarterly issue via PayPal or Zelle; the writer may bear any associated fees. The annual SmokeLong Quarterly Award for Flash Fiction is a separate paid competition with its own entry fees and prizes.",
++        "timing": "Upon publication in the quarterly issue, via PayPal or Zelle"
++      },
++      "wordCount": {
++        "min": 1,
++        "max": 1000,
++        "display": "Up to 1,000 words"
++      },
++      "response": {
++        "label": "Up to 4 weeks in free windows; usually sooner",
++        "band": "2-4-weeks",
++        "official": true
++      },
++      "submissionStatus": "open",
++      "deadline": null,
++      "aiPolicy": "prohibited",
++      "whatTheyWant": [
++        "Flash narratives up to 1,000 words — fiction and creative nonfiction — that are previously unpublished.",
++        "Stories that stand up to rereading: the guidelines ask for something sincerely and uniquely yours, surprising and thrilling.",
++        "Reviews of flash collections, essays on craft and articles on teaching flash are considered for the blog.",
++        "Work previously published only on a personal blog or website is considered, if it is taken down before publication and flagged in the cover letter."
++      ],
++      "whatTheyDontWant": [
++        "Previously published work, except in the annual Grand Micro Contest.",
++        "Narratives created with the aid of AI — including AI translation or stylistic modification. Grammar tools are fine.",
++        "Poetry — the magazine publishes prose flash only.",
++        "Identifying information in the manuscript, filename or Submittable title; editors read anonymously."
++      ],
++      "requirements": [
++        "Submit one unpublished piece at a time and wait for a decision, or use the multiple-submission option with up to three pieces in one document (paid windows, faster response).",
++        "Include a print-ready, third-person bio in your cover letter.",
++        "Keep the manuscript, filename and Submittable title free of your name.",
++        "Watch for the free-submission window at the start of each reading period; after it closes a small fee applies, and the magazine always keeps a free window."
++      ],
++      "rights": "Exclusive electronic rights for six months, then non-exclusive rights for the online archive; non-exclusive print rights for potential anthologies and promotion. All other rights remain with the writer.",
++      "howToSubmit": [
++        "Check the reading calendar on the guidelines page and submit inside a window — the December issue window runs roughly August 16 to November 15.",
++        "Send your piece through the Submittable manager; one piece, or up to three via the multiple-submission option.",
++        "If the piece is under consideration you will be told more time is needed; otherwise expect a decision within four weeks in free windows and about a week in paid windows.",
++        "If your story is accepted elsewhere first, withdraw it through Submittable right away."
++      ],
++      "keywords": [
++        "smokelong",
++        "flash fiction",
++        "flash nonfiction",
++        "$100",
++        "quarterly",
++        "anonymous reading"
++      ]
++    },
++    {
++      "status": "published",
++      "vertical": "writing",
++      "lastVerified": "2026-10-03",
++      "publishedAt": "2026-10-03",
++      "experience": "not-stated",
++      "editorExperience": {
++        "status": "not-yet-submitted"
++      },
++      "id": "khoreo",
++      "slug": "khoreo",
++      "publication": "khōréō",
++      "title": "Speculative fiction by immigrant and diaspora writers",
++      "seoTitle": "khōréō submissions: $0.10 per word",
++      "excerpt": "khōréō pays $0.10 per word for speculative fiction by immigrant and diaspora writers. Its next fiction window is November 1–30, 2026.",
++      "officialUrl": "https://www.khoreomag.com/submissions-fiction/",
++      "applyUrl": "https://khoreo.moksha.io/publication/khoreo-magazine",
++      "applyEmail": "contact@khoreomag.com",
++      "applyMethod": "Online via Moksha during submission windows",
++      "sources": [
++        {
++          "name": "khōréō — Submissions: Fiction (official)",
++          "url": "https://www.khoreomag.com/submissions-fiction/"
++        }
++      ],
++      "eligibility": {
++        "summary": "Restricted by identity: khōréō invites writers who identify as immigrants or members of a diaspora in the broadest sense — first- and second-generation immigrants, refugees, asylum seekers, undocumented migrants, diaspora communities, transnational and transracial adoptees, and anyone whose heritage includes 'here and elsewhere'. Nigerian and other African writers qualify where that identity applies. People outside those groups are asked to support the magazine by reading and subscribing instead.",
++        "mode": "restricted",
++        "includesGroups": [
++          "immigrants",
++          "diaspora"
++        ],
++        "includesRegions": [],
++        "allowsDiaspora": true,
++        "notStated": false
++      },
++      "writingTypes": [
++        "fiction",
++        "translation"
++      ],
++      "writingTypeLabel": "Speculative short fiction and translated speculative fiction",
++      "pay": {
++        "currency": "USD",
++        "amountMin": null,
++        "amountMax": null,
++        "display": "$0.10 per word (SFWA pro rate)",
++        "conditions": "Official fiction submissions page: payment at SFWA pro rates, listed as $0.10 per word (raised from $0.08). Translations earn the same rate for both the original author and the translator where applicable.",
++        "timing": "Not publicly stated"
++      },
++      "wordCount": {
++        "min": 1,
++        "max": 5000,
++        "display": "Under 5,000 words — flash queue ≤1,500, stories 1,501–5,000; under 3,500 preferred"
++      },
++      "response": {
++        "label": "Not stated",
++        "band": "not-stated",
++        "official": false
++      },
++      "submissionStatus": "upcoming",
++      "deadline": {
++        "display": "Next fiction window runs 1–30 November 2026 (themed submissions)",
++        "openingDate": "2026-11-01",
++        "recurring": true
++      },
++      "aiPolicy": "prohibited",
++      "whatTheyWant": [
++        "Short speculative fiction under 5,000 words with a speculative element — fantasy, sci-fi, horror and anything between or around the genres.",
++        "Stories exploring migration in any form: immigration, diaspora, anti-colonialism, or more metaphorical readings of movement and displacement.",
++        "One story per queue per window: you may submit one story to the flash queue (≤1,500 words) and one to the short story queue (1,501–5,000)."
++      ],
++      "whatTheyDontWant": [
++        "Gratuitous gore or violence.",
++        "Fridging — a character harmed purely to serve another character's development.",
++        "Overwhelming racist, sexist, ableist, homophobic or xenophobic elements that the story does not subvert or challenge.",
++        "Clichés and 'it was all a dream' endings.",
++        "Stories where a person from a non-marginalized group experiences life as someone from a marginalized background.",
++        "Novelettes, novellas, reprints, unsolicited resubmissions, multiple submissions within one category, and AI-generated work.",
++        "Anything over 5,000 words — rejected unread."
++      ],
++      "requirements": [
++        "Submit through Moksha during a window — fiction windows in 2026 are March (general), July (general) and November (themed); the next cycle runs 1–30 November 2026.",
++        "Choose the right queue by length: flash (≤1,500) or short story (1,501–5,000).",
++        "Format to the Shunn modern manuscript format; a mailing address is only needed after acceptance.",
++        "If you are a previous contributor, wait until at least one year after your published issue before submitting again."
++      ],
++      "rights": "First world English-language rights (digital, ebook and print), plus non-exclusive rights to include the story in an anthology within 24 months, archive it on the website for at least 36 months and record audio of it for at least 36 months.",
++      "howToSubmit": [
++        "Confirm the next window on the submissions page — windows are dated and submissions outside them are not read.",
++        "Pick the queue by word count and submit one story per queue.",
++        "Add a cover letter if you like: identity in your own words, genre, content warnings, and whether you want feedback.",
++        "If the story is a simultaneous submission, say so in the cover letter and withdraw immediately if it is accepted elsewhere."
++      ],
++      "keywords": [
++        "khoreo",
++        "speculative fiction",
++        "immigrant writers",
++        "diaspora",
++        "$0.10 per word",
++        "science fiction",
++        "fantasy",
++        "migration"
++      ]
++    },
++    {
++      "status": "published",
++      "vertical": "writing",
++      "lastVerified": "2026-10-03",
++      "publishedAt": "2026-10-03",
++      "experience": "not-stated",
++      "editorExperience": {
++        "status": "not-yet-submitted"
++      },
++      "id": "dublin-review",
++      "slug": "dublin-review",
++      "publication": "The Dublin Review",
++      "title": "Fiction and nonfiction — essays, reportage, criticism, memoir",
++      "seoTitle": "The Dublin Review submissions: from €300",
++      "excerpt": "The Dublin Review welcomes unpublished fiction and nonfiction in English, with fees from €300 for pieces up to 2,500 words. Submit online.",
++      "officialUrl": "https://thedublinreview.com/submissions/",
++      "applyUrl": "https://thedublinreview.com/submissions/",
++      "applyEmail": null,
++      "applyMethod": "Online submission form (no postal submissions)",
++      "sources": [
++        {
++          "name": "The Dublin Review — Submissions (official)",
++          "url": "https://thedublinreview.com/submissions/"
++        }
++      ],
++      "eligibility": {
++        "summary": "No stated country restriction. The magazine publishes writers from Ireland and elsewhere and says it especially encourages submissions from members of groups traditionally underrepresented in literary magazines and other cultural forums.",
++        "mode": "not-stated",
++        "includesRegions": [],
++        "allowsDiaspora": true,
++        "notStated": true
++      },
++      "writingTypes": [
++        "fiction",
++        "essays",
++        "creative-nonfiction"
++      ],
++      "writingTypeLabel": "Fiction and long-form nonfiction",
++      "pay": {
++        "currency": "EUR",
++        "amountMin": 300,
++        "amountMax": null,
++        "display": "From €300 for pieces up to 2,500 words; rises with length",
++        "conditions": "Official page says the fee scale starts at €300 for pieces up to 2,500 words and increases with word count; it does not publish separate rates for commissioned and unsolicited work.",
++        "timing": "Not publicly stated"
++      },
++      "wordCount": {
++        "min": null,
++        "max": null,
++        "display": "No word limit stated on the current guidelines page"
++      },
++      "response": {
++        "label": "Not stated",
++        "band": "not-stated",
++        "official": false
++      },
++      "submissionStatus": "open",
++      "deadline": null,
++      "aiPolicy": "not-stated",
++      "whatTheyWant": [
++        "Fiction and nonfiction previously unpublished in the English language.",
++        "Essays of all kinds, reportage, criticism, travel writing, memoir and short stories.",
++        "Work from writers anywhere; the magazine especially encourages submissions from groups traditionally underrepresented in literary magazines."
++      ],
++      "whatTheyDontWant": [
++        "Poetry — the magazine does not accept poems.",
++        "Work previously published in English."
++      ],
++      "requirements": [
++        "Complete the online form on the submissions page with your name, email, a cover note and your submission document.",
++        "Do not send submissions by post — the form is the only channel.",
++        "Note the date you submitted: the form confirms on screen but sends no confirmation email.",
++        "Expect a reply by email when the editors have read the piece; no timeframe is published."
++      ],
++      "rights": "Not stated on the official submissions page.",
++      "howToSubmit": [
++        "Read a recent issue or two from the archive — full texts are free on the site — and make sure your piece sits in the magazine's register.",
++        "Prepare your manuscript as a single document and send it through the form.",
++        "Keep your own record of the submission date, since no confirmation email arrives.",
++        "Longer pieces earn more on the published scale, but write to the piece, not the meter."
++      ],
++      "keywords": [
++        "dublin review",
++        "irish literary magazine",
++        "essay",
++        "reportage",
++        "memoir",
++        "short story",
++        "€300"
++      ]
++    },
++    {
++      "status": "published",
++      "vertical": "writing",
++      "lastVerified": "2026-10-03",
++      "publishedAt": "2026-10-03",
++      "experience": "not-stated",
++      "editorExperience": {
++        "status": "not-yet-submitted"
++      },
++      "id": "the-dark-magazine",
++      "slug": "the-dark-magazine",
++      "publication": "The Dark Magazine",
++      "title": "Horror and dark fantasy, 2,000–6,000 words",
++      "seoTitle": "The Dark Magazine: 5¢ per word",
++      "excerpt": "The Dark pays 5¢ per word for original horror and dark fantasy up to 6,000 words. Submit by email; no simultaneous or AI-assisted work.",
++      "officialUrl": "https://www.thedarkmagazine.com/submission-guidelines/",
++      "applyUrl": "mailto:submissions@thedarkmagazine.com",
++      "applyEmail": "submissions@thedarkmagazine.com",
++      "applyMethod": "Email with the story attached (.doc, .docx or .rtf)",
++      "sources": [
++        {
++          "name": "The Dark Magazine — Submission Guidelines (official)",
++          "url": "https://www.thedarkmagazine.com/submission-guidelines/"
++        }
++      ],
++      "eligibility": {
++        "summary": "No stated country restriction. The magazine's diversity statement welcomes submissions from all writers, of all nations, nationalities, ethnicities, backgrounds, faiths, genders, orientations, identities and experiences. Nigeria qualifies.",
++        "mode": "not-stated",
++        "includesRegions": [],
++        "allowsDiaspora": true,
++        "notStated": true
++      },
++      "writingTypes": [
++        "fiction"
++      ],
++      "writingTypeLabel": "Horror and dark fantasy short fiction",
++      "pay": {
++        "currency": "USD",
++        "amountMin": null,
++        "amountMax": null,
++        "display": "5¢/word originals; 1¢/word reprints",
++        "conditions": "Official guidelines: 5 cents per word for original fiction up to 6,000 words, paid on publication for first world rights; 1 cent per word for reprint fiction up to 6,000 words, paid on acceptance for non-exclusive reprint rights.",
++        "timing": "On publication for originals; on acceptance for reprints"
++      },
++      "wordCount": {
++        "min": 2000,
++        "max": 6000,
++        "display": "2,000–6,000 words"
++      },
++      "response": {
++        "label": "Minutes to 48 hours; query after one week",
++        "band": "fast",
++        "official": true
++      },
++      "submissionStatus": "unknown",
++      "deadline": null,
++      "aiPolicy": "prohibited",
++      "whatTheyWant": [
++        "Horror and dark fantasy between 2,000 and 6,000 words.",
++        "Stories that experiment or deviate from the ordinary — the guidelines invite fiction that may fall outside regular categories.",
++        "Reprints are considered if they first appeared in established print markets — magazines, collections, anthologies — within the past two years."
++      ],
++      "whatTheyDontWant": [
++        "Graphic, violent horror — despite the name, this is not that market.",
++        "Anything translated, written, developed or assisted by AI tools; attempting to submit AI work may mean a ban from future submissions.",
++        "Simultaneous submissions and multiple submissions — violations result in a total ban.",
++        "Stories embedded in the body of the email instead of attached as a document.",
++        "Responses to rejection letters, for any reason."
++      ],
++      "requirements": [
++        "Email submissions@thedarkmagazine.com with the story attached in .doc, .docx or .rtf.",
++        "Use proper manuscript format — the modern Shunn format is preferred.",
++        "Include your bio in a cover letter.",
++        "For reprints, put REPRINT in the email header: SUBMISSION: [STORY TITLE] (REPRINT).",
++        "Submit once and wait for a response before sending anything else; there is no wait period after a rejection."
++      ],
++      "rights": "First world rights for original fiction, bought on publication; non-exclusive reprint rights for reprints, bought on acceptance.",
++      "howToSubmit": [
++        "The current guidelines list email submissions but do not explicitly state whether the reading period is open; check the official page before sending.",
++        "Polish the story to manuscript format and attach it — never paste it into the email.",
++        "Send it once, then wait: responses can arrive within minutes or take up to two days; query only after a full week, including the title and date submitted.",
++        "Do not submit the same story anywhere else while The Dark considers it.",
++        "If the story has appeared in a print market in the past two years, submit it as a reprint with REPRINT in the header."
++      ],
++      "keywords": [
++        "the dark magazine",
++        "horror",
++        "dark fantasy",
++        "5 cents per word",
++        "monthly magazine",
++        "no simultaneous submissions"
++      ]
+     }
+   ],
+   "guidelinesNotRead": [
+diff --git a/scripts/add-sprint1-2026-10-03.py b/scripts/add-sprint1-2026-10-03.py
+new file mode 100644
+index 00000000..da7416a7
+--- /dev/null
++++ b/scripts/add-sprint1-2026-10-03.py
+@@ -0,0 +1,336 @@
++#!/usr/bin/env python3
++"""Add four NEW verified writing markets — sprint batch 1 (2026-10-03).
++
++First batch of the records sprint agreed 2026-10-03 (desk roadmap: 300 -> 500
++verified records). Same standard as the earlier batches: every figure below
++was read off the publication's own live guidelines page on 2026-10-03. Official-source extracts
++and verification notes are retained in the working archive outside the generated site tree.
++
++Four NEW records:
++  smokelong-quarterly   flash fiction/creative nonfiction, $100/$150 with audio
++  khoreo                speculative fiction, $0.10/word SFWA pro rate, windowed
++  dublin-review         fiction and nonfiction, fee scale from EUR 300
++  the-dark-magazine     horror and dark fantasy, 5 cents/word originals
++
++Fetched in the same pass but NOT added, and why (logged at the bottom):
++  wigleaf.com           prestige flash market but pays nothing - outside the
++                        paid-opportunity scope of this desk
++  catapult.co           the magazine is now an archive; Catapult has pivoted
++                        to book publishing and no longer takes story/essay
++                        submissions
++  lolwe.net             site unreachable on verification day - needs a retry
++  nightmare-magazine.com submissions page 404s; market status unverifiable
++"""
++import json, pathlib, sys
++
++ROOT = pathlib.Path(__file__).resolve().parents[1]
++OPPS = ROOT / "content/opportunities.json"
++PUBC = ROOT / "content/hub/pub-countries.json"
++V = "2026-10-03"
++
++
++def rec(slug, publication, title, seo, excerpt, official, apply_url, apply_email,
++        apply_method, sources, elig, types, type_label, pay, wc, response,
++        status, deadline, ai, want, dont, reqs, rights, how, keywords):
++    return {
++        "status": "published", "vertical": "writing",
++        "lastVerified": V, "publishedAt": V,
++        "experience": "not-stated",
++        "editorExperience": {"status": "not-yet-submitted"},
++        "id": slug, "slug": slug, "publication": publication,
++        "title": title, "seoTitle": seo, "excerpt": excerpt,
++        "officialUrl": official, "applyUrl": apply_url, "applyEmail": apply_email,
++        "applyMethod": apply_method, "sources": sources,
++        "eligibility": elig, "writingTypes": types, "writingTypeLabel": type_label,
++        "pay": pay, "wordCount": wc, "response": response,
++        "submissionStatus": status, "deadline": deadline, "aiPolicy": ai,
++        "whatTheyWant": want, "whatTheyDontWant": dont, "requirements": reqs,
++        "rights": rights, "howToSubmit": how, "keywords": keywords,
++    }
++
++
++def src(name, url):
++    return [{"name": name, "url": url}]
++
++
++def pay(cur, lo, hi, display, conditions, timing):
++    return {"currency": cur, "amountMin": lo, "amountMax": hi,
++            "display": display, "conditions": conditions, "timing": timing}
++
++
++NEW = []
++
++# ------------------------------------------------------- SmokeLong Quarterly
++NEW.append(rec(
++    "smokelong-quarterly", "SmokeLong Quarterly", "Flash fiction and flash creative nonfiction up to 1,000 words",
++    "SmokeLong Quarterly submissions: $100–$150",
++    "SmokeLong publishes flash up to 1,000 words and pays $100, or $150 if you grant audio "
++    "rights. See reading windows and anonymous-submission rules.",
++    "https://www.smokelong.com/guidelines/",
++    "https://smokelong.submittable.com/Submit", None,
++    "Online via Submittable during reading periods",
++    src("SmokeLong Quarterly — Guidelines (official)", "https://www.smokelong.com/guidelines/"),
++    {"summary": "No stated country restriction. SmokeLong reads internationally and assigns "
++                "every submission to two editors anonymously.",
++     "mode": "not-stated", "includesRegions": [], "allowsDiaspora": True, "notStated": True},
++    ["fiction", "creative-nonfiction"], "Flash fiction and flash creative nonfiction",
++    pay("USD", 100, 150, "$100 per story, or $150 with audio rights",
++        "Official guidelines: payment is $100/$150 with audio, issued upon publication in the "
++        "quarterly issue via PayPal or Zelle; the writer may bear any associated fees. The "
++        "annual SmokeLong Quarterly Award for Flash Fiction is a separate paid competition "
++        "with its own entry fees and prizes.",
++        "Upon publication in the quarterly issue, via PayPal or Zelle"),
++    {"min": 1, "max": 1000, "display": "Up to 1,000 words"},
++    {"label": "Up to 4 weeks in free windows; usually sooner", "band": "2-4-weeks",
++     "official": True},
++    "open", None, "prohibited",
++    ["Flash narratives up to 1,000 words — fiction and creative nonfiction — that are "
++     "previously unpublished.",
++     "Stories that stand up to rereading: the guidelines ask for something sincerely and "
++     "uniquely yours, surprising and thrilling.",
++     "Reviews of flash collections, essays on craft and articles on teaching flash are "
++     "considered for the blog.",
++     "Work previously published only on a personal blog or website is considered, if it is "
++     "taken down before publication and flagged in the cover letter."],
++    ["Previously published work, except in the annual Grand Micro Contest.",
++     "Narratives created with the aid of AI — including AI translation or stylistic "
++     "modification. Grammar tools are fine.",
++     "Poetry — the magazine publishes prose flash only.",
++     "Identifying information in the manuscript, filename or Submittable title; editors read "
++     "anonymously."],
++    ["Submit one unpublished piece at a time and wait for a decision, or use the "
++     "multiple-submission option with up to three pieces in one document (paid windows, "
++     "faster response).",
++     "Include a print-ready, third-person bio in your cover letter.",
++     "Keep the manuscript, filename and Submittable title free of your name.",
++     "Watch for the free-submission window at the start of each reading period; after it "
++     "closes a small fee applies, and the magazine always keeps a free window."],
++    "Exclusive electronic rights for six months, then non-exclusive rights for the online "
++    "archive; non-exclusive print rights for potential anthologies and promotion. All other "
++    "rights remain with the writer.",
++    ["Check the reading calendar on the guidelines page and submit inside a window — the "
++     "December issue window runs roughly August 16 to November 15.",
++     "Send your piece through the Submittable manager; one piece, or up to three via the "
++     "multiple-submission option.",
++     "If the piece is under consideration you will be told more time is needed; otherwise "
++     "expect a decision within four weeks in free windows and about a week in paid windows.",
++     "If your story is accepted elsewhere first, withdraw it through Submittable right away."],
++    ["smokelong", "flash fiction", "flash nonfiction", "$100", "quarterly", "anonymous reading"]))
++
++
++# ------------------------------------------------------- khōréō
++NEW.append(rec(
++    "khoreo", "khōréō", "Speculative fiction by immigrant and diaspora writers",
++    "khōréō submissions: $0.10 per word",
++    "khōréō pays $0.10 per word for speculative fiction by immigrant and diaspora writers. "
++    "Its next fiction window is November 1–30, 2026.",
++    "https://www.khoreomag.com/submissions-fiction/",
++    "https://khoreo.moksha.io/publication/khoreo-magazine", "contact@khoreomag.com",
++    "Online via Moksha during submission windows",
++    src("khōréō — Submissions: Fiction (official)",
++        "https://www.khoreomag.com/submissions-fiction/"),
++    {"summary": "Restricted by identity: khōréō invites writers who identify as immigrants or "
++                "members of a diaspora in the broadest sense — first- and second-generation "
++                "immigrants, refugees, asylum seekers, undocumented migrants, diaspora "
++                "communities, transnational and transracial adoptees, and anyone whose heritage "
++                "includes 'here and elsewhere'. Nigerian and other African writers qualify "
++                "where that identity applies. People outside those groups are asked to support "
++                "the magazine by reading and subscribing instead.",
++     "mode": "restricted", "includesGroups": ["immigrants", "diaspora"],
++     "includesRegions": [], "allowsDiaspora": True, "notStated": False},
++    ["fiction", "translation"], "Speculative short fiction and translated speculative fiction",
++    pay("USD", None, None, "$0.10 per word (SFWA pro rate)",
++        "Official fiction submissions page: payment at SFWA pro rates, listed as $0.10 per "
++        "word (raised from $0.08). Translations earn the same rate for both the original "
++        "author and the translator where applicable.",
++        "Not publicly stated"),
++    {"min": 1, "max": 5000, "display": "Under 5,000 words — flash queue ≤1,500, stories "
++     "1,501–5,000; under 3,500 preferred"},
++    {"label": "Not stated", "band": "not-stated", "official": False},
++    "upcoming", {"display": "Next fiction window runs 1–30 November 2026 (themed submissions)",
++              "openingDate": "2026-11-01", "recurring": True}, "prohibited",
++    ["Short speculative fiction under 5,000 words with a speculative element — fantasy, "
++     "sci-fi, horror and anything between or around the genres.",
++     "Stories exploring migration in any form: immigration, diaspora, anti-colonialism, or "
++     "more metaphorical readings of movement and displacement.",
++     "One story per queue per window: you may submit one story to the flash queue (≤1,500 "
++     "words) and one to the short story queue (1,501–5,000)."],
++    ["Gratuitous gore or violence.",
++     "Fridging — a character harmed purely to serve another character's development.",
++     "Overwhelming racist, sexist, ableist, homophobic or xenophobic elements that the story "
++     "does not subvert or challenge.",
++     "Clichés and 'it was all a dream' endings.",
++     "Stories where a person from a non-marginalized group experiences life as someone from a "
++     "marginalized background.",
++     "Novelettes, novellas, reprints, unsolicited resubmissions, multiple submissions within "
++     "one category, and AI-generated work.",
++     "Anything over 5,000 words — rejected unread."],
++    ["Submit through Moksha during a window — fiction windows in 2026 are March (general), "
++     "July (general) and November (themed); the next cycle runs 1–30 November 2026.",
++     "Choose the right queue by length: flash (≤1,500) or short story (1,501–5,000).",
++     "Format to the Shunn modern manuscript format; a mailing address is only needed after "
++     "acceptance.",
++     "If you are a previous contributor, wait until at least one year after your published "
++     "issue before submitting again."],
++    "First world English-language rights (digital, ebook and print), plus non-exclusive "
++    "rights to include the story in an anthology within 24 months, archive it on the website "
++    "for at least 36 months and record audio of it for at least 36 months.",
++    ["Confirm the next window on the submissions page — windows are dated and submissions "
++     "outside them are not read.",
++     "Pick the queue by word count and submit one story per queue.",
++     "Add a cover letter if you like: identity in your own words, genre, content warnings, "
++     "and whether you want feedback.",
++     "If the story is a simultaneous submission, say so in the cover letter and withdraw "
++     "immediately if it is accepted elsewhere."],
++    ["khoreo", "speculative fiction", "immigrant writers", "diaspora", "$0.10 per word",
++     "science fiction", "fantasy", "migration"]))
++
++
++# ------------------------------------------------------- The Dublin Review
++NEW.append(rec(
++    "dublin-review", "The Dublin Review", "Fiction and nonfiction — essays, reportage, criticism, memoir",
++    "The Dublin Review submissions: from €300",
++    "The Dublin Review welcomes unpublished fiction and nonfiction in English, with fees from "
++    "€300 for pieces up to 2,500 words. Submit online.",
++    "https://thedublinreview.com/submissions/",
++    "https://thedublinreview.com/submissions/", None,
++    "Online submission form (no postal submissions)",
++    src("The Dublin Review — Submissions (official)",
++        "https://thedublinreview.com/submissions/"),
++    {"summary": "No stated country restriction. The magazine publishes writers from Ireland "
++                "and elsewhere and says it especially encourages submissions from members of "
++                "groups traditionally underrepresented in literary magazines and other "
++                "cultural forums.",
++     "mode": "not-stated", "includesRegions": [], "allowsDiaspora": True, "notStated": True},
++    ["fiction", "essays", "creative-nonfiction"], "Fiction and long-form nonfiction",
++    pay("EUR", 300, None, "From €300 for pieces up to 2,500 words; rises with length",
++        "Official submissions page: the fee scale starts at €300 for pieces up to 2,500 words and "
++        "increases with word count; it does not publish separate rates for commissioned and "
++        "unsolicited work.",
++        "Not publicly stated"),
++    {"min": None, "max": None, "display": "No word limit stated on the current guidelines page"},
++    {"label": "Not stated", "band": "not-stated", "official": False},
++    "open", None, "not-stated",
++    ["Fiction and nonfiction previously unpublished in the English language.",
++     "Essays of all kinds, reportage, criticism, travel writing, memoir and short stories.",
++     "Work from writers anywhere; the magazine especially encourages submissions from groups "
++     "traditionally underrepresented in literary magazines."],
++    ["Poetry — the magazine does not accept poems.",
++     "Work previously published in English."],
++    ["Complete the online form on the submissions page with your name, email, a cover note "
++     "and your submission document.",
++     "Do not send submissions by post — the form is the only channel.",
++     "Note the date you submitted: the form confirms on screen but sends no confirmation "
++     "email.",
++     "Expect a reply by email when the editors have read the piece; no timeframe is "
++     "published."],
++    "Not stated on the official submissions page.",
++    ["Read a recent issue or two from the archive — full texts are free on the site — and "
++     "make sure your piece sits in the magazine's register.",
++     "Prepare your manuscript as a single document and send it through the form.",
++     "Keep your own record of the submission date, since no confirmation email arrives.",
++     "Longer pieces earn more on the published scale, but write to the piece, not the meter."],
++    ["dublin review", "irish literary magazine", "essay", "reportage", "memoir",
++     "short story", "€300"]))
++
++
++# ------------------------------------------------------- The Dark Magazine
++NEW.append(rec(
++    "the-dark-magazine", "The Dark Magazine", "Horror and dark fantasy, 2,000–6,000 words",
++    "The Dark Magazine: 5¢ per word",
++    "The Dark pays 5¢ per word for original horror and dark fantasy up to 6,000 words. Submit "
++    "by email; no simultaneous or AI-assisted work.",
++    "https://www.thedarkmagazine.com/submission-guidelines/",
++    "mailto:submissions@thedarkmagazine.com", "submissions@thedarkmagazine.com",
++    "Email with the story attached (.doc, .docx or .rtf)",
++    src("The Dark Magazine — Submission Guidelines (official)",
++        "https://www.thedarkmagazine.com/submission-guidelines/"),
++    {"summary": "No stated country restriction. The magazine's diversity statement welcomes "
++                "submissions from all writers, of all nations, nationalities, ethnicities, "
++                "backgrounds, faiths, genders, orientations, identities and experiences. "
++                "Nigeria qualifies.",
++     "mode": "not-stated", "includesRegions": [], "allowsDiaspora": True, "notStated": True},
++    ["fiction"], "Horror and dark fantasy short fiction",
++    pay("USD", None, None, "5¢/word originals; 1¢/word reprints",
++        "Official guidelines: 5 cents per word for original fiction up to 6,000 words, paid on "
++        "publication for first world rights; 1 cent per word for reprint fiction up to 6,000 "
++        "words, paid on acceptance for non-exclusive reprint rights.",
++        "On publication for originals; on acceptance for reprints"),
++    {"min": 2000, "max": 6000, "display": "2,000–6,000 words"},
++    {"label": "Minutes to 48 hours; query after one week", "band": "fast", "official": True},
++    "unknown", None, "prohibited",
++    ["Horror and dark fantasy between 2,000 and 6,000 words.",
++     "Stories that experiment or deviate from the ordinary — the guidelines invite fiction "
++     "that may fall outside regular categories.",
++     "Reprints are considered if they first appeared in established print markets — "
++     "magazines, collections, anthologies — within the past two years."],
++    ["Graphic, violent horror — despite the name, this is not that market.",
++     "Anything translated, written, developed or assisted by AI tools; attempting to submit "
++     "AI work may mean a ban from future submissions.",
++     "Simultaneous submissions and multiple submissions — violations result in a total ban.",
++     "Stories embedded in the body of the email instead of attached as a document.",
++     "Responses to rejection letters, for any reason."],
++    ["Email submissions@thedarkmagazine.com with the story attached in .doc, .docx or .rtf.",
++     "Use proper manuscript format — the modern Shunn format is preferred.",
++     "Include your bio in a cover letter.",
++     "For reprints, put REPRINT in the email header: SUBMISSION: [STORY TITLE] (REPRINT).",
++     "Submit once and wait for a response before sending anything else; there is no wait "
++     "period after a rejection."],
++    "First world rights for original fiction, bought on publication; non-exclusive reprint "
++    "rights for reprints, bought on acceptance.",
++    ["The current guidelines list email submissions but do not explicitly state whether the reading period is open; check the official page before sending.",
++     "Polish the story to manuscript format and attach it — never paste it into the email.",
++     "Send it once, then wait: responses can arrive within minutes or take up to two days; "
++     "query only after a full week, including the title and date submitted.",
++     "Do not submit the same story anywhere else while The Dark considers it.",
++     "If the story has appeared in a print market in the past two years, submit it as a "
++     "reprint with REPRINT in the header."],
++    ["the dark magazine", "horror", "dark fantasy", "5 cents per word", "monthly magazine",
++     "no simultaneous submissions"]))
++
++
++def main():
++    data = json.loads(OPPS.read_text(encoding="utf-8"))
++    opps = data["opportunities"]
++    existing = {o["slug"] for o in opps}
++    dupes = [r["slug"] for r in NEW if r["slug"] in existing]
++    if dupes:
++        sys.exit(f"ERROR: slug collision: {dupes}")
++    seen = set()
++    for r in NEW:
++        if r["slug"] in seen:
++            sys.exit(f"ERROR: duplicate slug inside batch: {r['slug']}")
++        seen.add(r["slug"])
++        p = r["pay"]
++        if p["amountMin"] == 0 or p["amountMax"] == 0:
++            sys.exit(f"ERROR: {r['slug']} has a zero pay amount")
++        if p["amountMin"] is not None and p["amountMax"] is not None \
++                and p["amountMin"] > p["amountMax"]:
++            sys.exit(f"ERROR: {r['slug']} pay range inverted")
++        for k in ("officialUrl", "excerpt", "seoTitle", "howToSubmit", "whatTheyWant"):
++            if not r.get(k):
++                sys.exit(f"ERROR: {r['slug']} missing {k}")
++
++    opps.extend(NEW)
++    data["opportunities"] = opps
++    data["updatedAt"] = V
++    OPPS.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
++
++    if PUBC.exists():
++        pc = json.loads(PUBC.read_text(encoding="utf-8"))
++        BASE = {
++            "smokelong-quarterly": ("US", "United States"),
++            "khoreo": ("", "International"),
++            "dublin-review": ("IE", "Ireland"),
++            "the-dark-magazine": ("", "International"),
++        }
++        for r in NEW:
++            base, label = BASE[r["slug"]]
++            pc[r["slug"]] = {"base": base, "label": label}
++        PUBC.write_text(json.dumps(pc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
++
++    print(f"Added {len(NEW)} verified records. Total opportunities: {len(opps)}")
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/scripts/build-writing-hub.py b/scripts/build-writing-hub.py
+index daebbb0a..85088b73 100644
+--- a/scripts/build-writing-hub.py
++++ b/scripts/build-writing-hub.py
+@@ -638,11 +638,14 @@ def tool_page(t: dict) -> None:
+ {about}'''
+     st = t.get("seo_title") or f"{t['title']} — free online writing tool | BRYME"
+     sd = t.get("seo_desc") or f"Free {t['title'].lower()} from BRYME. It works instantly in your browser — no account, no upload, no download."
++    head_extra = ('<link rel="stylesheet" href="/assets/writer-portfolio-builder.css">'
++                  if t["id"] == "portfolio-builder" else "")
+     write(f"/tools/{t['id']}/", page_wf(
+         title=st,
+         description=sd,
+         route=f"/tools/{t['id']}/", current="tools", body=body,
+-        schema_data={"@context": "https://schema.org", "@type": "WebApplication", "name": t["title"], "applicationCategory": "Utility", "url": f"{BASE}/tools/{t['id']}/", "operatingSystem": "Any", "description": t["description"], "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
++        schema_data={"@context": "https://schema.org", "@type": "WebApplication", "name": t["title"], "applicationCategory": "Utility", "url": f"{BASE}/tools/{t['id']}/", "operatingSystem": "Any", "description": t["description"], "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}},
++        head_extra=head_extra))
+ 
+ 
+ def pdf_render(i: str) -> str:
+@@ -677,6 +680,48 @@ def pdf_render(i: str) -> str:
+ 
+ def render_tool(t: dict) -> str:
+     i = t["id"]
++    if i == "portfolio-builder":
++        return '''<div class="tool-box wpb-shell">
++<div class="tool-prose wpb-intro"><p>Build a clean, shareable portfolio page from your bio, writing areas and public clips. Preview as you go, then download a standalone HTML file you can host anywhere. No account, upload or auto-save.</p></div>
++<div class="wpb-layout">
++<form class="wpb-form" id="wpb-form" autocomplete="off" novalidate>
++<fieldset class="wpb-fieldset"><legend>About you</legend>
++<div class="tool-grid">
++<div class="tool-input"><label for="wpb-name">Name or professional byline <span aria-hidden="true">*</span></label><input id="wpb-name" type="text" maxlength="80" autocomplete="name" placeholder="Your name" required></div>
++<div class="tool-input"><label for="wpb-tagline">What you write</label><input id="wpb-tagline" type="text" maxlength="120" placeholder="Freelance culture writer and essayist"></div>
++<div class="tool-input"><label for="wpb-location">Location (optional)</label><input id="wpb-location" type="text" maxlength="80" autocomplete="address-level2" placeholder="Lagos, Nigeria"></div>
++<div class="tool-input"><label for="wpb-focus">Topics or formats</label><input id="wpb-focus" type="text" maxlength="240" placeholder="Culture, books, personal essays"><p class="wpb-help">Separate areas with commas. Keep them specific and true to your work.</p></div>
++</div>
++<label for="wpb-bio">Short bio</label><textarea id="wpb-bio" rows="4" maxlength="700" placeholder="Two or three factual sentences: who you are, what you cover, and the work you want to do."></textarea>
++</fieldset>
++<fieldset class="wpb-fieldset"><legend>Selected work</legend><p class="wpb-help">Use links you are allowed to share publicly. A few relevant clips are stronger than an exhaustive list.</p>
++<div id="wpb-samples">
++<fieldset class="wpb-sample" data-wpb-sample><legend>Sample 1</legend>
++<label>Title <input type="text" data-wpb-field="title" maxlength="100" placeholder="Title of the piece"></label>
++<label>Publication / client <input type="text" data-wpb-field="publication" maxlength="100" placeholder="Where it appeared (optional)"></label>
++<label>Public link <input type="url" data-wpb-field="url" maxlength="500" placeholder="https://example.com/your-piece" inputmode="url"></label>
++<label>One-line note <textarea data-wpb-field="summary" rows="2" maxlength="400" placeholder="What this sample demonstrates (optional)"></textarea></label>
++<button class="btn secondary wpb-remove" type="button" data-remove-sample disabled>Remove this sample</button>
++</fieldset>
++</div>
++<button class="btn secondary" id="wpb-add-sample" type="button">+ Add another sample</button>
++</fieldset>
++<fieldset class="wpb-fieldset"><legend>Contact and links</legend>
++<div class="tool-grid">
++<div class="tool-input"><label for="wpb-email">Public contact email (optional)</label><input id="wpb-email" type="email" maxlength="254" autocomplete="email" placeholder="you@example.com"></div>
++<div class="tool-input"><label for="wpb-website">Website (optional)</label><input id="wpb-website" type="url" maxlength="500" placeholder="https://yourname.com" inputmode="url"></div>
++<div class="tool-input"><label for="wpb-profile">Other public profile (optional)</label><input id="wpb-profile" type="url" maxlength="500" placeholder="https://www.linkedin.com/in/you" inputmode="url"></div>
++</div>
++<p class="wpb-help">Only add contact details and links you are comfortable making public.</p>
++</fieldset>
++<div class="wpb-actions"><button class="btn" id="wpb-download" type="button">Download portfolio HTML</button><button class="btn secondary" id="wpb-reset" type="button">Clear form</button></div>
++<p class="wpb-status" id="wpb-status" role="status" aria-live="polite"></p>
++<p class="wpb-warning" id="wpb-link-warning" role="status" aria-live="polite" hidden></p>
++<p class="wpb-help">Your details stay in this browser session unless you download them. Nothing is sent to BRYME. The HTML file is yours to host; check every link and remove anything private before sharing.</p>
++</form>
++<section class="wpb-preview-panel" aria-labelledby="wpb-preview-title"><h2 id="wpb-preview-title">Live preview</h2><p>This is what the downloaded portfolio will look like.</p><div class="wpb-preview" id="wpb-preview"></div></section>
++</div></div>
++<script src="/assets/writer-portfolio-builder.js?v=1" defer></script>'''
+     if i == "freelance-rate-calculator":
+         return f'''<div class="tool-box"><div class="tool-prose">
+ <div class="tool-grid">
+@@ -1324,11 +1369,11 @@ def homepage() -> None:
+             + desk_hub_render.render(arts, tools, WR_CATS, _wr_cfg, "", "Snapshot " + TODAY)
+             + '<script src="/assets/tech-hub.js" defer></script>')
+     structured = [
+-        {"@context": "https://schema.org", "@type": "WebSite", "name": "BRYME", "url": BASE + "/", "description": "Learn to write, use free writing tools, and find verified paid writing opportunities."},
++        {"@context": "https://schema.org", "@type": "WebSite", "name": "BRYME Writers", "url": BASE + "/", "description": "Practical writing guides, browser-based tools, a submission tracker and researched publication-market records."},
+         {"@context": "https://schema.org", "@type": "Organization", "name": "BRYME", "url": BASE + "/", "founder": {"@type": "Person", "name": "Ibrahim Sodiq", "url": BASE + "/author/ibrahim-sodiq/"}},
+     ]
+-    write("/", page_wf(title="BRYME \u2014 learn to write, tools, and paid writing opportunities",
+-                       description="BRYME is a complete writing resource: free beginner-friendly guides, in-browser writing tools, and verified opportunities to get published and paid.",
++    write("/", page_wf(title="BRYME Writers: writing guides, tools & opportunities",
++                       description=f"A writing desk with {len(WRITING)} researched markets, {len(GUIDES)} practical guides and {len(TOOLS)} free tools. Learn, pitch, submit and track your writing work with BRYME.",
+                        route="/", current="", body=body, schema_data=structured))
+ 
+ 
