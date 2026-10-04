@@ -271,5 +271,11 @@
     "howto": "Add each commission with its due date and check the list as work lands. Storage is local to this browser: clearing site data clears the list, so export anything you cannot afford to lose.",
     "why": "Missed deadlines end client relationships faster than bad prose does. A list you will actually look at - because it takes one click - is the system that survives busy weeks.",
     "know": "Add the internal deadline a day before the real one - the tracker records what you tell it, and a one-day buffer converts near-misses into on-time deliveries."
+  },
+  "portfolio-builder": {
+    "what": "Turns the information you choose to share — a short bio, writing areas, selected clips and contact links — into a simple, responsive portfolio page. It exports one standalone HTML file with its styling included.",
+    "howto": "Add your professional name, a focused bio and the topics or formats you want to be hired for. Add a few relevant public samples, then preview the result and download the HTML. Host that file yourself if you want a public page; the builder does not publish it for you.",
+    "why": "Editors and clients need to see evidence quickly. A focused, link-first portfolio makes relevant work easier to assess and update, without requiring a website account or a complex design tool. The guide to [building a writing portfolio](/learn/writing-for-publication/how-to-build-a-writing-portfolio/) covers what to include and how to choose samples.",
+    "know": "This tool makes no network requests and does not save form data in local storage. The page is created in this browser and downloaded only when you ask. Use links you are allowed to share, check them before sending, and leave out private drafts or personal contact details you do not want public."
   }
 }

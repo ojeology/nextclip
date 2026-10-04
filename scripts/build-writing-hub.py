@@ -638,11 +638,14 @@ def tool_page(t: dict) -> None:
 {about}'''
     st = t.get("seo_title") or f"{t['title']} — free online writing tool | BRYME"
     sd = t.get("seo_desc") or f"Free {t['title'].lower()} from BRYME. It works instantly in your browser — no account, no upload, no download."
+    head_extra = ('<link rel="stylesheet" href="/assets/writer-portfolio-builder.css">'
+                  if t["id"] == "portfolio-builder" else "")
     write(f"/tools/{t['id']}/", page_wf(
         title=st,
         description=sd,
         route=f"/tools/{t['id']}/", current="tools", body=body,
-        schema_data={"@context": "https://schema.org", "@type": "WebApplication", "name": t["title"], "applicationCategory": "Utility", "url": f"{BASE}/tools/{t['id']}/", "operatingSystem": "Any", "description": t["description"], "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
+        schema_data={"@context": "https://schema.org", "@type": "WebApplication", "name": t["title"], "applicationCategory": "Utility", "url": f"{BASE}/tools/{t['id']}/", "operatingSystem": "Any", "description": t["description"], "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}},
+        head_extra=head_extra))
 
 
 def pdf_render(i: str) -> str:
@@ -677,6 +680,48 @@ def pdf_render(i: str) -> str:
 
 def render_tool(t: dict) -> str:
     i = t["id"]
+    if i == "portfolio-builder":
+        return '''<div class="tool-box wpb-shell">
+<div class="tool-prose wpb-intro"><p>Build a clean, shareable portfolio page from your bio, writing areas and public clips. Preview as you go, then download a standalone HTML file you can host anywhere. No account, upload or auto-save.</p></div>
+<div class="wpb-layout">
+<form class="wpb-form" id="wpb-form" autocomplete="off" novalidate>
+<fieldset class="wpb-fieldset"><legend>About you</legend>
+<div class="tool-grid">
+<div class="tool-input"><label for="wpb-name">Name or professional byline <span aria-hidden="true">*</span></label><input id="wpb-name" type="text" maxlength="80" autocomplete="name" placeholder="Your name" required></div>
+<div class="tool-input"><label for="wpb-tagline">What you write</label><input id="wpb-tagline" type="text" maxlength="120" placeholder="Freelance culture writer and essayist"></div>
+<div class="tool-input"><label for="wpb-location">Location (optional)</label><input id="wpb-location" type="text" maxlength="80" autocomplete="address-level2" placeholder="Lagos, Nigeria"></div>
+<div class="tool-input"><label for="wpb-focus">Topics or formats</label><input id="wpb-focus" type="text" maxlength="240" placeholder="Culture, books, personal essays"><p class="wpb-help">Separate areas with commas. Keep them specific and true to your work.</p></div>
+</div>
+<label for="wpb-bio">Short bio</label><textarea id="wpb-bio" rows="4" maxlength="700" placeholder="Two or three factual sentences: who you are, what you cover, and the work you want to do."></textarea>
+</fieldset>
+<fieldset class="wpb-fieldset"><legend>Selected work</legend><p class="wpb-help">Use links you are allowed to share publicly. A few relevant clips are stronger than an exhaustive list.</p>
+<div id="wpb-samples">
+<fieldset class="wpb-sample" data-wpb-sample><legend>Sample 1</legend>
+<label>Title <input type="text" data-wpb-field="title" maxlength="100" placeholder="Title of the piece"></label>
+<label>Publication / client <input type="text" data-wpb-field="publication" maxlength="100" placeholder="Where it appeared (optional)"></label>
+<label>Public link <input type="url" data-wpb-field="url" maxlength="500" placeholder="https://example.com/your-piece" inputmode="url"></label>
+<label>One-line note <textarea data-wpb-field="summary" rows="2" maxlength="400" placeholder="What this sample demonstrates (optional)"></textarea></label>
+<button class="btn secondary" type="button" data-remove-sample disabled>Remove this sample</button>
+</fieldset>
+</div>
+<button class="btn secondary" id="wpb-add-sample" type="button">+ Add another sample</button>
+</fieldset>
+<fieldset class="wpb-fieldset"><legend>Contact and links</legend>
+<div class="tool-grid">
+<div class="tool-input"><label for="wpb-email">Public contact email (optional)</label><input id="wpb-email" type="email" maxlength="254" autocomplete="email" placeholder="you@example.com"></div>
+<div class="tool-input"><label for="wpb-website">Website (optional)</label><input id="wpb-website" type="url" maxlength="500" placeholder="https://yourname.com" inputmode="url"></div>
+<div class="tool-input"><label for="wpb-profile">Other public profile (optional)</label><input id="wpb-profile" type="url" maxlength="500" placeholder="https://www.linkedin.com/in/you" inputmode="url"></div>
+</div>
+<p class="wpb-help">Only add contact details and links you are comfortable making public.</p>
+</fieldset>
+<div class="wpb-actions"><button class="btn" id="wpb-download" type="button">Download portfolio HTML</button><button class="btn secondary" id="wpb-reset" type="button">Clear form</button></div>
+<p class="wpb-status" id="wpb-status" role="status" aria-live="polite"></p>
+<p class="wpb-warning" id="wpb-link-warning" role="status" aria-live="polite" hidden></p>
+<p class="wpb-help">Your details stay in this browser session unless you download them. Nothing is sent to BRYME. The HTML file is yours to host; check every link and remove anything private before sharing.</p>
+</form>
+<section class="wpb-preview-panel" aria-labelledby="wpb-preview-title"><h2 id="wpb-preview-title">Live preview</h2><p>This is what the downloaded portfolio will look like.</p><div class="wpb-preview" id="wpb-preview"></div></section>
+</div></div>
+<script src="/assets/writer-portfolio-builder.js?v=1" defer></script>'''
     if i == "freelance-rate-calculator":
         return f'''<div class="tool-box"><div class="tool-prose">
 <div class="tool-grid">
@@ -1324,11 +1369,11 @@ def homepage() -> None:
             + desk_hub_render.render(arts, tools, WR_CATS, _wr_cfg, "", "Snapshot " + TODAY)
             + '<script src="/assets/tech-hub.js" defer></script>')
     structured = [
-        {"@context": "https://schema.org", "@type": "WebSite", "name": "BRYME", "url": BASE + "/", "description": "Learn to write, use free writing tools, and find verified paid writing opportunities."},
+        {"@context": "https://schema.org", "@type": "WebSite", "name": "BRYME Writers", "url": BASE + "/", "description": "Practical writing guides, browser-based tools, a submission tracker and researched publication-market records."},
         {"@context": "https://schema.org", "@type": "Organization", "name": "BRYME", "url": BASE + "/", "founder": {"@type": "Person", "name": "Ibrahim Sodiq", "url": BASE + "/author/ibrahim-sodiq/"}},
     ]
-    write("/", page_wf(title="BRYME \u2014 learn to write, tools, and paid writing opportunities",
-                       description="BRYME is a complete writing resource: free beginner-friendly guides, in-browser writing tools, and verified opportunities to get published and paid.",
+    write("/", page_wf(title="BRYME Writers: writing guides, tools & opportunities",
+                       description=f"A writing desk with {len(WRITING)} researched markets, {len(GUIDES)} practical guides and {len(TOOLS)} free tools. Learn, pitch, submit and track your writing work with BRYME.",
                        route="/", current="", body=body, schema_data=structured))
 
 

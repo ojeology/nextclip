@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-02",
+  "updatedAt": "2026-10-03",
   "disclaimer": "Information can change. Payment rates, submission requirements, eligibility, deadlines and response times are subject to change. Always check the publication's official guidelines before submitting. BRYME verifies listings as carefully as possible but does not guarantee acceptance or payment.",
   "earningCategories": [
     {
@@ -1473,19 +1473,19 @@
       "vertical": "writing",
       "publication": "Vox",
       "title": "First Person (personal essays)",
-      "seoTitle": "Vox First Person: not listed on the current official pitch page",
-      "excerpt": "Older Vox essays pointed writers to firstperson@vox.com. The official How to pitch Vox page checked on 19 August 2026 does not list First Person among sections taking freelance pitches. Do not treat that old address as a live market. Current official freelance doors on that page are Future Perfect and Climate.",
+      "seoTitle": "Vox First Person submissions: current status",
+      "excerpt": "Vox’s current pitch guide does not list First Person as a freelance section. Its old firstperson@vox.com address may be outdated; verify before pitching.",
       "officialUrl": "https://www.vox.com/how-to-pitch-vox-pitching-guidelines",
       "applyUrl": "https://www.vox.com/how-to-pitch-vox-pitching-guidelines",
       "applyEmail": null,
       "applyMethod": "Do not email First Person as if it is open — re-read the official pitch page",
       "sources": [
         {
-          "name": "How to pitch Vox (official, current)",
+          "name": "How to pitch Vox (official; rechecked 2026-10-03)",
           "url": "https://www.vox.com/how-to-pitch-vox-pitching-guidelines"
         }
       ],
-      "lastVerified": "2026-08-19",
+      "lastVerified": "2026-10-03",
       "publishedAt": "2026-08-19",
       "eligibility": {
         "summary": "Not applicable until First Person is listed again on the official pitch page.",
@@ -1534,8 +1534,9 @@
       ],
       "rights": "Not stated for First Person on the current official page.",
       "howToSubmit": [
-        "Do not treat First Person as open on 19 August 2026.",
-        "Use the official Future Perfect or Climate cards if those sections match your idea."
+        "Do not treat First Person as open on 3 October 2026; the current official Vox pitch guide does not list it as a freelance section.",
+        "Do not use the old firstperson@vox.com address as a verified current route.",
+        "Use the official Future Perfect or Climate pitch instructions only if your idea fits one of those sections."
       ],
       "keywords": [
         "vox",
@@ -3788,7 +3789,7 @@
     {
       "status": "published",
       "vertical": "writing",
-      "lastVerified": "2026-08-19",
+      "lastVerified": "2026-10-03",
       "publishedAt": "2026-08-19",
       "experience": "not-stated",
       "editorExperience": {
@@ -3798,20 +3799,20 @@
       "slug": "the-offing-wit-tea",
       "publication": "The Offing",
       "title": "Wit Tea — humour",
-      "seoTitle": "The Offing Wit Tea: $25–$100, open to 1 Oct 2026",
-      "excerpt": "The Offing’s humour department, Wit Tea, is open through 1 October 2026. Official contributor fee is $25–$100 depending on department and length. No submission fee in 2026. Comedic work in any genre, no more than 8 pages. AI only if it is an intentional, disclosed critique of AI.",
+      "seoTitle": "The Offing Wit Tea submissions: window closed",
+      "excerpt": "The Offing’s Wit Tea window ended October 1, 2026. Its next opening is unconfirmed; check the official manager for currently open sections.",
       "officialUrl": "https://theoffingmag.com/submit/submission_guidelines/",
       "applyUrl": "https://theoffingmag.submittable.com/submit",
       "applyEmail": null,
-      "applyMethod": "Submittable — Wit Tea",
+      "applyMethod": "Check the current Submittable department list; the Wit Tea category has expired.",
       "sources": [
         {
-          "name": "The Offing — Submission Guidelines (official)",
+          "name": "The Offing — Submission Guidelines (official; checked 2026-10-03)",
           "url": "https://theoffingmag.com/submit/submission_guidelines/"
         },
         {
-          "name": "The Offing — Submittable (official)",
-          "url": "https://theoffingmag.submittable.com/submit"
+          "name": "The Offing — Wit Tea Submission Manager (official; expired, checked 2026-10-03)",
+          "url": "https://theoffingmag.submittable.com/submit/38407/wit-tea"
         }
       ],
       "eligibility": {
@@ -3843,7 +3844,7 @@
         "band": "3-plus-months",
         "official": true
       },
-      "submissionStatus": "deadline",
+      "submissionStatus": "closed",
       "deadline": {
         "date": "2026-10-01",
         "display": "Wit Tea listed as ending 1 October 2026",
@@ -3866,8 +3867,9 @@
       ],
       "rights": "First serial rights worldwide in English and non-exclusive anthology rights. Contributor retains other rights and must cite The Offing if relicensed.",
       "howToSubmit": [
-        "Read https://theoffingmag.com/submit/submission_guidelines/.",
-        "Submit Wit Tea via https://theoffingmag.submittable.com/submit."
+        "The Wit Tea Submittable category expired after 1 October 2026; The Offing says departments not listed in the manager are not currently accepting.",
+        "Check https://theoffingmag.submittable.com/submit for departments that are currently open.",
+        "Do not submit through the expired Wit Tea category link."
       ],
       "keywords": [
         "the offing",
@@ -28003,6 +28005,386 @@
       ],
       "simultaneousSubmissions": "accepted",
       "simultaneousNote": "Simultaneous submissions are acceptable as long as they are indicated as such. Authors must immediately notify the editors if said work has been selected for publication in another periodical, either in print or online. — https://www.kwelijournal.org/submit (read 2026-10-02)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-03",
+      "publishedAt": "2026-10-03",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "smokelong-quarterly",
+      "slug": "smokelong-quarterly",
+      "publication": "SmokeLong Quarterly",
+      "title": "Flash fiction and flash creative nonfiction up to 1,000 words",
+      "seoTitle": "SmokeLong Quarterly submissions: $100–$150",
+      "excerpt": "SmokeLong publishes flash up to 1,000 words and pays $100, or $150 if you grant audio rights. See reading windows and anonymous-submission rules.",
+      "officialUrl": "https://www.smokelong.com/guidelines/",
+      "applyUrl": "https://smokelong.submittable.com/Submit",
+      "applyEmail": null,
+      "applyMethod": "Online via Submittable during reading periods",
+      "sources": [
+        {
+          "name": "SmokeLong Quarterly — Guidelines (official)",
+          "url": "https://www.smokelong.com/guidelines/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction. SmokeLong reads internationally and assigns every submission to two editors anonymously.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Flash fiction and flash creative nonfiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 100,
+        "amountMax": 150,
+        "display": "$100 per story, or $150 with audio rights",
+        "conditions": "Official guidelines: payment is $100/$150 with audio, issued upon publication in the quarterly issue via PayPal or Zelle; the writer may bear any associated fees. The annual SmokeLong Quarterly Award for Flash Fiction is a separate paid competition with its own entry fees and prizes.",
+        "timing": "Upon publication in the quarterly issue, via PayPal or Zelle"
+      },
+      "wordCount": {
+        "min": 1,
+        "max": 1000,
+        "display": "Up to 1,000 words"
+      },
+      "response": {
+        "label": "Up to 4 weeks in free windows; usually sooner",
+        "band": "2-4-weeks",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Flash narratives up to 1,000 words — fiction and creative nonfiction — that are previously unpublished.",
+        "Stories that stand up to rereading: the guidelines ask for something sincerely and uniquely yours, surprising and thrilling.",
+        "Reviews of flash collections, essays on craft and articles on teaching flash are considered for the blog.",
+        "Work previously published only on a personal blog or website is considered, if it is taken down before publication and flagged in the cover letter."
+      ],
+      "whatTheyDontWant": [
+        "Previously published work, except in the annual Grand Micro Contest.",
+        "Narratives created with the aid of AI — including AI translation or stylistic modification. Grammar tools are fine.",
+        "Poetry — the magazine publishes prose flash only.",
+        "Identifying information in the manuscript, filename or Submittable title; editors read anonymously."
+      ],
+      "requirements": [
+        "Submit one unpublished piece at a time and wait for a decision, or use the multiple-submission option with up to three pieces in one document (paid windows, faster response).",
+        "Include a print-ready, third-person bio in your cover letter.",
+        "Keep the manuscript, filename and Submittable title free of your name.",
+        "Watch for the free-submission window at the start of each reading period; after it closes a small fee applies, and the magazine always keeps a free window."
+      ],
+      "rights": "Exclusive electronic rights for six months, then non-exclusive rights for the online archive; non-exclusive print rights for potential anthologies and promotion. All other rights remain with the writer.",
+      "howToSubmit": [
+        "Check the reading calendar on the guidelines page and submit inside a window — the December issue window runs roughly August 16 to November 15.",
+        "Send your piece through the Submittable manager; one piece, or up to three via the multiple-submission option.",
+        "If the piece is under consideration you will be told more time is needed; otherwise expect a decision within four weeks in free windows and about a week in paid windows.",
+        "If your story is accepted elsewhere first, withdraw it through Submittable right away."
+      ],
+      "keywords": [
+        "smokelong",
+        "flash fiction",
+        "flash nonfiction",
+        "$100",
+        "quarterly",
+        "anonymous reading"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-03",
+      "publishedAt": "2026-10-03",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "khoreo",
+      "slug": "khoreo",
+      "publication": "khōréō",
+      "title": "Speculative fiction by immigrant and diaspora writers",
+      "seoTitle": "khōréō submissions: $0.10 per word",
+      "excerpt": "khōréō pays $0.10 per word for speculative fiction by immigrant and diaspora writers. Its next fiction window is November 1–30, 2026.",
+      "officialUrl": "https://www.khoreomag.com/submissions-fiction/",
+      "applyUrl": "https://khoreo.moksha.io/publication/khoreo-magazine",
+      "applyEmail": "contact@khoreomag.com",
+      "applyMethod": "Online via Moksha during submission windows",
+      "sources": [
+        {
+          "name": "khōréō — Submissions: Fiction (official)",
+          "url": "https://www.khoreomag.com/submissions-fiction/"
+        }
+      ],
+      "eligibility": {
+        "summary": "Restricted by identity: khōréō invites writers who identify as immigrants or members of a diaspora in the broadest sense — first- and second-generation immigrants, refugees, asylum seekers, undocumented migrants, diaspora communities, transnational and transracial adoptees, and anyone whose heritage includes 'here and elsewhere'. Nigerian and other African writers qualify where that identity applies. People outside those groups are asked to support the magazine by reading and subscribing instead.",
+        "mode": "restricted",
+        "includesGroups": [
+          "immigrants",
+          "diaspora"
+        ],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction",
+        "translation"
+      ],
+      "writingTypeLabel": "Speculative short fiction and translated speculative fiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": null,
+        "amountMax": null,
+        "display": "$0.10 per word (SFWA pro rate)",
+        "conditions": "Official fiction submissions page: payment at SFWA pro rates, listed as $0.10 per word (raised from $0.08). Translations earn the same rate for both the original author and the translator where applicable.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 1,
+        "max": 5000,
+        "display": "Under 5,000 words — flash queue ≤1,500, stories 1,501–5,000; under 3,500 preferred"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "upcoming",
+      "deadline": {
+        "display": "Next fiction window runs 1–30 November 2026 (themed submissions)",
+        "openingDate": "2026-11-01",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Short speculative fiction under 5,000 words with a speculative element — fantasy, sci-fi, horror and anything between or around the genres.",
+        "Stories exploring migration in any form: immigration, diaspora, anti-colonialism, or more metaphorical readings of movement and displacement.",
+        "One story per queue per window: you may submit one story to the flash queue (≤1,500 words) and one to the short story queue (1,501–5,000)."
+      ],
+      "whatTheyDontWant": [
+        "Gratuitous gore or violence.",
+        "Fridging — a character harmed purely to serve another character's development.",
+        "Overwhelming racist, sexist, ableist, homophobic or xenophobic elements that the story does not subvert or challenge.",
+        "Clichés and 'it was all a dream' endings.",
+        "Stories where a person from a non-marginalized group experiences life as someone from a marginalized background.",
+        "Novelettes, novellas, reprints, unsolicited resubmissions, multiple submissions within one category, and AI-generated work.",
+        "Anything over 5,000 words — rejected unread."
+      ],
+      "requirements": [
+        "Submit through Moksha during a window — fiction windows in 2026 are March (general), July (general) and November (themed); the next cycle runs 1–30 November 2026.",
+        "Choose the right queue by length: flash (≤1,500) or short story (1,501–5,000).",
+        "Format to the Shunn modern manuscript format; a mailing address is only needed after acceptance.",
+        "If you are a previous contributor, wait until at least one year after your published issue before submitting again."
+      ],
+      "rights": "First world English-language rights (digital, ebook and print), plus non-exclusive rights to include the story in an anthology within 24 months, archive it on the website for at least 36 months and record audio of it for at least 36 months.",
+      "howToSubmit": [
+        "Confirm the next window on the submissions page — windows are dated and submissions outside them are not read.",
+        "Pick the queue by word count and submit one story per queue.",
+        "Add a cover letter if you like: identity in your own words, genre, content warnings, and whether you want feedback.",
+        "If the story is a simultaneous submission, say so in the cover letter and withdraw immediately if it is accepted elsewhere."
+      ],
+      "keywords": [
+        "khoreo",
+        "speculative fiction",
+        "immigrant writers",
+        "diaspora",
+        "$0.10 per word",
+        "science fiction",
+        "fantasy",
+        "migration"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-03",
+      "publishedAt": "2026-10-03",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "dublin-review",
+      "slug": "dublin-review",
+      "publication": "The Dublin Review",
+      "title": "Fiction and nonfiction — essays, reportage, criticism, memoir",
+      "seoTitle": "The Dublin Review submissions: from €300",
+      "excerpt": "The Dublin Review welcomes unpublished fiction and nonfiction in English, with fees from €300 for pieces up to 2,500 words. Submit online.",
+      "officialUrl": "https://thedublinreview.com/submissions/",
+      "applyUrl": "https://thedublinreview.com/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Online submission form (no postal submissions)",
+      "sources": [
+        {
+          "name": "The Dublin Review — Submissions (official)",
+          "url": "https://thedublinreview.com/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction. The magazine publishes writers from Ireland and elsewhere and says it especially encourages submissions from members of groups traditionally underrepresented in literary magazines and other cultural forums.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Fiction and long-form nonfiction",
+      "pay": {
+        "currency": "EUR",
+        "amountMin": 300,
+        "amountMax": null,
+        "display": "From €300 for pieces up to 2,500 words; rises with length",
+        "conditions": "Official page says the fee scale starts at €300 for pieces up to 2,500 words and increases with word count; it does not publish separate rates for commissioned and unsolicited work.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No word limit stated on the current guidelines page"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Fiction and nonfiction previously unpublished in the English language.",
+        "Essays of all kinds, reportage, criticism, travel writing, memoir and short stories.",
+        "Work from writers anywhere; the magazine especially encourages submissions from groups traditionally underrepresented in literary magazines."
+      ],
+      "whatTheyDontWant": [
+        "Poetry — the magazine does not accept poems.",
+        "Work previously published in English."
+      ],
+      "requirements": [
+        "Complete the online form on the submissions page with your name, email, a cover note and your submission document.",
+        "Do not send submissions by post — the form is the only channel.",
+        "Note the date you submitted: the form confirms on screen but sends no confirmation email.",
+        "Expect a reply by email when the editors have read the piece; no timeframe is published."
+      ],
+      "rights": "Not stated on the official submissions page.",
+      "howToSubmit": [
+        "Read a recent issue or two from the archive — full texts are free on the site — and make sure your piece sits in the magazine's register.",
+        "Prepare your manuscript as a single document and send it through the form.",
+        "Keep your own record of the submission date, since no confirmation email arrives.",
+        "Longer pieces earn more on the published scale, but write to the piece, not the meter."
+      ],
+      "keywords": [
+        "dublin review",
+        "irish literary magazine",
+        "essay",
+        "reportage",
+        "memoir",
+        "short story",
+        "€300"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-03",
+      "publishedAt": "2026-10-03",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "the-dark-magazine",
+      "slug": "the-dark-magazine",
+      "publication": "The Dark Magazine",
+      "title": "Horror and dark fantasy, 2,000–6,000 words",
+      "seoTitle": "The Dark Magazine: 5¢ per word",
+      "excerpt": "The Dark pays 5¢ per word for original horror and dark fantasy up to 6,000 words. Submit by email; no simultaneous or AI-assisted work.",
+      "officialUrl": "https://www.thedarkmagazine.com/submission-guidelines/",
+      "applyUrl": "mailto:submissions@thedarkmagazine.com",
+      "applyEmail": "submissions@thedarkmagazine.com",
+      "applyMethod": "Email with the story attached (.doc, .docx or .rtf)",
+      "sources": [
+        {
+          "name": "The Dark Magazine — Submission Guidelines (official)",
+          "url": "https://www.thedarkmagazine.com/submission-guidelines/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction. The magazine's diversity statement welcomes submissions from all writers, of all nations, nationalities, ethnicities, backgrounds, faiths, genders, orientations, identities and experiences. Nigeria qualifies.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction"
+      ],
+      "writingTypeLabel": "Horror and dark fantasy short fiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": null,
+        "amountMax": null,
+        "display": "5¢/word originals; 1¢/word reprints",
+        "conditions": "Official guidelines: 5 cents per word for original fiction up to 6,000 words, paid on publication for first world rights; 1 cent per word for reprint fiction up to 6,000 words, paid on acceptance for non-exclusive reprint rights.",
+        "timing": "On publication for originals; on acceptance for reprints"
+      },
+      "wordCount": {
+        "min": 2000,
+        "max": 6000,
+        "display": "2,000–6,000 words"
+      },
+      "response": {
+        "label": "Minutes to 48 hours; query after one week",
+        "band": "fast",
+        "official": true
+      },
+      "submissionStatus": "unknown",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Horror and dark fantasy between 2,000 and 6,000 words.",
+        "Stories that experiment or deviate from the ordinary — the guidelines invite fiction that may fall outside regular categories.",
+        "Reprints are considered if they first appeared in established print markets — magazines, collections, anthologies — within the past two years."
+      ],
+      "whatTheyDontWant": [
+        "Graphic, violent horror — despite the name, this is not that market.",
+        "Anything translated, written, developed or assisted by AI tools; attempting to submit AI work may mean a ban from future submissions.",
+        "Simultaneous submissions and multiple submissions — violations result in a total ban.",
+        "Stories embedded in the body of the email instead of attached as a document.",
+        "Responses to rejection letters, for any reason."
+      ],
+      "requirements": [
+        "Email submissions@thedarkmagazine.com with the story attached in .doc, .docx or .rtf.",
+        "Use proper manuscript format — the modern Shunn format is preferred.",
+        "Include your bio in a cover letter.",
+        "For reprints, put REPRINT in the email header: SUBMISSION: [STORY TITLE] (REPRINT).",
+        "Submit once and wait for a response before sending anything else; there is no wait period after a rejection."
+      ],
+      "rights": "First world rights for original fiction, bought on publication; non-exclusive reprint rights for reprints, bought on acceptance.",
+      "howToSubmit": [
+        "The current guidelines list email submissions but do not explicitly state whether the reading period is open; check the official page before sending.",
+        "Polish the story to manuscript format and attach it — never paste it into the email.",
+        "Send it once, then wait: responses can arrive within minutes or take up to two days; query only after a full week, including the title and date submitted.",
+        "Do not submit the same story anywhere else while The Dark considers it.",
+        "If the story has appeared in a print market in the past two years, submit it as a reprint with REPRINT in the header."
+      ],
+      "keywords": [
+        "the dark magazine",
+        "horror",
+        "dark fantasy",
+        "5 cents per word",
+        "monthly magazine",
+        "no simultaneous submissions"
+      ]
     }
   ],
   "guidelinesNotRead": [
