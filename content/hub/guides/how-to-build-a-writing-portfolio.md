@@ -4,7 +4,7 @@ description: Create a small, relevant set of samples that makes editors want to 
 section: writing-for-publication
 level: intermediate
 keywords: [portfolio, samples, clips, freelance]
-tools: [writing-checklist-generator]
+tools: [portfolio-builder, writing-checklist-generator]
 related: [how-to-write-a-query-letter, how-to-get-your-first-paid-writer-gig]
 updated: 2026-09-04
 ---

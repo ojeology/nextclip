@@ -321,6 +321,15 @@
       "description": "A pre-submission sanity check for writers: length, sentence load, evidence of clips, the clear ask, filler and passive markers — ten rule-based checks with a fix for each. Nothing is uploaded, and no AI writes a word for you."
     },
     {
+      "id": "portfolio-builder",
+      "title": "Writing portfolio builder",
+      "short": "Turn your bio and public clips into a clean portfolio page you can host anywhere.",
+      "category": "work",
+      "description": "Build a writing portfolio from your bio, focus areas, public clips and contact links. Preview it live and export a standalone HTML file; your details stay in this browser.",
+      "seo_title": "Writing portfolio builder — free, private tool | BRYME",
+      "seo_desc": "Build a writing portfolio from your bio, focus areas and clips. Preview it and download a standalone HTML file; nothing is uploaded."
+    },
+    {
       "id": "tax-estimator",
       "title": "Freelance tax set-aside estimator",
       "short": "Know what to put aside from every payment before tax is due.",

@@ -60,6 +60,16 @@ CRUMB = re.compile(r'<nav class="breadcrumb">(.*?)</nav>', re.S)
 # deliberately rather than appearing silently.
 CTA_OK = {"btn", "btn secondary", "btn ghost", "btn secondary tk-importlabel"}
 
+# A page may add one stylesheet of its own on top of the universal base sheet.
+# The hub does it for the card grid it needs. The portfolio builder does it
+# because its live preview must render the standalone document the tool
+# generates - that document carries its own type scale (Georgia headings,
+# system-ui body) because it is the product, not the section chrome. Recorded
+# per route like CTA_OK, so a future deviation is still a visible decision.
+EXTRA_SHEET_OK = {
+    ("/writers/tools/portfolio-builder/", "/assets/writer-portfolio-builder.css"),
+}
+
 
 def pages() -> list[tuple[str, Path, str]]:
     out = []
@@ -122,8 +132,9 @@ def main() -> int:
     if len(base) != 1:
         findings.append(f"typography: {len(base)} base stylesheets, expected 1")
     for s, v in extras.items():
-        if any(r != "/writers/" for r in v):
-            findings.append(f"typography: supplementary {s} used outside the section hub: {v[:4]}")
+        stray = [r for r in v if r != "/writers/" and (r, s) not in EXTRA_SHEET_OK]
+        if stray:
+            findings.append(f"typography: supplementary {s} used outside the section hub: {stray[:4]}")
 
     # 3. components -----------------------------------------------------------
     comps = set()
