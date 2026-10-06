@@ -3,6 +3,7 @@
 
 Selection (deterministic): indexable pages under the 7 desks whose H1 reads like an
 explainer (how/what/why/...), ranked by word count desc then route asc, top 100.
+Policy pages (POLICY_SLUGS, i.e. each desk's /privacy/ page) never compete.
 
 Box is EXTRACTIVE only: the page's own first lede sentence as "The short answer",
 its own verified date string, and its own citation count. No new claims.
@@ -14,6 +15,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PUB = ROOT / "public"
 DESKS = ("writers", "tech", "sports", "entertainment", "fitness", "home", "money")
+# Policy pages are not explainers, even when the H1 happens to open with a question
+# word ("What we collect: almost nothing."). Candidates are ranked by raw word count
+# and the whole top-100 is re-selected on every build (build-routing.py strips the old
+# boxes), so a privacy page left in the pool lets any edit to its copy silently take a
+# slot from a real explainer - which is what happened when the Monetag disclosure grew
+# the Fitness privacy page. They never compete for a box.
+POLICY_SLUGS = frozenset({"privacy"})
 QW = re.compile(r"\b(how|what|why|when|where|which|who|does|do|can|is|are|should|best way)\b", re.I)
 H1 = re.compile(r"<h1[^>]*>(.*?)</h1>", re.S)
 LEDE = re.compile(r"<main.*?>(.*?)</p>", re.S)
@@ -61,6 +69,8 @@ def build_index():
                 continue
             route = "/" + f.parent.relative_to(PUB).as_posix() + "/"
             if route.count("/") < 3:  # hubs (desk root + top-level hub pages) are not explainers
+                continue
+            if route.strip("/").rsplit("/", 1)[-1] in POLICY_SLUGS:
                 continue
             if not first_lede(t):
                 continue
