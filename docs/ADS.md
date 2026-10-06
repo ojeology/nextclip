@@ -147,7 +147,13 @@ means changing the gate in both loaders together.
 - No placement may resemble a job card, employer link, application button or
   navigation control.
 - Ads render on indexable content pages only — never on noindex stubs or
-  soft-redirect pages (the injector skips them by robots-meta guard).
+  soft-redirect pages (the injector skips them by robots-meta guard). Known
+  quirk (pre-existing): that guard is not anchored to a real `<meta>` tag, so
+  one indexable page, `/tech/website-not-indexing-google/` (an article that
+  quotes the noindex tag in a code sample), is treated as a stub and carries no
+  ads from any network; the Monetag check in `scripts/validate-site-quality.js`
+  mirrors the rule and agrees. Anchoring the regex in both places would fix it,
+  and would also switch Adsterra on for that page.
 - Every banner block we render is labelled "Advertisement". The overlay
   formats (Social Bar, In-Page Push, Vignette) are drawn entirely by the
   networks' own scripts, so any labelling inside them is the network's.
