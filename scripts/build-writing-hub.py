@@ -1330,7 +1330,7 @@ def homepage() -> None:
             (len(tested), "personally tested by BRYME", "the journey shown as it happened"),
             (len(GUIDES), "craft guides — WRITE/SUBMIT/EARN/CAREER", "from first pitch to final invoice"),
             (len(tools), "browser tools — USE TOOLS", "no account, nothing uploaded"),
-            ("0", "pop-ups, ever", "no interstitials, no autoplay"),
+            ("0", "pop-up windows, ever", "no popunders, no autoplay"),
         ],
         "rules": [
             "Rates are never invented; where a publication states no fee, the page says so.",
