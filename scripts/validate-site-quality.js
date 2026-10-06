@@ -18,16 +18,20 @@ const ANALYTICS=(()=>{try{return json("site.config.json").analytics||{}}catch{re
 const GA_ON=!!ANALYTICS.enabled&&/^G-[A-Z0-9]{6,}$/.test(String(ANALYTICS.gaId||""));
 const GA_ID=GA_ON?String(ANALYTICS.gaId):"";
 const PINTEREST_VERIFICATION=String((json("site.config.json").pinterest||{}).domainVerification||"").trim();
-// Third-party ad networks are banned by default -- Monetag, PropellerAds,
-// popunders and any Adsterra format not configured below all fail this build.
+// Third-party ad networks are banned by default -- PropellerAds, popunders, any
+// Adsterra format not configured below and any Monetag zone or host not
+// configured below all fail this build.
 // The exceptions are config-driven, not hardcoded: every unit configured in
 // site.config.json under adsterra (the shared key/host, each enabled
 // placements.* Native Banner, the displayBanner classic unit and the
-// socialBar script) is sanctioned by its own loader URL, and nothing else is.
+// socialBar script) and under monetag (each enabled zone's script URL) is
+// sanctioned by its own loader URL, and nothing else is.
 // Clear a unit from the config and its exception disappears by itself, so the
 // ban is always in force for anything not pasted in. Owner-approved reversal
 // of the 20 Sep removal recorded 2026-09-29; owner-approved activation of the
-// Social Bar and the classic display banner recorded 2026-10-03 (docs/ADS.md).
+// Social Bar and the classic display banner recorded 2026-10-03; owner-approved
+// activation of Monetag In-Page Push and Vignette recorded 2026-10-06
+// (docs/ADS.md).
 const ADSTERRA=(()=>{try{return json("site.config.json").adsterra||{}}catch{return{}}})();
 // Sanctioned units are config-driven. Units may be declared in the legacy shared
 // slot (adsterra.key + adsterra.host) and/or per-placement under
@@ -51,6 +55,24 @@ const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
 const ADSTERRA_SANCTIONED=(()=>{const alts=ADSTERRA_PAIRS.map(([k,h])=>esc(h)+"\\/"+esc(k)+"\\/invoke\\.js");
   if((ADSTERRA.socialBar||{}).enabled!==false&&ADSTERRA_SOCIAL_URL)alts.push(esc(ADSTERRA_SOCIAL_URL));
   return alts;})();
+// Monetag (owner decision 2026-10-06): In-Page Push + Vignette, sanctioned
+// exactly as configured. A unit counts only when monetag.enabled AND the unit's
+// own enabled are true and its zone id / script URL are well formed - the same
+// rule scripts/inject-ads.py applies when it renders the markers, so the gate
+// and the build can never disagree about what should be on a page.
+const MONETAG=(()=>{try{return json("site.config.json").monetag||{}}catch{return{}}})();
+const MONETAG_UNITS=(()=>{const out=[];if(!MONETAG.enabled)return out;
+  for(const [key,unit] of [["inPagePush","inpage-push"],["vignette","vignette"]]){
+    const u=MONETAG[key]||{};if(!u.enabled)continue;
+    const zone=String(u.zone||"").trim(),src=String(u.script||"").trim();
+    if(/^[0-9]{4,12}$/.test(zone)&&/^https:\/\/[A-Za-z0-9.-]+\/[A-Za-z0-9._~%+\/-]+$/.test(src))out.push({key,unit,zone,src});
+    else fail(`site.config.json: monetag.${key} is enabled but its zone/script is missing or malformed`);}
+  return out;})();
+// Monetag's own privacy policy is the one other Monetag URL a page may carry:
+// the privacy pages link it so a reader can see who the partner is and what it
+// says. It is sanctioned only while Monetag is switched on.
+const MONETAG_PRIVACY_URL="https://monetag.com/privacy/";
+const MONETAG_SANCTIONED=MONETAG_UNITS.length?[...MONETAG_UNITS.map(u=>esc(u.src)),esc(MONETAG_PRIVACY_URL)]:[];
 // The sanctioned set, all of it config-driven: each configured unit's loader URL,
 // the band's data attribute, and the site's own consent-gating bootstrap at
 // /assets/adsterra-loader.js. That last one is a local file whose name states
@@ -58,8 +80,8 @@ const ADSTERRA_SANCTIONED=(()=>{const alts=ADSTERRA_PAIRS.map(([k,h])=>esc(h)+"\
 // keeps the network honest. Clear every configured key and all the exceptions
 // disappear together.
 const SANCTIONED_AD=new RegExp(
-  (ADSTERRA_SANCTIONED.length
-    ? ADSTERRA_SANCTIONED.join("|")
+  ([...ADSTERRA_SANCTIONED,...MONETAG_SANCTIONED].length
+    ? [...ADSTERRA_SANCTIONED,...MONETAG_SANCTIONED].join("|")
     : "(?!)")+"|data-adband=\"adsterra[^\"]*\"","gi");
 const allowDoc=fs.existsSync(path.join(ROOT,"content/index-allowlist.routed.json"))?json("content/index-allowlist.routed.json"):json("content/index-allowlist.json"), allow=new Set(allowDoc.routes);
 // Every page under /writing/ must be either a real publication record or an
@@ -87,6 +109,67 @@ if(PINTEREST_VERIFICATION){
   if(tags.length!==1||tags[0].content!==PINTEREST_VERIFICATION)fail(`${f}: expected exactly one configured Pinterest verification meta in <head>`);
  }
 }
+// --- Monetag (owner decision 2026-10-06) -------------------------------------
+// 1. Homepage verification: the owner-supplied token must sit in the <head> of
+//    every copy of the canonical homepage, exactly once (the same shape as the
+//    Pinterest check above). Generated by scripts/inject-ads.py at build time.
+const MONETAG_VERIFICATION=String(MONETAG.verification||"").trim();
+if(MONETAG_VERIFICATION){
+ for(const f of ["ecosystem/hub/index.html","index.html","public/index.html"]){
+  if(!fs.existsSync(path.join(ROOT,f))){fail(`${f}: homepage artifact missing for Monetag verification check`);continue;}
+  const head=(read(f).match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)||[])[1]||"";
+  const tags=(head.match(/<meta\b[^>]*>/gi)||[]).map(attrs).filter(a=>(a.name||"").toLowerCase()==="monetag");
+  if(tags.length!==1||tags[0].content!==MONETAG_VERIFICATION)fail(`${f}: expected exactly one configured Monetag verification meta in <head>`);
+ }
+}
+// 2. The first-party loader. Both tracked copies must be identical (the build
+//    copies assets/ into public/), must carry no local frequency cap or storage
+//    of any kind, must not hard-code a zone or host (zones come only from
+//    site.config.json via the markers), and must keep the SAME consent gate as
+//    /assets/adsterra-loader.js: the owner's EEA/UK/CH behaviour is one rule
+//    implemented twice, so the two copies are compared rather than trusted.
+const stripJsComments=t=>t.replace(/\/\*[\s\S]*?\*\//g,"").replace(/(^|[^:\\])\/\/[^\n]*/g,"$1");
+const gateOf=t=>{const c=stripJsComments(t).replace(/\s+/g," ");const i=c.indexOf("function looksEuropean");return i<0?"":c.slice(i).trim()};
+const RETIRED_MONETAG_ZONES=["11610753","11610749"];
+if(MONETAG_UNITS.length){
+ const copies=["assets/monetag-loader.js","public/assets/monetag-loader.js"].map(f=>[f,fs.existsSync(path.join(ROOT,f))?read(f):null]);
+ for(const [f,src] of copies){
+  if(src===null){fail(`${f}: Monetag is enabled but its loader is missing`);continue;}
+  const code=stripJsComments(src);
+  if(/localStorage|sessionStorage|document\s*\.\s*cookie|indexedDB/.test(code))fail(`${f}: the loader touches browser storage - Monetag must run with no local frequency cap and no storage of its own`);
+  if(/\b\d{5,}\b/.test(code)||/nap5k|n6wxm|monetag\.com/i.test(code))fail(`${f}: a zone id or Monetag host is hard-coded in the loader - zones come only from site.config.json`);
+  if(RETIRED_MONETAG_ZONES.some(z=>src.includes(z)))fail(`${f}: retired Monetag zone id present`);
+  if(!/\^Europe\\\//.test(code)||!/google_tag_data/.test(code)||!/dataLayer/.test(code))fail(`${f}: the EEA/UK/CH consent gate is missing`);
+  const adsterra=fs.existsSync(path.join(ROOT,"assets/adsterra-loader.js"))?read("assets/adsterra-loader.js"):"";
+  if(!gateOf(src)||gateOf(src)!==gateOf(adsterra))fail(`${f}: the consent gate differs from /assets/adsterra-loader.js - the two loaders must apply the same EEA/UK/CH rule; change both together`);
+ }
+ if(copies[0][1]!==null&&copies[1][1]!==null&&copies[0][1]!==copies[1][1])fail("assets/monetag-loader.js and public/assets/monetag-loader.js differ - the build copies assets/ into public/, keep both tracked copies identical");
+}
+// 3. Page markup: every indexable, non-stub index.html carries exactly one
+//    loader tag and exactly the configured zone markers; noindex and redirect
+//    stubs carry none; and with Monetag switched off nothing carries it. The
+//    skip rule mirrors scripts/inject-ads.py and also honours robots read
+//    order-insensitively, so a page the injector would wrongly treat as
+//    indexable is caught instead of silently shipping an ad on a stub.
+const monetagSeen={root:0,public:0};
+function checkMonetagPage(f,s,tree){
+ const markers=(s.match(/<div\b[^>]*\bdata-adband=["']monetag["'][^>]*>\s*<\/div>/gi)||[]).map(attrs);
+ const loaders=(s.match(/<script\b[^>]*\bsrc=["']\/assets\/monetag-loader\.js["'][^>]*>\s*<\/script>/gi)||[]).length;
+ const stub=/name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(s)||/<meta[^>]+http-equiv=["']refresh["']/i.test(s)||meta(s,"robots").toLowerCase().includes("noindex");
+ if(stub||!MONETAG_UNITS.length||!/<\/body>/i.test(s)){
+  if(markers.length||loaders)fail(`${f}: Monetag markup on a page that must not carry it (${stub?"noindex or redirect stub":!MONETAG_UNITS.length?"Monetag is switched off in site.config.json":"no </body>"})`);
+  return;
+ }
+ monetagSeen[tree]++;
+ if(loaders!==1)fail(`${f}: expected exactly one /assets/monetag-loader.js tag, found ${loaders}`);
+ if(markers.length!==MONETAG_UNITS.length)fail(`${f}: expected ${MONETAG_UNITS.length} Monetag zone markers, found ${markers.length}`);
+ for(const u of MONETAG_UNITS){
+  const m=markers.filter(a=>a["data-ad-unit"]===u.unit);
+  if(m.length!==1||m[0]["data-ad-zone"]!==u.zone||m[0]["data-ad-src"]!==u.src)fail(`${f}: Monetag ${u.unit} marker is missing or does not match site.config.json (zone ${u.zone}, ${u.src})`);
+ }
+ if(RETIRED_MONETAG_ZONES.some(z=>s.includes(z)))fail(`${f}: retired Monetag zone id present`);
+}
+function walkIndex(dir,out=[]){if(!fs.existsSync(dir))return out;for(const e of fs.readdirSync(dir,{withFileTypes:true})){if(e.name==="node_modules"||e.name==="_recovered"||e.name.startsWith("."))continue;const p=path.join(dir,e.name);if(e.isDirectory())walkIndex(p,out);else if(e.name==="index.html")out.push(p)}return out}
 // The writing-first publication has no employer jobs on main. Individual
 // publication pages under /writing/<slug>/ are verified writing records, not
 // employer vacancies, so no JobPosting schema is ever emitted.
@@ -127,10 +210,13 @@ for(const file of htmlFiles){
  const UNSANCTIONED=s.replace(SANCTIONED_AD,"");
  // Endpoints and formats, not brand names: naming a network in a privacy policy is
 // required disclosure, while loading an unsanctioned endpoint is the thing worth
-// failing. Monetag, PropellerAds, the social bar, popunders and the classic
-// atOptions banner are all still caught by their hosts and format strings.
-if(/n6wxm\.com|nap5k\.com|propellerads|monetag\.com|profitableratecpmnetwork|highrevenueformat|highperformanceformat/i.test(UNSANCTIONED))fail(`${r}: disallowed advertising endpoint remains (only the sanctioned Adsterra Native Banner is permitted; Monetag, PropellerAds, social bar, popunders and the classic atOptions banner all fail)`);
- if(/\/invoke\.js/i.test(UNSANCTIONED))fail(`${r}: unsanctioned Adsterra-format ad loader present - only the native banner key in site.config.json is permitted`);
+// failing. PropellerAds, popunders and any Adsterra or Monetag endpoint that
+// site.config.json does not configure are caught by their hosts and format
+// strings.
+if(/n6wxm\.com|nap5k\.com|propellerads|monetag\.com|profitableratecpmnetwork|highrevenueformat|highperformanceformat/i.test(UNSANCTIONED))fail(`${r}: disallowed advertising endpoint remains (only the Adsterra and Monetag units configured in site.config.json are permitted; PropellerAds, popunders and any other endpoint fail)`);
+ if(/\/invoke\.js/i.test(UNSANCTIONED))fail(`${r}: unsanctioned Adsterra-format ad loader present - only the Adsterra units configured in site.config.json are permitted`);
+ if(path.basename(file)==="index.html")checkMonetagPage(f,s,"root");
+ if(r!=="/"&&!verification.has(f)&&meta(s,"monetag"))fail(`${r}: Monetag verification meta belongs on the homepage only`);
  if(/googletagmanager|google-analytics/i.test(s)){
   if(!GA_ON)fail(`${r}: analytics endpoint present but analytics.enabled is not true in site.config.json`);
   else if(GA_ID&&!s.includes(GA_ID))fail(`${r}: analytics tag does not carry the configured gaId (${GA_ID})`);
@@ -266,9 +352,12 @@ const opportunities=json("content/opportunities.json").opportunities;if(opportun
  }
 }
 for(const o of opportunities)for(const k of ["slug","publication","officialUrl","lastVerified","submissionStatus"])if(!o[k])fail(`writing record ${o.slug||"?"}: missing ${k}`);
+// public/ is what Render actually serves (staticPublishPath), and the walk above
+// skips it, so the Monetag markup is checked there too.
+for(const p of walkIndex(path.join(ROOT,"public")))checkMonetagPage(rel(p),fs.readFileSync(p,"utf8"),"public");
 const server=read("server/server.js");for(const x of ["PUBLIC_HTML_DIRS","PUBLIC_ROOT_FILES","SECURITY_HEADERS","content-security-policy"])if(!server.includes(x))fail(`server hardening marker missing: ${x}`);
 if(!fs.existsSync(path.join(ROOT,"render.yaml")))fail("Render blueprint missing");
 const workflow=read(".github/workflows/quality.yml");if(/\|\|\s*true/.test(workflow))fail("quality workflow suppresses failures");
 if(warnings.length){console.log(`WARNINGS (${warnings.length})`);warnings.forEach(x=>console.log("  - "+x))}
 if(failures.length){console.error(`FAIL (${failures.length})`);failures.slice(0,120).forEach(x=>console.error("  - "+x));process.exit(1)}
-console.log(JSON.stringify({ok:true,htmlFiles:htmlFiles.length,indexable:indexed,noindex:noindexed,writingResearchRecords:opportunities.length,publishedPublicationPages:pubRecords,sitemapUrls:sitemapUnique.size,sitemapListings:sitemapRoutes.length,sitemapDuplicateListings:sitemapRoutes.length-sitemapUnique.size,newsUrls:0,rssItems:feeds.length,mediaFamiliesOnMain:0,mode:QUICK?"quick":"full"},null,2));
+console.log(JSON.stringify({ok:true,htmlFiles:htmlFiles.length,indexable:indexed,noindex:noindexed,writingResearchRecords:opportunities.length,publishedPublicationPages:pubRecords,sitemapUrls:sitemapUnique.size,sitemapListings:sitemapRoutes.length,sitemapDuplicateListings:sitemapRoutes.length-sitemapUnique.size,newsUrls:0,rssItems:feeds.length,mediaFamiliesOnMain:0,monetag:{zones:MONETAG_UNITS.map(u=>u.zone),pagesCheckedRoot:monetagSeen.root,pagesCheckedPublic:monetagSeen.public},mode:QUICK?"quick":"full"},null,2));

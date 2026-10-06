@@ -105,11 +105,17 @@ Job cards and detail pages show a verification badge (🟢 SOURCE VERIFIED, 🔵
 
 ## Privacy and monetization
 
-**AdSense account verification is live; ad units are not.** `site.config.json` → `adsense` is the single switch, and it is currently `enabled: true` with an owner-supplied `caId` (`ca-pub-1881426210393009`). That injects the account meta tag and the `pagead2.googlesyndication.com` loader into `<head>` on every page, and emits `ads.txt` — which is what Google's verification check needs. **No ad unit renders**: `_ads_slot` has no call sites, so nothing is placed until the owner wires them. Keep Google-dashboard Auto ads **off** until then. Analytics remain disabled.
+Advertising is configured in `site.config.json` and applied at build time by `scripts/inject-ads.py`; the policy, approved formats and change procedure are in `docs/ADS.md`.
+
+- **Adsterra (primary network):** a native banner at the top of content pages, a classic display banner and a Social Bar (`adsterra.*`).
+- **Monetag (live since 2026-10-06):** In-Page Push (zone `11966342`) and Vignette (zone `11966367`), requested on **every** indexable page view with no local frequency cap (`monetag.*`). The build renders hidden zone markers and a `<script src="/assets/monetag-loader.js" defer>` before `</body>`; the first-party loader appends each zone's external script, because the site CSP (`script-src 'self' https:`) rules out Monetag's inline snippet. `monetag.enabled: false` switches both zones off.
+- **Google AdSense:** account verification only (`adsense.caId`, the `ca-pub` meta and loader, `ads.txt`). `adsense.nativeSlotId` is empty, so no AdSense ad unit renders. Keep Google-dashboard Auto ads **off**.
+
+**Consent.** Both ad loaders apply one rule: outside the EEA, UK and Switzerland they load at once; inside them (any `Europe/*` timezone) nothing loads, and no request reaches an ad host, until Google's consent message grants ad consent. `npm run test:ads` proves it in a real browser, including that Monetag loads on every page view and that its loader touches no cookie or storage. Google Analytics 4 is enabled (`analytics`) with Consent Mode defaults scoped to the same regions.
 
 Two consequences worth knowing:
 
-- The browser gate intercepts the AdSense loader (`AD_HOSTS` in `scripts/validate-browser.js`) so the 1,527 render cases stay offline-safe and deterministic. `www.google.com` is deliberately *not* in that list, so a real Google leak would still fail the gate.
-- EEA/UK personalised ads require a **certified CMP**. That decision is still open and must be made, and documented on the privacy pages, before ad units are wired. See `docs/ecosystem/revenue-readiness.md`.
+- The browser gates intercept the ad and analytics hosts (`AD_HOSTS` in `scripts/validate-browser.js` and the other browser gates) so every render case stays offline-safe and deterministic. `www.google.com` is deliberately *not* in that list, so a real Google leak would still fail the gate.
+- The privacy pages must name every ad partner. The Writers page is built from `content/hub/trust-pages.json`; the house and desk pages are written by `scripts/build-ecosystem.py` (an explicit generator, not part of `npm run build`).
 
 Ads must never resemble job cards or application buttons (see `docs/ADS.md`).

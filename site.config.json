@@ -11,8 +11,21 @@
     "nativeFormat": "auto"
   },
   "monetag": {
+    "enabled": true,
     "verification": "8a703dab7c83b5da0bada0872e2f5d3d",
-    "note": "Owner-supplied Monetag site-verification token; emitted in the homepage head by scripts/inject-ads.py."
+    "note": "LIVE (owner decision 2026-10-06). verification is the owner-supplied site-verification token, emitted in the homepage head by scripts/inject-ads.py. The two zones below load on EVERY eligible page view - every indexable, non-stub page - through the first-party /assets/monetag-loader.js, with no local frequency cap and no browser storage of our own, so Monetag's own pacing alone decides when Vignette appears between page transitions. The loader is consent-gated exactly like /assets/adsterra-loader.js: immediate outside the EEA/UK/CH, granted ad consent only inside them (there is deliberately no switch to turn that gate off). Nothing inline ever ships (CSP script-src 'self' https:, no unsafe-inline): the build renders one hidden marker per enabled zone and the loader appends that zone's external script. Set enabled to false, or a unit's enabled to false, and rebuild to switch it off.",
+    "inPagePush": {
+      "enabled": true,
+      "zone": "11966342",
+      "script": "https://nap5k.com/tag.min.js",
+      "note": "In-Page Push: a notification-styled ad box drawn inside the page. It is not a browser notification and asks for no permission."
+    },
+    "vignette": {
+      "enabled": true,
+      "zone": "11966367",
+      "script": "https://n6wxm.com/vignette.min.js",
+      "note": "Vignette Banner: an overlay ad that can appear at page transitions, so the script is requested on every page load."
+    }
   },
   "analytics": {
     "gaId": "G-0KEKJH9960",
@@ -90,6 +103,6 @@
       "adsterra",
       "adsense"
     ],
-    "position": "adsterra native banner: top + middle + bottom of content pages; social bar before </body>; adsense native band is the future-pivot fallback and stays off while nativeSlotId is empty"
+    "position": "adsterra native banner: top + middle + bottom of content pages; social bar before </body>; monetag in-page push + vignette: hidden zone markers and the first-party loader before </body> on every indexable page; adsense native band is the future-pivot fallback and stays off while nativeSlotId is empty"
   }
 }

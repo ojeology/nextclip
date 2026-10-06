@@ -44,6 +44,12 @@ ADSLOT = re.compile(r'<ins[^>]+class="[^"]*adsbygoogle[^"]*"')
 CMP = re.compile(r"fundingchoicesmessages\.google\.com")
 GATED_LOADER = re.compile(r'/assets/adsterra-loader\.js')
 RAW_REMOTE = re.compile(r'<script[^>]+src="https://[^"]*invoke\.js"')
+# Monetag (owner decision 2026-10-06): the first-party loader, and what a raw,
+# ungated Monetag tag would look like (its dashboard snippet sets data-zone on a
+# script that points at the network's own host).
+MONETAG_LOADER = re.compile(r'<script src="/assets/monetag-loader\.js" defer></script>')
+MONETAG_MARKER = re.compile(r'<div data-adband="monetag"')
+RAW_MONETAG = re.compile(r'<script[^>]+(?:data-zone=|src="https://[^"]*(?:nap5k|n6wxm)\.com/)')
 TRUST_SLUGS = ["privacy", "terms", "contact", "about", "editorial-policy", "corrections",
                "copyright", "disclosure", "disclaimer"]
 DESKS = ["writers", "tech", "sports", "entertainment", "fitness", "home", "money"]
@@ -64,6 +70,9 @@ def main() -> int:
     cfg = json.loads((ROOT / "site.config.json").read_text(encoding="utf-8"))
     ca_id = str(((cfg.get("adsense") or {}).get("caId") or "")).strip()
     ast = cfg.get("adsterra") or {}
+    mt = cfg.get("monetag") or {}
+    monetag_live = bool(mt.get("enabled")) and any(
+        (mt.get(k) or {}).get("enabled") for k in ("inPagePush", "vignette"))
 
     pages = []
     for f in PUBLIC.rglob("index.html"):
@@ -101,6 +110,11 @@ def main() -> int:
     cmp_pages = sum(1 for _, h in indexable if CMP.search(h))
     gated = sum(1 for _, h in indexable if GATED_LOADER.search(h))
     raw = sum(1 for _, h in indexable if RAW_REMOTE.search(h))
+    monetag_pages = sum(1 for _, h in indexable if MONETAG_LOADER.search(h))
+    monetag_markers = sum(len(MONETAG_MARKER.findall(h)) for _, h in indexable)
+    monetag_raw = sum(1 for _, h in indexable if RAW_MONETAG.search(h))
+    monetag_on_noindex = sum(1 for r, h in pages if NOINDEX.search(h)
+                             and (MONETAG_LOADER.search(h) or MONETAG_MARKER.search(h)))
 
     # --- ads.txt --------------------------------------------------------------
     ads_txt_tree = (PUBLIC / "ads.txt").read_text(encoding="utf-8").strip() \
@@ -135,6 +149,7 @@ def main() -> int:
     CHECKERS = {
         "namesGoogleAdsense": r"google",
         "mentionsAdsterra": r"adsterra|profitablerate",
+        **({"mentionsMonetag": r"monetag"} if monetag_live else {}),
         "explainsCookiesOrIdentifiers": r"cookie|device identifier|personalised ads",
         "explainsOptOut": r"opt[- ]out|ad settings|your choices|withdraw",
         "linksConsentControls": r"consent|privacy & messaging|ad settings",
@@ -171,6 +186,7 @@ def main() -> int:
             "networks": {
                 "googleAdSenseSnippet": sum(1 for _, h in indexable if "adsbygoogle.js" in h),
                 "adsterraBand": sum(1 for _, h in indexable if ADBAND.search(h)),
+                "monetagLoader": monetag_pages,
             },
             "adUnitsWired": bool(str((cfg.get("adsense") or {}).get("nativeSlotId") or "").strip()),
             "note": "one band per content page, after </main> and before <footer>; the AdSense "
@@ -183,18 +199,28 @@ def main() -> int:
                                      "default in the EEA, UK and Switzerland",
             "nonGoogleNetworkGated": gated,
             "nonGoogleNetworkLoadedInline": raw,
+            "monetag": {
+                "enabled": monetag_live,
+                "pagesWithGatedLoader": monetag_pages,
+                "zoneMarkers": monetag_markers,
+                "loadedInlineBeforeConsent": monetag_raw,
+                "onNoindexPages": monetag_on_noindex,
+            },
             "gateRule": "outside Europe: loads immediately; inside EEA/UK/CH: waits for a granted "
                         "ad-consent signal from the CMP, and never loads if consent is refused",
             "why": "Consent Mode governs Google tags only. Google's EU user consent policy requires "
                    "consent to cover the publisher's partners as well, so a third-party ad network "
                    "loading before consent was a real compliance gap.",
-            "verifiedBy": "scripts/test-ad-consent.js - three browser cases (non-European loads; "
-                          "European unconsented makes no ad-host request; European consented loads)",
-            "residualRisk": "invoke.js is remote code from the network. This audit can prove the "
-                            "request is gated and cannot prove what the remote file does after it "
-                            "loads. That is a standing, accepted risk of running any third-party ad "
-                            "network, and the reason the popunder and social-bar formats are refused "
-                            "in config.",
+            "verifiedBy": "scripts/test-ad-consent.js - browser cases for both the Adsterra and the "
+                          "Monetag loaders (non-European loads; Berlin/London/Zurich unconsented or "
+                          "refused make no ad-host request; a grant, as an array or as the CMP's real "
+                          "gtag() call, releases every unit; six page loads in one profile each load "
+                          "both Monetag zones; the Monetag loader touches no cookie or storage)",
+            "residualRisk": "invoke.js is remote code from the network, and so are the two Monetag "
+                            "scripts. This audit can prove the request is gated and cannot prove what "
+                            "the remote file does after it loads. That is a standing, accepted risk of "
+                            "running any third-party ad network, and the reason popunders and forced "
+                            "redirects stay refused.",
         },
         "adsTxt": {
             "inTree": ads_txt_tree, "live": ads_txt_live, "liveStatus": code,
@@ -241,6 +267,9 @@ def main() -> int:
     print(f"  AdSense snippet on     : {a['networks']['googleAdSenseSnippet']} pages, "
           f"ad units wired: {a['adUnitsWired']}")
     print(f"  adsterra band on       : {a['networks']['adsterraBand']} pages")
+    print(f"  monetag loader on      : {a['networks']['monetagLoader']} pages "
+          f"({c['monetag']['zoneMarkers']} zone markers, {c['monetag']['onNoindexPages']} on noindex, "
+          f"{c['monetag']['loadedInlineBeforeConsent']} loaded inline before consent)")
     print(f"  Google CMP on          : {c['googleCmpOnIndexablePages']} of {c['indexablePages']} indexable")
     print(f"  non-Google network     : {c['nonGoogleNetworkGated']} gated, "
           f"{c['nonGoogleNetworkLoadedInline']} loaded inline before consent")
