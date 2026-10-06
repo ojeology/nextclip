@@ -10,6 +10,10 @@
     "nativeSlotId": "",
     "nativeFormat": "auto"
   },
+  "monetag": {
+    "verification": "8a703dab7c83b5da0bada0872e2f5d3d",
+    "note": "Owner-supplied Monetag site-verification token; emitted in the homepage head by scripts/inject-ads.py."
+  },
   "analytics": {
     "gaId": "G-0KEKJH9960",
     "enabled": true,
