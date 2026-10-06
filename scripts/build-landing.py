@@ -360,12 +360,12 @@ HTML = f"""<!doctype html>
 <meta name="theme-color" content="#f6f2e8"><meta name="color-scheme" content="light dark">
 <script src="/assets/theme.js"></script>
 <title>THE BRYME — a house that reads the fine print so you don't have to</title>
-<meta name="description" content="Seven desks under one roof. Flagship: {N_MARKETS} paying markets checked by hand, {N_GUIDES} guides, {N_TOOLS} tools. Dated, sourced, no pop-ups. Plus tech, home, fitness, money, sport, entertainment.">
+<meta name="description" content="Seven desks under one roof. Flagship: {N_MARKETS} paying markets checked by hand, {N_GUIDES} guides, {N_TOOLS} tools. Dated, sourced, no pop-up windows. Plus tech, home, fitness, money, sport, entertainment.">
 <meta name="robots" content="index,follow"><meta name="p:domain_verify" content="69f32b47370c197e72e39c8339160660"/>
 <link rel="canonical" href="https://thebryme.com/">
 <meta property="og:type" content="website"><meta property="og:site_name" content="THE BRYME">
 <meta property="og:title" content="THE BRYME — a house that reads the fine print">
-<meta property="og:description" content="{N_MARKETS} paying markets, {N_GUIDES} guides, {N_TOOLS} tools. Verified by hand, dated, sourced, no pop-ups. Seven desks, one house standard.">
+<meta property="og:description" content="{N_MARKETS} paying markets, {N_GUIDES} guides, {N_TOOLS} tools. Verified by hand, dated, sourced, no pop-up windows. Seven desks, one house standard.">
 <meta property="og:url" content="https://thebryme.com/"><meta property="og:image" content="https://thebryme.com/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
@@ -375,7 +375,7 @@ HTML = f"""<!doctype html>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KEKJH9960"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1881426210393009" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/assets/bryme-v2.css">
-<script type="application/ld+json">{{"@context":"https://schema.org","@graph":[{{"@type":"WebSite","@id":"https://thebryme.com/#website","url":"https://thebryme.com/","name":"THE BRYME","inLanguage":"en","description":"A house that reads the fine print so you don't have to. Seven desks — Writers is flagship — {N_MARKETS} paying markets checked by hand, {N_GUIDES} guides, {N_TOOLS} browser tools, dated, sourced, no pop-ups.","publisher":{{"@id":"https://thebryme.com/#org"}},"potentialAction":{{"@type":"SearchAction","target":{{"@type":"EntryPoint","urlTemplate":"https://thebryme.com/writers/search/?q={{search_term_string}}"}},"query-input":"required name=search_term_string"}}}},{{"@type":"Organization","@id":"https://thebryme.com/#org","name":"THE BRYME","url":"https://thebryme.com/","foundingDate":"2026"}}]}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@graph":[{{"@type":"WebSite","@id":"https://thebryme.com/#website","url":"https://thebryme.com/","name":"THE BRYME","inLanguage":"en","description":"A house that reads the fine print so you don't have to. Seven desks — Writers is flagship — {N_MARKETS} paying markets checked by hand, {N_GUIDES} guides, {N_TOOLS} browser tools, dated, sourced, no pop-up windows.","publisher":{{"@id":"https://thebryme.com/#org"}},"potentialAction":{{"@type":"SearchAction","target":{{"@type":"EntryPoint","urlTemplate":"https://thebryme.com/writers/search/?q={{search_term_string}}"}},"query-input":"required name=search_term_string"}}}},{{"@type":"Organization","@id":"https://thebryme.com/#org","name":"THE BRYME","url":"https://thebryme.com/","foundingDate":"2026"}}]}}</script>
 <style>
 /* ===== HOUSE v4 — compact header fix + dense 10/10 ===== */
 .site-head{{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}}
@@ -487,7 +487,7 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
   <div class="mast-top"><div class="wrap mast-in">
     <span style="display:inline-flex;align-items:center;gap:10px;white-space:nowrap">
       <a class="mast-brand" href="{H("/")}">THE BRYME<span class="mast-section">HOUSE</span></a>
-      <span class="kicker">EST. 2026 · NO POP-UPS</span>
+      <span class="kicker">EST. 2026 · NO POP-UP WINDOWS</span>
     </span>
     <span style="display:inline-flex;gap:8px;align-items:center;margin-left:auto">
       <form class="nav-search-form" action="/writers/search/" method="get" role="search"><input type="search" name="q" placeholder="Search 828 routes…" aria-label="Search" autocomplete="off"></form>
@@ -516,13 +516,13 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
 <section class="house-hero">
   <div class="eyebrow"><b>THE BRYME</b><span class="dot"></span>HOUSE EDITION<span class="dot"></span>7 DESKS<span class="dot"></span>ONE STANDARD</div>
   <h1>We read the <em>fine print</em> so you don't have to.</h1>
-  <p class="dek">Seven specialist publications under one roof. <b>Flagship is a practical home for writers</b> — {N_MARKETS} paying markets checked by hand, {N_GUIDES} guides, {N_TOOLS} browser tools. Dated, sourced, no pop-ups. The rest of the house is small on purpose.</p>
+  <p class="dek">Seven specialist publications under one roof. <b>Flagship is a practical home for writers</b> — {N_MARKETS} paying markets checked by hand, {N_GUIDES} guides, {N_TOOLS} browser tools. Dated, sourced, no pop-up windows. The rest of the house is small on purpose.</p>
   <div class="actions">
     <a class="btn" href="{H("/writers/")}">Enter flagship →</a>
     <a class="btn secondary" href="{H("/writers/writing/")}">Browse {N_MARKETS} markets</a>
     <button type="button" class="btn secondary" data-house-open-palette><span>Find anything</span><kbd style="display:inline-grid;place-items:center;width:18px;height:18px;border:1px solid var(--line);border-radius:4px;font:700 10px/1 ui-monospace,monospace">K</kbd></button>
   </div>
-  <div class="meta"><b>{N_MARKETS}</b> paying markets <span class="sep">·</span> <b>{N_GUIDES}</b> guides <span class="sep">·</span> <b>{N_TOOLS}</b> tools <span class="sep">·</span> <b>0</b> pop-ups <span class="sep">·</span> Every record verified {SWEEP_OLDEST}&ndash;{SWEEP} <span class="sep">·</span> Reviewed {REVIEWED}</div>
+  <div class="meta"><b>{N_MARKETS}</b> paying markets <span class="sep">·</span> <b>{N_GUIDES}</b> guides <span class="sep">·</span> <b>{N_TOOLS}</b> tools <span class="sep">·</span> <b>0</b> pop-up windows <span class="sep">·</span> Every record verified {SWEEP_OLDEST}&ndash;{SWEEP} <span class="sep">·</span> Reviewed {REVIEWED}</div>
 
   <div class="flag">
     <div class="flag-head"><h2>Flagship: a practical home for writers</h2><span>75% of useful real estate · house standard</span><a href="{H("/writers/")}">Full desk →</a></div>
@@ -553,18 +553,18 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
   <div class="eyebrow" style="margin-top:18px"><b>TRUST</b><span class="dot"></span>ONE HOUSE STANDARD</div>
   <div class="trust">
     <div><b>Every page dated</b><p>Last-checked and reviewed dates on every dossier. No evergreen without a date.</p></div>
-    <div><b>Zero pop-ups</b><p>No interstitials, no autoplay, no newsletter gate. Read, use tools, leave.</p></div>
+    <div><b>No pop-up windows</b><p>No popunders, no autoplay, no newsletter gate. Read, use tools, leave.</p></div>
     <div><b>Browser tools only</b><p>{N_TOOLS} tools run in your browser. No account, nothing you type is sent anywhere.</p></div>
     <div><b>Verified by hand</b><p>Each market checked against the official guideline, not scraped.</p></div>
-    <div><b>One house standard</b><p>Same type system, same rules, same no-pop-up promise across 7 desks.</p></div>
-    <div><b>Free, funded by ads</b><p>Ads are in a single band, never inside prose. You can block them and everything still works.</p></div>
+    <div><b>One house standard</b><p>Same type system, same rules, same no-pop-up-window promise across 7 desks.</p></div>
+    <div><b>Free, funded by ads</b><p>Ads are never inserted into the text of an article, and some appear as overlays on the page. You can block them and everything still works.</p></div>
   </div>
 
   <div class="eyebrow" style="margin-top:18px"><b>HOW WE WORK</b><span class="dot"></span>4 RULES</div>
   <div class="how">
     <div><b>1. Read the guideline</b><p>Every dossier quotes pay, word count, eligibility from the official guideline and links to it.</p></div>
     <div><b>2. Date everything</b><p>Last-verified on every market, reviewed on every guide. Stale pages are marked.</p></div>
-    <div><b>3. No pop-ups, ever</b><p>Trust is a feature. If we break it with a pop-up, you leave.</p></div>
+    <div><b>3. No pop-up windows, ever</b><p>Trust is a feature. If we break it with a pop-up window, you leave.</p></div>
     <div><b>4. Tools stay private</b><p>What you type into a tool stays in your browser. No upload, no account, no server log.</p></div>
   </div>
 
@@ -585,11 +585,11 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
 <script src="/assets/site-nav.js" defer></script>
 <script src="/assets/house-home.js" defer></script>
 <footer class="site-foot"><div class="wrap foot-grid">
-<div class="foot-brand"><a class="logo" href="{H("/")}"><span class="logo-mark" aria-hidden="true"></span> THE BRYME</a><p>A house that reads the fine print so you don't have to. Seven desks, one house standard. Flagship is Writers — {N_MARKETS} paying markets checked by hand, dated, sourced, no pop-ups.</p></div>
+<div class="foot-brand"><a class="logo" href="{H("/")}"><span class="logo-mark" aria-hidden="true"></span> THE BRYME</a><p>A house that reads the fine print so you don't have to. Seven desks, one house standard. Flagship is Writers — {N_MARKETS} paying markets checked by hand, dated, sourced, no pop-up windows.</p></div>
 <div class="foot-col"><b>Flagship</b><a href="{H("/writers/")}">Writers home</a><a href="{H("/writers/writing/")}">{N_MARKETS} markets</a><a href="{H("/writers/learn/")}">{N_GUIDES} guides</a><a href="{H("/writers/tools/")}">{N_TOOLS} tools</a><a href="{H("/writers/search/")}">Search</a></div>
 <div class="foot-col"><b>House</b><a href="{H("/tech/")}">Tech</a><a href="{H("/home/")}">Home</a><a href="{H("/fitness/")}">Fitness</a><a href="{H("/money/")}">Money</a><a href="{H("/sports/")}">Sport</a><a href="{H("/entertainment/")}">Entertainment</a></div>
-<div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/about/#contact">Contact</a><span style="font-size:12px;color:var(--dim)">Reviewed {REVIEWED} · 0 pop-ups · Ctrl+K · / · 1–7 · ?</span></div>
-</div><div class="wrap foot-bottom">© 2026 THE BRYME · A house that reads the fine print · 7 desks, one standard · Reviewed {REVIEWED} · 0 pop-ups, ever · Keys: / · Ctrl+K · 1–7 · ? · Theme toggle remembers choice.</div></footer>
+<div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/about/#contact">Contact</a><span style="font-size:12px;color:var(--dim)">Reviewed {REVIEWED} · 0 pop-up windows · Ctrl+K · / · 1–7 · ?</span></div>
+</div><div class="wrap foot-bottom">© 2026 THE BRYME · A house that reads the fine print · 7 desks, one standard · Reviewed {REVIEWED} · 0 pop-up windows, ever · Keys: / · Ctrl+K · 1–7 · ? · Theme toggle remembers choice.</div></footer>
 </body></html>
 """
 

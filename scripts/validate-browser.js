@@ -43,11 +43,14 @@ const ROOT=path.resolve(__dirname,"..");
 const routed=r=>r==="/"?"/writers/":"/writers"+r;
 const routes=JSON.parse(fs.readFileSync(path.join(ROOT,"content/index-allowlist.json"),"utf8")).routes.map(routed);
 const failures=[];const check=(ok,msg)=>{if(!ok)failures.push(msg)};let recovered=0;const recoveredRoutes=[];
-/* Owner-mandated monetisation (Monetag zones 11610753 + 11610749, wired in
-   ec1329042, caps loosened per owner in 95167a850). Production's CSP is
-   `script-src 'self' https:` so these load in production. They are intercepted
-   here: the gate must not depend on a third-party network being reachable,
-   fast, or serving the same creative twice.
+/* Owner-mandated monetisation: Monetag In-Page Push (zone 11966342) and Vignette
+   (zone 11966367), appended on every eligible page by the first-party
+   /assets/monetag-loader.js (owner decision 2026-10-06, zones in
+   site.config.json), plus the Adsterra units loaded by /assets/adsterra-loader.js.
+   Production's CSP is `script-src 'self' https:` so these load in production.
+   They are intercepted here: the gate must not depend on a third-party network
+   being reachable, fast, or serving the same creative twice. Whether they load,
+   when, and for whom is asserted by scripts/test-ad-consent.js.
 
    Google AdSense was added when site.config.json -> adsense.enabled was flipped
    to true with an owner-supplied ca-pub id (3fec0e6247): that injects the

@@ -15,6 +15,8 @@ WHAT SHIPS
   adsterra social bar   - owner's Social Bar snippet, before </body>
   adsterra display      - owner's classic banner snippet, after </main>
   adsense native band   - fallback; renders only if nativeSlotId is filled
+  monetag in-page push  - zone from monetag.inPagePush, every eligible page view
+  monetag vignette      - zone from monetag.vignette, every eligible page view
   monetag verification - configured meta tag on the canonical homepage only;
                          verification does not itself activate Monetag ads
 
@@ -39,10 +41,22 @@ EEA/UK/CH and only after granted ad consent inside them (see that file). The
 gateConsent flag still exists; setting it false restores plain inline tags for
 every visitor everywhere - read the loader's header before doing that.
 
+MONETAG (owner decision 2026-10-06): two zones - In-Page Push and Vignette -
+ship on EVERY eligible page view. Each indexable, non-stub page gets one hidden
+marker per enabled zone plus the tag for /assets/monetag-loader.js, before
+</body>. The markers carry the zone id and script URL, so site.config.json stays
+the only place either is written and "View page source" shows both. The loader
+is the only CSP-legal route (the dashboard snippet is inline) and applies the
+same consent gate as the Adsterra loader. There is deliberately NO frequency cap
+anywhere in the build or the loader: Vignette runs between page transitions,
+which on this multi-page site means its script must be requested on every page
+load, and how often an ad appears is Monetag's call. monetag.enabled is
+independent of adsterra.enabled.
+
 NEVER ON A NOINDEX PAGE: stub and soft-redirect pages are noindex precisely
 because they carry no content of their own. Ads on contentless inventory is
 the pattern that gets a site refused, so those pages are skipped. The guard
-matches the robots meta tag, not the bare word.
+matches the robots meta tag, not the bare word. Monetag follows the same rule.
 
 CSP: script-src 'self' https: with no unsafe-inline. Native-banner loaders are
 external https scripts and the creatives render in https iframes, so nothing
@@ -50,10 +64,13 @@ here relaxes the policy. The social-bar and display snippets the owner pastes
 are external scripts too; if a snippet needs inline script it must be refused,
 not allowed by weakening CSP.
 
-HOUSE RULES KEPT FROM docs/ADS.md: no placement may resemble a job card,
-employer link, application button or navigation control. Popunders, forced
-redirects and notification prompts stay banned - the Adsterra formats approved
-are Native Banner, Social Bar and classic display banners only.
+HOUSE RULES (docs/ADS.md): no placement may resemble a job card, employer link,
+application button or navigation control. Popunders, forced redirects and
+browser notification-permission prompts stay banned. Approved formats: Adsterra
+Native Banner, Social Bar and classic display banner and - by the 2026-10-06
+owner decision, which amends the older "no interstitials, no push" wording -
+Monetag In-Page Push and Vignette. In-Page Push is drawn inside the page and
+never asks for browser notification permission.
 """
 from __future__ import annotations
 
@@ -79,6 +96,17 @@ MONETAG_META = re.compile(
 LABEL = "Advertisement"
 PLACEMENTS = ("top", "middle", "bottom")
 LOADER_TAG = '<script src="/assets/adsterra-loader.js" defer></script>'
+
+# --- Monetag (owner decision 2026-10-06) -------------------------------------
+# One hidden marker per enabled zone, then the tag for the first-party loader.
+# The loader reads data-ad-zone / data-ad-src off the markers; nothing about a
+# zone is written anywhere but site.config.json.
+MONETAG_MARK = 'data-adband="monetag"'
+MONETAG_LOADER_TAG = '<script src="/assets/monetag-loader.js" defer></script>'
+# (site.config.json key, marker unit name), in render order
+MONETAG_UNITS = (("inPagePush", "inpage-push"), ("vignette", "vignette"))
+MONETAG_ZONE_RE = re.compile(r"^[0-9]{4,12}$")
+MONETAG_SRC_RE = re.compile(r"^https://[A-Za-z0-9.-]+/[A-Za-z0-9._~%+/-]+$")
 
 # --- AdSense band (future pivot; renders only with a filled nativeSlotId) ----
 ADSENSE_MARK = 'data-adband="adsense"'
@@ -175,7 +203,45 @@ REVERT_RES = (
     re.compile(r'<div data-adband="adsterra-social"[^>]*></div>'),
     re.compile(r'<aside class="adband-display" ' + ADSTERRA_DISPLAY_MARK +
                r'[\s\S]*?</aside>'),
+    re.compile(r'<div ' + MONETAG_MARK + r'[^>]*></div>'),
+    re.compile(r'<script src="/assets/monetag-loader\.js" defer></script>'),
 )
+
+
+def monetag_units(cfg: object) -> list[dict]:
+    """Resolve the enabled, well-formed Monetag zones from site.config.json.
+
+    A zone is rendered only when monetag.enabled and the unit's own enabled are
+    both true and the zone id / script URL are well formed. An enabled but
+    malformed unit stays off with a message rather than shipping a broken tag;
+    scripts/validate-site-quality.js then fails the build because a configured
+    unit is missing from the pages.
+    """
+    if not isinstance(cfg, dict) or not cfg.get("enabled", False):
+        return []
+    units: list[dict] = []
+    for key, name in MONETAG_UNITS:
+        unit = cfg.get(key) or {}
+        if not isinstance(unit, dict) or not unit.get("enabled", False):
+            continue
+        zone = str(unit.get("zone") or "").strip()
+        src = str(unit.get("script") or "").strip()
+        if MONETAG_ZONE_RE.match(zone) and MONETAG_SRC_RE.match(src):
+            units.append({"unit": name, "zone": zone, "src": src})
+        else:
+            print(f"ads: monetag.{key} is enabled but its zone/script is missing "
+                  f"or malformed - unit stays off")
+    return units
+
+
+def monetag_block(units: list[dict]) -> str:
+    """Hidden zone markers followed by the first-party loader tag."""
+    block = "".join(
+        '<div ' + MONETAG_MARK + ' data-ad-kind="monetag" data-ad-unit="' + u["unit"]
+        + '" data-ad-zone="' + u["zone"]
+        + '" data-ad-src="' + html.escape(u["src"], quote=True) + '" hidden></div>'
+        for u in units)
+    return block + MONETAG_LOADER_TAG
 
 
 def config() -> dict:
@@ -190,8 +256,11 @@ def config() -> dict:
     monetag = cfg.get("monetag") or {}
     verification = (str(monetag.get("verification") or "").strip()
                     if isinstance(monetag, dict) else "")
+    # Monetag is resolved before the Adsterra early return below: its on/off
+    # switch (monetag.enabled) is independent of adsterra.enabled.
     out: dict = {"gate": True, "natives": {}, "social": "", "display": "",
-                 "adsense": None, "verification": verification}
+                 "adsense": None, "verification": verification,
+                 "monetag": monetag_units(monetag)}
     if not ast.get("enabled", True):
         return out
     try:
@@ -424,6 +493,15 @@ def apply_page(t: str, state: dict) -> tuple[str, int]:
         t = t.replace("</body>", block + "</body>", 1)
         bands += 1
 
+    # monetag, before </body>: hidden zone markers + the first-party loader,
+    # which applies the consent gate and appends each zone's external script.
+    # Needs no <main>, so it rides on every page that reaches this function
+    # (main() has already skipped noindex and meta-refresh stubs). It adds no
+    # visible element and no inline script, so no layout and no CSP change.
+    if state.get("monetag") and "</body>" in t:
+        t = t.replace("</body>", monetag_block(state["monetag"]) + "</body>", 1)
+        bands += len(state["monetag"])
+
     return t, bands
 
 
@@ -461,7 +539,7 @@ def main() -> int:
 
     natives = state.get("natives", {})
     if not natives and not state.get("social") and not state.get("display") \
-            and not state.get("adsense"):
+            and not state.get("adsense") and not state.get("monetag"):
         print("ads: nothing configured -> all bands stay off (0 pages touched)")
         return 0
 
@@ -494,10 +572,12 @@ def main() -> int:
             applied += 1
 
     summary = ", ".join(f"{n}: {p['key'][:8]}..." for n, p in sorted(natives.items()))
+    monetag = ", ".join(f"{u['unit']}: zone {u['zone']}" for u in state.get("monetag", []))
     print(f"ads: wired {total_bands} unit(s) - native [{summary or 'none'}]"
           f"{' + social bar' if state.get('social') else ''}"
           f"{' + display banner' if state.get('display') else ''}"
-          f"{' + adsense band' if state.get('adsense') else ''}; "
+          f"{' + adsense band' if state.get('adsense') else ''}"
+          f"{' + monetag [' + monetag + ']' if monetag else ''}; "
           f"{applied} page(s) new, {upgraded} upgraded, {skipped} already "
           f"current, {problems} skipped (noindex/stub)")
     if not state["gate"] and natives:

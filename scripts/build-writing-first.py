@@ -1095,7 +1095,7 @@ def home() -> None:
         "h1": "Learn to write, get published, get paid — the command center.",
         "dek": (f"BRYME Writers is the flagship — {len(WRITING)} verified publications that pay, 197 practical guides, 48 free tools, "
                 "and firsthand verification. Pick a pathway below and the whole desk re-sorts itself to that job. "
-                "Everything is dated, sourced, and written in plain English. No pop-ups, ever."),
+                "Everything is dated, sourced, and written in plain English. No pop-up windows, ever."),
         "needs": [
             ("write", "WRITE",
              "Craft, editing, storytelling — guides on fiction, nonfiction, essays, poetry, screenwriting, pitches — beginner to advanced."),
@@ -1127,7 +1127,7 @@ def home() -> None:
             (len(tested), "personally tested by BRYME", "the journey shown as it happened"),
             (len(GUIDES), "craft guides — WRITE/SUBMIT/EARN/CAREER", "from first pitch to final invoice"),
             (len(tools), "browser tools — USE TOOLS", "no account, nothing uploaded"),
-            ("0", "pop-ups, ever", "no interstitials, no autoplay"),
+            ("0", "pop-up windows, ever", "no popunders, no autoplay"),
         ],
         "rules": [
             "Rates are never invented; where a publication states no fee, the page says so.",
