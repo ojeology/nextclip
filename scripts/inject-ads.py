@@ -15,6 +15,8 @@ WHAT SHIPS
   adsterra social bar   - owner's Social Bar snippet, before </body>
   adsterra display      - owner's classic banner snippet, after </main>
   adsense native band   - fallback; renders only if nativeSlotId is filled
+  monetag verification - configured meta tag on the canonical homepage only;
+                         verification does not itself activate Monetag ads
 
 WHY ONE ADSTERRA UNIT KEY PER PLACEMENT: Adsterra's native banner snippet is a
 container div plus invoke.js, and the network identifies the install through
@@ -55,6 +57,7 @@ are Native Banner, Social Bar and classic display banners only.
 """
 from __future__ import annotations
 
+import html
 import json
 import os
 import re
@@ -69,6 +72,9 @@ EXTRA_TIERS = ("ecosystem", "writers", "tech", "sports", "entertainment",
 
 NOINDEX = re.compile(r'name=["\']robots["\'][^>]*content=["\'][^"\']*noindex', re.I)
 NOCONTENT = re.compile(r'<meta[^>]+http-equiv=["\']refresh["\']', re.I)
+MONETAG_META = re.compile(
+    r'<meta\b(?=[^>]*\bname=["\']monetag["\'])[^>]*>', re.I
+)
 
 LABEL = "Advertisement"
 PLACEMENTS = ("top", "middle", "bottom")
@@ -181,8 +187,11 @@ def config() -> dict:
         return {}
 
     ast = cfg.get("adsterra") or {}
+    monetag = cfg.get("monetag") or {}
+    verification = (str(monetag.get("verification") or "").strip()
+                    if isinstance(monetag, dict) else "")
     out: dict = {"gate": True, "natives": {}, "social": "", "display": "",
-                 "adsense": None}
+                 "adsense": None, "verification": verification}
     if not ast.get("enabled", True):
         return out
     try:
@@ -241,6 +250,60 @@ def config() -> dict:
                 "fmt": str(ads.get("nativeFormat") or "auto").strip() or "auto",
             }
     return out
+
+
+def apply_monetag_verification(t: str, value: str) -> str:
+    """Ensure the Monetag verification meta appears once in a homepage head."""
+    value = str(value or "").strip()
+    if not value:
+        return t
+
+    tag = '<meta name="monetag" content="' + html.escape(value, quote=True) + '">'
+    head = re.search(r"<head\b[^>]*>[\s\S]*?</head\s*>", t, re.I)
+    if not head:
+        raise ValueError("homepage has no complete <head> element")
+    if MONETAG_META.findall(head.group(0)) == [tag]:
+        return t
+
+    # Replace rather than append so stale or duplicated tokens cannot survive a
+    # rebuild. Attribute order and quote style are not significant in HTML.
+    clean = MONETAG_META.sub("", t)
+    head_end = re.search(r"</head\s*>", clean, re.I)
+    return clean[:head_end.start()] + tag + "\n" + clean[head_end.start():]
+
+
+def homepage_targets() -> list[Path]:
+    """Return the source and staged copies of the canonical homepage only."""
+    candidates = (
+        ROOT / "index.html",
+        ROOT / "public" / "index.html",
+        ROOT / "ecosystem" / "hub" / "index.html",
+    )
+    return [p for p in candidates if p.is_file()]
+
+
+def inject_monetag_verification(value: str) -> tuple[int, list[str]]:
+    """Update homepage copies in place; generated HTML is never source-controlled here."""
+    changed = 0
+    problems: list[str] = []
+    if not str(value or "").strip():
+        return changed, problems
+
+    publish_home = ROOT / "public" / "index.html"
+    if not publish_home.is_file():
+        return changed, ["public/index.html: published homepage is missing"]
+
+    for f in homepage_targets():
+        try:
+            text = f.read_text(encoding="utf-8", errors="replace")
+            updated = apply_monetag_verification(text, value)
+        except Exception as exc:
+            problems.append(f"{f.relative_to(ROOT)}: {exc}")
+            continue
+        if updated != text:
+            f.write_text(updated, encoding="utf-8")
+            changed += 1
+    return changed, problems
 
 
 def targets() -> list[Path]:
@@ -384,6 +447,18 @@ def main() -> int:
         return revert()
 
     state = config()
+    verification_updated, verification_problems = inject_monetag_verification(
+        state.get("verification", "")
+    )
+    if verification_problems:
+        print("ads: Monetag verification injection failed:")
+        for problem in verification_problems:
+            print(f"  {problem}")
+        return 1
+    if state.get("verification"):
+        print(f"ads: Monetag verification present on homepage; "
+              f"{verification_updated} homepage copy/copies updated")
+
     natives = state.get("natives", {})
     if not natives and not state.get("social") and not state.get("display") \
             and not state.get("adsense"):
