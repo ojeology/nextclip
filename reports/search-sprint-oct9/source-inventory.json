@@ -1,0 +1,66 @@
+[
+  {
+    "route": "/writers/writing/noema/",
+    "checked": "2026-10-09",
+    "externalReferences": [
+      "https://www.noemamag.com/contact/",
+      "https://docs.google.com/document/d/1Hu8dZS6s6HhT3mYeVmTZS0KyMJama4xtURsZPRj81sY/edit"
+    ],
+    "note": "Source depth and direct-fetch limitations documented in REPORT.md."
+  },
+  {
+    "route": "/writers/writing/literary-hub/",
+    "checked": "2026-10-09",
+    "externalReferences": [
+      "https://lithub.com/how-to-pitch-lit-hub/",
+      "https://lithub.com/how-to-pitch-lit-hub/"
+    ],
+    "note": "Source depth and direct-fetch limitations documented in REPORT.md."
+  },
+  {
+    "route": "/writers/writing/the-drift/",
+    "checked": "2026-10-09",
+    "externalReferences": [
+      "https://www.thedriftmag.com/about/",
+      "https://www.thedriftmag.com/about/"
+    ],
+    "note": "Source depth and direct-fetch limitations documented in REPORT.md."
+  },
+  {
+    "route": "/entertainment/10-shows-like-alice-in-borderland-you-should-watch-next/",
+    "checked": "2026-10-09",
+    "externalReferences": [
+      "https://www.netflix.com/title/81040344",
+      "https://news.hidive.com/2020/7/24/top-10-isekai-anime-you-can-watch-right-now-on-hidive",
+      "https://www.netflix.com/title/81719583",
+      "https://www.netflix.com/title/81653386",
+      "https://www.imdb.com/title/tt15830678/",
+      "https://www.netflix.com/Title/80074220",
+      "https://www.netflix.com/title/81237994",
+      "https://www.warnerbros.com/tv/100",
+      "https://www.netflix.com/title/81061734",
+      "https://www.netflix.com/title/80180171"
+    ],
+    "note": "Source depth and direct-fetch limitations documented in REPORT.md."
+  },
+  {
+    "route": "/entertainment/movies-like-deadpool-and-wolverine/",
+    "checked": "2026-10-09",
+    "externalReferences": [
+      "https://www.20thcenturystudios.com/movies/deadpool",
+      "https://www.20thcenturystudios.com/movies/deadpool-2",
+      "https://www.warnerbros.com/movies/the-suicide-squad",
+      "https://www.20thcenturystudios.com/movies/logan",
+      "https://www.20thcenturystudios.com/movies/free-guy",
+      "https://www.20thcenturystudios.com/movies/kingsman-the-secret-service",
+      "https://www.marvel.com/movies/thor-ragnarok",
+      "https://www.marvel.com/movies/guardians-of-the-galaxy-vol-2",
+      "https://www.marvel.com/movies/ant-man",
+      "https://www.marvel.com/movies/ant-man-and-the-wasp",
+      "https://www.sonypictures.com/movies/spidermannowayhome",
+      "https://www.20thcenturystudios.com/movies/x-men-days-of-future-past",
+      "https://www.marvel.com/movies/avengers-doomsday"
+    ],
+    "note": "Source depth and direct-fetch limitations documented in REPORT.md."
+  }
+]

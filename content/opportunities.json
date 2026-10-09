@@ -1365,8 +1365,8 @@
       "vertical": "writing",
       "publication": "Noema Magazine",
       "title": "Essays, reported features, interviews, fiction",
-      "seoTitle": "Noema Magazine pitches: official guidelines, pay not stated on the current page",
-      "excerpt": "Noema wants essays, reported features, interviews, video or short fiction. Official contact page: send a full draft, or a pitch of at least 500 words, to edit@noemamag.com. A dollar-per-word figure is not on the official contact page or the official pitch guidelines. Do not treat third-party $1/word claims as verified.",
+      "seoTitle": "Noema submissions: pitch guidelines and pay | BRYME",
+      "excerpt": "How to pitch Noema: a full draft or 500-word minimum pitch, required AI disclosure, word-count guidance and what its official pages say about pay.",
       "officialUrl": "https://www.noemamag.com/contact/",
       "applyUrl": "mailto:edit@noemamag.com",
       "applyEmail": "edit@noemamag.com",
@@ -1385,7 +1385,7 @@
           "url": "https://www.noemamag.com/about-noema/"
         }
       ],
-      "lastVerified": "2026-09-06",
+      "lastVerified": "2026-10-09",
       "publishedAt": "2026-08-19",
       "eligibility": {
         "summary": "The official Pitch Us page does not list countries. It invites essays, reported features, video, interviews or fiction short stories.",
@@ -2469,8 +2469,8 @@
       "vertical": "writing",
       "publication": "Literary Hub",
       "title": "Essays on literary life and culture",
-      "seoTitle": "Literary Hub pitches: literary essays — pay not stated on the official page",
-      "excerpt": "Lit Hub’s official How to Pitch page wants 2–3 paragraph pitches (or finished essays) about literary life and culture to info@lithub.com. Generative AI is not accepted. A fee is not stated on that page.",
+      "seoTitle": "Literary Hub submissions: how to pitch Lit Hub | BRYME",
+      "excerpt": "Pitch Literary Hub in 2–3 paragraphs or send a finished essay. Check accepted topics, exclusions, the submission email and its unpublished pay rate.",
       "officialUrl": "https://lithub.com/how-to-pitch-lit-hub/",
       "applyUrl": "mailto:info@lithub.com",
       "applyEmail": "info@lithub.com",
@@ -2485,7 +2485,7 @@
           "url": "https://lithub.com/submissions/"
         }
       ],
-      "lastVerified": "2026-08-19",
+      "lastVerified": "2026-10-09",
       "publishedAt": "2026-08-19",
       "eligibility": {
         "summary": "No country list on the official pitch page.",
@@ -2510,7 +2510,7 @@
       "wordCount": {
         "min": null,
         "max": null,
-        "display": "Not publicly stated"
+        "display": "Pitch: 2–3 paragraphs; finished essay length not stated"
       },
       "response": {
         "label": "They say they read everything. No published reply time.",
@@ -6921,21 +6921,21 @@
         "poetry"
       ],
       "vertical": "writing",
-      "officialUrl": "https://thedriftmag.com",
+      "officialUrl": "https://www.thedriftmag.com/about/",
       "status": "published",
-      "excerpt": "The Drift pays $2,000 for essays, $500–$1,000 for short stories and $150 for poems. Nonfiction requires a pitch first.",
+      "excerpt": "The Drift pays $2,000 for essays. Compare its pitch, fiction, poetry and Mentions requirements, payment rates and official submission inboxes.",
       "submissionStatus": "open",
-      "lastVerified": "2026-09-05",
+      "lastVerified": "2026-10-09",
       "pay": {
         "amountMin": 500,
         "amountMax": 2000,
         "currency": "USD",
-        "display": "$2,000 essays; $500–$1,000 stories; $150 poems",
+        "display": "$2,000 essays; $500–$1,000 stories; $150 poems; $25 Mentions",
         "conditions": "The official site states $2,000 for essays, $500–$1,000 for short stories, $150 for poems, and $25 for Mentions.",
         "timing": "Not stated precisely"
       },
       "wordCount": {
-        "display": "No stated hard length limit",
+        "display": "Essays: 2–4 paragraph pitch; fiction: no word limit; Mentions: 150-word reviews",
         "min": null,
         "max": null
       },
@@ -6952,13 +6952,16 @@
         "official": true
       },
       "howToSubmit": [
-        "Pitch essays at pitches@thedriftmag.com with a 2–4 paragraph pitch.",
-        "Mentions/reviews at mentions@thedriftmag.com."
+        "Essays: pitches@thedriftmag.com. Do not send a full nonfiction draft.",
+        "Fiction: fiction@thedriftmag.com.",
+        "Poetry: poetry@thedriftmag.com.",
+        "Mentions: mentions@thedriftmag.com."
       ],
       "requirements": [
-        "Pitch first for nonfiction",
-        "Short fiction and poetry submitted as drafts",
-        "A clear, narrow angle"
+        "Nonfiction: one 2–4 paragraph pitch at a time.",
+        "Fiction: attach a Word document or PDF named lastname_firstname.",
+        "Poetry: up to six poems in one Word document or PDF; no more than twice per year.",
+        "Mentions: topic in subject; name, relevant clips and a 1–4 sentence draft in email."
       ],
       "whatTheyWant": [
         "Longform essays and cultural criticism",
@@ -6966,18 +6969,23 @@
         "Interviews, dispatches, and extremely abbreviated reviews"
       ],
       "whatTheyDontWant": [
-        "They prefer not to read draft nonfiction — pitch first"
+        "Draft nonfiction submissions: pitch first.",
+        "Personal essays, straightforward reviews narrowly focused on one book or film, and anything written by AI."
       ],
       "rights": "Not stated in detail on the public page.",
-      "aiPolicy": "not-stated",
-      "applyMethod": "Email pitch",
-      "applyUrl": "https://thedriftmag.com",
+      "aiPolicy": "prohibited",
+      "applyMethod": "Email the correct section editor; pitch nonfiction first",
+      "applyUrl": "https://www.thedriftmag.com/about/",
       "applyEmail": "pitches@thedriftmag.com",
       "deadline": null,
       "sources": [
         {
-          "name": "The Drift (official)",
-          "url": "https://thedriftmag.com"
+          "name": "The Drift official submission guidance",
+          "url": "https://www.thedriftmag.com/about/"
+        },
+        {
+          "name": "Pitching The Drift (official PDF)",
+          "url": "https://www.thedriftmag.com/wp-content/uploads/2023/06/Pitching-the-Drift.pdf"
         }
       ],
       "keywords": [
@@ -6990,7 +6998,7 @@
       "editorExperience": {
         "applied": false
       },
-      "seoTitle": "The Drift: $2,000 essays, $500–$1,000 stories",
+      "seoTitle": "The Drift submissions: pay and pitch guidelines | BRYME",
       "publishedAt": "2026-09-05",
       "simultaneousSubmissions": "not-stated"
     },

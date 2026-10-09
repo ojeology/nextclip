@@ -1,0 +1,22 @@
+Search improvements: 5 routes, 0 page writes; canonical URLs unchanged
+PASS static: /writers/writing/noema/
+PASS static: /writers/writing/literary-hub/
+PASS static: /writers/writing/the-drift/
+PASS static: /entertainment/10-shows-like-alice-in-borderland-you-should-watch-next/
+PASS static: /entertainment/movies-like-deadpool-and-wolverine/
+PASS: idempotent renderer; metadata, sources, section counts, links, schemas and sitemap checks
+PASS browser: 360 /writers/writing/noema/
+PASS browser: 768 /writers/writing/noema/
+PASS browser: 1440 /writers/writing/noema/
+PASS browser: 360 /writers/writing/literary-hub/
+PASS browser: 768 /writers/writing/literary-hub/
+PASS browser: 1440 /writers/writing/literary-hub/
+PASS browser: 360 /writers/writing/the-drift/
+PASS browser: 768 /writers/writing/the-drift/
+PASS browser: 1440 /writers/writing/the-drift/
+PASS browser: 360 /entertainment/10-shows-like-alice-in-borderland-you-should-watch-next/
+PASS browser: 768 /entertainment/10-shows-like-alice-in-borderland-you-should-watch-next/
+PASS browser: 1440 /entertainment/10-shows-like-alice-in-borderland-you-should-watch-next/
+PASS browser: 360 /entertainment/movies-like-deadpool-and-wolverine/
+PASS browser: 768 /entertainment/movies-like-deadpool-and-wolverine/
+PASS browser: 1440 /entertainment/movies-like-deadpool-and-wolverine/
