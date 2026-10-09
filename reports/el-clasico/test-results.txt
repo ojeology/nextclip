@@ -1,0 +1,7 @@
+Clásico guide: built 3 copies; stable route /sports/el-clasico-barcelona-real-madrid/
+PASS: one H1, canonical, robots, unique anchors, all internal links, three copies, sitemap, incoming links, allowlist, idempotence
+PASS browser: 360px, HTTP 200, no document overflow, no JS exceptions, JSON-LD, contents navigation
+PASS browser: 390px, HTTP 200, no document overflow, no JS exceptions, JSON-LD, contents navigation
+PASS browser: 768px, HTTP 200, no document overflow, no JS exceptions, JSON-LD, contents navigation
+PASS browser: 1440px, HTTP 200, no document overflow, no JS exceptions, JSON-LD, contents navigation
+HTML bytes: 27653
