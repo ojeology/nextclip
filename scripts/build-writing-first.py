@@ -1680,7 +1680,7 @@ def _prog_page(slug: str, h1: str, kicker: str, intro: str, note: str,
 </div></section>'''
     write(f"/writing-opportunities/{slug}/", page_wf(
         title=f"{h1} | BRYME",
-        description=f"{len(rows)} researched publications — {intro[:120]}",
+        description=_meta_desc(f"{len(rows)} researched publications — {intro}"),
         route=f"/writing-opportunities/{slug}/", current="writing", body=body,
         schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
                      "name": h1, "url": f"{BASE}/writing-opportunities/{slug}/",
@@ -3506,17 +3506,11 @@ def trust_block(rec: dict) -> str:
 
 
 def _meta_desc(text: str, limit: int = 158) -> str:
-    # Trim a record's own human-written excerpt to search-snippet length.
-    # Never invents, pads or adds a claim: the words are the record's own
-    # verified excerpt. Prefers whole sentences that fit; otherwise cuts at a
-    # word boundary and strips trailing punctuation. Returns "" if there is
-    # nothing usable, so the caller can fall back to the old behaviour.
-    # No nested-quote f-strings: this file must parse on Render's Python < 3.12.
     t = " ".join(str(text or "").split())
     if not t:
         return ""
     if len(t) <= limit:
-        return t
+        return t if t.endswith((".", "!", "?", "…")) else t.rstrip(" ,;:—–-") + "."
     out = ""
     for part in re.split(r"(?<=\.)\s+", t):
         cand = (out + " " + part).strip() if out else part
@@ -3525,12 +3519,21 @@ def _meta_desc(text: str, limit: int = 158) -> str:
         else:
             break
     if len(out) >= 60:
-        return out
-    cut = t[: limit + 1]
+        return out if out.endswith((".", "!", "?", "…")) else out.rstrip(" ,;:—–-") + "."
+    window = t[: limit - 1]
+    for ch in ("; ", " — ", " – ", ", "):
+        ci = window.rfind(ch)
+        if ci >= 95:
+            res = window[:ci].rstrip(" ,;:—–-")
+            return res if res.endswith((".", "!", "?", "…")) else res + "."
+    cut = t[: limit - 1]
     i = cut.rfind(" ")
     if i < 60:
-        i = limit
-    return cut[:i].rstrip(" ,;:.\u2014\u2013-")
+        i = limit - 1
+    res = cut[:i].rstrip(" ,;:.—–-")
+    return res if res.endswith((".", "!", "?", "…")) else res + "…"
+
+
 def pub_page(rec: dict) -> None:
 
     slug = rec["slug"]
@@ -3934,12 +3937,12 @@ def empty_pages() -> None:
 <p>The order matters, and it is always the same. A question is chosen because readers ask it, not because a keyword tool likes it. The primary source is then found &mdash; the publication's own submission guidelines, a government page, the manufacturer's own documentation &mdash; and what it says is recorded exactly, including the parts that are inconvenient. Only then is anything written. Anything the source cannot support is left out, and if two sources disagree the page says so rather than picking the tidier answer.</p>
 <p>For the opportunity database this produces a fixed set of fields per record: pay, word count, eligibility, submission method, rights, artificial-intelligence policy, who verified it, and the date it was last checked. Rates are never estimated. If a publication does not state its rate, the record says that instead of guessing.</p>
 <h2>What has been verified, and how you can check it</h2>
-<p>Every claim about scope on this site is countable, so the counts are kept where you can see them rather than in a slogan. The <a href="/writing/"> writing opportunities page carries the live number of publications checked by hand, each one linked to its own guidelines. The <a href="{BASE}/about/"> house page lists all seven publications and how many pieces each one holds. Where a page states a date, that date is the last time a human opened the source and confirmed the page still matched it &mdash; it is not a build timestamp.</p>
+<p>Every claim about scope on this site is countable, so the counts are kept where you can see them rather than in a slogan. The <a href="/writing/"> writing opportunities page carries the live number of publications checked by hand, each one linked to its own guidelines. The <a href="{BASE}/about/"> about page</a> explains the editorial standard and how records are maintained. Where a page states a date, that date is the last time a human opened the source and confirmed the page still matched it &mdash; it is not a build timestamp.</p>
 <h2>What BRYME is not</h2>
 <p>It is worth being plain about the limits. BRYME is not a law firm, an accountancy practice or a medical provider, and nothing on this site is professional advice for your specific situation &mdash; the <a href="/disclaimer/"> disclaimer says the same thing in full. It is not a recruiter and it does not hold vacancies: where a role is listed, it belongs to the employer or platform that posted it, and the page says so.</p>
 <p>BRYME does not sell placement in the opportunity database, and no publication can pay to appear in it or to be ranked above another. Where a page is research rather than firsthand experience, it is labelled as research. Nothing on the site claims an experience that did not happen.</p>
 <h2>Beyond the writing desk</h2>
-<p>BRYME has grown into a family of specialist publications under one house standard &mdash; see the <a href="{BASE}/about/"> house page for the full list, from <a href="{BASE}/tech/"> BRYME Tech to <a href="https://thebryme.com/money/"> BRYME Money. The editing still happens in one place, and the same rules apply on every desk: dated pages, named sources, a public corrections log, and no advertising dressed up as editorial.</p>
+<p>BRYME focuses exclusively on the writing publication under one editorial standard &mdash; see the <a href="{BASE}/about/"> about page</a> for how our research, guides and tools fit together: dated pages, named sources, a public corrections log, and no advertising dressed up as editorial.</p>
 <h2>Holding this site to account</h2>
 <p>If a page here is wrong, the fastest route is the <a href="/contact/"> contact page. Corrections are made on the page itself rather than quietly removed, and the change is logged so the record shows what was wrong and when it was fixed &mdash; see <a href="/corrections/"> how corrections work. Rights questions, takedown requests and factual challenges reach the same place, and they are read by the person who wrote the page.</p></div></section></div>'''
     write("/author/ibrahim-sodiq/", page_wf(title="Ibrahim Sodiq | BRYME founder and editor",

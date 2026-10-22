@@ -49,7 +49,7 @@ services:
     # old last-modified) even though the deployed commit had deleted them -
     # the same class of drift the _recovered sweep and the git-clean guard
     # below already defend against. rm -rf is a no-op on a clean checkout.
-    buildCommand: npm install --omit=dev && (find . -maxdepth 4 -type d -name _recovered -not -path './content/*' -not -path './node_modules/*' -not -path './public/*' -exec rm -rf {} + || echo 'stale _recovered sweep unavailable') && git -c safe.directory='*' clean -xdf public/ && npm run build
+    buildCommand: npm install --omit=dev && rm -rf sports entertainment tech fitness home money event-calendar public/sports public/entertainment public/tech public/fitness public/home public/money public/event-calendar && git -c safe.directory='*' clean -xdf public/ && npm run build
     staticPublishPath: public
     headers:
       - path: /*
@@ -88,8 +88,6 @@ services:
       # guide; the page was removed the same day. The 301 keeps any indexed or
       # linked copy pointing at the surviving page. Restored with the Money
       # desk relaunch 2026-10-03.
-      - { type: redirect, source: /money/saving-for-a-house-deposit-explained, destination: /money/how-to-save-for-a-house-deposit/ }
-      - { type: redirect, source: /money/saving-for-a-house-deposit-explained/, destination: /money/how-to-save-for-a-house-deposit/ }
       - { type: redirect, source: /opportunities, destination: /writers/writing/ }
       - { type: redirect, source: /opportunities/*, destination: /writers/writing/ }
       - { type: redirect, source: /jobs, destination: /writers/writing/ }
@@ -112,8 +110,6 @@ services:
       # destinations are live articles (both verified 200). purge-stale-publish
       # skips nested sources, so these are edge-only; _redirects mirrors them
       # for the local test server.
-      - { type: redirect, source: /tech/beginner-coding/, destination: /tech/learning-to-code-on-a-phone-termux/ }
-      - { type: redirect, source: /tech/hosting/, destination: /tech/where-to-host-website-for-free/ }
       # Pre-routing writers' scheme (batch 32). These 32 path segments held the
       # writers' publication before the routing migration moved it under
       # /writers/. Render supports wildcard capture in the destination, so each
@@ -210,14 +206,6 @@ services:
       # (files outrank rules); extension-less paths match no file, so without these
       # literals the /tools/* wildcard below would 301 them to a 404. Synced to the
       # live rule table via PUT /v1/services/{id}/routes (priority = list order).
-      - { type: redirect, source: /tools/base64-encoder, destination: /tech/tool/base64-encoder/ }
-      - { type: redirect, source: /tools/data-usage-estimator, destination: /tech/tool/data-usage-estimator/ }
-      - { type: redirect, source: /tools/http-status-lookup, destination: /tech/tool/http-status-lookup/ }
-      - { type: redirect, source: /tools/json-formatter, destination: /tech/tool/json-formatter/ }
-      - { type: redirect, source: /tools/timestamp-converter, destination: /tech/tool/timestamp-converter/ }
-      - { type: redirect, source: /tools/url-encoder, destination: /tech/tool/url-encoder/ }
-      - { type: redirect, source: /tools/uuid-generator, destination: /tech/tool/uuid-generator/ }
-      - { type: redirect, source: /tools/vpn-cost-calculator, destination: /tech/tool/vpn-cost-calculator/ }
       - { type: redirect, source: /tools/*, destination: /writers/tools/* }
       - { type: redirect, source: /tracker, destination: /writers/tracker/ }
       - { type: redirect, source: /tracker/, destination: /writers/tracker/ }

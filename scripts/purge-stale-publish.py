@@ -198,32 +198,6 @@ def main() -> int:
     # Committed as ordinary tracked public/ files AND regenerated here on every build,
     # so they survive both the regeneration-runs and committed-output-fallback paths.
     tomb = 0
-    for prop, store in (("entertainment", ROOT / "content" / "entertainment-recovered"),
-                        ("sports", ROOT / "content" / "sports-recovered")):
-        if not store.is_dir():
-            continue
-        d = PUBLIC / prop / "_recovered"
-        d.mkdir(parents=True, exist_ok=True)
-        for sp in sorted(store.iterdir()):
-            if not sp.is_file():
-                continue
-            p = d / sp.name
-            if sp.name.endswith(".json"):
-                p.write_text('{"moved": "the recovery store relocated to content/ on 2026-09-17; this path is retired"}\n', encoding="utf-8")
-            else:
-                p.write_text(
-                    '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
-                    '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
-                    '<meta name="robots" content="noindex,nofollow">\n'
-                    '<title>Retired source file: ' + sp.name + ' | THE BRYME</title>\n' + GA_HEAD + '</head>\n'
-                    '<body>\n<main id="main">\n<h1>Retired archive source file</h1>\n'
-                    '<p>This URL served a raw recovery-store fragment while the store lived inside the '
-                    'published tree. The store moved to a private source directory on 2026-09-17, and the '
-                    'articles rebuilt from it live under <a href="/entertainment/">BRYME Entertainment</a> '
-                    'and <a href="/sports/">BRYME Sport</a>. This noindex tombstone overwrites the stale '
-                    'copy because static-site deploys overlay files without deleting them.</p>\n'
-                    '</main>\n</body>\n</html>\n', encoding="utf-8")
-            tomb += 1
 
     print(f"purge-stale-publish: purged {purged} stale dirs, skipped {skipped} live, "
           f"wrote {root_stubs} root stubs + {sub_stubs} sub-stubs, "

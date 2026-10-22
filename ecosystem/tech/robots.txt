@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://thebryme.com/tech/sitemap.xml

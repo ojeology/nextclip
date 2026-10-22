@@ -11,13 +11,6 @@ Disallow: /content/
 Disallow: /docs/
 Disallow: /server/
 Disallow: /ecosystem/
-Disallow: /entertainment/_recovered/
 
 Sitemap: https://thebryme.com/sitemap.xml
 Sitemap: https://thebryme.com/writers/sitemap.xml
-Sitemap: https://thebryme.com/sports/sitemap.xml
-Sitemap: https://thebryme.com/entertainment/sitemap.xml
-Sitemap: https://thebryme.com/tech/sitemap.xml
-Sitemap: https://thebryme.com/fitness/sitemap.xml
-Sitemap: https://thebryme.com/home/sitemap.xml
-Sitemap: https://thebryme.com/money/sitemap.xml

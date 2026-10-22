@@ -25,7 +25,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-TIERS = ("ecosystem", "writers", "tech", "home", "sports", "fitness", "money", "")
+TIERS = ("ecosystem", "writers", "")
 LIMIT = 170
 ROBOTS_RE = re.compile(r'<meta\s+name="robots"\s+content="([^"]*)"', re.I)
 # name/content in either order, single or double quotes
@@ -50,10 +50,12 @@ def trim(desc: str, limit: int = LIMIT) -> str:
     for ch in ("; ", " — ", " – ", ", "):
         i = window.rfind(ch)
         if i >= 110:
-            return window[:i].rstrip().rstrip(",;")
+            res = window[:i].rstrip().rstrip(",;—–-")
+            return res if res.endswith((".", "!", "?", "…")) else res + "."
     # 3. last whole word
-    i = window.rfind(" ")
-    return (window[:i] if i > 0 else window).rstrip()
+    i = (d[:limit - 1]).rfind(" ")
+    res = (d[:i] if i > 0 else d[:limit - 1]).rstrip().rstrip(",;—–-")
+    return res if res.endswith((".", "!", "?", "…")) else res + "…"
 
 
 def patch(text: str) -> tuple[str, str | None, str | None]:

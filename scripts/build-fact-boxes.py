@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PUB = ROOT / "public"
-DESKS = ("writers", "tech", "sports", "entertainment", "fitness", "home", "money")
+DESKS = ("writers",)
 # Policy pages are not explainers, even when the H1 happens to open with a question
 # word ("What we collect: almost nothing."). Candidates are ranked by raw word count
 # and the whole top-100 is re-selected on every build (build-routing.py strips the old

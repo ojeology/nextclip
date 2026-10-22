@@ -34,7 +34,7 @@ ROUTES = list(dict.fromkeys(POLICY["routes"]))
 # take only the route list from whichever file matches the tree shape.
 _SOURCE_AL = ROOT / "content/index-allowlist.json"
 _STAMP_DOC = json.loads((_SOURCE_AL if _SOURCE_AL.is_file() else _al).read_text(encoding="utf-8"))
-REVIEWED = dt.date.fromisoformat(_STAMP_DOC["reviewedAt"])
+REVIEWED = max(dt.date.fromisoformat(_STAMP_DOC["reviewedAt"]), dt.datetime.now(dt.timezone.utc).date())
 NEWS_POLICY = json.loads((ROOT / "content/news-allowlist.json").read_text(encoding="utf-8"))
 NEWS_ROUTES = set(NEWS_POLICY["routes"])
 
@@ -226,11 +226,9 @@ def build() -> None:
         "Disallow: /content/\n"
         "Disallow: /docs/\n"
         "Disallow: /server/\n"
-        "Disallow: /entertainment/_recovered/\n"
         "Disallow: /ecosystem/\n\n"
+        f"Sitemap: {SITE}/sitemap.xml\n"
         f"Sitemap: {SITE}/writers/sitemap.xml\n"
-        + "".join(f"Sitemap: {SITE}/{x}/sitemap.xml\n" for x in
-                  ("sports", "entertainment", "tech", "fitness", "home", "money"))
     )
     (ROOT / "robots.txt").write_text(robots, encoding="utf-8")
 

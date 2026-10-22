@@ -49,9 +49,7 @@ DESC = re.compile(r'(?is)<meta[^>]+name=["\']description["\'][^>]+content=["\'](
 LD = re.compile(r'(?is)<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>')
 BREADCRUMB = re.compile(r'"@type"\s*:\s*"BreadcrumbList"')
 
-SITEMAPS = ["writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
-            "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml",
-            "money/sitemap.xml"]
+SITEMAPS = ["writers/sitemap.xml"]
 # 2026-10-03: money/sitemap.xml restored (desk relaunched, owner decision).
 # entertainment/sitemap-catalogue.xml (unfinished title cards) remains
 # delisted. Released, recommendation-enriched title routes join
@@ -90,7 +88,7 @@ def protocol_checks() -> dict:
     # Variant forms of a real page: are duplicates served, and do they agree on
     # the canonical? A duplicate that self-canonicalises is a non-issue; one that
     # canonicalises to itself in the wrong form is a real duplicate.
-    page = "/sports/title-ix-explained/"
+    page = "/writers/writing/noema/"
     variants = [page, page.rstrip("/"), page + "index.html", page + "?utm_source=x"]
     vout = []
     for v in variants:
@@ -252,7 +250,7 @@ def tree_checks() -> dict:
         star = groups.get("*", [])
         if any(v == "/" for k, v in star if k == "disallow"):
             robots_issues.append("User-agent: * blocks the whole site with Disallow: /")
-        for desk in ("sports", "entertainment", "tech", "fitness", "home", "money", "writers"):
+        for desk in ("writers",):
             roots = {f"/{desk}/", f"/{desk}/*"}
             if any(k == "disallow" and v in roots for k, v in star):
                 robots_issues.append(f"{desk} desk disallowed for all crawlers")

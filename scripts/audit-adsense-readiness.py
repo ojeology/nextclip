@@ -52,7 +52,7 @@ MONETAG_MARKER = re.compile(r'<div data-adband="monetag"')
 RAW_MONETAG = re.compile(r'<script[^>]+(?:data-zone=|src="https://[^"]*(?:nap5k|n6wxm)\.com/)')
 TRUST_SLUGS = ["privacy", "terms", "contact", "about", "editorial-policy", "corrections",
                "copyright", "disclosure", "disclaimer"]
-DESKS = ["writers", "tech", "sports", "entertainment", "fitness", "home", "money"]
+DESKS = ["writers"]
 
 
 def live(url: str) -> tuple[int, str]:
@@ -148,7 +148,7 @@ def main() -> int:
 
     CHECKERS = {
         "namesGoogleAdsense": r"google",
-        "mentionsAdsterra": r"adsterra|profitablerate",
+        **({"mentionsAdsterra": r"adsterra|profitablerate"} if bool(ast.get("enabled")) else {}),
         **({"mentionsMonetag": r"monetag"} if monetag_live else {}),
         "explainsCookiesOrIdentifiers": r"cookie|device identifier|personalised ads",
         "explainsOptOut": r"opt[- ]out|ad settings|your choices|withdraw",

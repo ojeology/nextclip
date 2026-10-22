@@ -22,12 +22,11 @@ f_title = font(96, True)
 f_sub = font(34)
 f_desk = font(26, True)
 
-d.text((80, 90), "A FAMILY OF INDEPENDENT PUBLICATIONS", font=f_kick, fill="#c8a24a")
+d.text((80, 90), "PAID WRITING MARKETS · GUIDES · TOOLS", font=f_kick, fill="#c8a24a")
 d.text((76, 150), "THE BRYME", font=f_title, fill="#f5f1e8")
-d.text((80, 290), "Seven publications. One house standard.", font=f_sub, fill="#d8d4c8")
+d.text((80, 290), "Verified markets, craft guides, and private browser tools.", font=f_sub, fill="#d8d4c8")
 
-cols = [("WRITERS", "#1d4e89"), ("SPORT", "#0f7b4f"), ("ENTERTAINMENT", "#6d1832"),
-        ("TECH", "#3d2f71"), ("FITNESS", "#a34a00"), ("HOME & DIY", "#644536")]
+cols = [("DISCOVER MARKETS", "#1d4e89"), ("CRAFT GUIDES", "#0f7b4f"), ("BROWSER TOOLS", "#3d2f71")]
 x, y = 80, 420
 for name, color in cols:
     w = d.textlength(name, font=f_desk)

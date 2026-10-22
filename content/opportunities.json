@@ -1464,7 +1464,8 @@
         "updatedAt": "2026-09-04",
         "note": "Rejection recorded from Noema's own reply. Material re-routed to Rest of World / Aeon."
       },
-      "simultaneousSubmissions": "not-stated"
+      "simultaneousSubmissions": "not-stated",
+      "summary": "How to pitch Noema: a full draft or 500-word minimum pitch, required AI disclosure, word-count guidance and what its official pages say about pay."
     },
     {
       "id": "vox-first-person",
@@ -1872,7 +1873,7 @@
       },
       "submissionStatus": "deadline",
       "deadline": {
-        "date": "2026-10-15",
+        "date": "2026-11-30",
         "display": "Re-checked on the official Possible Book Topics page 1 October 2026: Random acts of kindness closed 30 September 2026. Nearest open deadline is Humorous stories, extended to 15 October 2026. Then Married/couples, extended to 30 November 2026; Pets 31 January 2027; Positive thinking 28 February 2027; Dogs 31 March 2027; Cats and Holiday stories 30 May 2027. Each book topic carries its own deadline, and a story that fits two topics may be sent to both. The publisher extends deadlines often - the topic page is the authority.",
         "windowEnd": "2026-11-30",
         "recurring": false
@@ -2550,7 +2551,8 @@
       "editorExperience": {
         "status": "not-yet-submitted"
       },
-      "simultaneousSubmissions": "not-stated"
+      "simultaneousSubmissions": "not-stated",
+      "summary": "Pitch Literary Hub in 2–3 paragraphs or send a finished essay. Check accepted topics, exclusions, the submission email and its unpublished pay rate."
     },
     {
       "status": "published",
@@ -7000,7 +7002,8 @@
       },
       "seoTitle": "The Drift submissions: pay and pitch guidelines | BRYME",
       "publishedAt": "2026-09-05",
-      "simultaneousSubmissions": "not-stated"
+      "simultaneousSubmissions": "not-stated",
+      "summary": "The Drift pays $2,000 for essays. Compare its pitch, fiction, poetry and Mentions requirements, payment rates and official submission inboxes."
     },
     {
       "id": "new-lines-magazine",
@@ -10688,7 +10691,7 @@
         "band": "not-stated",
         "official": false
       },
-      "submissionStatus": "deadline",
+      "submissionStatus": "closed",
       "deadline": {
         "date": "2026-10-05",
         "display": "Several current slots close 5 October 2026 — check each slot, they run to their own dates",
@@ -24627,7 +24630,7 @@
         "band": "not-stated",
         "official": false
       },
-      "submissionStatus": "open",
+      "submissionStatus": "closed",
       "deadline": {
         "display": "Spring reading period 15 January to 15 April; fall reading period 15 July to 15 October; translations and visual art are read year-round",
         "openingDate": "2026-07-15",
@@ -25960,7 +25963,6 @@
       "submissionStatus": "open",
       "deadline": {
         "display": "Open for submissions year-round, with no closing date stated; the 2026 Jeffrey E. Smith Editors' Prize has a deadline of 1 October",
-        "windowEnd": "2026-10-01",
         "recurring": true
       },
       "aiPolicy": "disclosure-required",

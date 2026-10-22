@@ -108,10 +108,9 @@ Job cards and detail pages show a verification badge (🟢 SOURCE VERIFIED, 🔵
 Advertising is configured in `site.config.json` and applied at build time by `scripts/inject-ads.py`; the policy, approved formats and change procedure are in `docs/ADS.md`.
 
 - **Adsterra (primary network):** a native banner at the top of content pages, a classic display banner and a Social Bar (`adsterra.*`).
-- **Monetag (live since 2026-10-06):** In-Page Push (zone `11966342`) and Vignette (zone `11966367`), requested on **every** indexable page view with no local frequency cap (`monetag.*`). The build renders hidden zone markers and a `<script src="/assets/monetag-loader.js" defer>` before `</body>`; the first-party loader appends each zone's external script, because the site CSP (`script-src 'self' https:`) rules out Monetag's inline snippet. `monetag.enabled: false` switches both zones off.
 - **Google AdSense:** account verification only (`adsense.caId`, the `ca-pub` meta and loader, `ads.txt`). `adsense.nativeSlotId` is empty, so no AdSense ad unit renders. Keep Google-dashboard Auto ads **off**.
 
-**Consent.** Both ad loaders apply one rule: outside the EEA, UK and Switzerland they load at once; inside them (any `Europe/*` timezone) nothing loads, and no request reaches an ad host, until Google's consent message grants ad consent. `npm run test:ads` proves it in a real browser, including that Monetag loads on every page view and that its loader touches no cookie or storage. Google Analytics 4 is enabled (`analytics`) with Consent Mode defaults scoped to the same regions.
+**Consent.** The Adsterra loader (`/assets/adsterra-loader.js`) applies one rule: outside the EEA, UK and Switzerland they load at once; inside them (any `Europe/*` timezone) nothing loads, and no request reaches an ad host, until Google's consent message grants ad consent. `npm run test:ads` proves it in a real browser. Google Analytics 4 is enabled (`analytics`) with Consent Mode defaults scoped to the same regions.
 
 Two consequences worth knowing:
 

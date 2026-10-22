@@ -178,8 +178,9 @@ if(allow.size!==allowDoc.routes.length)fail("allowlist contains duplicates");
 // strong guarantees are: every route exists, is index,follow, canonical, on sitemap.
 if(allow.size<1)fail("allowlist unexpectedly empty");
 for(const r of allow)if(!fs.existsSync(routeFile(r)))fail(`allowlisted route missing: ${r}`);
-for(const family of ["movie","movies","series","anime","genre","genres","year","years","trailers","trending","channels","data","miniapp"]){if(fs.existsSync(path.join(ROOT,family)))fail(`media/legacy family still present on main: ${family}`)}
-for(const old of ["assets/site.css","assets/site-app.js","assets/sports-engine.js","content/competitions.json","content/catalogue.json"]){if(fs.existsSync(path.join(ROOT,old)))fail(`legacy media artifact still present: ${old}`)}
+for(const family of ["movie","movies","series","anime","genre","genres","year","years","trailers","trending","channels","data","miniapp","sports","entertainment","tech","fitness","home","money","event-calendar"]){if(fs.existsSync(path.join(ROOT,family)))fail(`media/legacy family still present on main: ${family}`)}
+if("monetag" in json("site.config.json"))fail("site.config.json: monetag must be removed entirely");
+for(const old of ["assets/site.css","assets/site-app.js","assets/sports-engine.js","content/competitions.json","content/catalogue.json","assets/monetag-loader.js","public/assets/monetag-loader.js"]){if(fs.existsSync(path.join(ROOT,old)))fail(`legacy media artifact still present: ${old}`)}
 const redirectSources=new Set(read("_redirects").split(/\r?\n/).map(x=>x.trim()).filter(x=>x&&!x.startsWith("#")).map(x=>norm(x.split(/\s+/)[0])));
 const htmlFiles=walk(ROOT).filter(p=>p.endsWith(".html"));
 let indexed=0,noindexed=0;let pubRecords=0;
@@ -201,7 +202,7 @@ for(const file of htmlFiles){
   if(/href=["']\/assets\/site\.css["']|src=["']\/assets\/site-app\.js["']/i.test(s))fail(`${r}: legacy CSS/JS remains`);
   if(!/assets\/(?:bryme-v2|content-v2)\.css/.test(s))fail(`${r}: forest-green stylesheet missing`);
   if(!/class=["'][^"']*(?:bottom-nav|mobile-nav)/.test(s))fail(`${r}: bottom mobile navigation missing`);
-  if(/href=["']\/(?:sports|movie|movies|series|anime|article|articles|entertainment|trailers)(?:\/|["'])/i.test(s))fail(`${r}: local media link remains on main publication`);
+  if(/href=["']\/(?:sports|movie|movies|series|anime|article|articles|entertainment|trailers|tech|fitness|home|money|event-calendar)(?:\/|["'])/i.test(s))fail(`${r}: local media link remains on main publication`);
  }
  // A name blocklist alone cannot catch an unknown ad host, so the test runs on the
  // page with the sanctioned unit already removed: anything still matching a banned
@@ -312,10 +313,7 @@ if(pubRecords!==expectedPubs)fail(`expected ${expectedPubs} indexed publication 
 // Entertainment title pages enter entertainment/sitemap.xml only after their
 // curated Watch This / Then Try This batch is released; unfinished catalogue
 // pages remain noindex. The legacy sitemap-catalogue.xml stays empty/delisted.
-const propertySitemaps=[
-  "writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
-  "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml", "money/sitemap.xml",
-];
+const propertySitemaps=["writers/sitemap.xml"];
 const sitemapRoutes=propertySitemaps.flatMap(sf=>{if(!fs.existsSync(path.join(ROOT,sf)))return[];return[...read(sf).matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]))});
 const sitemapUnique=new Set(sitemapRoutes);
 // Writers is writers-only; the two house URLs (/, /about/) live in Home's

@@ -25,7 +25,7 @@ PUBLIC_DIRS = [
     "editorial-policy", "guides", "privacy", "terms", "tested", "writing", "assets",
     "learn", "tools", "glossary", "templates", "checklists", "problems", "search",
     "verification", "find", "start", "compare", "regional", "intelligence", "tracker", "today", "writing-opportunities", "essays", "read",
-    "newsletter", "opportunities", "jobs", "make-money", "tech",
+    "newsletter", "opportunities", "jobs", "make-money",
 ]
 _writers_children = (
     set(d.name for d in (ROOT / "writers").iterdir() if d.is_dir())

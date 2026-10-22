@@ -86,9 +86,8 @@ server.listen(0,"127.0.0.1",async()=>{const base=`http://127.0.0.1:${server.addr
    "/writers/learn/start-writing/","/writers/learn/start-writing/how-to-start-writing/",
    "/writers/learn/writing-basics/sentence-basics/","/writers/tools/","/writers/tools/word-counter/",
    "/writers/glossary/","/writers/templates/","/writers/checklists/","/writers/problems/","/writers/search/",
-   "/writers/author/ibrahim-sodiq/","/writers/about/","/about/","/tech/","/sports/","/entertainment/",
-   "/fitness/","/home/","/tech/paypal-vs-wise-vs-payoneer/","/assets/bryme-v2.css","/assets/hub-tools.js",
-   "/assets/theme.js","/favicon.ico","/robots.txt","/sitemap.xml","/writers/sitemap.xml","/tech/sitemap.xml"]){
+   "/writers/author/ibrahim-sodiq/","/writers/about/","/about/","/privacy/","/assets/bryme-v2.css","/assets/hub-tools.js",
+   "/assets/theme.js","/favicon.ico","/robots.txt","/sitemap.xml","/writers/sitemap.xml"]){
    r=await get(base,p);check(r.status===200,`${p}: ${r.status}`);await r.arrayBuffer();
  }
 
@@ -129,7 +128,7 @@ server.listen(0,"127.0.0.1",async()=>{const base=`http://127.0.0.1:${server.addr
  /* 6. Retired media families. There is no 410.html in the published artifact, so
        these answer 404 -- which is what production does (/movie/the-invite/
        returns 404 live). sports/ and entertainment/ are NOT in this list. */
- for(const p of ["/movie/the-invite/","/movies/","/anime/","/series/","/articles/","/genre/","/trailers/","/trending/"]){
+ for(const p of ["/movie/the-invite/","/movies/","/anime/","/series/","/articles/","/genre/","/trailers/","/trending/","/sports/","/entertainment/","/tech/","/fitness/","/home/","/money/","/event-calendar/"]){
    r=await get(base,p);check(r.status===404,`retired media ${p} should be 404, got ${r.status}`);await r.arrayBuffer();
  }
 

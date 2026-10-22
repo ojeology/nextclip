@@ -28,10 +28,10 @@ from pathlib import Path
 import bryme_config as cfg  # batch 15: canonical origin single source
 
 ROOT = Path(__file__).resolve().parents[1]
-PROPS = ["sports", "entertainment", "tech", "fitness", "home", "money"]  # money relaunch 2026-10-03 (owner decision): desk republished after the AdSense pivot to Adsterra
-SITEMAP_PROPS = ["sports", "entertainment", "tech", "fitness", "home", "money"]  # live, indexable properties only
+PROPS = []  # money relaunch 2026-10-03 (owner decision): desk republished after the AdSense pivot to Adsterra
+SITEMAP_PROPS = []  # live, indexable properties only
 KEEP_AT_ROOT_DIRS = {".git", ".github", "assets", "scripts", "content", "docs", "server", "reports",
-                     "node_modules", "public", "ecosystem", "pinterest", "event-calendar", ".git"} | set(PROPS) | {"writers"}
+                     "node_modules", "public", "ecosystem", "pinterest", ".git"} | set(PROPS) | {"writers"}
 KEEP_AT_ROOT_FILES = {"robots.txt", "_redirects", "favicon.ico", "package.json",
                       "package-lock.json", "render.yaml", "site.config.json",
                       "seo-pilot-matrix.csv"}
@@ -188,10 +188,6 @@ def main() -> int:
     _hub_about = ROOT / "ecosystem" / "hub" / "about"
     if _hub_about.exists():
         shutil.copytree(_hub_about, ROOT / "about", dirs_exist_ok=True)
-    # B5 (2026-09-29): the house event calendar lives with the hub pages.
-    _hub_event_cal = ROOT / "ecosystem" / "hub" / "event-calendar"
-    if _hub_event_cal.exists():
-        shutil.copytree(_hub_event_cal, ROOT / "event-calendar", dirs_exist_ok=True)
     # The root privacy policy belongs to the house, not to the Writers desk.
     # Writers keeps its own desk-specific policy under /writers/privacy/;
     # /privacy/ covers every BRYME publication and is copied from the hub build.
@@ -239,7 +235,7 @@ def main() -> int:
 # Amazonbot, Bytespider) stay blocked.
 "User-agent: *\nAllow: /\nDisallow: /scripts/\nDisallow: /content/\n"
         "Disallow: /docs/\nDisallow: /server/\nDisallow: /ecosystem/\n"
-        "Disallow: /entertainment/_recovered/\n\n"
+        "\n"
         f"Sitemap: {ORIGIN}/sitemap.xml\nSitemap: {ORIGIN}/writers/sitemap.xml\n" +
         "".join(f"Sitemap: {ORIGIN}/{x}/sitemap.xml\n" for x in SITEMAP_PROPS), encoding="utf-8")
 
@@ -253,7 +249,6 @@ def main() -> int:
             routes.add("/writers/" + r[1:] if r != "/" else "/writers/")
     routes.add("/")  # the hub
     routes.add("/about/")  # family about page (b36)
-    routes.add("/event-calendar/")  # house event calendar (B5, 2026-09-29)
     routes.add("/privacy/")  # house policy: indexable trust page (all 7 desk policies already are)
     for prop in SITEMAP_PROPS:
         sm = ROOT / prop / "sitemap.xml"
@@ -271,63 +266,6 @@ def main() -> int:
     (ROOT / "content" / "index-allowlist.routed.json").write_text(
         json.dumps(al, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
-    # 5b. legacy-path forwards (batch 66c): older cached vintages of the
-    # entertainment catalogue link to root-style URLs (/slug/). Forward every
-    # content slug to its /entertainment/ home (noindex, instant meta-refresh)
-    # so no visitor meets a 404 from a stale copy. Never overwrites existing
-    # root pages; legal/about dirs already exist at root and are skipped.
-    _fw_skip = {"assets", "_recovered", "movie", "about", "contact", "privacy",
-                "terms", "copyright", "corrections", "editorial-policy"}
-    _ent_tree = ROOT / "entertainment"
-    _fw_count = 0
-    if _ent_tree.is_dir():
-        for _d in sorted(_ent_tree.iterdir()):
-            if not _d.is_dir() or _d.name in _fw_skip:
-                continue
-            if not (_d / "index.html").is_file():
-                continue
-            _dest = "/entertainment/" + _d.name + "/"
-            _root_dir = ROOT / _d.name
-            if (_root_dir / "index.html").is_file():
-                continue
-            _root_dir.mkdir(exist_ok=True)
-            (_root_dir / "index.html").write_text(
-                '<!doctype html><html lang="en"><head><meta charset="utf-8">'
-                '<meta name="viewport" content="width=device-width,initial-scale=1">'
-                '<title>' + _d.name + ' moved | THE BRYME</title>'
-                '<meta name="robots" content="noindex,follow">'
-                '<meta http-equiv="refresh" content="0;url=' + _dest + '">'
-                '<link rel="canonical" href="' + ORIGIN + _dest + '"></head>'
-                '<body><p>This page moved. Continue to <a href="' + _dest + '">the current page</a>.</p></body></html>',
-                encoding="utf-8")
-            _fw_count += 1
-    print("legacy forwards: " + str(_fw_count) + " root stubs -> /entertainment/...")
-    # retired catalogue path: /entertainment/browse/ now forwards to the
-    # shelves landing at /entertainment/ (b67: shelves are the landing page)
-    _browse = ROOT / "entertainment" / "browse"
-    _browse.mkdir(parents=True, exist_ok=True)
-    if True:
-        (_browse / "index.html").write_text(
-            '<!doctype html><html lang="en"><head><meta charset="utf-8">'
-            '<meta name="viewport" content="width=device-width,initial-scale=1">'
-            '<title>The shelves moved | THE BRYME</title>'
-            '<meta name="robots" content="noindex,follow">'
-            '<meta http-equiv="refresh" content="0;url=/entertainment/">'
-            '<link rel="canonical" href="' + ORIGIN + '/entertainment/"></head>'
-            '<body><p>The shelves now live at the desk home. Continue to <a href="/entertainment/">the shelves</a>.</p></body></html>',
-            encoding="utf-8")
-        print("browse forward: /entertainment/browse/ -> /entertainment/")
-    # sweep: every remaining /entertainment/browse/ href becomes the root
-    # (the shelves landing) so no page carries a link into the retired path
-    _sw = 0
-    for _h in ROOT.rglob("*.html"):
-        if (_h.parent / "index.html") != _h and _h.name != "index.html":
-            continue
-        _t = _h.read_text(encoding="utf-8", errors="replace")
-        if '/entertainment/browse/' in _t:
-            _h.write_text(_t.replace('href="/entertainment/browse/"', 'href="/entertainment/"'), encoding="utf-8")
-            _sw += 1
-    print("browse href sweep: " + str(_sw) + " files updated")
 
     # 6. refresh the public/ mirror to the routed tree
     pub = ROOT / "public"
@@ -369,8 +307,8 @@ small{display:block;margin-top:30px;color:#8a94a6}
 <h1>Wrong desk, right house.</h1>
 <p>This page either moved or never existed \u2014 and we do not publish fake placeholders in its place. Pick a desk:</p>
 <nav>
-<a href="/">THE BRYME</a><a href="/writers/">Writers</a><a href="/sports/">Sport</a>
-<a href="/entertainment/">Entertainment</a><a href="/tech/">Tech</a><a href="/fitness/">Fitness</a><a href="/home/">Home &amp; DIY</a>
+<a href="/">THE BRYME</a><a href="/writers/">Writers</a><a href="/writers/writing/">Markets</a>
+<a href="/writers/learn/">Guides</a><a href="/writers/tools/">Tools</a><a href="/writers/search/">Search</a>
 </nav>
 <small>THE BRYME \u00b7 research before publishing, and say exactly what you know.</small>
 </main></body></html>"""
@@ -389,8 +327,7 @@ small{display:block;margin-top:30px;color:#8a94a6}
            if _ep.isdigit() else _dt2.date.today()).isoformat()
     _al = json.loads((ROOT / "content" / "index-allowlist.routed.json").read_text(encoding="utf-8"))
     _rts = _al["routes"] if isinstance(_al, dict) else _al
-    _children = ["writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
-                 "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml", "money/sitemap.xml"]
+    _children = ["writers/sitemap.xml"]
     _si = ['<?xml version="1.0" encoding="UTF-8"?>\n'
            '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n']
     for _x in _children:
@@ -406,13 +343,13 @@ small{display:block;margin-top:30px;color:#8a94a6}
     (ROOT / "sitemap.xml").write_text(_sidx, encoding="utf-8")
     (ROOT / "public" / "sitemap.xml").write_text(_sidx, encoding="utf-8")
     (ROOT / "public" / "sitemap_index.xml").write_text(_sidx, encoding="utf-8")
-    _wurls = sorted({r for r in _rts if str(r).startswith("/writers/")})
+    _wurls = sorted({r for r in _rts if str(r).startswith("/writers/") or r in ("/", "/about/", "/privacy/")})
     _date_re = _re.compile(r'"date(?:Modified|Published)": ?"(\d{4}-\d{2}-\d{2})"')
     _wsm = ('<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
     for _r in _wurls:
         _lm = _td
-        _pf = ROOT / _r.lstrip("/") / "index.html"
+        _pf = (ROOT / "index.html") if _r == "/" else (ROOT / _r.lstrip("/") / "index.html")
         if _pf.is_file():
             _m = _date_re.search(_pf.read_text(encoding="utf-8", errors="replace"))
             if _m:

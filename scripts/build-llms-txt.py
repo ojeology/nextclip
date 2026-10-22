@@ -89,51 +89,13 @@ def check(route):
 
 
 DESKS = [
-    ("Writers", "/writers/", "The founding desk: paid-writing guides, a database of "
+    ("Writers", "/writers/", "The BRYME writing publication: paid-writing guides, a database of "
      + f"{N_MARKETS} researched paying publications with per-entry verification dates, pitch "
-     "and rate research, templates and checklists.", [
+     "and rate research, templates, checklists, and private browser tools.", [
         "The paid-writing path", "/writers/writing/",
         "Writing opportunities by country", "/writers/writing-opportunities/",
         "State of Paid Writing 2026", "/writers/state-of-paid-writing-2026/",
         "The writing deadline calendar", "/writers/writing-calendar/",
-     ]),
-    ("Tech", "/tech/", "Honest consumer technology: spec floors, refurb buying, "
-     "settings that fix real problems, security checklists. No affiliate-first "
-     "reviews.", [
-        "The student laptop spec floor", "/tech/student-laptop-spec-floor-2026/",
-        "Picture settings that fix the soap opera look",
-        "/tech/picture-settings-that-fix-the-soap-opera-look/",
-     ]),
-    ("Sport", "/sports/", "Explainers and analysis with sources and verification "
-     "dates. No betting content, no odds, no tips.", [
-        "Why darts starts at 501", "/sports/why-darts-starts-at-501-explained/",
-        "Pickleball, explained", "/sports/pickleball-explained/",
-     ]),
-    ("Entertainment", "/entertainment/", "What to watch and why: recommendations "
-     "with reasons, film-craft explainers, a hand-verified film catalogue with "
-     "official trailers. Written about the work, never trafficking in it.", [
-        "The soap opera effect, explained",
-        "/entertainment/soap-opera-effect-explained/",
-        "Why movies are 24 frames per second",
-        "/entertainment/why-movies-are-24-frames-per-second-explained/",
-     ]),
-    ("Fitness", "/fitness/", "General training information with the physiology "
-     "shown: programmes, comparisons and form explainers. Never medical advice.", [
-        "Hyrox, explained", "/fitness/hyrox-explained/",
-        "What does 3x10 mean", "/fitness/what-does-3x10-mean-explained/",
-        "Hyrox pace planner (tool)", "/fitness/hyrox-pace-planner/",
-     ]),
-    ("Home & DIY", "/home/", "Problem-first home maintenance and repair: diagnose "
-     "it, fix what is safely fixable, know when to call a professional.", [
-        "The once-a-season home checklist",
-        "/home/seasonal-home-maintenance-checklist/",
-        "Rent or buy tool", "/home/rent-or-buy-tool/",
-     ]),
-    ("Money", "/money/", "Evergreen saving foundations first, risk-first trading "
-     "education second. Educational, not advice; every claim cites its "
-     "jurisdiction's own source.", [
-        "APR versus APY, explained", "/money/apr-vs-apy-explained/",
-        "Salary sacrifice, explained", "/money/salary-sacrifice-explained/",
      ]),
 ]
 
@@ -174,22 +136,21 @@ def questions_for(hub):
 def main():
     counts = {name: sitemap_count_all(slug.strip("/")) for name, slug, _d, _f in DESKS}
     total = sum(sitemap_count_all(d) for d in
-                ("writers", "tech", "sports", "entertainment", "fitness", "home", "money"))
+                ("writers",))
     lines = []
     lines.append("# THE BRYME")
     lines.append("")
-    lines.append("> A family of seven independent, specialist publications under one "
+    lines.append("> An independent writing publication under one "
                  "house discipline: research before publishing, dates on anything "
                  "time-sensitive, sources for every claim, and no fabricated "
                  "experience or statistics. Edited from Lagos, Nigeria, and written "
-                 "for a global readership. " + str(total) + " pages across the desks.")
+                 "for a global readership. " + str(total) + " indexed pages.")
     lines.append("")
     lines.append("## The house")
     lines.append("")
     for label, route in [
         ("Home", "/"),
         ("About the family", "/about/"),
-        ("Event calendar", "/event-calendar/"),
         ("Privacy policy", "/privacy/"),
         ("Writers corrections policy", "/writers/corrections/"),
     ]:
@@ -213,9 +174,6 @@ def main():
     lines.append("")
     lines.append("- Every article shows its review or verification date; treat older "
                  "dates as historical, especially prices, rates and submission windows.")
-    lines.append("- Money content is educational, not financial advice; fitness "
-                 "content is general information, not medical advice; sport content "
-                 "never includes betting.")
     lines.append("- Corrections are published in the open on the page that made the "
                  "claim.")
     lines.append("")
