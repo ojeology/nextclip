@@ -488,7 +488,6 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
     <a href="{H("/writers/writing/")}">{N_MARKETS} markets</a>
     <a href="{H("/writers/tools/")}">{N_TOOLS} tools</a>
     <a href="{H("/writers/learn/")}">{N_GUIDES} guides</a>
-    <a href="{H("/writers/articles/")}">Articles</a>
     <a href="{H("/writers/search/")}">Search</a>
   </div></nav>
 </header>
@@ -506,6 +505,7 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
   <p class="dek"><b>A practical home for working writers</b> — {N_MARKETS} paying markets checked by hand against official submission guidelines, {N_GUIDES} craft and pitching guides, and {N_TOOLS} private browser tools. Dated, sourced, no pop-up windows.</p>
   <div class="actions">
     <a class="btn" href="{H("/writers/")}">Enter flagship →</a>
+    <a class="btn secondary" href="{H("/writers/articles/")}">BRYME Articles →</a>
     <a class="btn secondary" href="{H("/writers/writing/")}">Browse {N_MARKETS} markets</a>
     <button type="button" class="btn secondary" data-house-open-palette><span>Find anything</span><kbd style="display:inline-grid;place-items:center;width:18px;height:18px;border:1px solid var(--line);border-radius:4px;font:700 10px/1 ui-monospace,monospace">K</kbd></button>
   </div>
