@@ -65,7 +65,7 @@
       ],
       [
         "Browser storage used by BRYME",
-        "<p>Only two things are saved in your browser's own <code>localStorage</code>, and neither leaves your device: your light/dark theme choice, and anything you voluntarily enter into the client-side submission or income tracker tools. You can clear both at any time from your browser settings or using the clear button inside the tool.</p>"
+        "<p>Three things are saved in your browser&rsquo;s own storage, and none of them leaves your device: your light/dark theme choice; anything you voluntarily enter into the client-side submission or income tracker tools; and, for the editorial story suggestion on BRYME Articles, a timestamp plus a per-visit counter (in <code>localStorage</code> and <code>sessionStorage</code> respectively) that exist for one reason &mdash; so a suggestion is never shown to the same reader twice in a row. They hold no identifier, no history of what you read, and nothing is sent anywhere. You can clear all of it at any time from your browser settings or using the clear button inside each tool.</p>"
       ],
       [
         "Contact",

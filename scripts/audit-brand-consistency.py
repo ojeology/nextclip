@@ -70,6 +70,14 @@ EXTRA_SHEET_OK = {
     ("/writers/tools/portfolio-builder/", "/assets/writer-portfolio-builder.css"),
 }
 
+# A section's own stylesheet belongs to that section and its sub-pages. Listing
+# every article route here would mean editing this audit each time a story is
+# published, so the rule is stated once: the sheet may load on its section root
+# and anywhere beneath it.
+SECTION_SHEETS = {
+    "/assets/articles.css": "/writers/articles/",
+}
+
 
 def pages() -> list[tuple[str, Path, str]]:
     out = []
@@ -132,7 +140,9 @@ def main() -> int:
     if len(base) != 1:
         findings.append(f"typography: {len(base)} base stylesheets, expected 1")
     for s, v in extras.items():
-        stray = [r for r in v if r != "/writers/" and (r, s) not in EXTRA_SHEET_OK]
+        own_section = SECTION_SHEETS.get(s)
+        stray = [r for r in v if r != "/writers/" and (r, s) not in EXTRA_SHEET_OK
+                 and not (own_section and r.startswith(own_section))]
         if stray:
             findings.append(f"typography: supplementary {s} used outside the section hub: {stray[:4]}")
 

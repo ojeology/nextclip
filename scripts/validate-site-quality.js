@@ -202,7 +202,12 @@ for(const file of htmlFiles){
   if(/href=["']\/assets\/site\.css["']|src=["']\/assets\/site-app\.js["']/i.test(s))fail(`${r}: legacy CSS/JS remains`);
   if(!/assets\/(?:bryme-v2|content-v2)\.css/.test(s))fail(`${r}: forest-green stylesheet missing`);
   if(!/class=["'][^"']*(?:bottom-nav|mobile-nav)/.test(s))fail(`${r}: bottom mobile navigation missing`);
-  if(/href=["']\/(?:sports|movie|movies|series|anime|article|articles|entertainment|trailers|tech|fitness|home|money|event-calendar)(?:\/|["'])/i.test(s))fail(`${r}: local media link remains on main publication`);
+  /* `articles` (plural) came off this list on 2026-11-19: /articles/ is now a
+     real section of this publication — BRYME Articles, mounted at
+     /writers/articles/ by build-routing.py. The retired media family was the
+     singular /article/ scheme and the old /articles/ hub, which no longer
+     exists; the singular and every other media family stay banned. */
+  if(/href=["']\/(?:sports|movie|movies|series|anime|article|entertainment|trailers|tech|fitness|home|money|event-calendar)(?:\/|["'])/i.test(s))fail(`${r}: local media link remains on main publication`);
  }
  // A name blocklist alone cannot catch an unknown ad host, so the test runs on the
  // page with the sanctioned unit already removed: anything still matching a banned

@@ -746,6 +746,18 @@ body.studio-focus { padding-bottom: 0; }
   text-underline-offset: 2px; overflow-wrap: anywhere; }
 .docket-note a:hover { color: var(--brass); }
 
+/* ---------------- BRYME Articles (primary-nav entry) ----------------
+   The section lives inside the Writers publication, so its nav item is part of
+   the same primary nav rather than a separate bar. The brass dot is the only
+   ornament: it marks a section that is newer than the desks around it without
+   shouting, and it inherits the theme from the tokens above. */
+.main-nav a.nav-articles { display: inline-flex; align-items: center; gap: 7px; color: var(--ink); font-weight: 800; }
+.main-nav a.nav-articles .nav-articles-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--brass-bright); display: inline-block; }
+.main-nav a.nav-articles:hover .nav-articles-dot,
+.main-nav a.nav-articles[aria-current="page"] .nav-articles-dot { background: var(--navy); }
+html[data-theme="dark"] .main-nav a.nav-articles:hover .nav-articles-dot,
+html[data-theme="dark"] .main-nav a.nav-articles[aria-current="page"] .nav-articles-dot { background: var(--accent); }
+
 /* Lean editorial compatibility layer — replaces the 263 KB legacy platform sheet. */
 .shell{width:min(calc(100% - 32px),var(--max));margin-inline:auto}
 .top{position:sticky;z-index:50;top:0;border-bottom:1px solid var(--line);background:rgba(7,16,13,.9);backdrop-filter:blur(18px)}

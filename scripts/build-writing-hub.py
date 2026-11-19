@@ -35,6 +35,16 @@ _spec = importlib.util.spec_from_file_location(
 _bwf = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_bwf)
 
+# BRYME Articles lives on this desk, so the desk home has to announce it. Its
+# builder owns the copy and the stylesheet; importing it here keeps the ribbon
+# identical to the landing page it points at (and reading it from disk is the
+# same trick used for the shared shell above).
+_aspec = importlib.util.spec_from_file_location(
+    "build_articles", str(ROOT / "scripts" / "build-articles.py"))
+_bart = importlib.util.module_from_spec(_aspec)
+_aspec.loader.exec_module(_bart)
+import articles_content as _articles_content  # noqa: E402
+
 esc = _bwf.esc
 write = _bwf.write
 BASE = _bwf.BASE
@@ -1365,8 +1375,12 @@ def homepage() -> None:
         "tool_prefix": "/tools",
     }
 
+    _art_cfg = _articles_content.load_config()
+    _art_live = _articles_content.load_published(_art_cfg)
     body = ("<style>" + desk_hub_render.TECH_LOOK + "</style>"
+            + '<div class="wrap">' + _bart.desk_ribbon(_art_cfg, _art_live) + "</div>"
             + desk_hub_render.render(arts, tools, WR_CATS, _wr_cfg, "", "Snapshot " + TODAY)
+            + '<script src="/assets/articles.js" defer></script>'
             + '<script src="/assets/tech-hub.js" defer></script>')
     structured = [
         {"@context": "https://schema.org", "@type": "WebSite", "name": "BRYME Writers", "url": BASE + "/", "description": "Practical writing guides, browser-based tools, a submission tracker and researched publication-market records."},
@@ -1374,7 +1388,8 @@ def homepage() -> None:
     ]
     write("/", page_wf(title="BRYME Writers: writing guides, tools & opportunities",
                        description=f"A writing desk with {len(WRITING)} researched markets, {len(GUIDES)} practical guides and {len(TOOLS)} free tools. Learn, pitch, submit and track your writing work with BRYME.",
-                       route="/", current="", body=body, schema_data=structured))
+                       route="/", current="", body=body, schema_data=structured,
+                       head_extra='<link rel="stylesheet" href="/assets/articles.css">'))
 
 
 def prune_stale_guides() -> None:

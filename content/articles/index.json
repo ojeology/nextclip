@@ -1,0 +1,46 @@
+{
+  "_comment": "BRYME Articles — section configuration. Everything a story does NOT carry itself lives here: the category system, the featured slot and the editorial invitation's behaviour. Edit by hand; the build validates every value and refuses to publish a section it cannot render honestly.",
+  "section": "BRYME Articles",
+  "intro": "Discover fascinating stories about people, life, society, money, ambition and the world around us. Stories worth your time, questions worth exploring, and perspectives you may not have considered.",
+  "categories": [
+    {
+      "slug": "living-in-africa",
+      "name": "Living in Africa",
+      "blurb": "Cities, money, family, work and the texture of ordinary days across the continent — reported from where people actually live.",
+      "order": 1
+    },
+    {
+      "slug": "lives-and-lifestyles",
+      "name": "Lives and Lifestyles",
+      "blurb": "How people organise their days, their money and their ambitions — from the night shift to the family business.",
+      "order": 2
+    },
+    {
+      "slug": "money-and-ambition",
+      "name": "Money and Ambition",
+      "blurb": "What people earn, what they are chasing and what it costs them — the everyday economics of wanting more.",
+      "order": 3
+    },
+    {
+      "slug": "human-behaviour",
+      "name": "Human Behaviour",
+      "blurb": "Why we do the things we do: decisions, habits, risk, luck and the stories we tell ourselves to keep going.",
+      "order": 4
+    },
+    {
+      "slug": "unusual-jobs-and-hidden-worlds",
+      "name": "Unusual Jobs and Hidden Worlds",
+      "blurb": "Work most people never see, and the small closed worlds that quietly keep the rest of the world running.",
+      "order": 5
+    }
+  ],
+  "featured": null,
+  "invitation": {
+    "enabled": true,
+    "delaySeconds": 10,
+    "article": null,
+    "maxPerSession": 1,
+    "cooldownDays": 7
+  },
+  "mostRead": []
+}

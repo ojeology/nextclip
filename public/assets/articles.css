@@ -1,0 +1,311 @@
+/* ================================================================
+   BRYME ARTICLES — section stylesheet
+   ----------------------------------------------------------------
+   Loaded only by /writers/articles/ pages (landing, category, story).
+   Everything is namespaced .ba- so it cannot collide with the desk
+   design system in bryme-v2.css, and everything is built on the same
+   tokens, so light/dark and the brass-and-ink palette come for free.
+
+   Performance notes, since these pages carry ads:
+   * no web fonts, no animation beyond one 220ms fade on the invite;
+   * every image slot has intrinsic width/height or an aspect-ratio,
+     so nothing reflows while covers load (no CLS);
+   * the invite is position:fixed from the start — it can never shift
+     the page it appears over.
+   ================================================================ */
+
+/* ---------------- landing: hero ---------------- */
+.ba-hero { padding-bottom: clamp(24px, 4vw, 40px); }
+.ba-intro {
+  max-width: 62ch; margin: 10px 0 0; font-family: var(--serif);
+  font-size: clamp(18px, 2.4vw, 22px); line-height: 1.55; color: var(--ink);
+}
+.ba-hero-note { margin: 14px 0 0; font-size: 13px; color: var(--dim); letter-spacing: .02em; }
+
+/* ---------------- featured story ---------------- */
+.ba-featured { padding-top: 0; }
+.ba-featured-card {
+  display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 40px); align-items: center;
+  padding: clamp(18px, 3vw, 28px); border: 1px solid var(--line-strong);
+  border-radius: var(--radius); background: var(--sheet); box-shadow: var(--shadow);
+}
+.ba-featured-media {
+  display: block; overflow: hidden; border-radius: var(--radius);
+  aspect-ratio: 16 / 9; background: var(--paper-2);
+}
+.ba-featured-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ba-featured-body { min-width: 0; }
+.ba-featured-body .eyebrow { color: var(--brass); }
+.ba-featured-title {
+  margin: 8px 0 10px; font-family: var(--serif); font-weight: 700;
+  font-size: clamp(26px, 3.6vw, 40px); line-height: 1.1; letter-spacing: -.01em;
+}
+.ba-featured-title a { color: var(--ink); }
+.ba-featured-title a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 4px; }
+.ba-featured-dek { margin: 0 0 12px; font-family: var(--serif); font-size: 17.5px; line-height: 1.6; color: var(--muted); }
+.ba-featured-cta { margin: 18px 0 0; }
+
+/* ---------------- empty state (no live story) ---------------- */
+.ba-empty-card {
+  max-width: 74ch; padding: clamp(22px, 4vw, 38px);
+  border: 1px solid var(--line-strong); border-left: 3px solid var(--brass);
+  border-radius: var(--radius); background: var(--sheet);
+}
+.ba-empty-card h2 { margin: 6px 0 14px; font-family: var(--serif); font-size: clamp(24px, 3.2vw, 32px); line-height: 1.16; }
+.ba-empty-card p { margin: 0 0 14px; font-family: var(--serif); font-size: 17px; line-height: 1.72; color: var(--muted); max-width: 66ch; }
+.ba-empty-card .actions { margin-top: 20px; }
+
+/* ---------------- category map ---------------- */
+.ba-cat-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.ba-cat {
+  display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr) auto;
+  gap: 4px clamp(14px, 3vw, 32px); align-items: baseline;
+  padding: 18px 0; border-bottom: 1px solid var(--line);
+}
+.ba-cat-name { margin: 0; font-family: var(--serif); font-size: 19px; font-weight: 700; }
+.ba-cat-name a { color: var(--ink); }
+.ba-cat-name a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+.ba-cat.is-soon .ba-cat-name { color: var(--dim); }
+.ba-cat-blurb { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+.ba-cat-count {
+  margin: 0; font-size: 11px; font-weight: 800; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--dim); white-space: nowrap;
+}
+.ba-cat.is-live .ba-cat-count { color: var(--brass); }
+
+/* ---------------- article cards ---------------- */
+.ba-grid {
+  display: grid; gap: clamp(20px, 3vw, 32px);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr));
+}
+.ba-card { display: flex; flex-direction: column; min-width: 0; }
+.ba-card-media {
+  display: block; overflow: hidden; border-radius: var(--radius);
+  aspect-ratio: 16 / 9; background: var(--paper-2); border: 1px solid var(--line);
+}
+.ba-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .2s ease; }
+.ba-card-media:hover img { transform: scale(1.02); }
+.ba-card-cat { margin: 12px 0 0; font-size: 10.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--brass); }
+.ba-card-cat a { color: inherit; }
+.ba-card-title { margin: 6px 0 8px; font-family: var(--serif); font-size: 21px; line-height: 1.24; font-weight: 700; }
+.ba-card-title a { color: var(--ink); }
+.ba-card-title a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+.ba-card-excerpt { margin: 0 0 10px; font-size: 15px; line-height: 1.6; color: var(--muted); }
+.ba-meta {
+  margin: 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  font-size: 12px; letter-spacing: .04em; color: var(--dim);
+}
+.ba-meta time { color: inherit; }
+
+/* ---------------- story page ---------------- */
+.ba-article { max-width: 46rem; margin: 0 auto; }
+.ba-article-head { padding: clamp(16px, 3vw, 28px) 0 0; }
+.ba-article-head .kicker a { color: var(--brass); }
+.ba-article-head h1 {
+  margin: 10px 0 14px; font-family: var(--serif); font-weight: 700;
+  font-size: clamp(30px, 5.6vw, 52px); line-height: 1.06; letter-spacing: -.015em;
+}
+.ba-dek { margin: 0 0 16px; font-family: var(--serif); font-size: clamp(18px, 2.4vw, 21px); line-height: 1.55; color: var(--muted); }
+.ba-byline {
+  margin: 0 0 22px; padding-bottom: 16px; border-bottom: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; gap: 4px 9px; font-size: 13px; color: var(--dim);
+}
+.ba-byline a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+.ba-cover { margin: 0 0 clamp(22px, 4vw, 34px); }
+.ba-cover img {
+  width: 100%; height: auto; display: block; border-radius: var(--radius);
+  aspect-ratio: 16 / 9; object-fit: cover; background: var(--paper-2);
+}
+.ba-cover figcaption { margin-top: 8px; font-size: 12.5px; line-height: 1.5; color: var(--dim); }
+.ba-cover .ba-credit { display: block; }
+
+/* body: same .prose base, tightened for long-form reading */
+.ba-body { font-size: 18px; }
+.ba-body.prose p { font-family: var(--serif); font-size: 18.5px; line-height: 1.78; color: var(--ink); margin: 0 0 20px; }
+.ba-body.prose h2 { margin: 40px 0 12px; font-size: clamp(24px, 3.4vw, 30px); line-height: 1.2; }
+.ba-body.prose h3 { margin: 28px 0 10px; font-size: 20px; line-height: 1.3; }
+.ba-body.prose ul, .ba-body.prose ol { margin: 0 0 20px; padding-left: 24px; }
+.ba-body.prose li { font-family: var(--serif); font-size: 18px; line-height: 1.7; margin-bottom: 8px; }
+.ba-body.prose a { color: var(--navy); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.ba-body.prose a:hover { color: var(--brass); }
+.ba-rule { margin: 34px 0; border: 0; border-top: 1px solid var(--line); }
+
+.ba-figure { margin: 30px 0; }
+.ba-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); background: var(--paper-2); aspect-ratio: 16 / 9; object-fit: cover; }
+.ba-figure figcaption { margin-top: 8px; font-size: 12.5px; line-height: 1.5; color: var(--dim); }
+
+.ba-pullquote {
+  margin: 34px 0; padding: 6px 0 6px 22px; border-left: 3px solid var(--brass);
+}
+.ba-pullquote p {
+  margin: 0; font-family: var(--serif); font-style: italic;
+  font-size: clamp(21px, 3vw, 26px); line-height: 1.42; color: var(--ink);
+}
+
+/* sources */
+.ba-sources { margin: 40px 0 0; padding-top: 22px; border-top: 1px solid var(--line-strong); }
+.ba-sources h2 { margin: 0 0 12px; font-family: var(--sans); font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--brass); }
+.ba-sources ol { margin: 0; padding-left: 20px; }
+.ba-sources li { font-size: 14px; line-height: 1.6; color: var(--muted); margin-bottom: 8px; }
+.ba-sources li span { color: var(--dim); }
+
+.ba-article-foot { margin: 36px 0 0; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--dim); }
+.ba-article-foot p { margin: 0 0 8px; }
+.ba-article-foot a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.ba-updated { color: var(--dim); font-style: italic; }
+
+/* ---------------- related reading ---------------- */
+.ba-discover { margin-top: clamp(40px, 6vw, 64px); border-top: 1px solid var(--line-strong); }
+.ba-discover .section-head { display: block; margin-bottom: 22px; }
+.ba-backlink { margin: 28px 0 0; font-size: 13.5px; }
+.ba-backlink a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+/* the small reusable recommendation unit */
+.ba-reco {
+  margin: 30px 0; padding: 16px; border: 1px solid var(--line);
+  border-radius: var(--radius); background: var(--paper-2);
+}
+.ba-reco-head {
+  margin: 0 0 10px; font-size: 10.5px; font-weight: 800;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--brass);
+}
+.ba-reco-link { display: flex; gap: 14px; align-items: center; color: var(--ink); }
+.ba-reco-link img {
+  width: 96px; height: 54px; flex: none; object-fit: cover;
+  border-radius: 3px; background: var(--paper); border: 1px solid var(--line);
+}
+.ba-reco-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.ba-reco-text b { font-family: var(--serif); font-size: 17px; line-height: 1.25; font-weight: 700; }
+.ba-reco-text span { font-size: 12px; color: var(--dim); }
+.ba-reco-link:hover .ba-reco-text b { text-decoration: underline; text-underline-offset: 3px; }
+.ba-recostrip .ba-reco { max-width: 40rem; }
+
+/* ---------------- category chips ---------------- */
+.ba-cat-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.ba-cat-chip {
+  display: inline-block; padding: 7px 12px; border: 1px solid var(--line-strong);
+  border-radius: 999px; font-size: 12.5px; color: var(--ink); background: var(--sheet);
+}
+.ba-cat-chip:hover { border-color: var(--brass); color: var(--navy); }
+
+/* ---------------- editorial standards ---------------- */
+.ba-standards-grid { display: grid; gap: 22px clamp(20px, 3vw, 34px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+.ba-standards-grid h3 { margin: 0 0 6px; font-family: var(--serif); font-size: 17px; }
+.ba-standards-grid p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--muted); }
+.ba-standards-grid a, .ba-standards-foot a { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+.ba-standards-foot { margin: 22px 0 0; font-size: 13.5px; color: var(--dim); }
+.ba-note { margin: 8px 0 0; font-size: 13px; color: var(--dim); }
+
+/* ---------------- the editorial invitation ----------------
+   Never modal: no backdrop, no focus trap, nothing that stops a
+   reader navigating or reading underneath. It is a card pinned to
+   the corner of the viewport, so it cannot cause layout shift, and
+   it sits above the mobile bottom nav rather than over it. */
+.ba-invite {
+  position: fixed; z-index: 45; right: clamp(12px, 2vw, 24px); bottom: clamp(16px, 2vw, 24px);
+  width: min(380px, calc(100vw - 24px));
+  background: var(--sheet); color: var(--ink);
+  border: 1px solid var(--line-strong); border-radius: 6px;
+  box-shadow: 0 18px 48px rgba(15, 36, 56, .22);
+  overflow: hidden; opacity: 0; transform: translateY(10px);
+  transition: opacity .22s ease, transform .22s ease;
+}
+.ba-invite[hidden] { display: none; }
+.ba-invite.is-in { opacity: 1; transform: none; }
+.ba-invite.is-out { opacity: 0; transform: translateY(8px); }
+.ba-invite-figure { position: relative; margin: 0; background: var(--paper-2); }
+.ba-invite-figure img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.ba-invite-label {
+  position: absolute; left: 0; bottom: 0; margin: 0; padding: 6px 10px;
+  background: var(--navy); color: var(--sheet);
+  font-size: 10px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+}
+.ba-invite-close {
+  position: absolute; top: 8px; right: 8px; width: 30px; height: 30px;
+  display: grid; place-items: center; cursor: pointer;
+  background: rgba(253, 251, 244, .92); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 999px;
+}
+.ba-invite-close:hover { background: #fff; border-color: var(--line-strong); }
+.ba-invite-body { padding: 14px 16px 16px; }
+.ba-invite-cat {
+  margin: 0 0 4px; font-size: 10px; font-weight: 800; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--brass);
+}
+.ba-invite-title { margin: 0 0 8px; font-family: var(--serif); font-size: 20px; line-height: 1.22; }
+.ba-invite-title a { color: var(--ink); }
+.ba-invite-title a:hover { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+.ba-invite-teaser { margin: 0 0 14px; font-size: 14px; line-height: 1.55; color: var(--muted); }
+.ba-invite-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.ba-invite-cta {
+  display: inline-block; padding: 10px 16px; border-radius: 2px;
+  background: var(--navy); color: var(--sheet);
+  font-size: 13px; font-weight: 800; letter-spacing: .06em; text-decoration: none;
+}
+.ba-invite-cta:hover { background: var(--navy-deep); color: var(--sheet); }
+.ba-invite-dismiss {
+  background: none; border: 0; padding: 6px 2px; cursor: pointer;
+  font: inherit; font-size: 13px; color: var(--dim); text-decoration: underline; text-underline-offset: 3px;
+}
+.ba-invite-dismiss:hover { color: var(--ink); }
+.ba-invite-note { margin: 10px 0 0; font-size: 11.5px; line-height: 1.45; color: var(--dim); }
+
+/* ---------------- desk-home ribbon ----------------
+   The desk home (/writers/) is generated by a different renderer, so the
+   section announces itself there with one band directly under the nav. */
+.ba-ribbon {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px;
+  margin: 0 0 4px; padding: 12px 16px; border: 1px solid var(--line);
+  border-left: 3px solid var(--brass); border-radius: var(--radius);
+  background: var(--sheet); color: var(--ink);
+}
+.ba-ribbon-kicker { font-size: 10.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--brass); }
+.ba-ribbon-line { font-family: var(--serif); font-size: 15px; color: var(--muted); flex: 1 1 16rem; }
+.ba-ribbon-cta { font-size: 12.5px; font-weight: 800; letter-spacing: .04em; color: var(--navy); white-space: nowrap; }
+.ba-ribbon:hover .ba-ribbon-cta { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------------- responsive ---------------- */
+@media (max-width: 780px) {
+  .ba-featured-card { grid-template-columns: 1fr; gap: 16px; padding: 16px; }
+  .ba-cat { grid-template-columns: 1fr; gap: 4px; padding: 16px 0; }
+  .ba-cat-count { margin-top: 2px; }
+  .ba-body.prose p { font-size: 17.5px; line-height: 1.72; }
+  .ba-article-head h1 { font-size: clamp(27px, 7vw, 34px); }
+  .ba-byline { font-size: 12.5px; }
+}
+
+@media (max-width: 620px) {
+  /* Above the fixed mobile bottom navigation (64px) plus the home indicator. */
+  .ba-invite {
+    right: 10px; left: 10px; width: auto;
+    bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+    max-height: min(72vh, 460px); overflow-y: auto;
+  }
+  .ba-invite-title { font-size: 18px; }
+  .ba-invite-teaser { font-size: 13.5px; }
+  .ba-invite-cta { padding: 11px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ba-invite, .ba-invite.is-in, .ba-invite.is-out { transition: none; transform: none; }
+  .ba-card-media img { transition: none; }
+  .ba-card-media:hover img { transform: none; }
+}
+
+/* ---------------- dark theme ---------------- */
+html[data-theme="dark"] .ba-featured-card,
+html[data-theme="dark"] .ba-empty-card,
+html[data-theme="dark"] .ba-ribbon,
+html[data-theme="dark"] .ba-invite { background: var(--paper-2); }
+html[data-theme="dark"] .ba-reco { background: rgba(255, 255, 255, .03); }
+html[data-theme="dark"] .ba-invite-close { background: rgba(20, 26, 36, .9); color: var(--ink); }
+html[data-theme="dark"] .ba-invite-close:hover { background: rgba(20, 26, 36, 1); }
+html[data-theme="dark"] .ba-invite-cta { background: var(--accent); color: #141a24; }
+html[data-theme="dark"] .ba-invite-cta:hover { background: var(--brass-bright); color: #141a24; }
+html[data-theme="dark"] .ba-invite-label { background: var(--accent); color: #141a24; }
+html[data-theme="dark"] .ba-body.prose a,
+html[data-theme="dark"] .ba-standards-grid a,
+html[data-theme="dark"] .ba-standards-foot a { color: var(--accent); }
+html[data-theme="dark"] .ba-ribbon-cta { color: var(--accent); }

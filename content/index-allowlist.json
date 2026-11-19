@@ -4,6 +4,7 @@
   "routes": [
     "/",
     "/about/",
+    "/articles/",
     "/author/ibrahim-sodiq/",
     "/checklists/",
     "/compare/",

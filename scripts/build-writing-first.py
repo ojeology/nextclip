@@ -396,6 +396,12 @@ def nav(current: str = "") -> str:
     items.append(f'<a class="home-link"{home_aria} href="/" aria-label="BRYME home"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg></a>')
     # Keep the desk identity visible in the Writers masthead/navigation.
     items.append(f'<a class="nav-desk"{home_aria} href="/">Writers</a>')
+    # BRYME Articles sits in the primary navigation, immediately after the desk
+    # name, on every page of the publication: the brief asks for it to be found
+    # "near the beginning" of the navigation and it is a section of this desk,
+    # not a property of its own. Its own current-state key is "articles".
+    art_aria = ' aria-current="page"' if current == "articles" else ""
+    items.append(f'<a class="nav-articles"{art_aria} href="/articles/"><span class="nav-articles-dot" aria-hidden="true"></span>BRYME Articles</a>')
     MEGA = [
         ("learn", "/learn/", "Learn", [
             ("/start/", "Beginner path"), ("/find/", "What do you want to write?"),
@@ -714,7 +720,15 @@ def writing_nav(current_flt: str = "") -> str:
 
 
 
+# Sections that live under a bottom-nav tab. BRYME Articles is its own section
+# of this desk but not its own tab: a fifth item would crowd the bar on a 360px
+# screen, so the reader in /articles/ sees "Articles" marked as the current tab
+# (which is where it sits in the drawer's "Start here" group too).
+BOTTOM_NAV_PARENT = {"articles": "read"}
+
+
 def mobile_nav(current: str = "") -> str:
+    current = BOTTOM_NAV_PARENT.get(current, current)
     links = [
         ("learn", "/learn/", "📚", "How to"),
         ("read", "/read/", "📄", "Articles"),
@@ -774,7 +788,7 @@ def drawer(current: str = "") -> str:
     return f'''<div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
   <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Writing Intelligence", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("read", "/read/", "All articles", "📄"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("changed", "/what-changed/", "What changed on the desk", "🗓"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("studio", "/studio/", "Writing Studio", "✒️"), ("by-country", "/writing-opportunities/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
+  {group("Start here", [("home", "/", "Home", "🏠"), ("articles", "/articles/", "BRYME Articles", "📖"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Writing Intelligence", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("read", "/read/", "All articles", "📄"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("changed", "/what-changed/", "What changed on the desk", "🗓"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("studio", "/studio/", "Writing Studio", "✒️"), ("by-country", "/writing-opportunities/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
   {group("How to write", howto)}
   {group("Tools & templates", tools)}
   {group("Write & get paid", write)}
@@ -788,7 +802,9 @@ def drawer(current: str = "") -> str:
 
 def page_wf(*, title: str, description: str, route: str, current: str, body: str,
             schema_data: object | None = None, robots: str = "index,follow",
-            head_extra: str = "", schema_extra: object | None = None) -> str:
+            head_extra: str = "", schema_extra: object | None = None,
+            og_type: str = "website", og_image: str = "", og_image_w: int = 1200,
+            og_image_h: int = 630, body_scripts: str = "") -> str:
     """Writing-first page: the shared shell with a writing-first graph + nav.
 
     (Copied from build_focus_site.page so the writing branch controls its own
@@ -796,13 +812,15 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
     """
     title = budget_title(title)  # H3 batch 7: keep <title>/og:title inside the SERP window
     canonical = BASE + route
-    # Social card: use the generated per-page card when one exists.
-    og_image = "/assets/og/default.png"
-    m_og = re.match(r"^/learn/[a-z0-9-]+/([a-z0-9-]+)/$", route) or re.match(r"^/essays/([a-z0-9-]+)/$", route)
-    if m_og:
-        name = f"essay-{m_og.group(1)}.png" if route.startswith("/essays/") else f"{m_og.group(1)}.png"
-        if (ROOT / "assets" / "og" / name).exists():
-            og_image = f"/assets/og/{name}"
+    # Social card: the caller's own image (a story's cover) when one is passed,
+    # otherwise the generated per-page card when one exists.
+    if not og_image:
+        og_image = "/assets/og/default.png"
+        m_og = re.match(r"^/learn/[a-z0-9-]+/([a-z0-9-]+)/$", route) or re.match(r"^/essays/([a-z0-9-]+)/$", route)
+        if m_og:
+            name = f"essay-{m_og.group(1)}.png" if route.startswith("/essays/") else f"{m_og.group(1)}.png"
+            if (ROOT / "assets" / "og" / name).exists():
+                og_image = f"/assets/og/{name}"
     ca_id = str(cfg.publisher_config().get("caId") or "").strip()
     adsense_meta = f'<meta name="google-adsense-account" content="{esc(ca_id)}">' if ca_id else ""
     adsense_script = (f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={esc(ca_id)}" crossorigin="anonymous"></script>' if ca_id else "")
@@ -853,10 +871,10 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
 <meta name="description" content="{esc(description)}">
 <meta name="robots" content="{esc(robots)}">
 <link rel="canonical" href="{canonical}">
-<meta property="og:type" content="website"><meta property="og:site_name" content="BRYME">
+<meta property="og:type" content="{og_type}"><meta property="og:site_name" content="BRYME">
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{canonical}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{BASE}{og_image}">
-<meta property="og:image" content="{BASE}{og_image}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{esc(title)}">
+<meta property="og:image" content="{BASE}{og_image}"><meta property="og:image:width" content="{og_image_w}"><meta property="og:image:height" content="{og_image_h}"><meta property="og:image:alt" content="{esc(title)}">
 {adsense_meta}
 {ga_head_html}{adsense_script}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any">
@@ -864,7 +882,7 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
 <link rel="stylesheet" href="/assets/bryme-v2.css">
 {schema(site_graph)}
 {schema(structured)}{schema(schema_extra) if schema_extra else ""}
-</head><body>{nav(current)}<main id="main">{body}</main>{mobile_nav(current)}{drawer(current)}<script src="/assets/site-nav.js" defer></script><script src="/assets/level-filter.js" defer></script><script src="/assets/purpose-finder.js" defer></script>{follow_strip()}{footer()}</body></html>'''
+</head><body>{nav(current)}<main id="main">{body}</main>{mobile_nav(current)}{drawer(current)}<script src="/assets/site-nav.js" defer></script><script src="/assets/level-filter.js" defer></script><script src="/assets/purpose-finder.js" defer></script>{body_scripts}{follow_strip()}{footer()}</body></html>'''
 
 
 # ---------------------------------------------------------------------------
@@ -1132,6 +1150,7 @@ def home() -> None:
             "Payment is only marked confirmed once it actually lands.",
             "A listing is an invitation to pitch — not a job offer or a promise of payment.",
             "Saved items and reading history stay in this browser’s local storage and nowhere else.",
+            "The editorial story suggestion on BRYME Articles appears once per visit at most, is dismissible, opens nothing and blocks nothing.",
             "Tools run in your browser — no account, nothing uploaded, nothing sent anywhere.",
         ],
         "rules_links": [("terms", "Terms"), ("editorial-policy", "Editorial policy"),

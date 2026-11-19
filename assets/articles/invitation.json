@@ -1,0 +1,15 @@
+{
+  "enabled": false,
+  "delaySeconds": 10,
+  "maxPerSession": 1,
+  "cooldownDays": 7,
+  "storageKey": "bryme.articles.invitation",
+  "dismissLabel": "Maybe later",
+  "ctaLabel": "Read the Full Story",
+  "asideLabel": "Read later — the full story is one tap away, and nothing here blocks the page.",
+  "article": null,
+  "surfaces": [
+    "/writers/",
+    "/writers/articles/"
+  ]
+}

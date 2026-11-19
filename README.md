@@ -23,6 +23,13 @@ There is no second publication, no media catalogue, and no leftover route for on
   passive-voice checkers, rate and tax calculators, invoice and contract builders,
   PDF and document tools). Everything runs locally in the browser; nothing typed
   into a tool is uploaded.
+- **BRYME Articles (`/writers/articles/`)** — the desk's editorial section: reported
+  stories about people, life, money and the world around us, in five categories.
+  It is a section of this desk, not a second publication, and it carries no story
+  until a real one is published — the landing page, the category pages, the sitemap
+  entries and the editorial invitation are all generated from `content/articles/`.
+  See `docs/BRYME-ARTICLES.md` for the behaviour and `content/articles/README.md`
+  for how to publish a story.
 - **Trust pages** — about, editorial policy, verification statuses, corrections,
   disclosure, terms, disclaimers, copyright and privacy, plus the house pages at
   `/about/` and `/privacy/`.
@@ -34,6 +41,7 @@ There is no second publication, no media catalogue, and no leftover route for on
 /about/               house about page (from ecosystem/hub/about)
 /privacy/             house privacy policy (from ecosystem/hub/privacy)
 /writers/…            the entire publication, canonical home for every page
+/writers/articles/…   BRYME Articles: the editorial section of that publication
 /assets/…             shared CSS, JS and images
 ```
 
@@ -54,14 +62,16 @@ The build is deterministic and ordered:
 
 1. `build-writing-first.py` regenerates the publication tree at the repo root;
 2. `build-writing-hub.py` adds the guide/tool surface;
-3. `build-discovery.py` writes robots, sitemaps and RSS from explicit allowlists;
-4. `build-landing.py` / `ecosystem/` produce the house hub and trust pages;
-5. `build-routing.py` moves the publication under `/writers/` and partitions the tree;
-6. `build-public-dir.py` stages `public/`, the directory Render publishes;
-7. `purge-stale-publish.py` deletes stale legacy directories and writes the
+3. `build-articles.py` builds BRYME Articles from `content/articles/` and writes the
+   invitation payload (`assets/articles/invitation.json`);
+4. `build-discovery.py` writes robots, sitemaps and RSS from explicit allowlists;
+5. `build-landing.py` / `ecosystem/` produce the house hub and trust pages;
+6. `build-routing.py` moves the publication under `/writers/` and partitions the tree;
+7. `build-public-dir.py` stages `public/`, the directory Render publishes;
+8. `purge-stale-publish.py` deletes stale legacy directories and writes the
    byte-stable redirect stubs;
-8. the injectors add analytics, breadcrumbs, sources, consent and ad bands;
-9. `build-llms-txt.py`, `trim-meta-descriptions.py` and `fix-stub-canonicals.py`
+9. the injectors add analytics, breadcrumbs, sources, consent and ad bands;
+10. `build-llms-txt.py`, `trim-meta-descriptions.py` and `fix-stub-canonicals.py`
    finish the discovery surface.
 
 `public/`, the root sitemaps and both index allowlists are committed build outputs.

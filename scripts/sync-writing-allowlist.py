@@ -95,6 +95,13 @@ def wanted() -> set[str]:
         for d in sorted(outdir.iterdir()):
             if (d / "index.html").is_file():
                 routes.add(f"/writing-opportunities/{d.name}/")
+
+    # BRYME Articles. The section decides its own routes from what is on disk
+    # and what is live today (articles_content.routes), which is the only way a
+    # story dated today can be in the allowlist and the sitemap on the day it
+    # publishes. Imported here rather than restated, so the two cannot drift.
+    import articles_content
+    routes |= articles_content.routes()
     return routes
 
 
@@ -151,6 +158,25 @@ def main() -> int:
 
     # Stale routes are reported, never deleted - a record can be mid-batch
     # or deliberately held back, and silent deletion is not this script's job.
+    # Articles routes are file-derived, unlike publication records: a deleted
+    # story leaves no record behind, only a route the build can no longer
+    # generate, which would fail the sitemap step. So these ARE pruned.
+    art_stale = sorted(r for r in have if r.startswith("/articles/") and r not in need)
+    if art_stale:
+        doc["routes"] = [r for r in doc["routes"] if r not in set(art_stale)]
+        have = set(doc["routes"])
+        stale = True
+        print("sync: pruned removed article routes:", ", ".join(art_stale))
+        if not args.check:
+            # Written here, not in the `missing` branch below: pruning on its own
+            # leaves nothing missing, so a prune that relied on that branch would
+            # be computed and then silently dropped - which is exactly what
+            # happened the first time a fixture story was deleted (the allowlist
+            # kept four routes for pages that no longer existed).
+            path.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n",
+                            encoding="utf-8")
+            print(f"      wrote {len(doc['routes'])} routes")
+
     orphan = sorted(
         r for r in have
         if r.startswith("/writing/")
@@ -195,8 +221,23 @@ def main() -> int:
                             encoding="utf-8")
             print(f"      bumped reviewedAt to {want_stamp}")
 
-    # Read-only cross-check of the routed artifact, in its prefixed form.
+    # A pruned article route has to leave the routed artifact too. build-discovery
+    # reads that file BEFORE build-routing regenerates it, so a stale entry for a
+    # deleted story stops the build with "Allowlisted route has no HTML file" - a
+    # dead end, because the only thing that would refresh the file is the very
+    # build that just failed. Mirrored here (article routes only) so deleting a
+    # story is never blocked by an artifact.
     rp = ROOT / ROUTED
+    if art_stale and rp.is_file() and not args.check:
+        rdoc = json.loads(rp.read_text(encoding="utf-8"))
+        gone = {"/writers" + x for x in art_stale}
+        kept = [r for r in rdoc["routes"] if r not in gone]
+        if len(kept) != len(rdoc["routes"]):
+            rdoc["routes"] = kept
+            rp.write_text(json.dumps(rdoc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            print(f"      {ROUTED}: dropped {len(rdoc['routes']) - len(kept)} stale article route(s)")
+
+    # Read-only cross-check of the routed artifact, in its prefixed form.
     if rp.is_file():
         rhave = set(json.loads(rp.read_text(encoding="utf-8"))["routes"])
         # The routed form is simply the source form with /writers in front;
