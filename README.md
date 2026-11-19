@@ -107,6 +107,21 @@ public-file boundary, canonical redirects, redirect-rule replay, real 404s, secu
 headers and `/healthz`. Render publishes `public/` as a static site per
 `render.yaml` (`staticPublishPath: public`, `autoDeploy: true`).
 
+## Retired URLs and Render's static store
+
+HTML deletions propagate: a page removed from `public/` stops serving, and every
+retired route answers a noindex redirect stub (see `purge-stale-publish.py`).
+
+**Binary and script deletions do not.** Render's static store is overlay-style: a
+file that is deleted from the repository keeps answering 200 from the previous
+deploy. That is why `purge-stale-publish.py` writes tombstones instead of relying on
+deletion, and why the retired-desk asset paths (archived desk images, old calculator
+scripts, the former `hub-robots.txt`) may still resolve for a while. They are
+unreferenced — no page, sitemap or robots entry points at them — and the only way to
+make such a URL stop answering is to publish something at the same path. If that ever
+matters, the fix is a tombstone sweep in `purge-stale-publish.py`, not a re-import of
+the retired files.
+
 ## Privacy and monetization
 
 Advertising is configured in `site.config.json` and applied at build time by
