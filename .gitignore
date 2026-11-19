@@ -16,10 +16,6 @@ docs/search-ping-log.jsonl
 # untracked dev secret (football-data.org token) - never commit (spec s47)
 content/.football-data-key
 
-# retired-source stubs: never publish (local build artifacts only)
-public/entertainment/_recovered/
-public/sports/_recovered/
-
 # transient root redirect stubs: build-routing.py writes ~74 of these per build
 # ("legacy forwards: N root stubs -> /entertainment/...") and its own pre-clean
 # deletes them at the start of the next run. They are regenerated identically
@@ -28,3 +24,8 @@ public/sports/_recovered/
 # at the root must still show up in `git status`, because build-public-dir.py
 # auto-stages new page dirs and a silent gitignore rule would let an author
 # forget to `git add` a new page.
+
+# Dated audit output: `npm test` writes reports/adsense-readiness-<date>.json and
+# reports/brand-consistency-<date>.json on every run. The directory is kept (the
+# audits write into it) but the snapshots are run artifacts, not source.
+reports/*.json

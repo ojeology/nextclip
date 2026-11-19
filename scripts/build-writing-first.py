@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Build the WRITING-FIRST BRYME main branch.
 
-Reuses the existing focused-site shell (page(), esc(), schema(), write(), BASE,
-SITE, cfg, TODAY) from build-focus-site.py so the infrastructure — site_config,
-SITE_URL env handling, canonical/OG/twitter/schema head, server, discovery —
-is shared rather than forked.
+Reuses the shared shell (esc(), schema(), write(), BASE, SITE, cfg, TODAY) from
+bryme_shell.py so the infrastructure — site_config, SITE_URL env handling,
+canonical/OG/twitter/schema head, server, discovery — is shared rather than
+forked.
 
 This builder emits the writing-first surface:
   /                       writing-first homepage
@@ -16,8 +16,8 @@ This builder emits the writing-first surface:
   /about/                 writing-first about page
   + trust/legal pages and 404/410.
 
-Legacy multi-niche output is preserved on the `legacy-multiniche` branch and
-archived in-tree under legacy-site/ — it is not generated here and not promoted.
+BRYME publishes one desk, so nothing else is generated: there is no removed-desk
+archive in this tree and nothing is promoted alongside these pages.
 """
 from __future__ import annotations
 import collections
@@ -34,12 +34,14 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))  # scripts import `bryme_config` by name
 from title_budget import budget_title  # H3 batch 7: SERP title budget (<=60 chars)
 
-# Reuse the working focused-site shell (not a fork): page(), esc(), schema(),
-# write(), BASE, SITE, cfg, TODAY, TODAY_HUMAN, footer().
-_spec = importlib.util.spec_from_file_location("build_focus_site", ROOT / "scripts" / "build-focus-site.py")
-_build_focus = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(_build_focus)
-ROOT = _build_focus.ROOT
+# The shared shell (esc, schema, write, BASE, SITE, cfg, TODAY, TODAY_HUMAN)
+# lives in bryme_shell.py. It used to live inside build-focus-site.py, a
+# builder for the retired jobs/make-money/tech desks that this repository no
+# longer carries; the shell was extracted so nothing on the Writing desk's
+# build path references a retired niche.
+import bryme_shell as _shell
+
+ROOT = _shell.ROOT
 
 # Batch 14 (pre-domain gate §3): the mega-nav used to hardcode stale
 # guide/tool counts (191/47) while the page bodies counted content/hub
@@ -51,19 +53,19 @@ _NAV_TOOL_COUNT = len(json.loads((ROOT / "content" / "hub" / "tools.json").read_
 _SITE_CFG = json.loads((ROOT / "site.config.json").read_text(encoding="utf-8"))
 NEWSLETTER = _SITE_CFG.get("newsletter", {})
 FOLLOW = _SITE_CFG.get("follow", {})
-BASE = _build_focus.BASE
-TODAY = _build_focus.TODAY
-TODAY_HUMAN = _build_focus.TODAY_HUMAN
+BASE = _shell.BASE
+TODAY = _shell.TODAY
+TODAY_HUMAN = _shell.TODAY_HUMAN
 # Phase-0 AdSense-readiness quality sweep (2026-09-27) - house parity with
 # the desk shells in build-ecosystem.py (Q_SWEEP / Q_SWEEP_H).
 Q_SWEEP = "2026-09-27"
 Q_SWEEP_H = "27 September 2026"
-SITE = _build_focus.SITE
-cfg = _build_focus.cfg
-esc = _build_focus.esc
-schema = _build_focus.schema
-write = _build_focus.write
-footer = _build_focus.footer
+SITE = _shell.SITE
+cfg = _shell.cfg
+esc = _shell.esc
+schema = _shell.schema
+write = _shell.write
+footer = _shell.footer
 
 
 def footer() -> str:
@@ -205,10 +207,9 @@ def norm_types(rec: dict) -> list[str]:
 def _build_now() -> "_dt.datetime":
     """The moment this build should believe it is.
 
-    build-focus-site.py pins TODAY = "2026-09-04" as a literal, which is correct
-    for the jobs desk: those roles were checked that day and the desk bakes the
-    date into a route. This file rebinds TODAY from here (see below), so the
-    writers desk follows the pin instead of the literal.
+    bryme_shell.py ships a static TODAY default; this file rebinds TODAY from
+    here (see below) so the Writing desk follows the SOURCE_DATE_EPOCH pin
+    instead of a literal.
 
     These four clock reads were the reason the helper exists at all - they made
     `npm run build && git diff --exit-code` fail on any day after the build: the
@@ -237,14 +238,10 @@ def _build_today() -> "_dt.date":
 # ---------------------------------------------------------------------------
 # The writers desk's own "today"
 #
-# build-focus-site.py pins TODAY = "2026-09-04" as a literal, and for the jobs
-# desk that is right: those roles really were checked on that day, and the desk
-# bakes the date into a route (/jobs/verified-2026-09-04/), so the literal is
-# load-bearing there. The jobs desk is left exactly as it is.
-#
-# But this desk recomputes everything from content/opportunities.json on every
-# build, so inheriting a frozen date made four things wrong at once, and the
-# 288-record merge made them more visible rather than causing them:
+# bryme_shell.py ships a static TODAY default, which is what a pinned snapshot
+# needs; this desk instead recomputes everything from content/opportunities.json
+# on every build, so inheriting a frozen date made four things wrong at once,
+# and the 288-record merge made them more visible rather than causing them:
 #
 #   1. /today/ was titled "Today's writing opportunities: verified 2026-09-04"
 #      and carried the same value as its schema dateModified - so a page named
@@ -3958,11 +3955,11 @@ def empty_pages() -> None:
                                            route="/404.html", current="", body=not_found, robots="noindex,follow"), encoding="utf-8")
     print("wrote 404.html")
 
-    gone = '''<div class="wrap"><section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>410 · Moved to legacy</p>
-<h1>The multi-niche BRYME content moved to the legacy archive.</h1>
-<p>The old jobs, sports, entertainment, make-money and technology site is preserved on the <b>legacy-multiniche</b> branch. BRYME's main branch now focuses entirely on writing opportunities and guides.</p>
+    gone = '''<div class="wrap"><section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>410 · No longer published</p>
+<h1>This content is no longer part of BRYME.</h1>
+<p>BRYME publishes one desk: writing opportunities, craft guides and the tools that go with them. Pages from the retired desks are not archived here, and no redirect pretends they still exist.</p>
 <div class="actions"><a class="btn" href="/writing/">Writing opportunities</a><a class="btn secondary" href="/guides/">Writing guides</a></div></section></div>'''
-    (ROOT / "410.html").write_text(page_wf(title="Content moved to legacy archive | BRYME", description="The former multi-niche BRYME content moved to the legacy-multiniche branch.",
+    (ROOT / "410.html").write_text(page_wf(title="This content is no longer published | BRYME", description="The requested page belonged to a retired BRYME section and is no longer published.",
                                            route="/410.html", current="", body=gone, robots="noindex,follow"), encoding="utf-8")
     print("wrote 410.html")
 

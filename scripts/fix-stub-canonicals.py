@@ -26,8 +26,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-TIERS = ("public", "ecosystem", "writers", "tech", "sports", "entertainment",
-         "fitness", "home", "money")
+TIERS = ("public", "ecosystem", "writers", "about", "privacy")
 ORIGIN = "https://thebryme.com"
 
 CANON_RE = re.compile(r'(<link[^>]+rel=["\']canonical["\'][^>]*href=["\'])([^"\']+)(["\'])', re.I)

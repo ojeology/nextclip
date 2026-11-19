@@ -1,54 +1,29 @@
 #!/usr/bin/env python3
-"""batch 66e: enforce the legacy-route scheme at FILE level, and purge the stale publish.
+"""Enforce the legacy-route scheme at FILE level, and purge the stale publish.
 
-Why this script exists (investigation of 2026-09-16, after a report that
-"/tech returns 404"):
+Every legacy root the site ever served (the pre-routing writers scheme, plus the
+retired jobs / make-money / opportunities hubs) has a 301 declared in
+render.yaml. Edge rules are configuration: they can drift, they are only visible
+through Render's dedicated /routes endpoint, and a published FILE always outranks
+them. So the same scheme is also enforced inside the artifact, where nothing can
+silently disagree with it. This runs as the final step of `npm run build`:
 
-1. RESOLVED 2026-09-16 via the Render API: the live service now runs
-   exactly the render.yaml routes (PUT /v1/services/{id}/routes). Before the
-   sync it ran 18 dashboard-era rules from before that file existed: bare
-   /tech 301ed to /guides/, /make-money 301ed to /opportunities/, and NONE
-   of the 104 declared rules fired. The stale rules are only visible through
-   the dedicated /routes endpoint - the service-details API does not expose
-   them, which is how the drift hid. The old chain that explained the
-   "/tech 404" report: /tech -> 301 -> /guides/ -> agents that normalise the
-   trailing slash request /guides -> 404. This script stays: published files
-   outrank edge rules, so the stubs remain the enforcement of record and the
-   insurance against future config drift.
-
-2. The buildCommand's `git clean -xdf public/` never ran on Render (its
-   `|| echo` fallback swallowed the failure) until 2026-09-16, when the live
-   buildCommand was synced to the render.yaml version via the Render API;
-   before that, Render's cached build
-   workspace kept republishing the 2026-09-14 vintage of the pre-routing
-   public/ tree: 18 root directories (guides, writing, learn, tools, today,
-   tested, templates, checklists, compare, contact, copyright, corrections,
-   disclaimer, editorial-policy, essays, find, glossary, intelligence) with
-   ~500 index,follow pages, each self-canonical, duplicating the identical
-   /writers/ pages that have been the canonical home since the routing
-   migration.
-
-This script is the enforcement layer that does not depend on the dashboard or
-on git being available in the build image. It runs as the final step of
-`npm run build` (which the deployed buildCommand invokes whatever else it
-does):
-
-  a. PURGE: deletes public/<segment>/ for every legacy segment whose root
-     scheme is not live (guard: the routed allowlist must contain no route at
+  a. PURGE: deletes public/<segment>/ for every legacy segment whose root scheme
+     is not live (guard: the routed allowlist must contain no route at
      /<segment>/... - a segment that ever becomes a real property is skipped
      loudly instead of purged).
   b. STUB: regenerates, byte-stably, the file-level equivalents of the
-     dormant render.yaml rules, using the exact batch-66c stub shape already
-     proven in this repo (noindex,follow; instant meta-refresh; canonical to
-     the destination; a visible link for no-JS visitors):
+     render.yaml rules, using the batch-66c stub shape already proven in this
+     repo (noindex,follow; instant meta-refresh; canonical to the destination;
+     a visible link for no-JS visitors):
        - one root stub per legacy segment  (/<seg>/  -> destination)
        - one stub per routed sub-page      (/<seg>/<rest>/ -> /writers/<seg>/<rest>/)
-     Flat-mapped segments (jobs, make-money, opportunities - whose wildcard
-     rules collapse to /writers/writing/ without capture) get the root stub
-     only, exactly like the rules they mirror.
+     Flat-mapped segments (jobs, make-money, opportunities - whose wildcard rules
+     collapse to /writers/writing/ without capture) get the root stub only,
+     exactly like the rules they mirror.
 
-The segment table and destinations are parsed from render.yaml at runtime -
-one source of truth, no duplicated list to drift. Output carries no dates, so
+The segment table and destinations are parsed from render.yaml at runtime - one
+source of truth, no duplicated list to drift. Output carries no dates, so
 regeneration is byte-identical and the CI reproducibility diff stays clean.
 """
 from __future__ import annotations
@@ -150,37 +125,12 @@ def main() -> int:
             (sub / "index.html").write_text(stub_html(r, rel.split("/")[-1]), encoding="utf-8")
             sub_stubs += 1
 
-        # Batch 14i (audit 2026-09-17): some tools live under /tech/tool/, not
-        # /writers/tools/ (base64-encoder, json-formatter, uuid-generator, ...).
-        # The dormant /tools/* -> /writers/tools/* wildcard 301s their legacy
-        # /tools/<slug>/ URLs to a path that 404s. Mirror them from the routed
-        # allowlist (single source of truth: the tech sitemap) so file-level
-        # stubs outrank the wildcard and land on the real page. Never overwrite
-        # a writers sub-stub written above - case-converter and word-counter
-        # exist in both trees and the writers destination stays canonical for
-        # the legacy /tools/ path, exactly as before this batch.
-        if seg == "tools":
-            for r in routes:
-                if not r.startswith("/tech/tool/"):
-                    continue
-                slug = r[len("/tech/tool/"):].strip("/")
-                if not slug or "/" in slug:
-                    continue
-                sub = PUBLIC / seg / slug
-                if (sub / "index.html").exists():
-                    continue
-                sub.mkdir(parents=True, exist_ok=True)
-                (sub / "index.html").write_text(stub_html(r, slug), encoding="utf-8")
-                sub_stubs += 1
-
-    # Batch 11 (audit 2026-09-17): the served tree is public/ (server.js PUBLISH_DIR),
-    # and Render's cached build workspace keeps UNTRACKED files across deploys while
-    # the buildCommand's `git clean -xdf public/` demonstrably does not run (its
-    # `|| echo` fallback swallows the failure). Pre-2026-09-14 builds copied the
-    # _recovered/ archive source store into public/{entertainment,sports}/, where it
-    # stayed publicly served (duplicate content, dead legacy breadcrumbs) long after
-    # the sources moved to content/*-recovered/. Purge any _recovered/ dir under the
-    # publish workspace by name class - deterministic, idempotent, no git needed.
+    # Defensive sweep for Render's cached build workspace, which keeps UNTRACKED
+    # files across deploys. Earlier builds copied a "_recovered" archive store of
+    # retired-desk pages into public/<prop>/_recovered/, where it stayed publicly
+    # served long after the sources were gone. The sources no longer exist here,
+    # but a stale workspace can still hold them, so purge any _recovered/ dir
+    # under the publish workspace by name class - deterministic, no git needed.
     stale_rec = 0
     for base in (PUBLIC, ROOT, ROOT / "ecosystem"):
         for prop in ("sports", "entertainment", "tech", "fitness", "home", "writers", "money"):

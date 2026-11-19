@@ -1,7 +1,6 @@
 "use strict";
 /* BRYME focused work-publication server: explicit public surface, no bots or mutation. */
 const http=require("http"),fs=require("fs"),path=require("path");
-const indexing=require("./indexing-api");
 /* The deployed artifact. render.yaml publishes `public` (staticPublishPath:
    public) as a Render static site, so that directory -- not the repo root -- is
    what production serves. Override with PUBLISH_DIR to point elsewhere. */
@@ -27,11 +26,9 @@ const PUBLIC_ASSET_EXT=new Set([".css",".js",".jpg",".jpeg",".png",".svg",".webp
    and /tech/sitemap.xml 404 -- and robots.txt declares /writers/sitemap.xml to
    crawlers while sitemap_index.xml submits all seven to Search Console. */
 const PUBLIC_DOC_EXT=new Set(["",".html",".xml",".txt",".json",".webmanifest"]);
-/* Retired media families. "sports" and "entertainment" were removed: both are
-   live properties now (sports/sitemap.xml 111 URLs, entertainment/sitemap.xml
-   806) and returning 410 for them contradicted production, which serves 200.
-   "money" was likewise removed 2026-10-03: the desk is relaunched (owner
-   decision, monetization pivot to Adsterra) and serves 200 in production. */
+/* Retired media families. Every desk except Writers has been removed from this
+   repository, so these roots do not exist in the artifact and the server has to
+   agree with it instead of serving a stale property tree. */
 const MEDIA_FAMILIES=new Set(["movie","movies","series","anime","article","articles","genre","genres","year","years","trailers","trending","channels","topic","topics","now","legacy","sports","entertainment","tech","fitness","home","money","event-calendar"]);
 function loadRedirects(){const out=new Map();try{for(const line of fs.readFileSync(path.join(ROOT,"_redirects"),"utf8").split(/\r?\n/)){const clean=line.trim();if(!clean||clean.startsWith("#"))continue;const [from,to,status]=clean.split(/\s+/);if(status==="301"&&from&&to)out.set(from,to)}}catch{}return out}
 const EXACT_REDIRECTS=loadRedirects();
@@ -54,22 +51,6 @@ const server=http.createServer((req,res)=>{
  const method=req.method||"GET";
  let raw;try{raw=decodeURIComponent(url.pathname)}catch{return send(res,400,"Bad request")}
  raw=raw.replace(/\/{2,}/g,"/");
-
- // Google Indexing API control endpoints. These must be reachable via POST so
- // they are handled before the read-only method gate below.
- if(raw==="/api/index/status"){return send(res,200,JSON.stringify({ok:true,configured:indexing.enabled(),site:indexing.SITE_URL})+"\n","application/json; charset=utf-8",method)}
- if(raw==="/api/index/notify"){
-   if(method!=="POST"){res.writeHead(405,headers({allow:"POST","content-type":"application/json; charset=utf-8"}));return res.end(JSON.stringify({ok:false,error:"method not allowed"})+"\n")}
-   const auth=(req.headers.authorization||"").replace(/^Bearer\s+/i,"").trim();
-   if(!indexing.PUBLISHER_TOKEN||auth!==indexing.PUBLISHER_TOKEN){res.writeHead(401,headers({"content-type":"application/json; charset=utf-8"}));return res.end(JSON.stringify({ok:false,error:"unauthorized"})+"\n")}
-   let body="";req.on("data",c=>{body+=c;if(body.length>65536)req.destroy()});
-   req.on("end",async()=>{let payload={};try{payload=JSON.parse(body||"{}")}catch{payload={} }
-     const result=await indexing.notify(payload.url||"/", payload.type||"updated");
-     const status=result.ok?202:400;
-     res.writeHead(status,headers({"content-type":"application/json; charset=utf-8"}));res.end(JSON.stringify(result)+"\n");
-   });
-   return
- }
 
  if(!["GET","HEAD"].includes(method)){res.writeHead(405,headers({allow:"GET, HEAD","content-type":"text/plain; charset=utf-8"}));return res.end("Method not allowed")}
  if(raw==="/healthz")return send(res,200,JSON.stringify({ok:true,service:"bryme-work"})+"\n","application/json; charset=utf-8",method);

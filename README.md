@@ -1,33 +1,47 @@
 # BRYME
 
-BRYME is a focused publication for **verified jobs, remote work and legitimate ways to earn** — primarily for Nigerians and Africa-based readers.
+**BRYME Writers** — an independent publication for people who want to get published
+and paid for writing: paid markets checked by hand, craft and pitching guides, and
+private browser tools.
 
-**Current public host:** <https://thebryme.com/>
+**Live:** <https://thebryme.com/> · **Owner:** Ojeology · **Editor:** Ibrahim Sodiq
 
-> The former `bryme.onrender.com` origin is **retired and unreachable**: Render
-> blocks the subdomain (`x-render-routing: blocked-render-subdomain`) and every
-> URL there returns a plain-text 404, so it cannot serve redirects, a 410, or an
-> IndexNow key file. Those URLs decay on recrawl. Nothing in the published
-> artifact links to that host; it survives only inside the dated audit snapshots
-> under `reports/`, which are historical records and are deliberately immutable.
+BRYME publishes **one desk**. Everything on the domain — the homepage, `/about/`,
+`/privacy/`, the Pinterest kit, the assets, the build pipeline — serves that desk.
+There is no second publication, no media catalogue, and no leftover route for one.
 
-**Project owner:** Ojeology
+## What the site contains
 
-## Publication focus
+- **Paid markets (`/writers/writing/`)** — every record is built from the
+  publication's own submission guidelines: pay, word count, eligibility,
+  submission method, rights, AI policy, and the month it was last checked. Where a
+  guideline does not state something, the record says *not stated* rather than
+  estimating it.
+- **Craft and pitching guides (`/writers/learn/`)** — 197 guides from first pitch
+  to final draft, written from primary sources and labelled honestly.
+- **Browser tools (`/writers/tools/`)** — 49 tools (counters, readability and
+  passive-voice checkers, rate and tax calculators, invoice and contract builders,
+  PDF and document tools). Everything runs locally in the browser; nothing typed
+  into a tool is uploaded.
+- **Trust pages** — about, editorial policy, verification statuses, corrections,
+  disclosure, terms, disclaimers, copyright and privacy, plus the house pages at
+  `/about/` and `/privacy/`.
 
-- **Jobs:** exact employer/ATS records plus job-board listings with visible verification dates, and global, location-first discovery (choose your country → city → job type). Board-listed roles are labelled separately (⚪ LISTED ON JOB BOARD) so they are not confused with BRYME-checked employer pages.
-- **Remote work:** a dedicated remote hub and remote-eligible roles.
-- **Make Money:** grounded platform, freelance, writing and income-opportunity guidance without guaranteed-earnings claims.
-- **Writing:** language contracts plus researched paid-publication guidelines, including BRYME's own tested journeys.
-- **Guides:** practical application, portfolio, account-safety and independent-publishing help.
+## Layout of the published site
 
-BRYME **verifies opportunities** — it distinguishes the original source, BRYME's verification record, and first-hand experience. It never claims to own a vacancy that belongs to another employer or platform, and never claims payment until it is confirmed.
+```
+/                     house hub (from ecosystem/hub)
+/about/               house about page (from ecosystem/hub/about)
+/privacy/             house privacy policy (from ecosystem/hub/privacy)
+/writers/…            the entire publication, canonical home for every page
+/assets/…             shared CSS, JS and images
+```
 
-## Custom-domain readiness
-
-Every generated absolute URL (canonical, sitemap, JSON-LD, Open Graph, robots) comes from a single source of truth: the `SITE_URL` environment variable, falling back to `site.config.json` → `siteUrl`. Set `SITE_URL` to the custom domain to repoint the whole site without touching code. No origin is hard-coded in the build (`scripts/bryme_config.py`). The retired `bryme.onrender.com` string now survives in exactly two places: the dated audit snapshots under `reports/` (historical records, deliberately immutable), and the body prose of `/tech/render-deployment-failures-what-they-taught-me/`, which is an article *about* that incident. No generated link, canonical, sitemap or Open Graph URL points at it.
-
-Sports, movie, series, anime and entertainment-editorial files were extracted to the separate [`ojeology/bryme-media`](https://github.com/ojeology/bryme-media) repository. Media route families return HTTP 410 on this publication until a stable media hostname is deployed and permanent redirects can be installed.
+Every pre-routing and retired URL 301s to its routed twin, or — where no twin
+exists — to the nearest real page. Rules are declared in `render.yaml`, mirrored for
+the local test server in `_redirects`, and additionally enforced at file level inside
+the build by `scripts/purge-stale-publish.py`, because a published file outranks an
+edge rule.
 
 ## Build
 
@@ -36,12 +50,24 @@ npm ci
 npm run build
 ```
 
-The deterministic content build:
+The build is deterministic and ordered:
 
-1. creates the shared forest-green stylesheets;
-2. builds the focused hubs, 13 individual job records, five populated job categories and trust pages;
-3. applies idempotent indexability, schema, navigation and performance policy; and
-4. regenerates robots, sitemap, News sitemap and RSS from explicit allowlists.
+1. `build-writing-first.py` regenerates the publication tree at the repo root;
+2. `build-writing-hub.py` adds the guide/tool surface;
+3. `build-discovery.py` writes robots, sitemaps and RSS from explicit allowlists;
+4. `build-landing.py` / `ecosystem/` produce the house hub and trust pages;
+5. `build-routing.py` moves the publication under `/writers/` and partitions the tree;
+6. `build-public-dir.py` stages `public/`, the directory Render publishes;
+7. `purge-stale-publish.py` deletes stale legacy directories and writes the
+   byte-stable redirect stubs;
+8. the injectors add analytics, breadcrumbs, sources, consent and ad bands;
+9. `build-llms-txt.py`, `trim-meta-descriptions.py` and `fix-stub-canonicals.py`
+   finish the discovery surface.
+
+`public/`, the root sitemaps and both index allowlists are committed build outputs.
+CI re-runs the build with `SOURCE_DATE_EPOCH` pinned to the tree's own date and
+requires an empty `git diff`, so any commit can be rebuilt byte-for-byte on a later
+day. Production deploys set no pin and therefore stay date-fresh.
 
 ## Release gates
 
@@ -50,40 +76,25 @@ npx playwright install chromium
 npm test
 ```
 
-The release gates inspect every retained HTML file, indexability, canonicals, structured data, internal links, jobs, writing records, discovery files, media removal, HTTP status codes, redirects, public-file containment and security headers. Playwright renders all 509 allowlisted Writers routes at mobile, tablet and desktop sizes (1,527 render cases), then checks navigation, overflow, images, console errors, landmarks and third-party resource leakage.
+| Gate | What it proves |
+| --- | --- |
+| `verify:allowlist` | every route the builders generate is in the index allowlist |
+| `verify:titles` | no duplicate or over-budget titles |
+| `verify:dockets` | every market record renders its full docket |
+| `validate` (`validate-site-quality.js`, `validate-http.js`) | indexability, canonicals, structured data, retired routes gone, redirect stubs honest, containment of source files, security headers, method semantics |
+| `validate:oppfilter` | the market filter's counts match the data |
+| `validate:browser` | Playwright renders every allowlisted route at mobile, tablet and desktop |
+| `validate:contrast` | WCAG 2.1 AA on every measured text/background pair |
+| `check:adsense` / `check:brand` | AdSense readiness and house-consistency audits |
+| `check:links` | no broken internal link anywhere in `public/` |
 
-`npm run validate:contrast` additionally enforces the readability rules that the
-moving-navigation regression broke:
+## Canonical origin
 
-- every measured text/background pair meets **WCAG 2.1 AA** (4.5:1 normal,
-  3:1 large), with translucent layers alpha-composited the way a browser paints
-  them — token changes that quietly reduce contrast now fail the build;
-- **navigation never animates or auto-scrolls on its own** (a nav that drifts
-  moves links out from under the pointer and made text unreadable);
-- the country filter is a **static selection control**, never a scrolling bar,
-  and always offers an "All countries" reset plus a worldwide option;
-- a **home link with an accessible name** is present in the header of every page.
-
-## Navigation policy
-
-Motion in navigation must be functional, never decorative. Section navs are
-static; the only scripted movement is bringing the current page's link into
-view. Any bar that scrolls text under the reader, or animates a background
-behind it, is a defect — `validate-contrast.js` will reject it.
-
-
-## Current Search policy
-
-- 2,032 routes are eligible for indexing (routed allowlist v26). Of the 2,640 published `index.html` files, 608 stay `noindex`.
-- All 142 paid-publication detail records under `/writers/writing/` are indexable — the 55 held back for re-verification have since been reverified. The only `noindex` page in that tree is `/writers/writing/by-country/`, a navigational filter rather than a record.
-- No News sitemap routes are admitted without timely original reporting.
-- No `JobPosting` structured data is published yet: the current source records do not consistently contain the complete job-description and original posting-date fields needed for responsible markup.
-
-Policy lives in:
-
-- `content/index-allowlist.json`
-- `content/news-allowlist.json`
-- `scripts/build-discovery.py`
+Every generated absolute URL (canonical, sitemap, JSON-LD, Open Graph, robots) comes
+from one source of truth: the `SITE_URL` environment variable, falling back to
+`site.config.json` → `siteUrl`. No origin is hard-coded in the build
+(`scripts/bryme_config.py`); set `SITE_URL` to repoint the whole site without
+touching code.
 
 ## Server and deployment
 
@@ -91,30 +102,40 @@ Policy lives in:
 npm start
 ```
 
-`server/server.js` provides a strict public-file boundary, canonical routing, 301 work-hub consolidation, 410 responses for migrated media families, real 404 responses, security headers, `/healthz`, and the guarded Google Indexing API control endpoints (`GET /api/index/status`, `POST /api/index/notify` — see `docs/INDEXING.md`).
-
-Use the Node 22 Web Service defined in `render.yaml`; a generic static deployment will not preserve all HTTP behavior.
-
-## Verification system
-
-Job cards and detail pages show a verification badge (🟢 SOURCE VERIFIED, 🔵 APPLICATION CHECKED, 🟣 BRYME TESTED, 🔴 CLOSED, ⚠️ NEEDS RECHECK), a last-verified date, verification note, an official source link with an explicit "SOURCE: …", and a "Report an outdated listing" control. Writing-opportunity detail pages record BRYME's own first-hand journey (pitch submitted → accepted → scheduled → published → paid) without claiming payment until it is actually received.
-
-## JobPosting structured data and indexing
-
-`JobPosting` JSON-LD is emitted **only** for roles explicitly flagged `jobPosting.eligible` in `content/jobs.json` with complete source fields. It is never used for closed or historical records, and `hiringOrganization` is always the employer — never BRYME. The Indexing API module (`server/indexing-api.js`) is dry-run by default and also limited to `/jobs/` pages. See `docs/INDEXING.md`.
+`server/server.js` is the local and gate-time static server for `public/`: a strict
+public-file boundary, canonical redirects, redirect-rule replay, real 404s, security
+headers and `/healthz`. Render publishes `public/` as a static site per
+`render.yaml` (`staticPublishPath: public`, `autoDeploy: true`).
 
 ## Privacy and monetization
 
-Advertising is configured in `site.config.json` and applied at build time by `scripts/inject-ads.py`; the policy, approved formats and change procedure are in `docs/ADS.md`.
+Advertising is configured in `site.config.json` and applied at build time by
+`scripts/inject-ads.py`; the policy and change procedure are in `docs/ADS.md`.
 
-- **Adsterra (primary network):** a native banner at the top of content pages, a classic display banner and a Social Bar (`adsterra.*`).
-- **Google AdSense:** account verification only (`adsense.caId`, the `ca-pub` meta and loader, `ads.txt`). `adsense.nativeSlotId` is empty, so no AdSense ad unit renders. Keep Google-dashboard Auto ads **off**.
+- **Adsterra (primary network):** a native banner at the top of content pages, a
+  classic display banner and a Social Bar (`adsterra.*`).
+- **Google AdSense:** account verification only (`adsense.caId`, the `ca-pub` meta
+  and loader, `ads.txt`). `adsense.nativeSlotId` is empty, so no AdSense ad unit
+  renders. Keep Google-dashboard Auto ads **off**.
 
-**Consent.** The Adsterra loader (`/assets/adsterra-loader.js`) applies one rule: outside the EEA, UK and Switzerland they load at once; inside them (any `Europe/*` timezone) nothing loads, and no request reaches an ad host, until Google's consent message grants ad consent. `npm run test:ads` proves it in a real browser. Google Analytics 4 is enabled (`analytics`) with Consent Mode defaults scoped to the same regions.
+**Consent.** `/assets/adsterra-loader.js` applies one rule: outside the EEA, UK and
+Switzerland units load at once; inside them nothing loads, and no request reaches an
+ad host, until Google's consent message grants ad consent. `npm run test:ads` proves
+it in a real browser. Google Analytics 4 runs with Consent Mode defaults scoped to the
+same regions.
 
-Two consequences worth knowing:
+The browser gates intercept ad and analytics hosts (`AD_HOSTS` in
+`scripts/validate-browser.js`) so every render case stays offline-safe and
+deterministic; `www.google.com` is deliberately *not* in that list, so a real leak
+would still fail the gate.
 
-- The browser gates intercept the ad and analytics hosts (`AD_HOSTS` in `scripts/validate-browser.js` and the other browser gates) so every render case stays offline-safe and deterministic. `www.google.com` is deliberately *not* in that list, so a real Google leak would still fail the gate.
-- The privacy pages must name every ad partner. The Writers page is built from `content/hub/trust-pages.json`; the house and desk pages are written by `scripts/build-ecosystem.py` (an explicit generator, not part of `npm run build`).
+Ads must never resemble publication cards or tool buttons.
 
-Ads must never resemble job cards or application buttons (see `docs/ADS.md`).
+## Search policy
+
+- Eligible routes are named explicitly in `content/index-allowlist.json`; nothing is
+  indexable by accident, and the routed allowlist (`…routed.json`) is what
+  `build-discovery.py` writes sitemaps from.
+- No News sitemap routes are admitted without timely original reporting.
+- Legacy URLs are never indexable: every stub carries `noindex,follow` and a
+  canonical pointing at the page it forwards to.

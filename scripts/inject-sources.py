@@ -28,8 +28,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PUB = ROOT / "public"
-PUBLISH_TIERS = ("ecosystem", "public", "entertainment", "writers", "tech",
-                 "home", "sports", "fitness", "about", "money")
+PUBLISH_TIERS = ("ecosystem", "public", "writers", "about", "privacy")
 
 # (display name, URL, case-sensitive pattern or None for distinctive names)
 ENTITIES = [
@@ -85,10 +84,7 @@ def is_indexable(doc: str) -> bool:
 
 def desk_byline(route: str) -> str:
     seg = route.strip("/").split("/")[0] if route.strip("/") else ""
-    name = {"writers": "BRYME Writers desk", "tech": "BRYME Tech desk",
-            "sports": "BRYME Sport desk", "entertainment": "BRYME Entertainment desk",
-            "fitness": "BRYME Fitness desk", "home": "BRYME Home & DIY desk",
-            "money": "BRYME Money desk"}.get(seg, "the BRYME editorial desk")
+    name = {"writers": "BRYME Writers desk"}.get(seg, "the BRYME editorial desk")
     return f"Maintained by {name}."
 
 
@@ -182,7 +178,7 @@ def main() -> None:
             # Tier dirs mirror a desk subtree of public/ (writers/ is
             # public/writers/, tech/ is public/tech/), so the tier name is
             # part of the live route. ecosystem/ is the exception: it is a
-            # whole site root, containing entertainment/ and tech/ itself.
+            # whole site root, containing /writers/ itself.
             # Deriving the route without the prefix made desk_byline() miss
             # the desk and fall back to "the BRYME editorial desk" on every
             # tier copy, so the same page carried two different bylines

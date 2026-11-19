@@ -40,10 +40,7 @@ SKIP_DIRS = {".git", "node_modules", ".arena", ".cache", "dist", "out"}
 #                     <div class="crumb">) consumed by build-ecosystem.py,
 #                     never served as pages in their own right.
 #   reports/, docs/ - internal artifacts, not part of the site.
-PUBLISH_TIERS = {
-    "ecosystem", "public", "entertainment", "writers", "tech", "home",
-    "sports", "fitness", "about", "money",
-}
+PUBLISH_TIERS = {"ecosystem", "public", "writers", "about", "privacy"}
 ROOT_PAGES = {"index.html"}
 
 # google2ec8f794263d784f.html and friends are search-engine ownership tokens.

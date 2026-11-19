@@ -1,21 +1,18 @@
 #!/usr/bin/env python3
-"""STEP 3 of the ecosystem build: path-based routing on the current deployment.
+"""STEP 3 of the build: path-based routing for the site that actually ships.
 
-Transforms the built tree from "one writers site at /" into the five-
-publication layout:
+Transforms the built tree from "the Writing publication at /" into the house
+layout the domain serves:
 
     /                    -> THE BRYME hub (from ecosystem/hub)
-    /writers/<route>     -> the entire existing Writers publication
-    /sports/             -> BRYME Sport (from ecosystem/sports)
-    /entertainment/      -> BRYME Entertainment (from ecosystem/entertainment)
-    /tech/               -> BRYME Tech (from ecosystem/tech)
-    /fitness/ /home/     -> foundation placeholders (noindex, from ecosystem/)
+    /writers/<route>     -> the entire Writing publication
+    /about/ /privacy/    -> the house trust pages
 
-Everything is config-driven: ROUTING_MODE=subdomain (later) flips the
-properties to their own hosts as a deployment change, not a rebuild.
-Writers' page URLs are rewritten (href/src/action/canonical/og/sitemap/
-feed/manifest/search-index); shared assets stay at /assets/. Indexing is
-explicitly out of scope at this stage (build spec STEP 8).
+Writers' page URLs are rewritten (href/src/action/canonical/og/sitemap/feed/
+manifest/search-index); shared assets stay at /assets/.
+
+PROPS is the hook for ever serving another publication at its own path. It is
+empty: BRYME publishes one desk, so no property tree is staged or rewritten.
 """
 from __future__ import annotations
 
@@ -42,8 +39,8 @@ VERIF = {p.name for p in ROOT.glob("google*.html")} | {p.name for p in ROOT.glob
 ORIGIN = cfg.site_url()  # batch 15: SITE_URL env > site.config.json (was hardcoded)
 PROP_PREFIXES = tuple(f"/{x}" for x in PROPS) + ("/writers", "/assets")
 
-ATTR_RE = re.compile(r'(\s(?:href|src|action|content)=\x22)(/(?!assets/|writers|sports|entertainment|tech|fitness|home|money)([^\x22]*))(\x22)')
-ABS_RE = re.compile(re.escape(ORIGIN) + r'/(?!assets/|writers|sports|entertainment|tech|fitness|home|money)([^"\'<\s)]*)')
+ATTR_RE = re.compile(r'(\s(?:href|src|action|content)=\x22)(/(?!assets/|writers)([^\x22]*))(\x22)')
+ABS_RE = re.compile(re.escape(ORIGIN) + r'/(?!assets/|writers)([^"\'<\s)]*)')
 
 
 def rewrite_writer_paths(text: str) -> tuple[str, int]:
@@ -73,17 +70,6 @@ def strip_arrows(text: str) -> str:
 
 def main() -> int:
     moved = 0
-    # pre-clean: root dirs left by the PREVIOUS routing run's legacy forwards
-    # (marker: meta-refresh to /entertainment/) must not be swept into writers
-    for _d in list(ROOT.iterdir()):
-        if _d.is_dir():
-            _ix = _d / "index.html"
-            if _ix.is_file():
-                try:
-                    if '0;url=/entertainment/' in _ix.read_text(encoding="utf-8", errors="replace")[:600]:
-                        shutil.rmtree(_d)
-                except OSError:
-                    pass
     # guard: routing is one-shot per build; a routed tree must be rebuilt clean
     if (ROOT / "writers/learn").is_dir() and not (ROOT / "writing").is_dir():
         print("routing: tree is already routed - rebuild clean (rm -rf writers ...) first, aborting")
@@ -207,17 +193,10 @@ def main() -> int:
               if _epoch.isdigit() else _dt.date.today())
     _sm = (ROOT / "ecosystem" / "hub" / "sitemap.xml").read_text(encoding="utf-8")
     _sm = _re.sub(r"<lastmod>[^<]*</lastmod>", "<lastmod>" + _today.isoformat() + "</lastmod>", _sm)
-    # 2026-10-02: title pages stay noindex until a curated recommendation
-    # batch is released. build-entertainment-recommendations.py adds only
-    # released title routes to entertainment/sitemap.xml before this step, so
-    # indexability follows finished content. The legacy catalogue sitemap stays
-    # empty and out of the root index.
     (ROOT / "sitemap.xml").write_text(_sm, encoding="utf-8")
 
 
-    shutil.copy2(ROOT / "ecosystem" / "hub" / "robots.txt", ROOT / "hub-robots.txt")
-
-    # 4. global robots.txt: five sitemaps, no indexing work (STEP 8: untouched)
+    # 4. global robots.txt: the root index plus the Writers sitemap
     (ROOT / "robots.txt").write_text(
         # 4a. AI training crawlers blocked by owner decision 2026-09-23: Render free
 # plan is 5 GB/month and training bots burn bandwidth without sending
@@ -256,11 +235,6 @@ def main() -> int:
             continue  # first build of a new property: its sitemap appears when the ecosystem builder runs
         for loc in re.findall(r"<loc>(.*?)</loc>", sm.read_text()):
             routes.add("/" + loc.split(ORIGIN + "/", 1)[1])
-    # Keep the separated entertainment catalogue aligned with indexability.
-    _catalogue_sm = ROOT / "entertainment" / "sitemap-catalogue.xml"
-    if _catalogue_sm.is_file():
-        for loc in re.findall(r"<loc>(.*?)</loc>", _catalogue_sm.read_text()):
-            routes.add("/" + loc.split(ORIGIN + "/", 1)[1])
     al["version"] = 26
     al["routes"] = sorted(routes)
     (ROOT / "content" / "index-allowlist.routed.json").write_text(
@@ -274,7 +248,7 @@ def main() -> int:
     pub.mkdir()
     EXCL_DIRS = {"scripts", "content", "docs", "server", "reports", "node_modules",
                  "ecosystem", ".git", ".github", "public"}
-    MIRROR_FILES = {"index.html", "sitemap.xml", "robots.txt", "hub-robots.txt", "sw.js",
+    MIRROR_FILES = {"index.html", "sitemap.xml", "robots.txt", "sw.js",
                     "favicon.ico", "manifest.webmanifest", "404.html", "410.html"} | VERIF
     MIRROR_FILES.add("7c58863f801147c1be0d5ea74889fb22.txt")  # IndexNow key file (b56) - must serve at site root
     for e in ROOT.iterdir():

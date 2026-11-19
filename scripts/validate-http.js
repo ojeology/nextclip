@@ -5,22 +5,13 @@
  * Production is a Render static site publishing `public/` (render.yaml:
  * `type: static`, `staticPublishPath: public`), so server/server.js is pointed
  * at that directory and this gate exercises the published tree over real HTTP:
- * the routed URL scheme (writers' pages under /writers/, five live properties at
- * the top level, the family hub at /), the redirect rules, method semantics,
- * containment of source files, and the security headers.
+ * the routed URL scheme (the Writing publication under /writers/, the house
+ * pages at the top level), the redirect stubs for every retired or pre-routing
+ * URL, method semantics, containment of source files, and the security headers.
  *
- * History: this gate used to probe the pre-routing scheme (/writing/, /guides/,
- * /tools/, /learn/) and to require 410 Gone for /sports/ and /entertainment/ --
- * both of which are live properties now, serving 200 with 111 and 806 sitemap
- * URLs. All 29 of its failures were stale expectations rather than defects. A
- * permanently red gate is worse than no gate, because it trains everyone to
- * ignore the build.
- *
- * Every assertion below was verified against public/ and against production
- * (https://bryme.onrender.com) on 2026-09-15 rather than carried over; the
- * legacy-scheme assertions in check 5 were re-founded on 2026-09-16 after
- * production was found to ignore both render.yaml's routes and its buildCommand
- * purge (see the comment there).
+ * A permanently red gate is worse than no gate, because it trains everyone to
+ * ignore the build - so every assertion here is founded on what the artifact
+ * actually serves, not on what an older architecture used to serve.
  */
 const fs=require("fs"),path=require("path");
 const {server}=require("../server/server.js");

@@ -5,36 +5,30 @@ publishing remains an owner action: finish any business-account setup and click
 Pinterest **Verify**. The owner-supplied verification value is configured in the
 source generator and is live on the root homepage (HTTP 200 and tag checked on
 2026-09-29). The B6 forums routine can begin without a Pinterest account; the
-180-pin kit is generated and committed. Nothing here invents claims — every
+30-pin kit is generated and committed. Nothing here invents claims — every
 landing page is a live, indexed route.
 
 ## B2 — Pinterest (prep-mode)
 
-**Why these pages:** Pinterest is an evergreen-save + plan engine. Our strongest
-fit is the writers desk (people literally plan careers on it), fitness plans,
-and home checklists — all saving-oriented, none speculative.
+**Why these pages:** Pinterest is an evergreen-save + plan engine, and writers
+plan careers on it — saves and outbound clicks are the two numbers that matter,
+and both are measurable per pin.
 
 Pin spec: 1000×1500 (2:3, Pinterest’s recommended aspect ratio); keep essential
 copy within the frame and use page-derived alt text if Pinterest presents that
 field. Pinterest’s [image specs](https://help.pinterest.com/en/business/article/pinterest-product-specs)
-warn that taller-than-2:3 images may be cropped in feeds. Five starter boards
-are listed below. The committed manifest
-also has a sixth board, “What to Watch Tonight”; the recommended first wave
-uses all six across four weeks at three Pins per week. See
-`docs/PINTEREST-LAUNCH-PLAN.md` and `pinterest/launch-schedule-4-weeks.csv`.
-Use the board names in `pinterest/manifest.csv` exactly. No affiliate-style
-overlays or clickbait text — house honesty rules apply:
+warn that taller-than-2:3 images may be cropped in feeds. The kit covers one
+board — the publication BRYME actually runs. See `pinterest/HOWTO.md` and
+`pinterest/launch-schedule-4-weeks.csv`. Use the board name in
+`pinterest/manifest.csv` exactly. No affiliate-style overlays or clickbait
+text — house honesty rules apply:
 
 | Board | Seed pins (live routes) |
 |---|---|
-| Get Paid to Write | `/writers/writing/` · `/writers/writing-opportunities/` · `/writers/state-of-paid-writing-2026/` · `/writers/writing-calendar/` |
-| Fitness Plans | `/fitness/30-day-walking-plan/` · `/fitness/strength-training-for-beginners/` · `/fitness/hyrox-pace-planner/` · `/fitness/12-3-30-workout-explained/` |
-| Home Maintenance | `/home/seasonal-home-maintenance-checklist/` · `/home/rent-or-buy-tool/` · `/home/water-tank-annual-clean/` |
-| Money Basics | `/money/apr-vs-apy-explained/` · `/money/salary-sacrifice-explained/` · `/money/budget-50-30-20-explained/` |
-| Tech That Lasts | `/tech/student-laptop-spec-floor-2026/` · `/tech/picture-settings-that-fix-the-soap-opera-look/` · `/tech/android-battery-health/` |
+| Paid Writing & Freelance Careers | `/writers/writing/` · `/writers/writing-opportunities/` · `/writers/state-of-paid-writing-2026/` · `/writers/writing-calendar/` |
 
-Cadence: 3–5 fresh pins/week, repin never > 1×/day per board. Weekly: check
-outbound clicks per pin; kill boards under ~10 clicks/week after 6 weeks.
+Cadence: 3 fresh pins/week for the first four weeks (the 12-pin schedule in
+`pinterest/launch-schedule-4-weeks.csv`), then judge by outbound clicks per pin.
 
 **Owner action needed:** complete any remaining Pinterest business-account
 setup and finish the claim for `https://thebryme.com/` by clicking **Verify**.

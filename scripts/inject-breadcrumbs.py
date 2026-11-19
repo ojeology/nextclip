@@ -32,8 +32,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PUB = ROOT / "public"
 # Same tiers inject-analytics.py keeps in sync (see that file for the rationale).
-PUBLISH_TIERS = ("ecosystem", "public", "entertainment", "writers", "tech",
-                 "home", "sports", "fitness", "about", "money")
+PUBLISH_TIERS = ("ecosystem", "public", "writers", "about", "privacy")
 CFG = json.loads((ROOT / "site.config.json").read_text(encoding="utf-8"))
 ORIGIN = (CFG.get("siteUrl") or "").rstrip("/")
 if not ORIGIN:

@@ -77,9 +77,6 @@ h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;f
 .pc-body h3{color:#f4efe3;margin:0 0 6px;font-size:26px}
 .pc-body p{font-size:13.5px;line-height:1.55;color:#c7cddb;margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .pc-enter{font:800 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#d8b64a;text-decoration:none;border-bottom:1px solid rgba(216,182,74,.55);padding-bottom:2px}
-.pc-writers{grid-column:1/span 2}
-.pc-entertainment{grid-column:3;grid-row:1/span 2}
-.pc-home{grid-column:span 2}
 .hub-hero{background:#12182a;color:#f4efe3;border-bottom:5px solid #d0aa52}
 .hub-hero .hh-inner{max-width:1180px;margin:0 auto;padding:clamp(44px,7vw,84px) 24px;display:grid;grid-template-columns:1.2fr .8fr;gap:44px;align-items:center}
 .hub-hero .hh-kick{font:700 10.5px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:#d0aa52;margin:0 0 16px}
@@ -116,7 +113,7 @@ h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;f
 .desk-qa li{font-size:14px;line-height:1.4;margin:6px 0}
 .desk-qa li a{text-decoration:none;color:var(--ink,#141414);border-bottom:1px solid var(--line,#ddd)}
 .desk-qa li a:hover{border-bottom-color:var(--brass,#b98a2f)}
-@media(max-width:820px){.hub-hero .hh-inner{grid-template-columns:1fr;gap:0}.hh-collage{display:none}.cards{grid-template-columns:1fr}.pub-card,.pc-writers,.pc-entertainment,.pc-home{grid-column:auto;grid-row:auto}.pc-body p{display:none}.hub-stats{grid-template-columns:repeat(2,1fr)}.desk-qa{grid-template-columns:1fr;gap:18px}.hub-stats>div:nth-child(3){border-left:0}.rev-3{grid-template-columns:1fr}}
+@media(max-width:820px){.hub-hero .hh-inner{grid-template-columns:1fr;gap:0}.hh-collage{display:none}.cards{grid-template-columns:1fr}.pub-card{grid-column:auto;grid-row:auto}.pc-body p{display:none}.hub-stats{grid-template-columns:repeat(2,1fr)}.desk-qa{grid-template-columns:1fr;gap:18px}.hub-stats>div:nth-child(3){border-left:0}.rev-3{grid-template-columns:1fr}}
 .pub-card.soon{opacity:.92}
 .soon-tag{font:800 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line-strong);align-self:flex-start;padding:8px 12px;margin-top:auto}
 @media(max-width:820px){.cards{grid-template-columns:1fr}.mast-tag{display:none}}
@@ -178,10 +175,9 @@ html[data-theme="dark"] ::selection{background:rgba(208,170,82,.35)}
 .mast-brand{font-size:clamp(19px,5.2vw,24px);letter-spacing:.05em}
 .mast-edition{overflow:hidden;min-width:0}}
 
-/* .lg-scroll/.lg-table were defined only in SPORTS_CSS_EXTRA, so tech guides
-   using them shipped unstyled tables that set their own width (606px at 390px).
-   overflow on a display:table box is ignored, so a table carrying both classes
-   has to become the scrolling block itself. */
+/* A table carrying both classes has to become the scrolling block itself:
+   overflow on a display:table box is ignored, so the table set its own width
+   (606px at a 390px viewport) and scrolled the whole page sideways. */
 .lg-scroll,.compare-scroll{overflow-x:auto;overflow-y:hidden;max-width:100%;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
 table.lg-table,table.compare-table{width:100%;border-collapse:collapse;font:500 14px var(--sans)}
 table.lg-table.lg-scroll,table.compare-table.compare-scroll{display:block;min-width:0}

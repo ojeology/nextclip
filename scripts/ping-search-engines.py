@@ -83,10 +83,9 @@ def main() -> int:
     smp = sitemap_url()
     # Full URL set from the committed sitemap, so IndexNow receives every route.
     url_list = [SITE + "/"]
-    # M1 (audit 2026-09-16): root sitemap.xml is a sitemap index now; IndexNow
-    # needs page URLs, so take the union of the six committed property sitemaps.
-    for _child in ("writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
-                   "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml"):
+    # The root sitemap.xml is a sitemap index; IndexNow needs page URLs, so read
+    # the Writers sitemap, which holds every page this site publishes.
+    for _child in ("writers/sitemap.xml",):
         sf = ROOT / _child
         if sf.is_file():
             for loc in re.findall(r"<loc>(.*?)</loc>", sf.read_text(encoding="utf-8", errors="replace"), re.S):

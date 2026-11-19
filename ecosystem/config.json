@@ -3,12 +3,7 @@
   "mode": "path",
   "origin": "https://thebryme.com",
   "subdomains": {
-    "writers": "writers",
-    "sports": "sports",
-    "entertainment": "entertainment",
-    "tech": "tech",
-    "fitness": "fitness.thebryme.com",
-    "home": "home.thebryme.com"
+    "writers": "writers"
   },
-  "notes": "mode=path: properties served at <origin>/<prop>/, writers at /writers/ (origin comes from SITE_URL / site.config.json; the retired bryme.onrender.com host is no longer used). mode=subdomain: the later deployment change. PRODUCTION_DOMAIN/ROUTING_MODE/ORIGIN env vars override."
+  "notes": "mode=path: the single BRYME publication (Writers) is served at <origin>/writers/ and the house hub files sit at <origin>/ (origin comes from SITE_URL / site.config.json; the retired bryme.onrender.com host is no longer used). mode=subdomain: the later deployment change. PRODUCTION_DOMAIN/ROUTING_MODE/ORIGIN env vars override."
 }

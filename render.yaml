@@ -15,41 +15,17 @@ services:
     # order that works: build-writing-first regenerates an unrouted writers tree,
     # then routing prefixes it into /writers/, then public/ is published.
     #
-    # The two extra steps that used to follow were removed because they cannot
-    # succeed here. Verified on a pristine clone at 7f3e0f2:
-    #   - build-routing.py re-run on an already-routed tree hits its own guard and
-    #     exits 1 ("tree is already routed - rebuild clean (rm -rf writers ...)
-    #     first, aborting"), which failed the whole && chain on every deploy.
-    #   - build-ecosystem.py re-run rewrites 186 files under ecosystem/ that are
-    #     not then propagated to public/ (routing has already aborted), so it
-    #     added churn and no output.
-    # The git clean is the duplicate-content fix. Render caches the build
-    # workspace between deploys and `npm run build` never deletes, so untracked
-    # output from an older vintage (public/writing/, public/guides/,
-    # public/learn/, ... from 2026-09-14) could be published as index,follow
-    # duplicates of identical /writers/ pages and shadow redirects.
-    # The clean MUST run BEFORE `npm run build`: imported Sports pages/assets are
-    # tracked under ecosystem/ and assets/, but their generated public/ copies
-    # are untracked. A post-build clean deletes those staged Sports routes even
-    # though the import validator has passed (causing live 404s). Pre-cleaning
-    # removes stale untracked output, then the build recreates the current full
-    # artifact from tracked sources.
-    # This ordering is safe because `npm run build` runs under `set -e` and fails
-    # hard (changed 21 Sep 2026). If a generator or the Sports validator fails,
-    # the && chain aborts and Render does not publish a partial/empty artifact.
-    # Before the hard-fail change, moving the clean before the build was unsafe.
-    # batch 11f: the stale-_recovered sweep must run BEFORE npm run build, and must not
-    # touch public/: purge-stale-publish (final build step) writes noindex tombstones into
-    # public/{entertainment,sports}/_recovered/ to overwrite the stale 2026-09-14 copies
-    # on Render's overlay-style static serving - the 11c ordering (sweep AFTER the build)
-    # deleted those tombstones out of the artifact and the stale files kept serving.
-    # 2026-10-01: the retired Money desk is swept out of the workspace before
-    # the build. A reused Render build workspace kept the git-removed money/
-    # trees alive, so the live artifact served stale /money/* pages (old etags,
-    # old last-modified) even though the deployed commit had deleted them -
-    # the same class of drift the _recovered sweep and the git-clean guard
-    # below already defend against. rm -rf is a no-op on a clean checkout.
-    buildCommand: npm install --omit=dev && rm -rf sports entertainment tech fitness home money event-calendar public/sports public/entertainment public/tech public/fitness public/home public/money public/event-calendar && git -c safe.directory='*' clean -xdf public/ && npm run build
+    # The pre-build sweep is a stale-workspace guard. Render caches the build
+    # workspace between deploys and `npm run build` never deletes, so output from
+    # an older vintage could be published as index,follow duplicates of the
+    # /writers/ pages, or as pages from desks that no longer exist. The sweep
+    # removes those directories and the stale public/ copies before the build,
+    # then the build recreates the current artifact from tracked sources. It is a
+    # no-op on a clean checkout.
+    #
+    # Ordering is safe because `npm run build` runs under `set -e` and fails hard:
+    # if a generator dies the && chain aborts and Render publishes nothing rather
+    # than a partial artifact.
     staticPublishPath: public
     headers:
       - path: /*
@@ -59,29 +35,22 @@ services:
         name: Referrer-Policy
         value: strict-origin-when-cross-origin
     autoDeploy: true
-    # Legacy URLs from the pre-BRYME multi-niche site. These were previously
-    # kept in a Netlify-style `_redirects` file, which Render does NOT read —
-    # so /opportunities and /jobs were returning 404 to anyone arriving from
-    # an old Google result, and a stale dashboard rule was sending /make-money
-    # to /opportunities/ (a noindex page). Declared here they are honoured,
-    # version-controlled, and reviewable.
-    # Destinations updated 2026-09-15 to the routed scheme. The writers' pages
-    # moved under /writers/, so the previous targets (/writing/,
-    # /writing-opportunities/) no longer exist in the published artifact and
-    # each of these rules was sending old links to a 404. Kept in step with the
-    # _redirects file, which server/server.js reads for local tests.
-    # 2026-09-16: SYNCED. The live service now runs exactly these routes
-    # (plus the two /tech/ article rules below): applied via the Render API,
-    # PUT /v1/services/{id}/routes, replacing 18 dashboard-era rules that
-    # predated this file (/tech 301ed to /guides/, /make-money 301ed to
-    # /opportunities/). Those rules are only visible through the dedicated
-    # /routes endpoint - the service-details API does not expose them, which
-    # is why this drift went unnoticed. The live buildCommand and NODE_VERSION
-    # were likewise synced to this file's values via the API on the same day.
-    # scripts/purge-stale-publish.py still enforces the same scheme at file
-    # level inside `npm run build` (published files outrank edge rules; the
-    # stubs are the belt-and-braces against future config drift). Keep this
-    # block and that script's parsed destinations in step: it reads this file.
+    # Legacy URLs. `_redirects` is a Netlify-style file that Render does NOT read,
+    # so the same scheme is declared here, where it is honoured, version-controlled
+    # and reviewable - and scripts/purge-stale-publish.py additionally writes
+    # file-level stubs for it inside `npm run build`, because a published file
+    # outranks an edge rule. Keep this block and that script in step: it parses
+    # this file.
+    #
+    # Two families of rule:
+    #   - the retired hubs (/jobs, /make-money, /opportunities) 301 to the
+    #     Writers market directory, so an old inbound link still lands on the
+    #     thing it was looking for;
+    #   - the pre-routing writers scheme 301s every legacy URL to its exact
+    #     routed twin (/writing/<slug>/ -> /writers/writing/<slug>/), because
+    #     Render supports wildcard capture in the destination. Every destination
+    #     was checked against content/index-allowlist.routed.json, so no rule can
+    #     301 to a 404. /about/ is deliberately absent - it is a live page.
     routes:
       # batch #7 (25 Sep): saving-for-a-house-deposit-explained shipped as an
       # unintentional duplicate of the older how-to-save-for-a-house-deposit
@@ -226,8 +195,4 @@ services:
       # custom domain is live (e.g. https://bryme.example.com). All generated
       # canonicals, sitemaps, JSON-LD and internal URLs follow this value.
       - key: SITE_URL
-        sync: false
-      - key: INDEXING_API_TOKEN
-        sync: false
-      - key: GOOGLE_INDEXING_CREDENTIALS
         sync: false

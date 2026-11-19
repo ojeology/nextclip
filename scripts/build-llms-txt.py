@@ -3,8 +3,8 @@
 
 Follows the llms.txt convention: H1 name, blockquote description, H2
 sections of curated links. Curated, not a sitemap dump: LLM assistants
-get the house, the seven desks, their flagship pages and the tools, with
-one honest line each. Every link is asserted to exist in the published
+get the house, the publication, its flagship pages and the tools, with one
+honest line each. Every link is asserted to exist in the published
 tree, so the file can never advertise a phantom page.
 
 Honesty rules (master brief): no fabricated claims, counts read from the
@@ -71,9 +71,7 @@ def sitemap_count(desk):
 
 
 def sitemap_count_all(desk):
-    """Every sitemap for the desk - after the A8-Ent split, entertainment
-    publishes a second sitemap for its catalogue pages; both are live pages
-    and both count."""
+    """Every page the desk publishes, including any secondary sitemap."""
     n = sitemap_count(desk)
     for extra in (PUB / desk).glob("sitemap-*.xml"):
         n += len(re.findall(r"<loc>", extra.read_text(encoding="utf-8")))

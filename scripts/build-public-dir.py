@@ -25,7 +25,7 @@ PUBLIC_DIRS = [
     "editorial-policy", "guides", "privacy", "terms", "tested", "writing", "assets",
     "learn", "tools", "glossary", "templates", "checklists", "problems", "search",
     "verification", "find", "start", "compare", "regional", "intelligence", "tracker", "today", "writing-opportunities", "essays", "read",
-    "newsletter", "opportunities", "jobs", "make-money",
+    "newsletter",
 ]
 _writers_children = (
     set(d.name for d in (ROOT / "writers").iterdir() if d.is_dir())
@@ -65,31 +65,20 @@ for name in PUBLIC_FILES:
         shutil.copy2(src, PUB / name)
         copied += 1
 
-# Five-publication overrides: the committed ecosystem build is the routed
-# truth. Render deploys run this script at the end of `npm run build`; when the
-# python routing steps are unavailable there (blueprint buildCommand changes
-# need a manual sync), the hub, the property sites and the routed sitemap are
-# staged straight from the committed ecosystem/ output. When routing DID run,
-# it rebuilds public/ itself afterwards and these lines are irrelevant.
+# House-file overrides: the committed ecosystem build is the routed truth. Render
+# deploys run this script at the end of `npm run build`; when the python routing
+# steps are unavailable there (blueprint buildCommand changes need a manual sync),
+# the hub homepage and the routed sitemap are staged straight from the committed
+# ecosystem/ output. When routing DID run, it rebuilds public/ itself afterwards
+# and these lines are irrelevant.
 ECO = ROOT / "ecosystem"
 if (ECO / "config.json").is_file():
     import json as _json
     if _json.loads((ECO / "config.json").read_text()).get("mode") == "path":
-        for _p in ("sports", "tech", "entertainment", "fitness", "home", "money"):
-            # Prefer the routed root tree when it exists: it carries the
-            # property-prefixed links. The raw ecosystem tree is pre-routing
-            # and must never reach public/ after a completed routing run.
-            _src = ROOT / _p if (ROOT / _p / "index.html").is_file() else (ECO / _p if (ECO / _p).is_dir() else None)
-            if _src:
-                _dst = PUB / _p
-                if _dst.exists():
-                    shutil.rmtree(_dst)
-                shutil.copytree(_src, _dst, ignore=shutil.ignore_patterns("_recovered"))
-                copied += 1
-        # M1 (audit 2026-09-16): only the homepage comes from the hub now. The
-        # root sitemap.xml is the sitemap index written by build-routing (and
-        # committed); re-copying the hub's 2-URL sitemap over it would restore
-        # the inverted architecture (root = 2 URLs, writers = everything).
+        # M1 (audit 2026-09-16): only the homepage comes from the hub. The root
+        # sitemap.xml is the sitemap index written by build-routing (and
+        # committed); re-copying the hub's own sitemap over it would restore the
+        # inverted architecture (root = 2 URLs, writers = everything).
         for _f in ("index.html",):
             if (ECO / "hub" / _f).is_file():
                 shutil.copy2(ECO / "hub" / _f, PUB / _f)
@@ -98,7 +87,7 @@ if (ECO / "config.json").is_file():
 # Assertion: against the PUBLISHED sitemap (the hub's after the override).
 import re as _re
 _sm = (PUB / "sitemap.xml").read_text(encoding="utf-8")
-_staged = set(PUBLIC_DIRS) | {"writers", "sports", "tech", "entertainment", "fitness", "home", "money"} | {f.split(".")[0] for f in PUBLIC_FILES}
+_staged = set(PUBLIC_DIRS) | {"writers"} | {f.split(".")[0] for f in PUBLIC_FILES}
 _missing = set()
 for _u in _re.findall(r"<loc>([^<]+)</loc>", _sm):
     _seg = _re.sub(r"^[a-z]+://[^/]+", "", _u).strip("/")

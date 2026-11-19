@@ -307,17 +307,14 @@ const staleWindows=json("content/opportunities.json").opportunities.filter(o=>{
 }).map(o=>o.slug);
 if(staleWindows.length)warn(`${staleWindows.length} record(s) have a passed deadline but a live status — re-verify: ${staleWindows.join(", ")}`);
 if(pubRecords!==expectedPubs)fail(`expected ${expectedPubs} indexed publication records under /writing/, found ${pubRecords}`);
-// All seven live property sitemaps must partition the routed index allowlist.
-// 2026-10-03: money/sitemap.xml restored (desk relaunched, owner decision -
-// monetization pivot to Adsterra after the AdSense rejection).
-// Entertainment title pages enter entertainment/sitemap.xml only after their
-// curated Watch This / Then Try This batch is released; unfinished catalogue
-// pages remain noindex. The legacy sitemap-catalogue.xml stays empty/delisted.
+// The routed index allowlist and the sitemap index must describe the same set of
+// routes: one property sitemap for the Writing publication, and the root index
+// that points at it.
 const propertySitemaps=["writers/sitemap.xml"];
 const sitemapRoutes=propertySitemaps.flatMap(sf=>{if(!fs.existsSync(path.join(ROOT,sf)))return[];return[...read(sf).matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]))});
 const sitemapUnique=new Set(sitemapRoutes);
-// Writers is writers-only; the two house URLs (/, /about/) live in Home's
-// sitemap. The six children must be pairwise disjoint and cover the allowlist.
+// The sitemap routes must cover the allowlist exactly - nothing listed that is
+// not indexable, nothing indexable that is not listed.
 const idxText=read("sitemap.xml");
 if(!idxText.includes("<sitemapindex"))fail("root sitemap.xml must be a sitemapindex");
 const idxLocs=[...idxText.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>{try{return new URL(m[1],site).pathname}catch{return ""}});  // raw paths: norm() would append route-style trailing slashes
