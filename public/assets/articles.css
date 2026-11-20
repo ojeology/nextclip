@@ -130,7 +130,16 @@
 .ba-body.prose li { font-family: var(--serif); font-size: 18px; line-height: 1.7; margin-bottom: 8px; }
 .ba-body.prose a { color: var(--navy); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .ba-body.prose a:hover { color: var(--brass); }
-.ba-rule { margin: 34px 0; border: 0; border-top: 1px solid var(--line); }
+/* The house styles an <hr> inside .prose as a 72px lime bar. That is the right
+   mark between the sections of a guide; inside a reported story it fired three
+   times in one screen and read as a stray block. The story keeps a hairline.
+   The extra .prose qualifier is what beats `.prose hr` - same specificity is
+   not enough because the two stylesheets can load in either order. */
+.prose hr.ba-rule,
+.ba-rule {
+  margin: 34px 0; padding: 0; border: 0; height: 1px; width: auto;
+  background: var(--line); border-radius: 0; overflow: visible;
+}
 
 .ba-figure { margin: 30px 0; }
 .ba-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius); background: var(--paper-2); aspect-ratio: 16 / 9; object-fit: cover; }
@@ -309,3 +318,37 @@ html[data-theme="dark"] .ba-body.prose a,
 html[data-theme="dark"] .ba-standards-grid a,
 html[data-theme="dark"] .ba-standards-foot a { color: var(--accent); }
 html[data-theme="dark"] .ba-ribbon-cta { color: var(--accent); }
+
+/* the departure: a brass sweep across the band, then the page changes */
+.ba-enter.is-leaving::after {
+  content: ""; position: absolute; inset: 0; transform-origin: left center;
+  background: linear-gradient(90deg, rgba(195, 154, 46, .95), rgba(195, 154, 46, .35));
+  animation: ba-enter-sweep .26s ease-in forwards;
+}
+@keyframes ba-enter-sweep { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* the arrival: the section's hero settles into place. Transform + opacity only,
+   so nothing reflows and no layout shift is recorded. */
+html.ba-arrived .ba-hero,
+html.ba-arrived .ba-article-head,
+html.ba-arrived .ba-featured {
+  animation: ba-arrive .34s cubic-bezier(.22, .61, .36, 1) both;
+}
+@keyframes ba-arrive {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 560px) {
+  .ba-enter-in { gap: 6px 12px; padding: 12px 0; }
+  .ba-enter-line { flex: 1 1 100%; order: 3; font-size: 14px; }
+  .ba-enter-cta { padding: 10px 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ba-enter.is-leaving::after { animation: none; }
+  html.ba-arrived .ba-hero,
+  html.ba-arrived .ba-article-head,
+  html.ba-arrived .ba-featured { animation: none; }
+  .ba-enter-arrow, .ba-enter:hover .ba-enter-arrow { transition: none; transform: none; }
+}

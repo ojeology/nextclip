@@ -1,0 +1,51 @@
+/* ================================================================
+   BRYME ARTICLES — the way in (house hub only)
+   ----------------------------------------------------------------
+   This file is loaded by the front door and nowhere else. The band it
+   styles is the only Articles thing on the house hub, so it ships on
+   its own instead of dragging the whole section stylesheet in — doing
+   that once leaked .kicker/.logo rules into the hub's compact header
+   and pushed it 124px wide on a 390px phone.
+   Tokens (--navy, --brass-bright, --serif, --max) come from the hub.
+   ================================================================ */
+
+/* ================================================================
+   THE WAY IN — the full-bleed band at the top of the house hub
+   ----------------------------------------------------------------
+   Full width, above the hero and above the first ad band, so it is the
+   first thing a reader can see and tap on any screen size. It is one
+   <a>: the whole band is the target, which is what makes it work on a
+   phone without a hover state.
+   ================================================================ */
+.ba-enter {
+  position: relative; display: block; overflow: hidden;
+  background: var(--navy); color: var(--sheet);
+  border-top: 1px solid var(--navy-deep); border-bottom: 3px solid var(--brass-bright);
+  text-decoration: none;
+}
+.ba-enter-in {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px;
+  width: min(calc(100% - 32px), var(--max, 1100px)); margin-inline: auto;
+  padding: clamp(12px, 1.8vw, 18px) 0;
+}
+.ba-enter-kicker {
+  font-family: var(--sans); font-size: 10.5px; font-weight: 800; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--brass-bright); white-space: nowrap;
+}
+.ba-enter-line {
+  flex: 1 1 18rem; min-width: 0;
+  font-family: var(--serif); font-size: clamp(14px, 1.5vw, 16.5px); line-height: 1.35;
+  color: #f3efe4;
+}
+.ba-enter-line b { font-weight: 700; color: #fff; }
+.ba-enter-cta {
+  display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+  font-family: var(--sans); font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--navy-deep); background: var(--brass-bright);
+  padding: 9px 14px; border-radius: 2px;
+}
+.ba-enter-arrow { transition: transform .18s ease; }
+.ba-enter:hover .ba-enter-cta { background: #d8ad3d; }
+.ba-enter:hover .ba-enter-arrow { transform: translateX(3px); }
+.ba-enter:focus-visible { outline: 3px solid var(--brass-bright); outline-offset: -3px; }
+.ba-enter:hover .ba-enter-line { color: #fff; }

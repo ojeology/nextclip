@@ -1,5 +1,5 @@
 {
-  "enabled": false,
+  "enabled": true,
   "delaySeconds": 10,
   "maxPerSession": 1,
   "cooldownDays": 7,
@@ -7,7 +7,20 @@
   "dismissLabel": "Maybe later",
   "ctaLabel": "Read the Full Story",
   "asideLabel": "Read later — the full story is one tap away, and nothing here blocks the page.",
-  "article": null,
+  "article": {
+    "label": "A STORY FROM BRYME",
+    "category": "Human Behaviour",
+    "headline": "The Life of an Addicted Gambler: The Wins Everyone Sees, the Losses Nobody Counts",
+    "teaser": "The ticket everyone celebrates is the one that keeps the bets coming. Behind it is a history of deposits, loans and promises that nobody counted.",
+    "url": "/writers/articles/the-life-of-an-addicted-gambler/",
+    "cover": "/assets/articles/covers/the-life-of-an-addicted-gambler.jpg",
+    "coverAlt": "A man sits alone in a betting shop at night, studying a paper slip in his hands, while a bank of old television screens on the wall shows football matches",
+    "coverWidth": 1600,
+    "coverHeight": 900,
+    "readingMinutes": 15,
+    "published": "2026-11-20",
+    "publishedLabel": "20 November 2026"
+  },
   "surfaces": [
     "/writers/",
     "/writers/articles/"

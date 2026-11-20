@@ -130,6 +130,18 @@
   }, true);
 
   /* ---------- page-level analytics ---------- */
+  /* Arrival: assets/articles-enter.js on the house hub drops a flag before it
+     navigates, so the section can settle into place instead of appearing. The
+     class is added after first paint and animates transform/opacity only, so it
+     costs nothing in LCP or CLS, and it is skipped for reduced-motion readers. */
+  try {
+    if (sessionStorage.getItem("bryme.articles.entered")) {
+      sessionStorage.removeItem("bryme.articles.entered");
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!reduce) document.documentElement.classList.add("ba-arrived");
+    }
+  } catch (e) { /* storage blocked: no transition, page is unaffected */ }
+
   var isLanding = /^\/writers\/articles\/$/.test(path);
   var isArticle = !!articleMeta;
 

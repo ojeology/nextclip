@@ -8,6 +8,8 @@
     "/writers/",
     "/writers/about/",
     "/writers/articles/",
+    "/writers/articles/human-behaviour/",
+    "/writers/articles/the-life-of-an-addicted-gambler/",
     "/writers/author/ibrahim-sodiq/",
     "/writers/checklists/",
     "/writers/compare/",
@@ -686,5 +688,5 @@
     "/writers/writing/yellow-arrow-journal/",
     "/writers/writing/zyzzyva/"
   ],
-  "reviewedAt": "2026-11-19"
+  "reviewedAt": "2026-11-20"
 }

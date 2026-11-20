@@ -17,7 +17,9 @@ Fixes:
 - All hrefs allowlist-validated.
 """
 from __future__ import annotations
+import html
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -340,6 +342,48 @@ secondary_html = "".join(
     for name, route, count, desc in SECONDARY
 )
 
+# ---------------------------------------------------------------------------
+# The way in to BRYME Articles.
+#
+# The brief asked for one thing on the front door: a way into the article world
+# that is completely visible at the top of the page. So it is the first thing
+# inside <main>, full-bleed, above the hero and above the first ad band - not a
+# pill tucked into a header that collapses on a phone. The whole band is one
+# <a>, so the tap target is the size of the band.
+#
+# When a story is live the line quotes it (headline + category); when nothing is
+# live it says what the section is and that it is opening. Either way it is
+# generated from content/articles/, so it cannot go stale.
+# ---------------------------------------------------------------------------
+def articles_entry() -> str:
+    line = ""
+    try:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import articles_content as ac
+        cfg = ac.load_config()
+        live = ac.load_published(cfg)
+        feat = ac.featured(cfg, live)
+        if feat:
+            line = ("New: <b>" + html.escape(feat["title"], quote=False) + "</b> &middot; "
+                    + html.escape(feat["category"]["name"], quote=False)
+                    + " &middot; " + str(feat["reading_minutes"]) + " min read")
+        else:
+            line = "Reported stories about people, life, money and ambition &mdash; opening soon."
+    except Exception:
+        line = "Reported stories about people, life, money and ambition."
+    return (
+        '<a class="ba-enter" href="' + H("/writers/articles/") + '" data-articles-enter>'
+        '<span class="ba-enter-in">'
+        '<span class="ba-enter-kicker">BRYME Articles</span>'
+        '<span class="ba-enter-line">' + line + '</span>'
+        '<span class="ba-enter-cta">Enter the article world'
+        '<span class="ba-enter-arrow" aria-hidden="true">&rarr;</span></span>'
+        '</span></a>'
+    )
+
+
+ARTICLES_ENTRY = articles_entry()
+
 HTML = f"""<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -466,6 +510,7 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
 .house-pal-list small{{font-size:11px;opacity:.7}}
 @media(max-width:640px){{.house .wrap{{width:min(calc(100% - 18px), var(--max))}}.house-hero h1{{font-size:clamp(28px,8vw,36px)}}.flag-grid{{grid-template-columns:1fr}}.sec-grid{{grid-template-columns:repeat(2,1fr)}}}}
 </style>
+<link rel="stylesheet" href="/assets/articles-enter.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -497,7 +542,9 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
   <div class="drawer-group"><b>Flagship pathways — 7 jobs</b>{"".join(f'<a href="{H(route)}"><span style="display:inline-grid;place-items:center;width:18px;height:18px;border:1px solid var(--line);border-radius:4px;font:700 10px/1 ui-monospace,monospace;margin-right:6px">{kbd}</span>{title} · {count}</a>' for _,title,route,_,count,kbd in PATHWAYS)}</div>
   <div class="drawer-group"><b>Keys</b><span class="drawer-note">/ focus search · Ctrl+K palette (828 routes) · 1–7 pathways · 0 clear · ? help · theme toggle remembers choice · saved in localStorage only</span></div>
 </aside>
-<main id="main" class="house"><div class="wrap">
+<main id="main" class="house">
+{ARTICLES_ENTRY}
+<div class="wrap">
 
 <section class="house-hero">
   <div class="eyebrow"><b>THE BRYME</b><span class="dot"></span>BRYME WRITERS<span class="dot"></span>ONE EDITORIAL STANDARD</div>
@@ -505,7 +552,9 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
   <p class="dek"><b>A practical home for working writers</b> — {N_MARKETS} paying markets checked by hand against official submission guidelines, {N_GUIDES} craft and pitching guides, and {N_TOOLS} private browser tools. Dated, sourced, no pop-up windows.</p>
   <div class="actions">
     <a class="btn" href="{H("/writers/")}">Enter flagship →</a>
-    <a class="btn secondary" href="{H("/writers/articles/")}">BRYME Articles →</a>
+    <!-- BRYME Articles is deliberately NOT repeated here: the full-bleed
+         .ba-enter band above the hero is the single way in, and repeating it
+         made the front door look like it was selling the same thing twice. -->
     <a class="btn secondary" href="{H("/writers/writing/")}">Browse {N_MARKETS} markets</a>
     <button type="button" class="btn secondary" data-house-open-palette><span>Find anything</span><kbd style="display:inline-grid;place-items:center;width:18px;height:18px;border:1px solid var(--line);border-radius:4px;font:700 10px/1 ui-monospace,monospace">K</kbd></button>
   </div>
@@ -568,6 +617,7 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
 
 <script src="/assets/site-nav.js" defer></script>
 <script src="/assets/house-home.js" defer></script>
+<script src="/assets/articles-enter.js" defer></script>
 <footer class="site-foot"><div class="wrap foot-grid">
 <div class="foot-brand"><a class="logo" href="{H("/")}"><span class="logo-mark" aria-hidden="true"></span> THE BRYME</a><p>A publication that reads the fine print so you don't have to. {N_MARKETS} paying writing markets checked by hand, {N_GUIDES} craft guides, and {N_TOOLS} browser tools — dated, sourced, no pop-up windows.</p></div>
 <div class="foot-col"><b>Writers</b><a href="{H("/writers/")}">Writers home</a><a href="{H("/writers/writing/")}">{N_MARKETS} markets</a><a href="{H("/writers/learn/")}">{N_GUIDES} guides</a><a href="{H("/writers/tools/")}">{N_TOOLS} tools</a><a href="{H("/writers/articles/")}">BRYME Articles</a><a href="{H("/writers/search/")}">Search</a></div>
