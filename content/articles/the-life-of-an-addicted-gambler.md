@@ -22,6 +22,8 @@ A phone lights up in a dark room. Football fixtures are checked. Weekend games a
 
 There is no particular occasion. No celebration. No special reason to gamble that night. There is simply the familiar urge to place another bet.
 
+![Dark-skinned hands holding a glowing phone in a dark room at night](/assets/articles/figures/gambler-phone-night.jpg "The day no longer begins at sunrise. It begins with the first ticket. Illustrative image, AI-generated for BRYME.")
+
 For someone struggling with gambling addiction, the day does not necessarily begin when the sun rises. It may begin with the first ticket.
 
 And it does not necessarily end when the last football match finishes.
@@ -178,6 +180,8 @@ For some people, the period when they are most determined to stop after winning 
 
 ## The Betting Shop: Where Hope and Frustration Share a Room
 
+![A table at night covered in crumpled blank paper slips and a ballpoint pen under a single lamp](/assets/articles/figures/gambler-slips.jpg "The paper that never adds up: a stake is a decision made once, but the total is accumulated quietly. Illustrative image, AI-generated for BRYME.")
+
 For an addicted gambler, the betting shop is rarely just a place to place bets. It is where the day’s hopes are written on slips of paper, then checked one match at a time.
 
 Everything inside keeps attention on the next result. Screens show fixtures and odds. Tickets are compared. Conversations drift from game to game. A win is celebrated loudly. A loss is swallowed quietly and followed by another slip.
@@ -187,6 +191,8 @@ From the customer’s seat, the experience is made of single moments: a ticket o
 The mood in the shop follows the scoreboard. A gambler who has just lost heavily may already be tense. A minor disagreement becomes an argument. An accidental touch or an innocent comment sets off a reaction far bigger than the moment deserves. The frustration belongs to the lost bet, but it lands on someone who had nothing to do with it.
 
 The shop can also become a place of quiet humiliation: the cashier who knows your face, the stake you can’t cover, the friend who sees you borrowing, the walk out after a loss everyone watched.
+
+![Rows of empty blue plastic chairs facing a bank of switched-off television screens in a betting shop](/assets/articles/figures/gambler-empty-shop.jpg "After the last match: the room empties, the screens go dark, and the day's arithmetic starts. Illustrative image, AI-generated for BRYME.")
 
 And when the gambler leaves, the anger doesn’t always stay behind.
 

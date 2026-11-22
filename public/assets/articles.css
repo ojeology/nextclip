@@ -159,6 +159,8 @@
 .ba-sources ol { margin: 0; padding-left: 20px; }
 .ba-sources li { font-size: 14px; line-height: 1.6; color: var(--muted); margin-bottom: 8px; }
 .ba-sources li span { color: var(--dim); }
+.ba-sources li span::before { content: "\00b7"; margin: 0 6px; }
+
 
 .ba-article-foot { margin: 36px 0 0; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--dim); }
 .ba-article-foot p { margin: 0 0 8px; }
