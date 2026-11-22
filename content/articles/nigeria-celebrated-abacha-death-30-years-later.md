@@ -224,6 +224,6 @@ The questions that follow do not arrange themselves into a verdict, and should n
 
 If Operation Sweep made Lagos safer, what was the price, and who was told they had to pay it? If the fear of punishment produced better behaviour, did it produce better people — or only people who understood that some people can never be punished? If bribery is spread through offices, schools, hospitals and recruitment panels, is changing the man in Aso Rock the mechanism that fixes it, or has the country been treating a national habit as an election problem? Have Nigerians become more accountable to one another, or only more fluent in condemning the accountability of others? And if a military government could enforce some rules more visibly, could a civilian one build institutions that enforce them without asking anyone to disappear?
 
-Nearly thirty years after Nigerians danced in the streets at the news of a dictator's death, how much has actually changed — and what kind of country has the dancing built?
-
 The man died in the early hours of a Monday, and was buried before the sun went down, and the country that celebrated has been arguing about it ever since. That argument is not a failure of gratitude. It is the most democratic thing Nigeria does.
+
+Nearly three decades after Nigerians celebrated the end of Abacha's rule, how much has actually changed, and what kind of country have we built since then?
