@@ -67,9 +67,9 @@
       }
     },
     "socialBar": {
-      "enabled": true,
+      "enabled": false,
       "script": "https://pl31572331.profitableratecpmnetwork.com/9d/30/54/9d3054f92545b438c60dac71c8c0c106.js",
-      "note": "LIVE (owner unit, pasted 2026-10-03). External script only, loaded by /assets/adsterra-loader.js under the same consent gate; the floating widget mounts itself once the script runs."
+      "note": "SUSPENDED 2026-11-23. The widget mounts its own fixed layer over the page; on the Articles pages readers reported the navigation stopped accepting taps until a reload, and the network hides the layer's geometry from us, so no CSS fix can prove it sits under our chrome. Owner's call: revenue from this unit is not worth an unclickable masthead. The script and the loader path are untouched - flipping enabled back to true restores it in one rebuild."
     },
     "displayBanner": {
       "enabled": true,

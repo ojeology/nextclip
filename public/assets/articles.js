@@ -104,8 +104,11 @@
     if (el.closest(".ba-discover")) return "related";
     if (el.closest(".ba-reco")) return "recommendation";
     if (el.closest(".ba-cat-chips")) return "category-nav";
-    if (el.closest(".ba-cat-list")) return "category-map";
-    if (el.closest(".ba-card") || el.closest(".ba-featured")) return "card";
+    /* .ba-beat-grid / .ba-lead replaced .ba-cat-list / .ba-featured in the
+       2026-11-23 layout pass; both spellings are matched so a cached page
+       and a fresh one report the same surfaces. */
+    if (el.closest(".ba-beat-grid") || el.closest(".ba-cat-list")) return "category-map";
+    if (el.closest(".ba-card") || el.closest(".ba-lead")) return "card";
     return "inline";
   }
 

@@ -240,7 +240,25 @@ def discovery_block(article: dict, articles: list[dict]) -> str:
 </section>'''
 
 
+def ad_slot() -> str:
+    """Where the section's first ad unit goes.
+
+    scripts/inject-ads.py appends the configured band after the marker, so the
+    mark survives a rebuild and the band is stripped and re-inserted rather than
+    stacked. The slot exists because the section, not the injector, knows where
+    an ad can sit without wrecking the page: below the lead story, not above the
+    masthead, which is where the generic top-of-<main> rule put it and where it
+    shoved the headline down every time a creative arrived.
+    """
+    return '<div class="ba-adslot"><!--ba-ad--></div>'
+
+
 def head_extra_for(article: dict | None = None) -> str:
+    # Order matters, and this is the order the browser sees: page_wf() puts the
+    # house sheet after head_extra, so everything here is EARLIER in the cascade
+    # than bryme-v2.css. A section rule that must beat a house rule of equal
+    # specificity therefore needs one extra qualifier (see .section.ba-shelf in
+    # assets/articles.css) - do not "fix" it by moving this link.
     bits = [f'<link rel="stylesheet" href="{STYLESHEET}">']
     if article:
         bits.append(
@@ -290,20 +308,29 @@ def breadcrumb_schema(trail: list[tuple[str, str]]) -> dict:
 # ---------------------------------------------------------------------------
 # Landing page
 # ---------------------------------------------------------------------------
-def featured_block(article: dict) -> str:
-    return f'''<section class="section ba-featured" aria-labelledby="ba-featured-title">
-  <div class="ba-featured-card">
-    <a class="ba-featured-media" href="{esc(article["route"])}" tabindex="-1">
+def lead_block(article: dict) -> str:
+    """The lead story: the front page's first decision.
+
+    Set as a newspaper lead rather than a boxed card - a rule over the block, a
+    wide picture, the headline at display size and nothing else competing with
+    it. The previous version wrapped the same content in a bordered, shadowed
+    panel that started below the fold, which is the one thing a landing page
+    cannot afford.
+    """
+    return f'''<section class="ba-lead" aria-labelledby="ba-lead-title">
+  <p class="ba-band-label"><span>The lead story</span></p>
+  <article class="ba-lead-card">
+    <a class="ba-lead-media" href="{esc(article["route"])}" tabindex="-1">
       <img src="{esc(article["cover"])}" alt="{esc(article["cover_alt"])}" width="{article["cover_width"]}" height="{article["cover_height"]}" loading="eager" fetchpriority="high" decoding="async">
     </a>
-    <div class="ba-featured-body">
-      <p class="eyebrow">Featured story &middot; {esc(article["category"]["name"])}</p>
-      <h2 class="ba-featured-title" id="ba-featured-title"><a href="{esc(article["route"])}">{esc(article["title"])}</a></h2>
-      <p class="ba-featured-dek">{esc(article["description"])}</p>
+    <div class="ba-lead-body">
+      <p class="ba-lead-cat"><a href="{esc(ac.CATEGORY_ROUTE.format(slug=article["category"]["slug"]))}">{esc(article["category"]["name"])}</a></p>
+      <h2 class="ba-lead-title" id="ba-lead-title"><a href="{esc(article["route"])}">{esc(article["title"])}</a></h2>
+      <p class="ba-lead-dek">{esc(article["description"])}</p>
       {meta_line(article)}
-      <p class="ba-featured-cta"><a class="btn" href="{esc(article["route"])}">Read the story &rarr;</a></p>
+      <p class="ba-lead-cta"><a class="ba-link-cta" href="{esc(article["route"])}">Read the story<span aria-hidden="true"> &rarr;</span></a></p>
     </div>
-  </div>
+  </article>
 </section>'''
 
 
@@ -332,64 +359,107 @@ def empty_state(cfg: dict) -> str:
 </section>'''
 
 
+def masthead(cfg: dict, articles: list[dict], *, title: str, kicker: str,
+             standfirst: str) -> str:
+    """The section's own masthead.
+
+    One heading, one standfirst, one line of facts. The old header said "BRYME
+    Articles" three times (breadcrumb, kicker, h1) over two paragraphs and a rule,
+    which pushed the first story 700px down the page. Facts are computed from the
+    live story list, never typed.
+    """
+    live = ac.categories_in_use(cfg, articles)
+    beats = "".join(
+        f'<a class="ba-beat-chip is-live" href="{esc(ac.CATEGORY_ROUTE.format(slug=c["slug"]))}">'
+        f'{esc(c["name"])}</a>' for c in live)
+    chips = (f'<nav class="ba-beats" aria-label="Beats in this section">'
+             f'<a class="ba-beat-chip is-all" href="{ac.LANDING_ROUTE}">All stories</a>{beats}</nav>'
+             if live else "")
+    facts = []
+    n = len(articles)
+    if n:
+        facts.append(f'<span><b>{n}</b> {"story" if n == 1 else "stories"}</span>')
+    if len(live) == 1:
+        facts.append('<span><b>1</b> beat open</span>')
+    elif live:
+        facts.append(f'<span><b>{len(live)}</b> beats</span>')
+    facts.append('<span>Published when a story is ready</span>')
+    facts_html = '<p class="ba-mast-facts">' + "".join(facts) + "</p>"
+    return f'''<header class="ba-mast">
+  <p class="ba-mast-kicker">{esc(kicker)}</p>
+  <h1 class="ba-mast-title">{esc(title)}</h1>
+  <div class="ba-mast-cols">
+    <p class="ba-mast-dek">{esc(standfirst)}</p>
+    <div class="ba-mast-side">{facts_html}{chips}</div>
+  </div>
+</header>'''
+
+
 def category_map(cfg: dict, articles: list[dict]) -> str:
-    live = {c["slug"]: len(ac.in_category(articles, c["slug"])) for c in cfg["categories"]}
-    rows = []
+    """The five beats, as tiles rather than a five-row table.
+
+    Each tile states the beat, what it covers and whether it is open. Closed
+    beats are not links - a tile that looks pressable and goes nowhere is worse
+    than one that says "opening soon" in muted ink.
+    """
+    tiles = []
     for cat in cfg["categories"]:
-        n = live[cat["slug"]]
+        n = len(ac.in_category(articles, cat["slug"]))
         if n:
-            label = f'{n} {"story" if n == 1 else "stories"}'
             head = f'<a href="{esc(ac.CATEGORY_ROUTE.format(slug=cat["slug"]))}">{esc(cat["name"])}</a>'
-            state = "is-live"
+            state = f'is-live'
+            note = f'{n} {"story" if n == 1 else "stories"}'
         else:
-            label = "Opening soon"
             head = f"<span>{esc(cat['name'])}</span>"
             state = "is-soon"
-        rows.append(f'''<li class="ba-cat {state}">
-      <p class="ba-cat-name">{head}</p>
-      <p class="ba-cat-blurb">{esc(cat["blurb"])}</p>
-      <p class="ba-cat-count">{esc(label)}</p>
+            note = "Opening soon"
+        tiles.append(f'''<li class="ba-beat {state}">
+      <p class="ba-beat-name">{head}</p>
+      <p class="ba-beat-note">{esc(note)}</p>
+      <p class="ba-beat-blurb">{esc(cat["blurb"])}</p>
     </li>''')
     return f'''<section class="section ba-cats" id="categories" aria-labelledby="ba-cats-title">
-  <div class="section-head"><div><p class="eyebrow">What we cover</p>
-  <h2 id="ba-cats-title">Five beats, one question: how people actually live.</h2></div></div>
-  <ul class="ba-cat-list">{"".join(rows)}</ul>
+  <div class="ba-band-label"><span>What we cover</span><a class="ba-band-link" href="/editorial-policy/">How the desk works</a></div>
+  <h2 class="ba-section-title" id="ba-cats-title">Five beats, one question: how people actually live.</h2>
+  <ul class="ba-beat-grid">{"".join(tiles)}</ul>
 </section>'''
 
 
-def latest_block(articles: list[dict], featured_slug: str) -> str:
+def shelf_block(articles: list[dict], featured_slug: str) -> str:
+    """Everything else on the shelf, newest first."""
     rest = [a for a in articles if a["slug"] != featured_slug]
     if not rest:
         return ""
     cards = "".join(card(a) for a in rest[:6])
-    return f'''<section class="section ba-latest" aria-labelledby="ba-latest-title">
-  <div class="section-head"><div><p class="eyebrow">Latest</p>
-  <h2 id="ba-latest-title">Newly published</h2></div></div>
+    n = len(rest)
+    return f'''<section class="section ba-shelf" aria-labelledby="ba-shelf-title">
+  <div class="ba-band-label"><span>Also on the shelf</span><span class="ba-band-count">{n} {"story" if n == 1 else "stories"}</span></div>
+  <h2 class="ba-section-title" id="ba-shelf-title">More from the section</h2>
   <div class="ba-grid">{cards}</div>
 </section>'''
 
 
-def most_read_block(cfg: dict, articles: list[dict]) -> str:
-    picks = ac.most_read(cfg, articles)
-    if not picks:
+def most_read_block(cfg: dict, articles: list[dict], featured_slug: str) -> str:
+    """A numbered rail of what readers are actually opening.
+
+    Only rendered once the section has enough stories for the rail to say
+    something the shelf does not: with four stories it repeated the same three
+    cards, so the page ended with the same titles twice before the footer.
+    """
+    picks = [a for a in ac.most_read(cfg, articles) if a["slug"] != featured_slug]
+    if len(articles) < 6 or not picks:
         return ""
-    cards = "".join(card(a) for a in picks)
+    rows = "".join(
+        f'''<li><a class="ba-rank-row" href="{esc(a["route"])}">
+      <span class="ba-rank-n">{i + 1:02d}</span>
+      <span class="ba-rank-title">{esc(a["title"])}</span>
+      <span class="ba-rank-meta">{esc(a["category"]["name"])} &middot; {a["reading_minutes"]} min</span>
+    </a></li>''' for i, a in enumerate(picks[:5]))
     return f'''<section class="section ba-mostread" aria-labelledby="ba-mostread-title">
-  <div class="section-head"><div><p class="eyebrow">Most read</p>
-  <h2 id="ba-mostread-title">What readers are opening</h2>
-  <p class="ba-note">Ordered by measured reads, refreshed by the editorial desk &mdash; never by guesswork.</p></div></div>
-  <div class="ba-grid">{cards}</div>
+  <div class="ba-band-label"><span>Most read</span><span class="ba-band-count">Measured, not guessed</span></div>
+  <h2 class="ba-section-title" id="ba-mostread-title">What readers are opening</h2>
+  <ol class="ba-rank">{rows}</ol>
 </section>'''
-
-
-def recommended_block(articles: list[dict], featured_slug: str) -> str:
-    pool = [a for a in articles if a["slug"] != featured_slug] or articles
-    if len(articles) < 2 or not pool:
-        return ""
-    blocks = "".join(recommendation(a, heading="Recommended reading") for a in pool[:2])
-    return f'''<section class="section alt ba-recostrip"><div class="section-head"><div>
-  <p class="eyebrow">Start somewhere</p><h2>Recommended reading</h2></div></div>
-  {blocks}</section>'''
 
 
 def standards_block() -> str:
@@ -403,8 +473,8 @@ def standards_block() -> str:
     import datetime as _dt
     built = ac.human_date(_dt.date.fromisoformat(str(_bwf.TODAY)[:10]))
     return f'''<section class="section alt ba-standards" aria-labelledby="ba-standards-title">
-  <div class="section-head"><div><p class="eyebrow">How this section works</p>
-  <h2 id="ba-standards-title">Editorial standards, in plain language.</h2></div></div>
+  <div class="ba-band-label"><span>How this section works</span></div>
+  <h2 class="ba-section-title" id="ba-standards-title">Editorial standards, in plain language.</h2>
   <div class="ba-standards-grid">
     <div><h3>People are asked, not assumed</h3><p>Every story is reported from conversations with the people in it. Quotes are checked back with the person who said them before publication.</p></div>
     <div><h3>Dates mean something</h3><p>A story carries the date it was published and, where it was revised, the date it changed. Nothing is quietly rewritten and left looking new.</p></div>
@@ -418,21 +488,21 @@ def standards_block() -> str:
 
 def landing(cfg: dict, articles: list[dict]) -> None:
     feat = ac.featured(cfg, articles)
+    # The front page reads in one line: what this section is, the story worth
+    # starting with, then the shelf. The ad slot sits after the lead, never
+    # above it - see ad_slot().
     parts = [
         f'<div class="wrap">{crumbs([("BRYME Articles", "")])}',
-        f'''<section class="page-hero ba-hero">
-  <p class="kicker"><span class="kicker-dot"></span>BRYME Articles</p>
-  <h1>BRYME Articles</h1>
-  <p class="ba-intro">{esc(cfg["intro"])}</p>
-  <p class="ba-hero-note">Reported, edited and dated. Published when a story is ready &mdash; not to fill a shelf.</p>
-</section>''',
+        masthead(cfg, articles, title="BRYME Articles", kicker="The section",
+                 standfirst=cfg["intro"]),
+        lead_block(feat) if feat else empty_state(cfg),
+        ad_slot(),
     ]
-    parts.append(featured_block(feat) if feat else empty_state(cfg))
+    if feat:
+        parts.append(shelf_block(articles, feat["slug"]))
     parts.append(category_map(cfg, articles))
     if feat:
-        parts.append(latest_block(articles, feat["slug"]))
-        parts.append(most_read_block(cfg, articles))
-        parts.append(recommended_block(articles, feat["slug"]))
+        parts.append(most_read_block(cfg, articles, feat["slug"]))
     parts.append(standards_block())
     parts.append("</div>")
     schema_items = [{"@type": "ListItem", "position": i + 1, "url": BASE + a["route"], "name": a["title"]}
@@ -477,16 +547,25 @@ def category_page(cfg: dict, cat: dict, articles: list[dict]) -> None:
         f'{esc(c["name"])}</a>' for c in others)
     cards = "".join(card(a) for a in stories)
     small_pool = [a for a in articles if a["category"]["slug"] != cat["slug"]][:2]
+    others_html = ""
+    if other_links:
+        others_html = ('<section class="section alt ba-othercats">'
+                       '<div class="ba-band-label"><span>Elsewhere</span></div>'
+                       '<h2 class="ba-section-title">Other beats</h2>'
+                       f'<div class="ba-cat-chips">{other_links}</div></section>')
+    reco_html = ""
+    if small_pool:
+        reco_html = ('<section class="section ba-recostrip">'
+                     + "".join(recommendation(a) for a in small_pool) + "</section>")
     body = f'''<div class="wrap">{crumbs([("BRYME Articles", ac.LANDING_ROUTE), (cat["name"], "")])}
-<section class="page-hero ba-hero">
-  <p class="kicker"><span class="kicker-dot"></span>Category</p>
-  <h1>{esc(cat["name"])}</h1>
-  <p class="ba-intro">{esc(cat["blurb"])}</p>
-  <p class="ba-meta"><span>{len(stories)} {"story" if len(stories) == 1 else "stories"}</span><span aria-hidden="true">·</span><span>Updated as stories publish</span></p>
+{masthead(cfg, articles, title=cat["name"], kicker="Beat", standfirst=cat["blurb"])}
+<section class="section ba-shelf">
+  <div class="ba-band-label"><span>{len(stories)} {"story" if len(stories) == 1 else "stories"} in this beat</span></div>
+  <div class="ba-grid">{cards}</div>
 </section>
-<section class="section"><div class="ba-grid">{cards}</div></section>
-{f'<section class="section alt ba-othercats"><div class="section-head"><div><p class="eyebrow">Elsewhere</p><h2>Other beats</h2></div></div><div class="ba-cat-chips">{other_links}</div></section>' if other_links else ""}
-{f'<section class="section ba-recostrip">{"".join(recommendation(a) for a in small_pool)}</section>' if small_pool else ""}
+{ad_slot()}
+{others_html}
+{reco_html}
 <p class="ba-backlink"><a href="{ac.LANDING_ROUTE}">&larr; All BRYME Articles</a></p>
 </div>'''
     write(route, page_wf(
@@ -514,6 +593,22 @@ def category_page(cfg: dict, cat: dict, articles: list[dict]) -> None:
 # ---------------------------------------------------------------------------
 # Story page — the reusable template
 # ---------------------------------------------------------------------------
+def insert_ad_anchor(markup: str) -> str:
+    """Place the section's ad slot inside the story, not above the headline.
+
+    After the fifth paragraph, and only when the piece has at least eight, so the
+    slot never lands in the opening screen or near the end where the sources and
+    the next-stories block already carry the reader's attention. It goes after a
+    closed </p> - never inside one - because an element opened mid-paragraph is
+    how the figure bug of 22 November shipped literal markdown.
+    """
+    if markup.count("</p>") < 8:
+        return markup
+    ends = [m.end() for m in re.finditer(r"</p>", markup)]
+    cut = ends[4]
+    return markup[:cut] + ad_slot() + markup[cut:]
+
+
 def article_page(cfg: dict, article: dict, articles: list[dict]) -> None:
     cat = article["category"]
     cat_route = ac.CATEGORY_ROUTE.format(slug=cat["slug"])
@@ -522,6 +617,7 @@ def article_page(cfg: dict, article: dict, articles: list[dict]) -> None:
     picks = ac.related_articles(article, articles, 3)
     mid = recommendation(picks[0], heading="While you're here") if picks and article["words"] > 900 else ""
     body_html = insert_mid_recommendation(body_html, mid)
+    body_html = insert_ad_anchor(body_html)
 
     if article.get("pull_quote"):
         pass  # a pull quote written as `> …` in the body is rendered in place
@@ -551,13 +647,13 @@ def article_page(cfg: dict, article: dict, articles: list[dict]) -> None:
     body = f'''<div class="wrap">{crumbs([("BRYME Articles", ac.LANDING_ROUTE), (cat["name"], cat_route), (article["title"], "")])}
 <article class="ba-article">
   <header class="ba-article-head">
-    <p class="kicker"><span class="kicker-dot"></span><a href="{esc(cat_route)}">{esc(cat["name"])}</a></p>
+    <p class="ba-article-kicker"><a href="{esc(cat_route)}">{esc(cat["name"])}</a></p>
     <h1>{esc(article["title"])}</h1>
     <p class="ba-dek">{esc(article["description"])}</p>
     <p class="ba-byline">By <a href="{ac.AUTHOR_ROUTE}">{esc(article["author"])}</a>
-      <span aria-hidden="true">·</span>
+      <span aria-hidden="true">&middot;</span>
       <time datetime="{article["published"].isoformat()}">{esc(ac.human_date(article["published"]))}</time>
-      <span aria-hidden="true">·</span>
+      <span aria-hidden="true">&middot;</span>
       <span>{article["reading_minutes"]} min read</span></p>
   </header>
   <figure class="ba-cover">
@@ -574,7 +670,6 @@ def article_page(cfg: dict, article: dict, articles: list[dict]) -> None:
 </article>
 {discovery_block(article, articles)}
 </div>'''
-
     write(article["route"], page_wf(
         title=f'{article["title"]} | BRYME Articles',
         description=article["description"],

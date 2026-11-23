@@ -94,6 +94,10 @@ MONETAG_META = re.compile(
 
 LABEL = "Advertisement"
 PLACEMENTS = ("top", "middle", "bottom")
+# Written by scripts/build-articles.py where the Articles layout wants the first
+# unit. The mark survives injection (the unit is appended after it) so a rebuild
+# strips and re-inserts instead of stacking a second band.
+AD_ANCHOR = "<!--ba-ad-->"
 LOADER_TAG = '<script src="/assets/adsterra-loader.js" defer></script>'
 
 # --- Monetag (owner decision 2026-10-06) -------------------------------------
@@ -144,6 +148,12 @@ ADSTERRA_BAND = (
     '.adband-native .adband-label{display:block;font:500 10px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;'
     'letter-spacing:.14em;text-transform:uppercase;color:#8a8578;margin:0 0 10px}'
     '.adband-native .adband-slot{margin:0 auto;max-width:100%;min-height:0}'
+    # Containment (2026-11-23): the band is its own stacking context, so a creative
+    # that sets a large z-index still cannot paint or take taps above the masthead.
+    '.adband-native{isolation:isolate}'
+    # Unfilled (no creative, or blocked): draw nothing at all rather than an
+    # 'Advertisement' label over an empty box.
+    '.adband-native:has(.adband-slot:empty){display:none}'
     '.adband-native::before{content:"";display:block;max-width:1100px;margin:0 auto 26px;'
     'padding:0 20px;border-top:1px solid rgba(0,0,0,.08)}'
     '.adband-native[data-placement="top"]::before{display:none}'
@@ -177,6 +187,8 @@ ADSTERRA_DISPLAY_BAND = (
     '.adband-display .adband-label{display:block;font:500 10px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;'
     'letter-spacing:.14em;text-transform:uppercase;color:#8a8578;margin:0 0 10px}'
     '.adband-display .adband-slot-display{margin:0 auto;max-width:100%;border:0}'
+    '.adband-display{isolation:isolate}'
+    '.adband-display:has(.adband-slot-display:empty){display:none}'
     '.adband-display::before{content:"";display:block;max-width:1100px;margin:0 auto 26px;'
     'padding:0 20px;border-top:1px solid rgba(0,0,0,.08)}'
     '</style>'
@@ -406,8 +418,16 @@ def native_block(name: str, p: dict, gate: bool) -> str:
     return band
 
 
-def apply_page(t: str, state: dict) -> tuple[str, int]:
-    """Insert every configured unit once; returns (new_text, bands_added)."""
+def apply_page(t: str, state: dict, route: str = "") -> tuple[str, int]:
+    """Insert every configured unit once; returns (new_text, bands_added).
+
+    `route` is the page path. It exists for one rule: the desktop/mobile navigation
+    on the Articles pages sits directly under <main>, so a native band inserted at the
+    top of <main> lands in the first viewport. Those units do not reserve their height
+    when the creative arrives, so the page - and every control above the story - moves
+    down by up to 250px after load, and taps aimed at the header land on nothing. The
+    Articles section therefore declines the `top` placement and keeps the in-flow ones.
+    """
     for rx in REVERT_RES:
         t = rx.sub("", t)
 
@@ -427,8 +447,21 @@ def apply_page(t: str, state: dict) -> tuple[str, int]:
         t = t.replace("</main>", "</main>" + block, 1)
         bands += 1
 
-    # top band, just inside <main>
-    if "top" in natives and main_open:
+    # Anchored placement: the page named the spot (AD_ANCHOR), the layout wins.
+    anchored = AD_ANCHOR in t
+    if "top" in natives and anchored:
+        block = native_block("top", natives["top"], gate)
+        if gate and "bottom" not in natives:
+            block += LOADER_TAG
+            loader = True
+        t = t.replace(AD_ANCHOR, AD_ANCHOR + block, 1)
+        bands += 1
+
+    # top band, just inside <main>, for pages that name no spot. Declined on the
+    # Articles section - see the route note in this function's docstring: it
+    # lands in the first viewport there, above the headline.
+    if ("top" in natives and main_open and not anchored
+            and not route.startswith("/writers/articles/")):
         block = native_block("top", natives["top"], gate)
         if gate and "bottom" not in natives:
             block += LOADER_TAG
@@ -558,7 +591,8 @@ def main() -> int:
                 f.write_text(t, encoding="utf-8")
             problems += 1
             continue
-        new_t, bands = apply_page(t, state)
+        route = "/" + f.relative_to(ROOT).as_posix().replace("/index.html", "/")
+        new_t, bands = apply_page(t, state, route)
         if new_t == t:
             if had_band:
                 skipped += 1
