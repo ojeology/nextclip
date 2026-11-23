@@ -11,10 +11,10 @@
 | Native Banner | the spot the page names, else the top of `<main>` — LIVE | `adsterra.placements.top` |
 | Native Banner | middle of the article body | `adsterra.placements.middle` |
 | Native Banner | bottom of content pages (after `</main>`) | `adsterra.placements.bottom` |
-| Social Bar | floating widget, before `</body>` — **SUSPENDED 2026-11-23** | `adsterra.socialBar.enabled` |
+| Social Bar | floating widget, before `</body>` — LIVE, kept on by owner decision | `adsterra.socialBar.enabled` |
 | Classic display banner (300×250) | after `</main>` — LIVE | `adsterra.displayBanner.key`/`host` |
 
-## Why the Social Bar is off (2026-11-23)
+## The Social Bar, and the taps (2026-11-23)
 
 The Social Bar's script mounts its own fixed layer on top of the page and keeps
 the layer's geometry to itself. On the Articles section readers reported that the
@@ -22,14 +22,23 @@ navigation stopped accepting taps once ads had loaded, and that a reload fixed i
 until the widget mounted again. That is the Social Bar's signature: a floating
 layer over the masthead, invisible in a static DOM snapshot, gone after a reload.
 
-No CSS can prove the widget sits under our chrome, and third-party creative
-z-indexes are outside our control, so the unit is switched off in
-`site.config.json` (`adsterra.socialBar.enabled: false`). The script, the marker
-and the loader path are untouched: setting it back to `true` and rebuilding
-restores it in one pass. Revenue from that one unit is not worth an unclickable
-masthead.
+The widget chooses its own geometry and its own stacking, so it is the one unit
+we cannot place. Two things changed in response, and one did not:
 
-The other two units stayed, because neither can intercept a tap:
+- the masthead, the drawer and the mobile bar moved into the `2147400000`
+  z-index band (see below), so a widget layer at the usual ad-network values —
+  999, 9999, 2147483000 — now stacks **below** the navigation instead of over it;
+- the page records *where* its ad goes, so no unit sits above a headline any
+  more.
+
+**Owner decision: the unit stays on.** Revenue from it is worth keeping while the
+navigation still wins the stacking fight. It is the one switch to reach for if
+taps stop responding again: set `adsterra.socialBar.enabled` to `false` in
+`site.config.json`, rebuild, done — no code change, and nothing else about the
+unit is removed. A widget that sets an inline `z-index: 2147483647` would still
+beat the chrome band, which is exactly the case that switch exists for.
+
+The other two units are in flow and cannot intercept a tap:
 
 - the native band renders **inside** `<main>` in normal flow, and its container is
   `isolation: isolate` (`scripts/inject-ads.py`), so a creative that sets a huge
