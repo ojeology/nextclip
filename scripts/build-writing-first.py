@@ -77,7 +77,7 @@ def footer() -> str:
                        + esc(parent.get("name") or "THE BRYME") + '</a> — one of the BRYME publications.</div>')
     return parent_line + '''<footer class="site-foot"><div class="wrap foot-grid">
   <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
-  <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/intelligence/">Writing Intelligence</a><a href="/compare/">Compare formats</a><a href="/regional/">Writing conventions</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
+  <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/intelligence/">Essays about writing</a><a href="/compare/">Compare formats</a><a href="/regional/">Writing conventions</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
   <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/writing-opportunities/">Browse by country</a><a href="/today/">Today&rsquo;s opportunities</a><a href="/what-changed/">What changed</a><a href="/newsletter/">Weekly digest</a><a href="/tracker/">Submission tracker</a><a href="/studio/">Writing Studio</a><a href="/tested/">BRYME Tested</a></div>
   <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/verification/">What statuses mean</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
   <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/disclosure/">Disclosure</a><a href="/copyright/">Copyright</a></div>
@@ -422,7 +422,7 @@ def nav(current: str = "") -> str:
             ("/tools/pitch-checker/", "Pitch checker"), ("/studio/", "The Writing Studio"),
             ("/templates/", "Templates"), ("/checklists/", "Checklists"), ("/tools/", f"All {_NAV_TOOL_COUNT} tools")]),
         ("read", "/essays/", "Essays", [
-            ("/essays/", "Essays"), ("/intelligence/", "Writing intelligence"),
+            ("/essays/", "Essays"), ("/intelligence/", "Essays about writing"),
             ("/read/", "All articles"), ("/glossary/", "Glossary"), ("/compare/", "Compare formats")]),
     ]
     # Long labels read better on a laptop, short ones fit a phone. The long label
@@ -744,10 +744,10 @@ BOTTOM_NAV_PARENT = {"articles": "read"}
 def mobile_nav(current: str = "") -> str:
     current = BOTTOM_NAV_PARENT.get(current, current)
     links = [
-        ("learn", "/learn/", "📚", "How to"),
+        ("learn", "/learn/", "📚", "Learn"),
         ("read", "/read/", "📄", "Articles"),
         ("tools", "/tools/", "🛠", "Tools"),
-        ("writing", "/writing-opportunities/", "💰", "Publish"),
+        ("writing", "/writing/", "💰", "Get paid"),
     ]
     return '<nav class="bottom-nav bottom-nav--writing" aria-label="Primary mobile">' + ''.join(
         f'<a href="{href}"' + (' aria-current="page"' if key == current else '') +
@@ -802,7 +802,7 @@ def drawer(current: str = "") -> str:
     return f'''<div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
   <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  {group("Start here", [("home", "/", "Home", "🏠"), ("articles", "/articles/", "BRYME Articles", "📖"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Writing Intelligence", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("read", "/read/", "All articles", "📄"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("changed", "/what-changed/", "What changed on the desk", "🗓"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("studio", "/studio/", "Writing Studio", "✒️"), ("by-country", "/writing-opportunities/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
+  {group("Start here", [("home", "/", "Home", "🏠"), ("articles", "/articles/", "BRYME Articles", "📖"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Essays about writing", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("read", "/read/", "All articles", "📄"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("changed", "/what-changed/", "What changed on the desk", "🗓"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("studio", "/studio/", "Writing Studio", "✒️"), ("by-country", "/writing-opportunities/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
   {group("How to write", howto)}
   {group("Tools & templates", tools)}
   {group("Write & get paid", write)}
@@ -1177,7 +1177,7 @@ def home() -> None:
             ("/tools/", "USE TOOLS — 48 free tools", "Rate calculator, invoice generator, word counter, citation formatter — browser-only."),
             ("/guides/how-to-write-a-pitch/", "SUBMIT — How to pitch", "The exact structure editors expect — and what gets you rejected."),
             ("/guides/how-much-to-charge-for-an-article/", "EARN — Rates & income", "Real market rates, not guesswork — with calculator."),
-            ("/intelligence/", "Writing intelligence", "Research notes and market watch from the editorial desk."),
+            ("/intelligence/", "Essays about writing", "Research notes and market watch from the editorial desk."),
             ("/essays/", "Essays", "Arguments and investigations — the highest shelf in the library."),
             ("/tested/", "BRYME Tested", "Opportunities we pitched ourselves — the journey shown as it happened."),
             ("/what-changed/", "What changed", "Markets that opened, closed or moved — dated."),
