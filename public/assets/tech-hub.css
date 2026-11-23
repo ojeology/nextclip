@@ -342,3 +342,156 @@ html:not(.tm-js) .tm-noscript{display:block}
 
 /* palette open button: accent-tinted */
 .tm-pal-open{border-color:var(--accent);color:var(--ink)}
+
+/* ================================================================
+   v7 — the desk arranges itself (2026-11-23)
+   ----------------------------------------------------------------
+   The owner's second note, after the front door shipped: the desk
+   "looks like blocks". It did. Every band was the same pale card in
+   the same grey grid, so the page read as a wall of tiles and the
+   reader had to open each one to learn what it was.
+
+   This layer replaces the tile wall with a printed page:
+     · one colour per register (indigo markets, ochre guides, teal
+       tools, plum essays, brick articles, slate the desk itself),
+     · hairline rules and numbers instead of borders and shadows,
+     · rows you scan top-to-bottom instead of boxes you click into,
+     · the numbers promoted to the size of headlines, because on this
+       desk the numbers are the argument.
+   Nothing here changes a word of copy or a single link target.
+   ================================================================ */
+
+/* ---- registers on the desk ---- */
+#tm-core{--reg:var(--reg-markets);--reg-tint:var(--reg-markets-tint)}
+#tm-toolbox{--reg:var(--reg-tools);--reg-tint:var(--reg-tools-tint)}
+#tm-wall{--reg:var(--reg-guides);--reg-tint:var(--reg-guides-tint)}
+#tm-sections{--reg:var(--reg-markets);--reg-tint:var(--reg-markets-tint)}
+#tm-standards{--reg:var(--reg-desk);--reg-tint:var(--reg-desk-tint)}
+#tm-clusters{--reg:var(--reg-essays);--reg-tint:var(--reg-essays-tint)}
+
+/* ---- doors: three panels with a coloured head-rule, not three boxes ---- */
+.tm-doors{gap:clamp(14px,2.4vw,30px)}
+.tm-door{padding:16px 0 0;border:0;border-top:3px solid var(--reg,var(--accent));border-radius:0;
+  background:transparent;box-shadow:none;transition:background .16s ease}
+.tm-door:nth-child(1){--reg:var(--reg-guides)}
+.tm-door:nth-child(2){--reg:var(--reg-markets)}
+.tm-door:nth-child(3){--reg:var(--reg-tools)}
+.tm-door:hover,.tm-door:focus-visible{background:var(--reg-tint);transform:none;box-shadow:none}
+.tm-door-k{color:var(--reg,var(--accent))}
+.tm-door b{font:700 clamp(19px,2vw,23px)/1.2 var(--serif);margin:6px 0 7px}
+.tm-door i{color:var(--reg,var(--navy));border-bottom-color:var(--reg,var(--accent))}
+.tm-door:hover i{color:var(--reg,var(--navy))}
+
+/* ---- the numbers: a hairline strip, read left to right ---- */
+.tm-gauges{gap:0;background:transparent;border:0;border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);border-radius:0;overflow:visible;margin:6px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(132px,1fr))}
+.tm-gauge{padding:14px 16px 14px 0;background:transparent;border-left:1px solid var(--rule)}
+.tm-gauge:first-child{border-left:0;padding-left:0}
+.tm-gauge:hover{background:transparent}
+.tm-gauge b{font:700 clamp(26px,3.4vw,40px)/.95 var(--display,var(--serif));letter-spacing:-.03em}
+.tm-gauge:nth-child(1) b{color:var(--reg-markets)}
+.tm-gauge:nth-child(2) b{color:var(--reg-guides)}
+.tm-gauge:nth-child(3) b{color:var(--reg-articles)}
+.tm-gauge:nth-child(4) b{color:var(--reg-tools)}
+.tm-gauge:nth-child(5) b{color:var(--reg-essays)}
+.tm-gauge:nth-child(6) b{color:var(--reg-desk)}
+.tm-gauge span{margin-top:7px;font:700 12px/1.3 var(--sans);letter-spacing:0;text-transform:none;color:var(--ink)}
+.tm-gauge small{font-size:11.5px;color:var(--muted)}
+
+/* ---- band heads: a rule, a colour, a sentence ---- */
+.tm-band{padding:clamp(30px,4vw,52px) 0;border-bottom:1px solid var(--rule)}
+.tm-band-alt{background:var(--paper-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+html[data-theme="dark"] .tm-band-alt{background:#181d26}
+.tm-band-h{margin-bottom:22px;padding-top:2px}
+.tm-band-h h2{font:700 clamp(24px,3.1vw,34px)/1.12 var(--display,var(--serif));letter-spacing:-.022em}
+.tm-band-h h2::before{content:"";display:block;width:38px;height:3px;background:var(--reg,var(--accent));
+  margin:0 0 12px}
+.tm-band-h p{font-size:15px;line-height:1.6}
+
+/* ---- the index rows: hairlines instead of a grid of cells ---- */
+.tm-rows{gap:0;background:transparent;border:0;border-radius:0;overflow:visible}
+.tm-row{background:transparent;border-top:1px solid var(--rule);padding:12px 0;gap:14px}
+.tm-row:last-child{border-bottom:1px solid var(--rule)}
+.tm-row:hover{background:var(--reg-tint,var(--paper-2));transform:none}
+.tm-row-a b{font:600 15.5px/1.35 var(--display,var(--serif));font-weight:700}
+.tm-row-a small{font-size:12.8px}
+.tm-shelf-h{border-bottom:1px solid var(--rule);padding-bottom:8px}
+.tm-shelf-h b,.tm-shelf-h span{font-family:var(--display,var(--serif))}
+
+/* ---- tools: two columns of type, no cards ---- */
+.tm-tools{grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0 clamp(20px,3vw,40px)}
+.tm-tool{border:0;border-top:1px solid var(--rule);border-radius:0;background:transparent;
+  padding:13px 0 13px 0;gap:12px}
+.tm-tool:hover{border-color:var(--rule);transform:none}
+.tm-tool b{font:700 15.5px/1.3 var(--display,var(--serif));letter-spacing:-.01em}
+.tm-tool small{font-size:12.6px}
+.tm-tool a:first-child:hover b{color:var(--reg,var(--accent))}
+.tm-tool-g{color:var(--reg,var(--accent))}
+
+/* ---- sections + comparisons: same rows, bigger type ---- */
+.tm-secs{gap:0 clamp(20px,3vw,40px);grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.tm-sec-card{border:0;border-top:1px solid var(--rule);border-radius:0;background:transparent;padding:15px 0}
+.tm-sec-card:hover{transform:none;box-shadow:none;border-color:var(--reg,var(--rule))}
+.tm-sec-card:hover b{color:var(--reg,var(--accent))}
+.tm-sec-card b{font:700 17px/1.25 var(--display,var(--serif))}
+.tm-sec-card em{font-family:var(--display,var(--serif));font-size:15px;color:var(--reg,var(--accent))}
+.tm-wall{gap:0 clamp(20px,3vw,40px);grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.tm-wall-card{border:0;border-top:1px solid var(--rule);border-radius:0;background:transparent;padding:14px 0}
+.tm-wall-card:hover{transform:none;box-shadow:none}
+.tm-wall-card:hover b{color:var(--reg,var(--accent))}
+.tm-wall-card b{font:700 16px/1.3 var(--display,var(--serif))}
+
+/* ---- readouts: columns, not cards ---- */
+.tm-reads{gap:0 clamp(22px,3vw,40px)}
+.tm-readout{border:0;border-top:2px solid var(--reg,var(--line-strong));border-radius:0;background:transparent;
+  padding:14px 0 0}
+.tm-readout-warn{border-left:0;border-top-color:var(--red)}
+.tm-ro-h{color:var(--reg,var(--muted))}
+.tm-ro-big time{font-family:var(--display,var(--serif))}
+
+/* ---- the job picker: still pressable, no longer a tile ---- */
+.tm-needs{gap:0 clamp(18px,2.6vw,32px)}
+.tm-need{border:0;border-top:1px solid var(--line-strong);border-radius:0;background:transparent;
+  padding:14px 0 12px;transition:background .16s ease}
+.tm-need:hover{transform:none;box-shadow:none;border-color:var(--accent);background:var(--paper-2)}
+.tm-need[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);padding:14px 12px 12px}
+.tm-need-k{border-radius:0}
+
+/* ---- chips read as an index, not as buttons ---- */
+.tm-chip,.tm-sortb{border:0;border-bottom:2px solid var(--line-strong);border-radius:0;background:transparent;
+  padding:6px 2px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:10.5px}
+.tm-chip:hover,.tm-sortb:hover{border-bottom-color:var(--accent);border-color:var(--accent)}
+.tm-chip[aria-pressed="true"],.tm-sortb[aria-pressed="true"]{background:transparent;color:var(--ink);
+  border-bottom-color:var(--accent);border-color:var(--accent)}
+.tm-toolbar{border:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);border-radius:0;
+  background:transparent;padding:12px 0}
+
+/* ---- the catalogue lives one link away from every band ---- */
+.tm-band-f a,.tm-quiet-link{text-underline-offset:3px}
+
+@media (max-width:620px){
+  .tm-gauge{border-left:0;padding:12px 0;border-top:1px solid var(--rule)}
+  .tm-gauge:first-child{border-top:0}
+  .tm-gauges{gap:0}
+}
+
+/* ---- v7 quiets the 2026-09-25 "bold identity" layer ----------------
+   That layer was built for the boxed design: corner triangles that grew
+   on hover, a scanline drifting across the hero, gradient ticks on every
+   header. On a page of plain type they read as stickers. The identity
+   now comes from colour and rule-weight, so the decoration goes; the
+   motion that remains is the hero rule drawing itself in, once. */
+.tm-need::after,.tm-sec-card::after,.tm-wall-card::before{display:none}
+.tm-boot::after{display:none}
+.tm-gauge::before{display:none}
+.tm-band-h h2{padding-left:0}
+.tm-band-h h2::before{position:static;width:38px;height:3px;border-radius:0;
+  background:var(--reg,var(--accent));margin:0 0 12px}
+.tm-row::before{width:2px;background:var(--reg,var(--accent))}
+.tm-wall-card{padding-left:0;background:transparent}
+.tm-shelf-h{border-image:none;border-bottom:1px solid var(--rule)}
+.tm-h1::after{background:linear-gradient(90deg,var(--brass-bright),transparent)}
+
+/* the job picker is the right place to be ochre: it is a guide to guides */
+#tm-needs{--reg:var(--reg-guides);--reg-tint:var(--reg-guides-tint)}

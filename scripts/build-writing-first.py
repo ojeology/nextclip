@@ -77,7 +77,7 @@ def footer() -> str:
                        + esc(parent.get("name") or "THE BRYME") + '</a> — one of the BRYME publications.</div>')
     return parent_line + '''<footer class="site-foot"><div class="wrap foot-grid">
   <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
-  <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/intelligence/">Essays about writing</a><a href="/compare/">Compare formats</a><a href="/regional/">Writing conventions</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
+  <div class="foot-col"><b>How to write</b><a href="/catalogue/">Catalogue of everything</a><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/intelligence/">Essays about writing</a><a href="/compare/">Compare formats</a><a href="/regional/">Writing conventions</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
   <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/writing-opportunities/">Browse by country</a><a href="/today/">Today&rsquo;s opportunities</a><a href="/what-changed/">What changed</a><a href="/newsletter/">Weekly digest</a><a href="/tracker/">Submission tracker</a><a href="/studio/">Writing Studio</a><a href="/tested/">BRYME Tested</a></div>
   <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/verification/">What statuses mean</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
   <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/disclosure/">Disclosure</a><a href="/copyright/">Copyright</a></div>
@@ -424,12 +424,20 @@ def nav(current: str = "") -> str:
         ("read", "/essays/", "Essays", [
             ("/essays/", "Essays"), ("/intelligence/", "Essays about writing"),
             ("/read/", "All articles"), ("/glossary/", "Glossary"), ("/compare/", "Compare formats")]),
+        # 2026-11-23: the catalogue. Every other item here answers "where do I go
+        # next?"; this one answers "what is in here at all?" - the question a
+        # reader asks on their second visit, and the one the owner asked when he
+        # could not see his own 686 pages arranged anywhere.
+        ("catalogue", "/catalogue/", "Catalogue", [
+            ("/catalogue/#cat-markets", "Markets"), ("/catalogue/#cat-guides", "Guides"),
+            ("/catalogue/#cat-tools", "Tools"), ("/catalogue/#cat-essays", "Essays"),
+            ("/catalogue/#cat-articles", "Articles"), ("/catalogue/#cat-desk", "The desk itself")]),
     ]
     # Long labels read better on a laptop, short ones fit a phone. The long label
     # stays the only text in the DOM (so the accessible name and the navigation
     # audit both see one string); the short one is an attribute that CSS turns
     # into the visible label under 900px.
-    SHORT = {"Learn to write": "Learn"}
+    SHORT = {"Learn to write": "Learn", "Catalogue": "Index"}
     for key, href, label, children in MEGA:
         aria = ' aria-current="page"' if key == current else ""
         cls = ' class="nav-cta"' if key == "writing" else ""
@@ -802,7 +810,7 @@ def drawer(current: str = "") -> str:
     return f'''<div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
   <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  {group("Start here", [("home", "/", "Home", "🏠"), ("articles", "/articles/", "BRYME Articles", "📖"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Essays about writing", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("read", "/read/", "All articles", "📄"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("changed", "/what-changed/", "What changed on the desk", "🗓"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("studio", "/studio/", "Writing Studio", "✒️"), ("by-country", "/writing-opportunities/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
+  {group("Start here", [("home", "/", "Home", "🏠"), ("catalogue", "/catalogue/", "Catalogue of everything", "🗂"), ("articles", "/articles/", "BRYME Articles", "📖"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Essays about writing", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("read", "/read/", "All articles", "📄"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("changed", "/what-changed/", "What changed on the desk", "🗓"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("studio", "/studio/", "Writing Studio", "✒️"), ("by-country", "/writing-opportunities/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
   {group("How to write", howto)}
   {group("Tools & templates", tools)}
   {group("Write & get paid", write)}

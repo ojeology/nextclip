@@ -4,6 +4,7 @@
   "routes": [
     "/",
     "/about/",
+    "/catalogue/",
     "/articles/",
     "/articles/ghana-must-go-real-story-behind-the-bag/",
     "/articles/human-behaviour/",

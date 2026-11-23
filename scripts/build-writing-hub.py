@@ -1322,6 +1322,7 @@ def homepage() -> None:
                     "published yet \u2014 or has, and is tired of writing for nothing. The desk is paid for "
                     "by advertising, and every page says so."),
         "palette_btn": "Find one answer",
+        "catalogue_href": "/catalogue/",
         "doors": [
             ("/start/", "Door 1 \u00b7 never published",
              "I have never been published",

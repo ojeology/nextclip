@@ -406,6 +406,11 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
         '<kbd aria-hidden="true">Ctrl</kbd><kbd aria-hidden="true">K</kbd></button>'
         + ('<a class="tm-quiet-link" href="' + toolbox_href + '">Or open the '
            + str(len(tools)) + " tools &rarr;</a>" if tools else "")
+        # 2026-11-23: the desk now has a single index of every page on it. One
+        # quiet line here is the whole of its promotion - the reader who wants
+        # it is the reader looking for it, and everyone else has three doors.
+        + ('<a class="tm-quiet-link" href="' + esc(U(cfg["catalogue_href"], up)) + '">'
+           'See every page on this desk &rarr;</a>' if cfg.get("catalogue_href") else "")
         + "</div>",
         '<p class="tm-promise">' + cfg.get("promise", "") + "</p>",
         ribbon_slot,

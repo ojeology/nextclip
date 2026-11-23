@@ -796,3 +796,137 @@ body.studio-focus { padding-bottom: 0; }
 .main-nav a.nav-articles[aria-current="page"] .nav-articles-dot { background: var(--navy); }
 html[data-theme="dark"] .main-nav a.nav-articles:hover .nav-articles-dot,
 html[data-theme="dark"] .main-nav a.nav-articles[aria-current="page"] .nav-articles-dot { background: var(--accent); }
+
+/* ================================================================
+   v7 — FIVE REGISTERS
+   ----------------------------------------------------------------
+   Added 2026-11-23, after the owner read his own site and said it
+   "looks like blocks and is stupid".
+
+   He was right about the cause. v6 had one accent (brass) and one
+   container (the bordered card), so every part of the desk looked the
+   same: markets, guides, tools, essays and articles all arrived as
+   identical pale boxes in identical grey grids. When everything is a
+   box, nothing is a destination.
+
+   v7 keeps the paper and the ink - they are good - and gives each of
+   the five kinds of thing on this desk its own colour. Colour here is
+   information, never decoration: if it is indigo, it is a market; if
+   it is ochre, it is a guide. Dark text on pale tints, every
+   combination measured against WCAG AA (validate:contrast).
+   ================================================================ */
+:root {
+  /* registers — the ink you write with, the tint you lay behind it */
+  --reg-markets: #1f3a63;   --reg-markets-tint: #e9edf4;
+  --reg-guides: #7a5410;    --reg-guides-tint: #f5ecda;
+  --reg-tools: #0d5550;     --reg-tools-tint: #e3efec;
+  --reg-essays: #5b2b47;    --reg-essays-tint: #f1e7ec;
+  --reg-articles: #933b23;  --reg-articles-tint: #f7e8e1;
+  --reg-desk: #3f4756;      --reg-desk-tint: #ecebe5;
+
+  /* rhythm — one spacing ladder for the whole site */
+  --sp1: 6px;  --sp2: 12px; --sp3: 20px; --sp4: 34px; --sp5: 56px; --sp6: 88px;
+  --rule: rgba(29, 37, 49, .13);
+  --display: "Iowan Old Style", Georgia, "Palatino Linotype", Palatino, serif;
+}
+html[data-theme="dark"] {
+  --reg-markets: #a8bfe0;   --reg-markets-tint: #1a2331;
+  --reg-guides: #d9b872;    --reg-guides-tint: #2a2417;
+  --reg-tools: #7fc4bb;     --reg-tools-tint: #16292a;
+  --reg-essays: #d0a2bd;    --reg-essays-tint: #291b24;
+  --reg-articles: #e0a48c;  --reg-articles-tint: #2e1d17;
+  --reg-desk: #b3bac6;      --reg-desk-tint: #23262e;
+  --rule: rgba(231, 227, 216, .16);
+}
+
+/* ---- the register header: a number, a colour, a name, a sentence ----
+   Used by the catalogue and by any band that wants an editorial head.
+   The number is not decoration: it is the order we recommend reading
+   the desk in, and it repeats in the jump bar. */
+.rg { padding: var(--sp5) 0 var(--sp4); border-top: 1px solid var(--rule); }
+.rg:first-of-type { border-top: 0; }
+.rg-head { display: grid; grid-template-columns: 64px 1fr; gap: var(--sp3); align-items: start; margin: 0 0 var(--sp4); }
+.rg-n { font: 700 13px/1 var(--sans, inherit); letter-spacing: .1em; color: var(--reg, var(--muted)); padding-top: 12px; }
+.rg-t { font: 700 clamp(25px, 3.2vw, 38px)/1.05 var(--display); letter-spacing: -.02em; margin: 0 0 6px; }
+.rg-t .rg-c { color: var(--reg, var(--brass)); }
+.rg-s { margin: 0; max-width: 62ch; color: var(--muted); font-size: 15px; line-height: 1.6; }
+.rg-kicker { display: inline-block; font: 800 10px var(--sans, sans-serif); letter-spacing: .18em;
+  text-transform: uppercase; color: var(--reg, var(--brass)); margin: 0 0 10px; }
+@media (max-width: 640px) { .rg-head { grid-template-columns: 1fr; gap: 4px; } .rg-n { padding-top: 0; } }
+
+/* ---- catalogue: rows, not boxes ----------------------------------
+   A catalogue of 600 things has to be scannable, so each entry is one
+   line of type with a hairline under it — the format of a printed
+   index, not a wall of tiles. The row owns the whole width, so the
+   tap target is the full width of the column on a phone. */
+.cat-bar { position: sticky; top: 0; z-index: 5; background: var(--paper);
+  border-bottom: 1px solid var(--rule); padding: 10px 0 0; }
+.cat-bar-in { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.cat-q { flex: 1 1 260px; min-height: 44px; padding: 11px 14px; font: 400 15px var(--sans, sans-serif);
+  color: var(--ink); background: var(--sheet); border: 1px solid var(--line-strong); border-radius: 2px; }
+.cat-q:focus { outline: 2px solid var(--brass-bright); outline-offset: 1px; }
+.cat-count { font: 700 11px var(--sans, sans-serif); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); white-space: nowrap; }
+.cat-jump { display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 10px 0 12px; }
+.cat-jump a { font: 700 11.5px var(--sans, sans-serif); letter-spacing: .07em; text-transform: uppercase;
+  color: var(--reg, var(--navy)); text-decoration: none; border-bottom: 2px solid transparent; padding-bottom: 2px; }
+.cat-jump a:hover, .cat-jump a:focus-visible { border-bottom-color: currentColor; }
+.cat-jump a span { color: var(--muted); font-weight: 600; letter-spacing: 0; }
+.cat-az { display: flex; flex-wrap: wrap; gap: 2px; padding: 0 0 var(--sp3); }
+.cat-az button { min-width: 30px; min-height: 30px; border: 0; background: transparent; cursor: pointer;
+  font: 700 12px var(--sans, sans-serif); color: var(--muted); border-radius: 2px; }
+.cat-az button:hover { background: var(--reg-tint, var(--paper-2)); color: var(--ink); }
+.cat-az button[aria-pressed="true"] { background: var(--reg, var(--navy)); color: var(--paper); }
+
+.cat-list { list-style: none; margin: 0; padding: 0; }
+.cat-row { border-top: 1px solid var(--rule); }
+.cat-row:last-child { border-bottom: 1px solid var(--rule); }
+.cat-row a { display: grid; grid-template-columns: minmax(0, 20rem) 1fr; gap: 4px var(--sp3);
+  align-items: baseline; padding: 11px 6px 11px 0; text-decoration: none; color: inherit; }
+.cat-row a:hover { background: var(--reg-tint, var(--paper-2)); }
+.cat-row a:hover .cat-t { text-decoration: underline; text-decoration-color: var(--reg, var(--brass));
+  text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.cat-t { font: 700 15.5px/1.3 var(--display); color: var(--ink); }
+.cat-t .cat-c { font: 600 11px var(--sans, sans-serif); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--reg, var(--brass)); display: block; margin-bottom: 2px; }
+.cat-s { font-size: 13px; line-height: 1.5; color: var(--muted); }
+.cat-s b { color: var(--ink); font-weight: 600; }
+@media (max-width: 700px) {
+  .cat-row a { grid-template-columns: 1fr; padding: 10px 4px 10px 0; }
+  .cat-t { font-size: 15px; }
+  .cat-s { font-size: 12.5px; }
+}
+.cat-empty { padding: 26px 0; color: var(--muted); font-size: 14px; }
+.cat-note { margin: var(--sp3) 0 0; font-size: 13px; color: var(--dim); }
+.cat-row[hidden] { display: none; }
+.rg[hidden] { display: none; }
+
+/* ---- quiet utilities shared by catalogue and hub ---- */
+.rule-quiet { border: 0; border-top: 1px solid var(--rule); margin: var(--sp4) 0; }
+.tag-reg { display: inline-block; font: 800 9.5px var(--sans, sans-serif); letter-spacing: .14em;
+  text-transform: uppercase; color: var(--paper); background: var(--reg, var(--navy));
+  padding: 3px 7px; border-radius: 2px; }
+
+/* ---- the catalogue page itself (2026-11-23) ----
+   A printed index, at site scale: one hero, a sticky filter bar that has to
+   clear the sticky masthead, then numbered registers. The hero is the only
+   place on the page with a tint; after that, rules do the work. */
+.cat-page { padding: 0 0 var(--sp6); }
+.cat-hero { padding: clamp(22px, 3.4vw, 40px) 0 0; }
+.cat-kicker { margin: 0 0 12px; font: 800 10px var(--sans, sans-serif); letter-spacing: .2em;
+  text-transform: uppercase; color: var(--brass); }
+.cat-kicker span { color: var(--ink); }
+.cat-hero h1 { margin: 0 0 14px; font: 700 clamp(30px, 5vw, 52px)/1.04 var(--display);
+  letter-spacing: -.028em; }
+.cat-lede { margin: 0 0 var(--sp4); max-width: 66ch; font-size: clamp(15px, 1.6vw, 17px);
+  line-height: 1.62; color: var(--muted); }
+.cat-bar { top: var(--mast-h, 0px); }
+.cat-empty button.cat-reset { border: 0; background: none; color: var(--brass); cursor: pointer;
+  font: 700 13px var(--sans, sans-serif); text-decoration: underline; text-underline-offset: 3px; }
+/* The first register should start where the filter bar ends, not a screen
+   later: the hero already carries the page's whitespace. */
+.cat-page .rg:first-of-type { padding-top: var(--sp4); }
+/* Same name, different page: a muted tail tells them apart without shouting. */
+.cat-x { font: 600 10.5px var(--sans, sans-serif); letter-spacing: .08em; text-transform: uppercase;
+  color: var(--dim); margin-left: 6px; }
+@media (max-width: 700px) { .cat-az { padding-bottom: 8px; } .cat-page .rg:first-of-type { padding-top: 24px; } }
