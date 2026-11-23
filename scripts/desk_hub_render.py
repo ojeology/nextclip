@@ -207,7 +207,7 @@ def _freshness(arts: list, cadence: dict) -> dict:
 
 
 def render(arts: list, tools: list, cat: dict, cfg: dict,
-           url_prefix: str = "", stamp: str = "") -> str:
+           url_prefix: str = "", stamp: str = "", ribbon_html: str = "") -> str:
     """The hub ``<main>`` body for any desk. ``cfg`` keys: brand, h1, dek,
     needs [(key,label,blurb)], cadence, kind_badges, chips_extra, css, desk,
     tool_prefix, gauges [(value,label,sub)] (values may be callables of stats),
@@ -342,6 +342,31 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
     toolbox_href = esc(U(cfg.get("toolbox_href", "/tool/"), up))
     count_href = "#tm-core"
 
+    # --- the front door ------------------------------------------------------
+    # A reader who has never done this cannot pick between thirty-six links. So
+    # the first screen asks one question and offers three doors, named for what
+    # the READER is like ("I have never been published") and not for what the
+    # site is ("The opportunity desk"). The catalogue is still one tap away, in
+    # the quieter line under the doors - it is just no longer the first thing
+    # offered to a stranger.
+    doors_html = "".join(
+        '<a class="tm-door" href="' + esc(U(href, up)) + '">'
+        + '<span class="tm-door-k">' + esc(kicker) + '</span>'
+        + '<b>' + esc(title) + '</b>'
+        + '<span class="tm-door-s">' + esc(sub) + '</span>'
+        + '<i>' + esc(cta) + '</i></a>'
+        for href, kicker, title, sub, cta in (cfg.get("doors") or []))
+    doors = ('<nav class="tm-doors" aria-label="Start here">' + doors_html + "</nav>"
+             if doors_html else "")
+
+    # The Articles ribbon used to be the first thing on the page - a story promo
+    # ahead of any path in. It keeps its place on the desk, below the doors.
+    ribbon_slot = ""
+    if ribbon_html:
+        ribbon_slot = ('<div class="tm-ribbon-slot"><p class="tm-ribbon-h">'
+                       + esc(cfg.get("ribbon_h", "Latest story")) + "</p>"
+                       + ribbon_html + "</div>")
+
     clusters = cfg.get("clusters", [])
     if clusters:
         _cluster_cards = "".join(
@@ -369,16 +394,21 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
 
         '<section class="tm-boot" id="tm-boot">',
         '<p class="tm-eyebrow"><span class="tm-led" aria-hidden="true"></span>'
-        + esc(cfg["brand"]) + ' <span class="tm-dot" aria-hidden="true">\u00b7</span> ' + esc(cfg.get("eyebrow", "THE LIVING DESK"))
-        + '<span class="tm-eyebrow-r">' + esc("swept " + st["newest"] if st["newest"] else "") + "</span></p>",
+        + esc(cfg["brand"]) + ' <span class="tm-dot" aria-hidden="true">\u00b7</span> '
+        + esc(cfg.get("eyebrow", "START HERE"))
+        + '<span class="tm-eyebrow-r">' + esc(cfg.get("eyebrow_r") or ("Updated " + st["newest"] if st["newest"] else "")) + "</span></p>",
         '<h1 class="tm-h1">' + esc(cfg["h1"]) + "</h1>",
         '<p class="tm-dek">' + cfg["dek"] + "</p>",
-        '<div class="tm-boot-bar"><a class="btn" href="' + count_href + '">'
-        + esc(cfg.get("boot_btn", "Read every one of the " + str(n) + " pieces")) + "</a>"
-        '<button type="button" class="tm-pal-open" data-tm-open-palette><span>Find a piece</span>'
+        doors,
+        '<div class="tm-boot-bar">'
+        '<button type="button" class="tm-pal-open" data-tm-open-palette><span>'
+        + esc(cfg.get("palette_btn", "Find one answer")) + '</span>'
         '<kbd aria-hidden="true">Ctrl</kbd><kbd aria-hidden="true">K</kbd></button>'
-        + ('<a class="btn secondary" href="' + toolbox_href + '">Open the toolbox</a>' if tools else "")
+        + ('<a class="tm-quiet-link" href="' + toolbox_href + '">Or open the '
+           + str(len(tools)) + " tools &rarr;</a>" if tools else "")
         + "</div>",
+        '<p class="tm-promise">' + cfg.get("promise", "") + "</p>",
+        ribbon_slot,
         '<div class="tm-gauges">' + gauges + "</div>",
         memory,
         "</section>",

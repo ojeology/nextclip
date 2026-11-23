@@ -133,6 +133,25 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .main-nav a:hover, .main-nav a[aria-current="page"] { color: var(--ink); box-shadow: inset 0 -3px 0 var(--lime-bright); }
 .main-nav a.nav-cta { color: var(--sheet); background: var(--navy); border-radius: 2px; margin-left: 8px; padding: 7px 14px; }
+/* Two labels, one link: the long one for a laptop, the short one for a phone.
+   Added 2026-11-23 when "Publish" became "Get paid" and "Learn" became
+   "Learn to write" - the longer label pushed the strip past 390px and clipped
+   the last item. */
+/* The strip scrolls on a phone. A soft edge says "there is more this way"
+   instead of looking like a label the layout cut in half. */
+@media (max-width: 900px) {
+  .main-nav { position: relative; }
+  .main-nav::after {
+    content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 20px;
+    background: linear-gradient(90deg, rgba(246, 242, 232, 0), var(--paper));
+    pointer-events: none;
+  }
+  /* Short labels on a phone, long ones on a laptop. The long label is the only
+     text in the DOM (accessibility and the navigation audit read one string);
+     the short one is generated here from the link's own attribute. */
+  .main-nav a[data-nav-short] .nav-lbl { display: none; }
+  .main-nav a[data-nav-short]::after { content: attr(data-nav-short); }
+}
 .main-nav a.nav-cta:hover { background: var(--navy-deep); box-shadow: none; color: var(--sheet); }
 .nav-search-form { display: inline-flex; }
 .nav-search-form input {

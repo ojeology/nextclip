@@ -1303,12 +1303,57 @@ def homepage() -> None:
 
     tools = [(t["id"], t["title"], t["short"], "") for t in TOOLS]
 
+    # --- the front door (2026-11-23) -------------------------------------
+    # The owner's note: "our entire website is hard and not beginner friendly."
+    # The measurement agreed - 36 links above the fold, 210 on the page, 2,022
+    # words, and the first button invited a stranger to read all 509 pieces. The
+    # beginner path at /start/ existed but no door pointed at it. The hero now
+    # asks one question and offers three answers, in the reader's words; the
+    # catalogue, the gauges and the ribbon all survive, one screen lower.
     _wr_cfg = {
         "brand": "BRYME WRITERS",
-        "h1": "Learn to write, get published, get paid.",
-        "dek": (str(len(WRITING)) + " publications researched by hand \u2014 what they pay, how long, who they "
-                "are open to \u2014 plus " + str(len(GUIDES)) + " guides, " + str(len(TOOLS)) + " free tools and "
-                "the essays behind the market. The whole desk is listed below, in the page itself."),
+        "eyebrow": "START HERE",
+        "eyebrow_r": "Updated " + _articles_content.human_date(
+            __import__("datetime").date.fromisoformat(str(TODAY)[:10])),
+        "h1": "You want to write. Start where you are.",
+        "dek": ("Three doors, and everything behind them is free \u2014 no account, no email wall, "
+                "nothing to buy. Pick the one that sounds like you."),
+        "promise": ("<b>Who this is for:</b> anyone who wants to write for a living and has not been "
+                    "published yet \u2014 or has, and is tired of writing for nothing. The desk is paid for "
+                    "by advertising, and every page says so."),
+        "palette_btn": "Find one answer",
+        "doors": [
+            ("/start/", "Door 1 \u00b7 never published",
+             "I have never been published",
+             "Twenty short lessons in the order they should be read \u2014 from a blank page to a finished "
+             "piece you can send somewhere. No sign-up.",
+             "Start the beginner path"),
+            ("/writing/", "Door 2 \u00b7 ready to earn",
+             "I can write \u2014 I need people who pay",
+             str(len(WRITING)) + " outlets, checked by hand: what each one pays, how long it takes to "
+             "answer, and whether they take writers working from Nigeria.",
+             "See who pays"),
+            ("/find/", "Door 3 \u00b7 one answer, now",
+             "I need one answer, not a course",
+             str(len(GUIDES)) + " guides and " + str(len(TOOLS)) + " free tools, searchable in plain "
+             "words. How long should a pitch be? What do I charge? Where do I start?",
+             "Find the answer"),
+        ],
+        "ribbon_h": "Latest from BRYME Articles",
+        "needs_h": "What are you trying to do?",
+        # Band headings in plain words. The metaphors ("The whole desk, open",
+        # "The comparison wall") named the furniture; these say what is behind
+        # the heading. Keys are read by desk_hub_render.render().
+        "core_h": "Everything we have published",
+        "core_p": ("The whole catalogue on one page \u2014 no \u201cload more\u201d wall between you and the "
+                   "answer. Filter it by what you came to do, or search it above."),
+        "needs_p": ("Seven jobs. Pick one and the list below re-sorts itself to that job. Keys "
+                    "<kbd>1</kbd>\u2013<kbd>7</kbd> on a keyboard."),
+        "toolbox_h": "The tools",
+        "wall_h": "Compare writing formats",
+        "standards_h": "How this desk works",
+        "clusters_p": ("The other desks and shelves on this site \u2014 market watch, essays, our own test "
+                       "record, and what every status on a record actually means."),
         "needs": [
             ("write", "WRITE",
              "Craft, editing, storytelling — guides on fiction, nonfiction, essays, poetry, screenwriting, pitches — beginner to advanced."),
@@ -1359,7 +1404,7 @@ def homepage() -> None:
             ("/verification/", "What statuses mean", "How every dossier status is assigned and checked."),
             ("/read/", "The archive", "Every guide, essay and dossier \u2014 indexed and permanent."),
         ],
-        "clusters_h": "Beyond the wall.",
+        "clusters_h": "Other desks on this site",
         "clusters_p": ("The desks and shelves that sit beside the catalogue \u2014 market watch, essays, our own "
                        "test record, and what every status on a dossier actually means."),
         "palette_label": "Search the writers\u2019 desk",
@@ -1378,8 +1423,8 @@ def homepage() -> None:
     _art_cfg = _articles_content.load_config()
     _art_live = _articles_content.load_published(_art_cfg)
     body = ("<style>" + desk_hub_render.TECH_LOOK + "</style>"
-            + '<div class="wrap">' + _bart.desk_ribbon(_art_cfg, _art_live) + "</div>"
-            + desk_hub_render.render(arts, tools, WR_CATS, _wr_cfg, "", "Snapshot " + TODAY)
+            + desk_hub_render.render(arts, tools, WR_CATS, _wr_cfg, "", "Snapshot " + TODAY,
+                                      ribbon_html=_bart.desk_ribbon(_art_cfg, _art_live))
             + '<script src="/assets/articles.js" defer></script>'
             + '<script src="/assets/tech-hub.js" defer></script>')
     structured = [

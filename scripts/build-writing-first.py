@@ -395,22 +395,25 @@ def nav(current: str = "") -> str:
     home_aria = ' aria-current="page"' if current == "home" else ""
     items.append(f'<a class="home-link"{home_aria} href="/" aria-label="BRYME home"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg></a>')
     # Keep the desk identity visible in the Writers masthead/navigation.
-    items.append(f'<a class="nav-desk"{home_aria} href="/">Writers</a>')
+    # 2026-11-23: "Writers" spent the brand twice (the masthead already says
+    # WRITERS) and read as a section a beginner was not sure they were in. The
+    # slot now says what the link does.
+    items.append(f'<a class="nav-desk"{home_aria} href="/">Home</a>')
     # BRYME Articles sits in the primary navigation, immediately after the desk
     # name, on every page of the publication: the brief asks for it to be found
     # "near the beginning" of the navigation and it is a section of this desk,
     # not a property of its own. Its own current-state key is "articles".
     art_aria = ' aria-current="page"' if current == "articles" else ""
-    items.append(f'<a class="nav-articles"{art_aria} href="/articles/"><span class="nav-articles-dot" aria-hidden="true"></span>BRYME Articles</a>')
+    items.append(f'<a class="nav-articles" data-nav-short="Articles"{art_aria} href="/articles/"><span class="nav-articles-dot" aria-hidden="true"></span><span class="nav-lbl">BRYME Articles</span></a>')
     MEGA = [
-        ("learn", "/learn/", "Learn", [
+        ("learn", "/learn/", "Learn to write", [
             ("/start/", "Beginner path"), ("/find/", "What do you want to write?"),
             ("/learn/writing-basics/", "Writing basics"), ("/learn/writing-process/", "The writing process"),
             ("/learn/grammar-language/", "Grammar &amp; language"), ("/learn/editing-proofreading/", "Editing &amp; proofreading"),
             ("/learn/academic-writing/", "Academic writing"), ("/learn/creative-writing/", "Creative writing"),
             ("/learn/freelance-paid-writing/", "Rates &amp; business"), ("/learn/", f"All {_NAV_GUIDE_COUNT} guides")]),
-        ("writing", "/writing/", "Publish", [
-            ("/writing/", "The opportunity desk"), ("/writing-opportunities/", "The atlas: by country"),
+        ("writing", "/writing/", "Get paid", [
+            ("/writing/", "The opportunity desk"), ("/writing-opportunities/", "Markets by country"),
             ("/today/", "Updated this week"), ("/tested/", "BRYME Tested"),
             ("/guides/how-to-write-a-pitch/", "How to write a pitch"), ("/tracker/", "Submission tracker")]),
         ("tools", "/tools/", "Tools", [
@@ -418,14 +421,25 @@ def nav(current: str = "") -> str:
             ("/tools/invoice-generator/", "Invoice generator"), ("/tools/late-payment-letter-builder/", "Late-payment letters"),
             ("/tools/pitch-checker/", "Pitch checker"), ("/studio/", "The Writing Studio"),
             ("/templates/", "Templates"), ("/checklists/", "Checklists"), ("/tools/", f"All {_NAV_TOOL_COUNT} tools")]),
-        ("read", "/essays/", "Intelligence", [
+        ("read", "/essays/", "Essays", [
             ("/essays/", "Essays"), ("/intelligence/", "Writing intelligence"),
             ("/read/", "All articles"), ("/glossary/", "Glossary"), ("/compare/", "Compare formats")]),
     ]
+    # Long labels read better on a laptop, short ones fit a phone. The long label
+    # stays the only text in the DOM (so the accessible name and the navigation
+    # audit both see one string); the short one is an attribute that CSS turns
+    # into the visible label under 900px.
+    SHORT = {"Learn to write": "Learn"}
     for key, href, label, children in MEGA:
         aria = ' aria-current="page"' if key == current else ""
         cls = ' class="nav-cta"' if key == "writing" else ""
         panel = "".join(f'<a href="{ch}">{lb}</a>' for ch, lb in children)
+        short = SHORT.get(label)
+        if short:
+            shown = (f'<a{cls} data-nav-short="{short}"{aria} href="{href}">'
+                     f'<span class="nav-lbl">{label}</span></a>')
+            items.append(f'<div class="has-mega">{shown}<div class="mega">{panel}</div></div>')
+            continue
         items.append(f'<div class="has-mega"><a{cls}{aria} href="{href}">{label}</a><div class="mega">{panel}</div></div>')
     edition = _build_now().strftime("%B %Y").upper()
     return f'''<a class="skip-link" href="#main">Skip to content</a>

@@ -35,6 +35,36 @@
 kbd{display:inline-block;padding:3px 6px;border:1px solid var(--line-strong);border-bottom-width:2px;
   border-radius:6px;background:var(--paper);font:600 10.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
 
+/* ---------- the three doors (2026-11-23) ----------
+   The first screen used to open on 36 links and a button inviting a stranger to
+   read all 509 pieces. It now opens on one question with three answers, each
+   named for the reader rather than for the desk. Cards, because a door must
+   look pressable on a phone; three of them, because more than three is a menu
+   again. */
+.tm-doors{display:grid;gap:10px;margin:0 0 14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr))}
+.tm-door{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);
+  padding:14px 15px 15px;border:1px solid var(--line-strong);border-left:3px solid var(--accent);
+  border-radius:4px;background:var(--sheet);box-shadow:var(--shadow);
+  transition:transform .16s ease,border-color .16s ease}
+.tm-door:nth-child(1){border-left-color:var(--brand)}
+.tm-door:hover,.tm-door:focus-visible{transform:translateY(-1px);border-color:var(--brand)}
+.tm-door-k{font:800 9.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.tm-door b{display:block;margin:5px 0 5px;font:700 17px/1.25 var(--serif);letter-spacing:-.01em}
+.tm-door-s{display:block;font-size:12.5px;line-height:1.5;color:var(--muted)}
+.tm-door i{margin-top:10px;align-self:flex-start;font-style:normal;font:800 11px var(--sans);
+  letter-spacing:.09em;text-transform:uppercase;color:var(--brand);
+  border-bottom:2px solid var(--accent);padding-bottom:2px}
+.tm-door:hover i{color:var(--accent)}
+.tm-promise{margin:0 0 18px;font-size:12px;line-height:1.55;color:var(--dim);max-width:62ch}
+.tm-promise b{color:var(--ink)}
+.tm-quiet-link{font-size:12.5px;color:var(--muted);text-decoration:none;
+  border-bottom:1px solid var(--line-strong);padding-bottom:1px}
+.tm-quiet-link:hover{color:var(--ink);border-bottom-color:var(--accent)}
+.tm-ribbon-slot{margin:0 0 18px;padding-top:14px;border-top:1px solid var(--line)}
+.tm-ribbon-h{margin:0 0 8px;font:800 9.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+@media (max-width:620px){.tm-doors{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.tm-door,.tm-door:hover{transform:none;transition:none}}
+
 /* ---------- gauges ---------- */
 .tm-gauges{display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));
   margin:0 0 4px;background:var(--line);border:1px solid var(--line);border-radius:var(--tm-r);overflow:hidden}
