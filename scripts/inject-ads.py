@@ -457,9 +457,18 @@ def apply_page(t: str, state: dict, route: str = "") -> tuple[str, int]:
         t = t.replace(AD_ANCHOR, AD_ANCHOR + block, 1)
         bands += 1
 
-    # top band, just inside <main>, for pages that name no spot. Declined on the
-    # Articles section - see the route note in this function's docstring: it
-    # lands in the first viewport there, above the headline.
+    # top band: after the page has introduced itself, not before it.
+    #
+    # Until 2026-11-24 this sat immediately inside <main>, so the first thing a
+    # reader met - on a phone, the only thing in the first screen - was an
+    # advertisement, before the headline or the three doors. The owner asked for
+    # the introduction first and the ad a little further down, which is also
+    # what every publication worth reading does: earn the attention, then sell.
+    #
+    # The rule: find the page's <h1>, then place the band after the section that
+    # contains it - the hero, in practice. If a page has no <h1> inside <main>,
+    # or no section close within a sane distance, fall back to the old position
+    # rather than guessing at markup.
     if ("top" in natives and main_open and not anchored
             and not route.startswith("/writers/articles/")):
         block = native_block("top", natives["top"], gate)
@@ -467,6 +476,14 @@ def apply_page(t: str, state: dict, route: str = "") -> tuple[str, int]:
             block += LOADER_TAG
             loader = True
         pos = main_open.end()
+        m_body = re.search(r"<main[^>]*>([\s\S]*?)</main>", t)
+        if m_body:
+            start, end = m_body.start(1), m_body.end(1)
+            h1 = t.find("<h1", start, end)
+            if h1 != -1:
+                close = t.find("</section>", h1, end)
+                if close != -1 and close - start < 20000:
+                    pos = close + len("</section>")
         t = t[:pos] + block + t[pos:]
         bands += 1
 

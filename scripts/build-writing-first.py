@@ -620,6 +620,44 @@ def _filter_matches(rec: dict, flt: str, mode: str = "based") -> bool:
     return here
 
 
+def country_picker_markup(options_html: str) -> str:
+    """The country control: flags you can see, and a box you can type in.
+
+    Before 2026-11-24 this was a single native <select> holding ~110 options
+    grouped by continent. It was correct, accessible and, in the owner's words,
+    "stupid" - on a phone it opened the OS wheel and asked a writer in Lagos to
+    scroll through continents to find their own country.
+
+    So: a button showing the current choice with its flag, opening a panel with
+    a type-ahead box and a flagged list. The <select> is still here and still
+    the source of truth - hidden at one pixel, still a real form control that
+    scripts and the filter harness can set - so every existing behaviour, every
+    test and the no-JavaScript fallback keep working.
+    """
+    return (
+        '<div class="cpick" data-cpick>'
+        '<button type="button" class="cpick-btn" id="cpick-btn" aria-haspopup="listbox" '
+        'aria-expanded="false" aria-labelledby="f-country-label">'
+        '<span class="cpick-flag" aria-hidden="true">\U0001F30D</span>'
+        '<span class="cpick-val">All countries</span>'
+        '<span class="cpick-chev" aria-hidden="true">\u25be</span></button>'
+        '<div class="cpick-pop" data-cpick-pop hidden>'
+        '<input class="cpick-q" type="search" autocomplete="off" spellcheck="false" '
+        'placeholder="Type a country \u2014 Nigeria, Kenya, UK&hellip;" aria-label="Type a country">'
+        '<ul class="cpick-list" role="listbox" aria-label="Countries"></ul>'
+        '<p class="cpick-none" hidden>No country by that name yet. '
+        '<a href="/writing-opportunities/">See every country &rarr;</a></p>'
+        '</div>'
+        # aria-label is here for the release gate that requires every facet
+        # control to carry a name, and for the no-JavaScript case where this
+        # select IS the control. With JavaScript running it is aria-hidden and
+        # out of the tab order: the button above is the accessible control.
+        '<select id="f-country" name="country" autocomplete="country" '
+        'class="cpick-native" tabindex="-1" aria-hidden="true" aria-label="Country">'
+        + options_html + '</select>'
+        '</div>')
+
+
 def writing_nav(current_flt: str = "") -> str:
     """Static country filter for the /writing/ hub.
 
@@ -697,8 +735,8 @@ def writing_nav(current_flt: str = "") -> str:
     <input id="f-q" type="search" placeholder="Search publications, genres, topics — e.g. personal essay, poetry, Lagos" autocomplete="off">
   </div>
   <div class="opp-filter-grid">
-    <div class="opp-field"><label for="f-country">Country</label>
-      <select id="f-country" name="country" autocomplete="country">{"".join(opts)}</select></div>
+    <div class="opp-field"><label for="cpick-btn" id="f-country-label">Country</label>
+      {country_picker_markup("".join(opts))}</div>
     <div class="opp-field"><label for="f-cmode">Country means</label>
       <select id="f-cmode">
         <option value="based">Publication is based there</option>
@@ -2687,6 +2725,7 @@ def writing_hub() -> None:
 <li><b>Track it honestly.</b> Where BRYME has personally tested an opportunity, the journey is shown as it happens — pitch sent, response, accepted, scheduled, published, paid — and payment is only marked confirmed once it actually lands.</li>
 </ol></div></section>
 <section class="section alt"><div class="wrap opp-list" id="opp-list">{cards}</div></section>
+<script src="/assets/country-picker.js" defer></script>
 <script src="/assets/opp-filter.js" defer></script></div>'''
     write("/writing/", page_wf(title="Writing opportunities for African and international writers | BRYME",
                               description=f"{len(WRITING)} paid writing publications researched by BRYME — with published pay, word count, eligibility, submission method and the official guideline to confirm before pitching.",

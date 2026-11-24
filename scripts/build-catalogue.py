@@ -296,6 +296,7 @@ def build() -> None:
   </div>
   <div class="cat-az" id="cat-az" role="group" aria-label="Filter by first letter">{az}</div>
 </div>
+<!--ba-ad-->
 <div class="wrap">
   {''.join(sections)}
   <p class="cat-empty" id="cat-empty" hidden>Nothing on the desk matches that. <button type="button"
