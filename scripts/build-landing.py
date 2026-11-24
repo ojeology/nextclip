@@ -286,6 +286,20 @@ N_GUIDES = _guide_section_count()
 N_EARN = _guide_section_count("freelance-paid-writing")
 N_SUBMIT = _indexable_children("/writers/guides/")
 N_TOOLS = _indexable_children("/writers/tools/")
+
+# What else sits under the same roof, counted for the hero meta line.
+try:
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import articles_content as _ac
+    _cfg = _ac.load_config()
+    N_ARTICLES = len(_ac.load_published(_cfg))
+except Exception:
+    N_ARTICLES = 0
+try:
+    N_ESSAYS = len([p for p in (ROOT / "content" / "essays").glob("*.md")
+                    if p.name.lower() != "readme.md"])
+except Exception:
+    N_ESSAYS = 0
 N_COUNTRIES = len({(v or {}).get("base") for v in json.loads(
     (ROOT / "content" / "hub" / "pub-countries.json").read_text(encoding="utf-8")).values()
     if (v or {}).get("base")})
@@ -383,6 +397,66 @@ def articles_entry() -> str:
 
 
 ARTICLES_ENTRY = articles_entry()
+
+# ---------------------------------------------------------------------------
+# The reading shelf (owner, 2026-11-24).
+#
+# "Articles should be displayed with a short epistle and a continuum reading
+# button on the landing page, so users casually strolling can read a few lines
+# and carry on if it holds them - and another one subsequently below."
+#
+# So: one piece per row, stacked, never a grid of cards. Each row carries the
+# cover, the section, the headline, the standfirst, then the piece's own opening
+# lines in the reading type, then Continue reading. Generated from
+# content/articles/, so it cannot go stale.
+# ---------------------------------------------------------------------------
+def articles_shelf() -> str:
+    try:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import articles_content as ac
+        cfg = ac.load_config()
+        live = ac.load_published(cfg)[:4]
+    except Exception:
+        return ""
+    if not live:
+        return ""
+    rows = []
+    for a in live:
+        cover = a.get("cover") or ""
+        rows.append(
+            '<article class="shelf-item">'
+            + ('<a class="shelf-img" href="' + H("/writers" + a["route"]) + '" tabindex="-1" '
+               'aria-hidden="true"><img src="' + html.escape(cover, quote=True) + '" alt="" loading="lazy" '
+               'width="' + str(a.get("cover_width", 640)) + '" height="'
+               + str(a.get("cover_height", 400)) + '"></a>' if cover else '')
+            + '<div class="shelf-t">'
+            + '<p class="shelf-k">' + html.escape(a["category"]["name"], quote=False) + '</p>'
+            + '<h3><a href="' + H("/writers" + a["route"]) + '">'
+            + html.escape(a["title"], quote=False) + '</a></h3>'
+            + '<p class="shelf-s">' + html.escape(a.get("teaser") or a.get("description", ""), quote=False) + '</p>'
+            + ('<p class="shelf-open">' + html.escape(ac.opening_lines(a.get("body", "")), quote=False) + '</p>'
+               if ac.opening_lines(a.get("body", "")) else '')
+            + '<a class="shelf-more" href="' + H("/writers" + a["route"]) + '">Continue reading'
+            + '<span aria-hidden="true">&rarr;</span></a>'
+            + '</div></article>'
+        )
+    return (
+        '<div class="shelf" id="read">'
+        '<div class="eyebrow" style="margin-top:22px"><b>READ</b><span class="dot"></span>'
+        'BRYME ARTICLES<span class="dot"></span>FREE, NO WALL</div>'
+        '<h2 class="shelf-h">Read a few lines. Carry on if it holds you.</h2>'
+        '<p class="shelf-p">Reported stories and long reads from the same desk &mdash; '
+        'no account, no wall, sources listed at the foot of every piece. Each one below '
+        'opens with its own first lines; the button takes you into the whole thing.</p>'
+        '<div class="shelf-list">' + "".join(rows) + '</div>'
+        '<p class="shelf-f"><a href="' + H("/writers/articles/") + '">Every BRYME Article &rarr;</a>'
+        ' <span class="sep">·</span> <a href="' + H("/writers/essays/") + '">The essays &rarr;</a>'
+        ' <span class="sep">·</span> <a href="' + H("/writers/catalogue/") + '">Every page on one shelf &rarr;</a></p>'
+        '</div>'
+    )
+
+
+ARTICLES_SHELF = articles_shelf()
 
 HTML = f"""<!doctype html>
 <html lang="en"><head>
@@ -511,6 +585,7 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
 @media(max-width:640px){{.house .wrap{{width:min(calc(100% - 18px), var(--max))}}.house-hero h1{{font-size:clamp(28px,8vw,36px)}}.flag-grid{{grid-template-columns:1fr}}.sec-grid{{grid-template-columns:repeat(2,1fr)}}}}
 </style>
 <link rel="stylesheet" href="/assets/articles-enter.css">
+<link rel="stylesheet" href="/assets/house-shelf.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -558,7 +633,13 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
     <a class="btn secondary" href="{H("/writers/writing/")}">Browse {N_MARKETS} markets</a>
     <button type="button" class="btn secondary" data-house-open-palette><span>Find anything</span><kbd style="display:inline-grid;place-items:center;width:18px;height:18px;border:1px solid var(--line);border-radius:4px;font:700 10px/1 ui-monospace,monospace">K</kbd></button>
   </div>
-  <div class="meta"><b>{N_MARKETS}</b> paying markets <span class="sep">·</span> <b>{N_GUIDES}</b> guides <span class="sep">·</span> <b>{N_TOOLS}</b> tools <span class="sep">·</span> <b>0</b> pop-up windows <span class="sep">·</span> Every record verified {SWEEP_OLDEST}&ndash;{SWEEP} <span class="sep">·</span> Reviewed {REVIEWED}</div>
+  <div class="meta"><b>{N_MARKETS}</b> paying markets <span class="sep">·</span> <b>{N_GUIDES}</b> guides <span class="sep">·</span> <b>{N_TOOLS}</b> tools <span class="sep">·</span> <b>{N_ARTICLES}</b> reported articles <span class="sep">·</span> <b>{N_ESSAYS}</b> essays <span class="sep">·</span> <b>0</b> pop-up windows <span class="sep">·</span> Every record verified {SWEEP_OLDEST}&ndash;{SWEEP} <span class="sep">·</span> Reviewed {REVIEWED}</div>
+  <!-- The top ad band goes here, not after the hero: this page's
+       <section class="house-hero"> wraps the whole document, so the
+       generic 'after the section holding the h1' rule would park the
+       band at the foot of the page. The owner's rule is introduction
+       first, then the ad - and the introduction ends here. -->
+  <!--ba-ad-->
 
   <div class="flag">
     <div class="flag-head"><h2>Flagship: a practical home for writers</h2><span>75% of useful real estate · house standard</span><a href="{H("/writers/")}">Full desk →</a></div>
@@ -568,6 +649,8 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
       <div class="flag-card"><b><i>3</i> Earn — how to get paid</b><p>Rates, invoices, tax set-aside, income tracker, late payment letters. Browser tools, nothing uploaded.</p><div class="links"><a href="{H("/writers/tools/")}">{N_TOOLS} tools →</a><a href="{H("/writers/tools/freelance-rate-calculator/")}">Rate calc</a><a href="{H("/writers/tools/income-tracker/")}">Tracker</a></div></div>
     </div>
   </div>
+
+  {ARTICLES_SHELF}
 
   <div class="eyebrow" style="margin-top:18px"><b>PATHWAYS</b><span class="dot"></span>7 JOBS<span class="dot"></span>DISCOVER FIRST<span class="dot"></span>KEYS 1–7</div>
   <div class="paths">{pathways_html}</div>

@@ -81,6 +81,7 @@ import json
 import os
 import re
 import sys
+from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -416,6 +417,69 @@ def targets() -> list[Path]:
     return sorted(seen)
 
 
+class _Enclosing(HTMLParser):
+    """What element wraps a byte offset? Enough fidelity for ad placement.
+
+    html.parser is forgiving about unclosed tags, which is what we want here:
+    the answer we need is "is this position inside a card, a chip, a row or a
+    list item", and a best-effort stack answers it without a full DOM.
+    """
+
+    VOID = {"br", "img", "meta", "link", "input", "hr", "source", "area", "col"}
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.stack: list[tuple[str, str]] = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag in self.VOID:
+            return
+        self.stack.append((tag, (dict(attrs).get("class") or "")))
+
+    def handle_endtag(self, tag):
+        for i in range(len(self.stack) - 1, -1, -1):
+            if self.stack[i][0] == tag:
+                del self.stack[i:]
+                return
+
+
+# Element names and class words that mean "this is a card, a chip, a row or a
+# list cell". An advertisement dropped inside one of those reads as content of
+# the same kind, which the house rules forbid (docs/ADS.md).
+CARDISH = ("card", "chip", "tile", "grid", "cell", "item", "result",
+           "-row", "row-", "_row", "rows-", "-rows")
+# A real article body is an <article> too, so the tag alone is not evidence:
+# these class words mean "this article is the reading column, not a card".
+PROSE_HINT = ("prose", "body", "article", "post", "entry", "essay")
+
+
+def inside_cardish(segment: str) -> bool:
+    p = _Enclosing()
+    try:
+        p.feed(segment)
+        p.close()
+    except Exception:
+        return False
+    # The ad's PARENT decides how it lays out: only a flex/grid parent turns it
+    # into a cell. Ancestors further up only contain that parent, so they are
+    # not evidence of anything.
+    if p.stack:
+        tag, cls = p.stack[-1]
+        cls = (cls or "").lower()
+        if tag in ("li", "td", "a", "button", "summary", "nav"):
+            return True
+        if tag == "article" and not any(h in cls for h in PROSE_HINT):
+            return True
+        if any(word in cls for word in CARDISH):
+            return True
+    # ...and anywhere in the stack: an ad inside a link would be clickable as
+    # content (never), and one inside a list item or a summary is a list cell.
+    for tag, _cls in p.stack:
+        if tag in ("a", "button", "label", "li", "td", "summary", "nav"):
+            return True
+    return False
+
+
 def native_block(name: str, p: dict, gate: bool) -> str:
     band = (ADSTERRA_BAND
             .replace("{placement}", name)
@@ -493,6 +557,18 @@ def apply_page(t: str, state: dict, route: str = "") -> tuple[str, int]:
                 close = t.find("</section>", h1, end)
                 if close != -1 and close - start < 20000:
                     pos = close + len("</section>")
+                # A hero section that wraps the whole page - the house landing
+                # page is one - puts that band at the foot of the document.
+                # If the anchor lands past 45% of <main>, use the first block
+                # after the headline instead: introduction first, then the ad.
+                if (pos - start) > 0.45 * (end - start):
+                    first_p = t.find("</p>", h1, end)
+                    if first_p != -1 and first_p - h1 < 6000:
+                        pos = first_p + len("</p>")
+                    else:
+                        first_d = t.find("</div>", h1, end)
+                        if first_d != -1 and first_d - h1 < 6000:
+                            pos = first_d + len("</div>")
         t = t[:pos] + block + t[pos:]
         bands += 1
 
@@ -564,16 +640,32 @@ def apply_page(t: str, state: dict, route: str = "") -> tuple[str, int]:
                 # one: a hub can run 80,000 characters between two </section>
                 # closers, and "the next band end" then parks the ad at 81% of
                 # the page. Nearest </p> keeps it where the reader is.
-                ends = [pm.end() for pm in re.finditer(r"</p>", t[start2:end2])]
-                if ends:
-                    best = min(ends, key=lambda off: abs((start2 + off) - target2))
-                    at2 = start2 + best
-                else:
-                    for close_tag in ("</section>", "</div>"):
-                        hit = t.find(close_tag, target2, end2)
-                        if hit != -1:
-                            at2 = hit + len(close_tag)
-                            break
+                # Prefer a band start - the opening of a new section, h2 or band
+                # eyebrow - over a paragraph close. On a hub or the house landing
+                # page the paragraphs are inside a CSS grid (pathways, shelves,
+                # cards), and an ad dropped between two of them becomes a grid
+                # cell: it would read as a card, which the house rules forbid.
+                # Between bands it is a block on its own.
+                bands_at = [start2 + bm.start() for bm in
+                            re.finditer(r'<section\b|<div class="eyebrow"|<h2\b', t[start2:end2])]
+                para_ends = [start2 + pm.end() for pm in re.finditer(r"</p>", t[start2:end2])]
+                cands2 = sorted(bands_at + para_ends, key=lambda pos: abs(pos - target2))
+                # Take the nearest boundary that is NOT inside a card, chip, row
+                # or list cell: an ad there would read as one of the things it
+                # sits between. Five tries, then leave the slot empty rather than
+                # break a layout.
+                for cand in cands2[:40]:
+                    # A 20,000-character window is enough to see the cards this
+                    # position sits between, and cheap to parse 40 times.
+                    if inside_cardish(t[max(start2, cand - 20000):cand]):
+                        continue
+                    # Whole-document check for an unclosed <a>: a card link can
+                    # open far above the window, and an ad inside a link is the
+                    # one outcome worth paying a scan for.
+                    if len(re.findall(r"<a\b", t[start2:cand])) > t.count("</a>", start2, cand):
+                        continue
+                    at2 = cand
+                    break
                 top_at = t.find('data-placement="top"', start2)
                 if top_at != -1 and at2 != -1 and (at2 - top_at) <= 2500:
                     at2 = -1

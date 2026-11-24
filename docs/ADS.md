@@ -105,3 +105,30 @@ If a second, third or fourth *native* placement is wanted, create one Native
 Banner unit per placement in the Adsterra dashboard and paste each key/host into
 `adsterra.placements.middle` / `.bottom`; the slots are already wired, spaced and
 gated, and the build does the rest.
+
+### Where the in-body band is allowed to land (2026-11-24)
+
+The middle slot is not "anywhere at 55%". It is the nearest boundary to 55% of
+`<main>` that survives three tests:
+
+1. **Not inside a card, chip, tile, row, grid cell or list item.** On a hub, a
+   landing page or an index, the paragraphs live inside a CSS grid; an ad
+   dropped between two of them becomes a grid cell and reads as one of the cards
+   beside it, which the house rules forbid.
+2. **Not inside a link or a button.** `inside_cardish()` walks the element stack
+   with `html.parser` and rejects `a`, `button`, `label`, `li`, `td`, `summary`
+   and `nav` anywhere above the insertion point, plus a whole-document check for
+   an unclosed `<a>` that opens far above the window.
+3. **Not within 2,500 characters of the top band**, and never on a page with
+   fewer than six paragraphs.
+
+When no boundary in the nearest forty survives, the slot stays empty. That is
+why 489 of the 690 ad-carrying pages have an in-body band and the rest - dense
+card indexes such as `/writers/writing/`, `/writers/learn/` and
+`/writers/tools/` - carry the top and bottom bands only. Never break a layout
+for one impression.
+
+The house landing page anchors its top band with `<!--ba-ad-->` immediately
+after the introduction, because `<section class="house-hero">` wraps the whole
+document there and the generic "after the section that holds the h1" rule put
+the band at the foot of the page.

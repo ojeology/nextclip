@@ -1,0 +1,130 @@
+/* ============================================================================
+   The reading shelf on the house landing page (owner, 2026-11-24).
+
+   "Articles should be displayed with a short epistle and a continuum reading
+   button on the landing page ... and another one subsequently below."
+
+   One piece per row, stacked: cover, section, headline, standfirst, the piece's
+   own opening lines set in the reading type behind a rule, then Continue
+   reading. Deliberately NOT a grid of cards - the sequence is the point.
+   Colours come from the house tokens in bryme-v2.css, so light and dark both
+   follow the theme toggle without a second palette here.
+   ========================================================================== */
+
+.shelf {
+  margin: 6px 0 4px;
+  padding-top: 4px;
+  border-top: 1px solid var(--line);
+}
+
+.shelf-h {
+  margin: 12px 0 6px;
+  font: 800 clamp(24px, 3.4vw, 36px)/1.06 var(--serif);
+  letter-spacing: -.03em;
+  color: var(--ink);
+  max-width: 24ch;
+}
+
+.shelf-p {
+  margin: 0 0 8px;
+  font: 400 clamp(14.5px, 1.15vw, 16px)/1.55 var(--sans);
+  color: var(--muted);
+  max-width: 66ch;
+}
+
+.shelf-list { display: grid; grid-template-columns: minmax(0, 1fr); }
+
+.shelf-item {
+  display: grid;
+  grid-template-columns: clamp(150px, 20vw, 268px) minmax(0, 1fr);
+  gap: clamp(16px, 2.2vw, 30px);
+  align-items: start;
+  padding: clamp(18px, 2.4vw, 28px) 0;
+  border-top: 1px solid var(--line);
+}
+
+.shelf-img { display: block; line-height: 0; }
+.shelf-img img {
+  width: 100%; height: auto; display: block; border-radius: 2px;
+  filter: saturate(.94); transition: filter .15s ease;
+}
+.shelf-item:hover .shelf-img img { filter: saturate(1); }
+
+.shelf-k {
+  margin: 0 0 6px;
+  font: 800 9.5px/1 var(--sans);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--reg-articles, #9a4a2a);
+}
+
+.shelf-t h3 {
+  margin: 0 0 7px;
+  font: 700 clamp(19px, 1.9vw, 25px)/1.16 var(--serif);
+  letter-spacing: -.018em;
+}
+.shelf-t h3 a { color: var(--ink); text-decoration: none; }
+.shelf-t h3 a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--reg-articles, #9a4a2a);
+}
+
+.shelf-s {
+  margin: 0 0 10px;
+  max-width: 62ch;
+  font: 400 14px/1.55 var(--sans);
+  color: var(--muted);
+}
+
+/* the epistle: the piece's own first lines */
+.shelf-open {
+  margin: 0 0 14px;
+  padding-left: 14px;
+  border-left: 2px solid var(--reg-articles, #9a4a2a);
+  max-width: 60ch;
+  font: italic 400 clamp(15px, 1.3vw, 17.5px)/1.62 var(--serif);
+  color: var(--ink);
+}
+
+.shelf-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 30px;
+  padding-bottom: 3px;
+  border-bottom: 2px solid var(--reg-articles, #9a4a2a);
+  font: 800 11px/1 var(--sans);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--reg-articles, #9a4a2a);
+}
+.shelf-more:hover { gap: 11px; }
+
+.shelf-f {
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font: 700 12px/1.6 var(--sans);
+  color: var(--muted);
+}
+.shelf-f a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.shelf-f a:hover { border-bottom-color: var(--reg-articles, #9a4a2a); }
+.shelf-f .sep { margin: 0 6px; color: var(--dim, #9a958a); }
+
+@media (max-width: 640px) {
+  .shelf-item {
+    grid-template-columns: 104px minmax(0, 1fr);
+    gap: 13px;
+    padding: 16px 0;
+  }
+  .shelf-t h3 { font-size: 17.5px; }
+  .shelf-s { font-size: 13px; margin-bottom: 8px; }
+  .shelf-open { font-size: 14.5px; padding-left: 11px; margin-bottom: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shelf-img img, .shelf-item:hover .shelf-img img { transition: none; }
+}

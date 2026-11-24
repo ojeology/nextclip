@@ -372,6 +372,28 @@ def invitation_article(cfg: dict, articles: list[dict]) -> dict | None:
     return featured(cfg, articles)
 
 
+def opening_lines(body: str, words: int = 42) -> str:
+    """The first honest lines of a piece: prose, cut at a sentence boundary.
+
+    Used by the two front doors (the Writers desk and the house landing page) so
+    a reader scrolling past can read the writing itself rather than a blurb.
+    """
+    import re as _re
+    txt = _re.sub(r"^\s{0,3}(#|!|\||>).*$", "", body or "", flags=_re.M)
+    txt = _re.sub(r"<[^>]+>", "", txt)
+    paras = [_re.sub(r"\s+", " ", pp).strip() for pp in _re.split(r"\n\s*\n", txt)]
+    first = next((pp for pp in paras if len(pp.split()) >= 8), "")
+    if not first:
+        return ""
+    out, n = [], 0
+    for sent in _re.split(r"(?<=[.!?])\s+", first):
+        if n and n + len(sent.split()) > words:
+            return " ".join(out).rstrip(".") + "\u2026"
+        out.append(sent)
+        n += len(sent.split())
+    return " ".join(out)
+
+
 def related_articles(article: dict, articles: list[dict], limit: int = 3) -> list[dict]:
     """Up to ``limit`` stories to offer at the end of this one.
 
