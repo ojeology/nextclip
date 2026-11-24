@@ -536,12 +536,16 @@ html[data-theme="dark"] .tm-band-alt{background:#181d26}
   .tm-regs a { font-size: 11.5px; }
 }
 
-/* ---- the reading shelf ---- */
-.tm-arts { display: grid; gap: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(20px, 3vw, 44px); }
-@media (max-width: 860px) { .tm-arts { grid-template-columns: 1fr; } }
+/* ---- the reading shelf ----
+   One piece per row, stacked, so a reader who keeps scrolling meets the next
+   one directly below the last: cover, section, headline, the standfirst, then
+   the opening lines of the writing itself, then Continue reading. Two columns
+   made the shelf read as a grid of cards; the owner asked for a sequence. */
+.tm-arts { display: grid; gap: 0; grid-template-columns: minmax(0, 1fr); }
 .tm-art {
-  display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 16px; align-items: start;
-  padding: 18px 0; border-top: 1px solid var(--rule);
+  display: grid; grid-template-columns: clamp(180px, 24vw, 300px) minmax(0, 1fr);
+  gap: clamp(18px, 2.4vw, 30px); align-items: start;
+  padding: clamp(20px, 2.6vw, 30px) 0; border-top: 1px solid var(--rule);
 }
 .tm-art-img { display: block; line-height: 0; }
 .tm-art-img img {
@@ -557,8 +561,15 @@ html[data-theme="dark"] .tm-band-alt{background:#181d26}
 .tm-art h3 a { text-decoration: none; color: var(--ink); }
 .tm-art h3 a:hover { color: var(--reg-articles); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .tm-art-s {
-  margin: 0 0 10px; font-size: 13.5px; line-height: 1.55; color: var(--muted);
-  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  margin: 0 0 10px; font-size: 14px; line-height: 1.55; color: var(--muted); max-width: 62ch;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+/* the epistle: the piece's own first lines, set in the reading type */
+.tm-art-open {
+  margin: 0 0 14px; padding-left: 14px; border-left: 2px solid var(--reg-articles);
+  font: italic 400 clamp(15px, 1.3vw, 17px)/1.62 var(--serif, Georgia, serif);
+  color: var(--ink); max-width: 58ch;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
 }
 .tm-art-more {
   display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
@@ -567,7 +578,9 @@ html[data-theme="dark"] .tm-band-alt{background:#181d26}
   padding-bottom: 3px; min-height: 30px;
 }
 .tm-art-more:hover { gap: 11px; }
-@media (max-width: 480px) {
-  .tm-art { grid-template-columns: 96px minmax(0, 1fr); gap: 12px; }
-  .tm-art-s { -webkit-line-clamp: 2; font-size: 13px; }
+@media (max-width: 640px) {
+  .tm-art { grid-template-columns: 108px minmax(0, 1fr); gap: 13px; padding: 18px 0; }
+  .tm-art h3 { font-size: 17px; }
+  .tm-art-s { -webkit-line-clamp: 2; font-size: 13px; margin-bottom: 8px; }
+  .tm-art-open { -webkit-line-clamp: 3; font-size: 14.5px; padding-left: 11px; margin-bottom: 12px; }
 }

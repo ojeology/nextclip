@@ -355,6 +355,7 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
         + '<div class="tm-art-t"><p class="tm-art-k">' + esc(a.get("kicker", "")) + "</p>"
         + '<h3><a href="' + esc(U(a["href"], up)) + '">' + esc(a["title"]) + "</a></h3>"
         + '<p class="tm-art-s">' + esc(a.get("teaser", "")) + "</p>"
+        + ('<p class="tm-art-open">' + esc(a["opening"]) + "</p>" if a.get("opening") else "")
         + '<a class="tm-art-more" href="' + esc(U(a["href"], up)) + '">Continue reading'
         + '<span aria-hidden="true">&rarr;</span></a></div></article>'
         for a in (cfg.get("articles") or []))

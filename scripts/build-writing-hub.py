@@ -1448,9 +1448,31 @@ def homepage() -> None:
          len(WRITING) + len(GUIDES) + len(TOOLS) + len(_essay_files) + len(_art_live)),
     ]
 
+    def _opening(body: str, words: int = 42) -> str:
+        """The first honest lines of the piece, for the front-page taste.
+
+        Owner, 2026-11-24: a reader strolling past should be able to read a few
+        lines of the writing itself, not a blurb about it. So the shelf carries
+        the opening paragraph, cut at a sentence boundary rather than mid-clause.
+        """
+        txt = re.sub(r"^\s{0,3}(#|!|\||>).*$", "", body or "", flags=re.M)
+        txt = re.sub(r"<[^>]+>", "", txt)
+        paras = [re.sub(r"\s+", " ", pp).strip() for pp in re.split(r"\n\s*\n", txt)]
+        first = next((pp for pp in paras if len(pp.split()) >= 8), "")
+        if not first:
+            return ""
+        out, n = [], 0
+        for sent in re.split(r"(?<=[.!?])\s+", first):
+            if n and n + len(sent.split()) > words:
+                # no double punctuation: "market.…" reads as a mistake
+                return " ".join(out).rstrip(".") + "\u2026"
+            out.append(sent); n += len(sent.split())
+        return " ".join(out)
+
     _wr_cfg["articles"] = [
         {
             "href": a["route"],
+            "opening": _opening(a.get("body", "")),
             "kicker": (a.get("category") or {}).get("name", "BRYME Articles"),
             "title": a["title"],
             "teaser": a.get("teaser") or a.get("description", ""),
