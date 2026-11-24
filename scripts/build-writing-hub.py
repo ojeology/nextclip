@@ -19,6 +19,7 @@ Emits:
   /search/                client-side site search
 """
 from __future__ import annotations
+import html
 import importlib.util
 import json
 import re
@@ -1447,6 +1448,23 @@ def homepage() -> None:
         ("desk", "/catalogue/", "Everything",
          len(WRITING) + len(GUIDES) + len(TOOLS) + len(_essay_files) + len(_art_live)),
     ]
+
+    # Today's brief, carried on the hub too (owner, 2026-11-24): the desk owes a
+    # reader one reason to come back tomorrow, and this is it.
+    try:
+        _st = json.loads((ROOT / "content" / "submit-today.json").read_text(encoding="utf-8"))
+    except Exception:
+        _st = {}
+    if _st.get("publication"):
+        _tail = " &middot; ".join(
+            html.escape(x, quote=False) for x in (_st.get("pay") or "", _st.get("call") or "") if x)
+        _wr_cfg["submit_today"] = (
+            '<a class="st-today" href="' + _st["route"] + '">'
+            '<span class="st-today-k">Submit today &middot; '
+            + html.escape(_st.get("dateHuman", ""), quote=False) + '</span>'
+            '<span class="st-today-t"><b>' + html.escape(_st["publication"], quote=False) + '</b>'
+            + (' <span>&mdash; ' + _tail + '</span>' if _tail else '')
+            + '</span><span class="st-today-c">Open the brief &rarr;</span></a>')
 
     _wr_cfg["articles"] = [
         {

@@ -414,7 +414,8 @@ def nav(current: str = "") -> str:
             ("/learn/freelance-paid-writing/", "Rates &amp; business"), ("/learn/", f"All {_NAV_GUIDE_COUNT} guides")]),
         ("writing", "/writing/", "Get paid", [
             ("/writing/", "The opportunity desk"), ("/writing-opportunities/", "Markets by country"),
-            ("/today/", "Updated this week"), ("/tested/", "BRYME Tested"),
+            ("/submit-today/", "Submit today"), ("/today/", "Updated this week"),
+            ("/tested/", "BRYME Tested"),
             ("/guides/how-to-write-a-pitch/", "How to write a pitch"), ("/tracker/", "Submission tracker")]),
         ("tools", "/tools/", "Tools", [
             ("/tools/freelance-rate-calculator/", "Rate calculator"), ("/tools/freelance-agreement-builder/", "Agreement builder"),
@@ -1468,6 +1469,7 @@ def today_feed() -> None:
 <div class="card-grid">
 <a class="path-card" href="/tracker/"><span class="card-num">TRACK</span><h3>Submission tracker</h3><p>Log what you sent and when the follow-up is due. Free, private, stays in your browser.</p><span class="card-link">Open the tracker →</span></a>
 <a class="path-card" href="/writing/"><span class="card-num">SEARCH</span><h3>Search everything</h3><p>Filter all {len(WRITING)} by country, genre, pay, length and status.</p><span class="card-link">Open the search →</span></a>
+<a class="path-card" href="/submit-today/"><span class="card-num">TODAY</span><h3>Submit today</h3><p>One market, in full: what it pays, what it wants, and how to send it before the day ends.</p><span class="card-link">Open today&rsquo;s brief →</span></a>
 <a class="path-card" href="/learn/writing-for-publication/how-to-pitch-an-editor/"><span class="card-num">PITCH</span><h3>Write the pitch</h3><p>What editors read first, and the follow-up rule.</p><span class="card-link">Read the guide →</span></a>
 </div></div></section>'''
     write("/today/", page_wf(
@@ -4044,6 +4046,344 @@ def empty_pages() -> None:
     print("wrote 410.html")
 
 
+# ---------------------------------------------------------------------------
+# Submit today (owner, 2026-11-24)
+#
+# "Something like submit today whereby that pitch would be close to deadline and
+# we go over everything."
+#
+# One market a day, in full: what it pays, what it wants, what gets rejected,
+# how to send it, and a forty-minute plan for sending it before the day ends.
+# The undated URL is the one that gets posted to WhatsApp daily, so it has to
+# keep meaning *today* between rebuilds: the page carries three weeks of dated
+# pages ahead of the build, and /assets/submit-today.js sends a visitor to their
+# own day when the build is older than the calendar. A dated page never
+# redirects, so there is no loop.
+#
+# The pick is deliberate, not random:
+#   1. any open window with a stated closing date inside three weeks wins,
+#      soonest first - that is the "close to deadline" case;
+#   2. otherwise the open pool rotates one market per day, so every one of the
+#      222 open markets gets its turn and consecutive days never repeat.
+# ---------------------------------------------------------------------------
+ST_EPOCH = _dt.date(2026, 11, 24)
+ST_ROUTE = "/submit-today/"
+ST_PAST = 14      # archive depth, in days
+ST_FUTURE = 21    # dated pages pre-rendered ahead of the build date
+
+
+def _st_pool() -> list:
+    return [r for r in WRITING
+            if norm_status(r) in ("open", "rolling", "deadline")
+            and not deadline_passed(r)]
+
+
+def _st_rank(rec: dict) -> tuple:
+    usd = usd_amount(rec)
+    return (-(usd if usd is not None else -1), (rec.get("publication") or "").lower())
+
+
+def st_pick(day: _dt.date, recent: list[str] | None = None) -> tuple[dict | None, str]:
+    """The market this page is about on a given day, and the honest reason."""
+    recent = recent or []
+    pool = _st_pool()
+    if not pool:
+        return None, ""
+
+    # 1. a dated window closing inside three weeks, soonest first, as long as it
+    #    has not already carried a brief in the past week - otherwise the same
+    #    market would headline every day until its deadline, which is boring and
+    #    wastes the slot.
+    dated = []
+    for r in pool:
+        dl = _dl_date(r)
+        if not dl:
+            continue
+        try:
+            d = _dt.date.fromisoformat(str(dl)[:10])
+        except Exception:
+            continue
+        left = (d - day).days
+        if 0 <= left <= 21 and (r.get("publication") or "").lower() not in recent:
+            dated.append((left, r))
+    if dated:
+        left, rec = sorted(dated, key=lambda pair: (pair[0], pair[1].get("publication") or ""))[0]
+        return rec, (f"Closes in {left} day{'s' if left != 1 else ''} &mdash; the nearest "
+                     f"dated window still open in the record.")
+
+    # 2. rotation. Walk on past anything used in the past week; if the whole
+    #    pool has been used (only possible on a tiny pool) take the rotation
+    #    position anyway rather than showing nothing.
+    ordered = sorted(pool, key=_st_rank)
+    start = (day - ST_EPOCH).days % len(ordered)
+    for step in range(len(ordered)):
+        rec = ordered[(start + step) % len(ordered)]
+        if (rec.get("publication") or "").lower() not in recent:
+            break
+    return rec, ("Open right now. Picked on rotation, so every open market gets its day and "
+                 "no market repeats inside a week. The paid ones come round more often.")
+
+
+def st_plan(days: list[_dt.date]) -> dict:
+    """Pick for every day in order, so 'do not repeat inside a week' holds."""
+    out: dict = {}
+    recent: list[str] = []
+    for d in days:
+        rec, why = st_pick(d, recent)
+        if not rec:
+            continue
+        out[d] = (rec, why)
+        # by publication, not by dossier: one outlet can hold four separate
+        # calls, and "Longreads" two days running reads like a bug.
+        recent = (recent + [(rec.get("publication") or "").lower()])[-7:]
+    return out
+
+
+def _st_facts(rec: dict) -> str:
+    pay = rec.get("pay") or {}
+    wc = rec.get("wordCount") or {}
+    el = rec.get("eligibility") or {}
+    resp = rec.get("response") or {}
+    dl = rec.get("deadline") or {}
+    ai = rec.get("aiPolicy") or "not-stated"
+    ai_display = {"no-ai": "No, or restricted", "not-stated": "Not stated",
+                  "unknown": "Unknown", "allowed": "Allowed"}.get(ai, str(ai).replace("-", " ").capitalize())
+    deadline_display = (dl.get("display") or "").strip() if isinstance(dl, dict) else ""
+    if not deadline_display:
+        deadline_display = (f"Stated closing date {_dl_date(rec)}" if _dl_date(rec)
+                            else "No closing date given &mdash; treated as open while the page stands")
+    rows = [
+        ("Pays", pay.get("display") or "Not publicly stated", ""),
+        ("Length", wc.get("display") or "Not stated", ""),
+        ("Who can send", el.get("summary") or "Not stated in the guideline", ""),
+        ("Deadline", deadline_display, ""),
+        ("They reply in", resp.get("label") or "Not stated", "official" if resp.get("official") else ""),
+        ("AI policy", ai_display, ""),
+    ]
+    out = []
+    for label, value, note in rows:
+        note_html = f"<small>{esc(note)}</small>" if note else ""
+        out.append(f'<div class="st-fact"><b>{esc(label)}</b>'
+                   f'<span>{value if label in ("Deadline",) else esc(value)}{note_html}</span></div>')
+    return '<div class="st-facts">' + "".join(out) + "</div>"
+
+
+def _st_wa_text(rec: dict, route: str) -> str:
+    pay = (rec.get("pay") or {}).get("display") or "pay not stated"
+    url = f"{BASE}{route}?utm_source=whatsapp"
+    one = (rec.get("excerpt") or rec.get("title") or "").strip()
+    # first sentence, then a hard cut: a WhatsApp message that scrolls is a
+    # message nobody forwards
+    first = one.split(". ")[0].strip()
+    one = first if len(first) <= 160 else first[:157].rstrip(" ,;:-") + "\u2026"
+    return (f"*Submit today: {rec.get('publication')}*\n"
+            f"Pays: {pay}\n"
+            f"{one}\n"
+            f"Full brief (length, who can send, how to submit): {url}")
+
+
+def _st_href(day: _dt.date) -> str:
+    """Today has no dated page - the undated URL is today's page."""
+    return ST_ROUTE if day.isoformat() == TODAY else f"{ST_ROUTE}{day.isoformat()}/"
+
+
+def _st_body(rec: dict, day: _dt.date, why: str, *, main_page: bool,
+             prev_day: _dt.date | None, prev_rec: dict | None,
+             next_day: _dt.date | None, next_rec: dict | None,
+             archive: list[tuple[_dt.date, dict]]) -> str:
+    pub = esc(rec.get("publication") or "")
+    slug = rec.get("slug") or ""
+    dossier = f"/writing/{slug}/"
+    official = rec.get("officialUrl") or ""
+    apply_url = rec.get("applyUrl") or ""
+    apply_email = rec.get("applyEmail") or ""
+    method = rec.get("applyMethod") or "See the official guideline"
+    rights = rec.get("rights") or ""
+    label, cls, _state = status_of(rec)
+    route = ST_ROUTE if main_page else f'{ST_ROUTE}{day.isoformat()}/'
+    wa = "https://wa.me/?text=" + quote(_st_wa_text(rec, ST_ROUTE), safe="")
+    track = f"/tracker/?add={quote(rec.get('publication',''))}&url={quote(dossier, safe='')}"
+    day_human = day.strftime("%A %-d %B %Y")
+
+    # Built outside the f-string: the py-compat gate rejects backslashes inside
+    # f-string expressions (they need 3.12+), and this repo still runs 3.10.
+    guideline_html = (f'<a href="{esc(official)}">{pub} official submission page &rarr;</a>'
+                      if official else "Not recorded")
+    send_buttons = ""
+    if apply_url:
+        send_buttons += (f'<a class="btn" href="{esc(apply_url)}">Open the submission page</a>')
+    if apply_email:
+        send_buttons += (f'<a class="btn secondary" href="mailto:{esc(apply_email)}">'
+                         f'Email {esc(apply_email)}</a>')
+
+    plan = [
+        ("Read their guideline, once", "10 minutes",
+         "Open the official page and read it yourself. Everything below is our summary of it, "
+         "not a substitute."),
+        ("Pick the piece", "10 minutes",
+         "Match something you have already written to what they say they want. If nothing fits, "
+         "today is a skip &mdash; come back tomorrow."),
+        ("Send it", "15 minutes",
+         "Follow their route exactly: the subject line, the file name, the bio. Most rejections "
+         "here are formatting, not writing."),
+        ("Log it", "5 minutes",
+         "Put it in the tracker with today's date, so you know when the follow-up is due and you "
+         "never pitch the same piece twice by accident."),
+    ]
+    plan_html = "".join(
+        f'<li><div><b>{esc(title)}<em>{esc(mins)}</em></b><span>{body}</span></div></li>'
+        for title, mins, body in plan)
+
+    archive_html = "".join(
+        f'<a href="{_st_href(d)}">{d.strftime("%-d %b")} '
+        f'<span>&middot; {esc((r.get("publication") or "")[:34])}</span></a>'
+        for d, r in archive if d != day)
+
+    nav_bits = []
+    if prev_day and prev_rec:
+        nav_bits.append(f'<a class="path-card" href="{_st_href(prev_day)}">'
+                        f'<span class="card-num">YESTERDAY</span>'
+                        f'<h3>{esc(prev_rec.get("publication") or "")}</h3>'
+                        f'<span class="card-link">Read that brief &rarr;</span></a>')
+    if next_day and next_rec:
+        nav_bits.append(f'<a class="path-card" href="{_st_href(next_day)}">'
+                        f'<span class="card-num">TOMORROW</span>'
+                        f'<h3>{esc(next_rec.get("publication") or "")}</h3>'
+                        f'<span class="card-link">Preview tomorrow&rsquo;s brief &rarr;</span></a>')
+    nav_bits.append('<a class="path-card" href="/today/">'
+                    '<span class="card-num">EVERYTHING</span>'
+                    '<h3>Today&rsquo;s opportunities</h3>'
+                    '<span class="card-link">Everything closing, verified this week &rarr;</span></a>')
+
+    data_attrs = ""
+    if main_page:
+        days = ",".join((_dt.date.fromisoformat(TODAY) + _dt.timedelta(days=i)).isoformat()
+                        for i in range(-ST_PAST, ST_FUTURE + 1))
+        data_attrs = f' data-st-today data-st-date="{TODAY}" data-st-days="{days}"'
+
+    kicker_day = day.strftime("%-d %B")
+    return f'''<div{data_attrs}><div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/writing/">Writing opportunities</a> / Submit today</nav>
+<header class="st-hero">
+<p class="kicker"><span class="kicker-dot"></span>Submit today &middot; {esc(kicker_day)}</p>
+<h1>{pub}</h1>
+<p class="st-dek">{esc(rec.get("excerpt") or rec.get("title") or "")}</p>
+<p class="st-meta">{status_badge(rec)} <span class="verify-badge {esc(cls)}">Verified {esc((rec.get("lastVerified") or TODAY)[:10])}</span> <span class="st-type">{esc(rec.get("writingTypeLabel") or "")}</span></p>
+<p class="st-why"><b>Why this one today:</b> {why} <a href="{dossier}">The full dossier &rarr;</a></p>
+</header></div>
+
+<section class="st-section"><div class="wrap">
+{_st_facts(rec)}
+<div class="st-cols">
+<div>
+<h2>The call</h2>
+<p><b>{esc(rec.get("title") or "")}</b> &mdash; {esc(rec.get("excerpt") or "")}</p>
+{_list("What they want", rec.get("whatTheyWant") or [])}
+{_list("What gets rejected", rec.get("whatTheyDontWant") or [])}
+{_list("What the guideline asks for", rec.get("requirements") or [])}
+{_list("How to submit, step by step", rec.get("howToSubmit") or [])}
+{"<h3>Rights</h3><p>" + esc(rights) + "</p>" if rights else ""}
+<h2>Your next forty minutes</h2>
+<ol class="st-plan">{plan_html}</ol>
+</div>
+<div>
+<aside class="st-send" data-ad-exclude>
+<h2>Send it today</h2>
+<p>{esc(method)}</p>
+{send_buttons}
+<dl>
+<dt>Guideline</dt><dd>{guideline_html}</dd>
+<dt>Method</dt><dd>{esc(method)}</dd>
+{"<dt>Email</dt><dd>" + esc(apply_email) + "</dd>" if apply_email else ""}
+<dt>Verified</dt><dd>{esc((rec.get("lastVerified") or "")[:10])}</dd>
+<dt>Your pipeline</dt><dd><a href="{track}">Add this to the tracker &rarr;</a></dd>
+</dl>
+<p class="st-warn"><b>Never pay to submit.</b> A legitimate publication does not charge a reading fee or ask for identity documents to consider your work.</p>
+</aside>
+</div>
+</div>
+
+<div class="st-share" data-ad-exclude>
+<h2>Post it to WhatsApp</h2>
+<p>This is the message that goes with today&rsquo;s brief &mdash; pay, the call, and the link. Forward it to one group, or paste it into your Status.</p>
+<div class="st-share-row">
+<a class="btn" href="{wa}">Share on WhatsApp</a>
+<button class="btn secondary" type="button" data-copy="#st-msg" data-copy-note="#st-copied">Copy the message</button>
+<span class="st-copied" id="st-copied" hidden>Copied.</span>
+</div>
+<label class="sr-only" for="st-msg">The WhatsApp message</label>
+<textarea id="st-msg" readonly spellcheck="false">{esc(_st_wa_text(rec, ST_ROUTE))}</textarea>
+</div>
+</div></section>
+
+<section class="section alt"><div class="wrap">
+<div class="section-head"><div><p class="eyebrow">One a day</p><h2>Do not miss the next one.</h2></div>
+<p>Tomorrow&rsquo;s brief is already written. The pick changes at midnight, and every brief stays online at its own dated address.</p></div>
+<div class="card-grid">{"".join(nav_bits)}</div>
+<h3 style="margin-top:26px">Earlier briefs</h3>
+<div class="st-archive">{archive_html}</div>
+<p class="tool-note" style="margin-top:16px">How the pick works: a dated closing window inside three weeks always wins; otherwise every open market in the record takes its turn, one a day. No market is promoted for money.</p>
+</div></section></div>'''
+
+
+def submit_today_pages() -> None:
+    today = _dt.date.fromisoformat(TODAY)
+    days = [today + _dt.timedelta(days=i) for i in range(-ST_PAST, ST_FUTURE + 1)]
+    picks = st_plan(days)
+    if not picks:
+        return
+    archive = [(d, r) for d, (r, _w) in sorted(picks.items())]
+
+    for d, (rec, why) in sorted(picks.items()):
+        main_page = d == today
+        prev_day = d - _dt.timedelta(days=1)
+        next_day = d + _dt.timedelta(days=1)
+        prev_rec = picks.get(prev_day, (None, ""))[0]
+        next_rec = picks.get(next_day, (None, ""))[0]
+        pub = rec.get("publication") or "a market"
+        if main_page:
+            route = ST_ROUTE
+            title = f"Submit today: {pub}"
+            desc = (f"{pub} is open now. What it pays, what it wants, how to send it, and a "
+                    f"forty-minute plan for sending it today. Verified "
+                    f"{(rec.get('lastVerified') or TODAY)[:10]}.")
+            robots = "index,follow"
+        else:
+            route = f"{ST_ROUTE}{d.isoformat()}/"
+            title = f"Submit today, {d.strftime('%-d %B')}: {pub}"
+            desc = (f"The {d.strftime('%-d %B %Y')} brief: {pub} &mdash; pay, length, who can "
+                    f"send, and how to submit.")
+            robots = "noindex,follow"
+        body = _st_body(rec, d, why, main_page=main_page,
+                        prev_day=prev_day if prev_rec else None, prev_rec=prev_rec,
+                        next_day=next_day if next_rec else None, next_rec=next_rec,
+                        archive=[a for a in archive if a[0] <= d])
+        write(route, page_wf(
+            title=title, description=desc, route=route,
+            current="writing", body=body, robots=robots,
+            body_scripts='<script src="/assets/submit-today.js" defer></script>',
+        ))
+    # A small manifest so the front doors (house landing page, Writers hub) can
+    # carry today's line without re-implementing the pick.
+    rec, why = picks[today]
+    pay = (rec.get("pay") or {}).get("display") or ""
+    manifest = {
+        "date": TODAY,
+        "dateHuman": today.strftime("%-d %B"),
+        "route": ST_ROUTE,
+        "publication": rec.get("publication") or "",
+        "call": rec.get("title") or "",
+        "pay": pay,
+        "verified": (rec.get("lastVerified") or "")[:10],
+        "why": why.replace("&mdash;", "-"),
+        "nextDate": (today + _dt.timedelta(days=1)).isoformat(),
+        "nextPublication": (picks.get(today + _dt.timedelta(days=1)) or ({}, ""))[0].get("publication", "")
+        if picks.get(today + _dt.timedelta(days=1)) else "",
+    }
+    (ROOT / "content" / "submit-today.json").write_text(
+        json.dumps(manifest, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"wrote submit-today: 1 today + {len(picks) - 1} dated briefs ({manifest['publication']})")
+
+
 if __name__ == "__main__":
     # Homepage is owned by the Writing Hub builder (build-writing-hub.py) so the
     # hub surface reads as one site; this builder still owns /writing/, /guides/,
@@ -4056,6 +4396,7 @@ if __name__ == "__main__":
     tracker_page()
     studio_page()
     today_feed()
+    submit_today_pages()
     programmatic_pages()
     for r in WRITING:
         pub_page(r)

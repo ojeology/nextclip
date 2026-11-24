@@ -458,6 +458,31 @@ def articles_shelf() -> str:
 
 ARTICLES_SHELF = articles_shelf()
 
+# The daily line on the front door (owner, 2026-11-24). Read from the manifest
+# the Writing desk's build writes, so the two can never disagree about what
+# today's market is.
+def submit_today_strip() -> str:
+    try:
+        m = json.loads((ROOT / "content" / "submit-today.json").read_text(encoding="utf-8"))
+    except Exception:
+        return ""
+    if not m.get("publication"):
+        return ""
+    tail = " &middot; ".join(html.escape(b, quote=False)
+                            for b in (m.get("pay") or "", m.get("call") or "") if b)
+    return (
+        '<a class="st-today" href="/writers' + m["route"] + '">'
+        '<span class="st-today-k">Submit today &middot; '
+        + html.escape(m.get("dateHuman", ""), quote=False) + '</span>'
+        '<span class="st-today-t"><b>' + html.escape(m["publication"], quote=False) + '</b>'
+        + (' <span>&mdash; ' + tail + '</span>' if tail else '')
+        + '</span>'
+        '<span class="st-today-c">Open the brief &rarr;</span></a>'
+    )
+
+
+SUBMIT_TODAY_STRIP = submit_today_strip()
+
 HTML = f"""<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -649,6 +674,8 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
       <div class="flag-card"><b><i>3</i> Earn — how to get paid</b><p>Rates, invoices, tax set-aside, income tracker, late payment letters. Browser tools, nothing uploaded.</p><div class="links"><a href="{H("/writers/tools/")}">{N_TOOLS} tools →</a><a href="{H("/writers/tools/freelance-rate-calculator/")}">Rate calc</a><a href="{H("/writers/tools/income-tracker/")}">Tracker</a></div></div>
     </div>
   </div>
+
+  {SUBMIT_TODAY_STRIP}
 
   {ARTICLES_SHELF}
 

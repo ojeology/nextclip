@@ -429,12 +429,13 @@ class _Enclosing(HTMLParser):
 
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
-        self.stack: list[tuple[str, str]] = []
+        self.stack: list[tuple[str, str, dict]] = []
 
     def handle_starttag(self, tag, attrs):
         if tag in self.VOID:
             return
-        self.stack.append((tag, (dict(attrs).get("class") or "")))
+        a = dict(attrs)
+        self.stack.append((tag, (a.get("class") or ""), a))
 
     def handle_endtag(self, tag):
         for i in range(len(self.stack) - 1, -1, -1):
@@ -464,8 +465,8 @@ def inside_cardish(segment: str) -> bool:
     # into a cell. Ancestors further up only contain that parent, so they are
     # not evidence of anything.
     if p.stack:
-        tag, cls = p.stack[-1]
-        cls = (cls or "").lower()
+        tag, _cls, _attrs = p.stack[-1]
+        cls = (_cls or "").lower()
         if tag in ("li", "td", "a", "button", "summary", "nav"):
             return True
         if tag == "article" and not any(h in cls for h in PROSE_HINT):
@@ -474,8 +475,13 @@ def inside_cardish(segment: str) -> bool:
             return True
     # ...and anywhere in the stack: an ad inside a link would be clickable as
     # content (never), and one inside a list item or a summary is a list cell.
-    for tag, _cls in p.stack:
-        if tag in ("a", "button", "label", "li", "td", "summary", "nav"):
+    for tag, _cls, attrs in p.stack:
+        if tag in ("a", "button", "label", "li", "td", "summary", "nav",
+                   "aside", "form", "figure", "blockquote"):
+            return True
+        # A page can fence off a region the layout depends on - a sticky panel, a
+        # share box, anything where an ad would break the thing it sits inside.
+        if "data-ad-exclude" in (attrs or {}):
             return True
     return False
 
