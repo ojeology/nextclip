@@ -1380,12 +1380,16 @@ def homepage() -> None:
             ("write", "WRITE"), ("submit", "SUBMIT"), ("discover", "DISCOVER"), ("research", "RESEARCH"),
             ("earn", "EARN"), ("tools", "TOOLS"), ("career", "CAREER")
         ],
+        # The captions used to end in the desk's internal taxonomy ("— DISCOVER",
+        # "— WRITE/SUBMIT/EARN/CAREER"). It was shorthand for the four jobs the
+        # desk organises itself by, and on a phone it read as machine output.
+        # The number says the count; the caption says the thing.
         "gauges": lambda st, tools: [
-            (len(WRITING), "paying markets — DISCOVER", "each carries its last-checked date"),
-            (n_open, "accepting now", "status verified against the guideline"),
-            (len(tested), "personally tested by BRYME", "the journey shown as it happened"),
-            (len(GUIDES), "craft guides — WRITE/SUBMIT/EARN/CAREER", "from first pitch to final invoice"),
-            (len(tools), "browser tools — USE TOOLS", "no account, nothing uploaded"),
+            (len(WRITING), "paying markets", "each carries its last-checked date"),
+            (n_open, "open to submissions now", "status verified against the guideline"),
+            (len(tested), "tested by BRYME ourselves", "the journey shown as it happened"),
+            (len(GUIDES), "craft and business guides", "from first pitch to final invoice"),
+            (len(tools), "free browser tools", "no account, nothing uploaded"),
             ("0", "pop-up windows, ever", "no popunders, no autoplay"),
         ],
         "rules": [
