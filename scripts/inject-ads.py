@@ -13,7 +13,9 @@ WHAT SHIPS
       middle  after the median paragraph of the article body
       bottom  after </main> (the original band position)
   adsterra social bar   - owner's Social Bar snippet, before </body>
-  adsterra display      - owner's classic banner snippet, after </main>
+  adsterra display      - owner's classic banner snippet, in the body (55% of
+                          <main>) and after </main> - two isolated iframes,
+                          owner decision 2026-11-24
   adsense native band   - fallback; renders only if nativeSlotId is filled
   monetag in-page push  - zone from monetag.inPagePush, every eligible page view
   monetag vignette      - zone from monetag.vignette, every eligible page view
@@ -313,6 +315,13 @@ def config() -> dict:
                 "format": str(display.get("format") or "iframe").strip() or "iframe",
                 "width": int(display.get("width") or 300),
                 "height": int(display.get("height") or 250),
+                # 2026-11-24, owner decision: "ads should be placed on multiple
+                # places of body, not just one". A second copy of the same
+                # display unit goes inside the body. It is safe to repeat where
+                # a native banner is not: the loader renders each display slot
+                # inside its own iframe with its own atOptions, so two copies do
+                # not fight over one container id.
+                "inBody": bool(display.get("inBody", False)),
             }
         else:
             print("ads: displayBanner is enabled but has no unit key/host yet - "
@@ -529,6 +538,57 @@ def apply_page(t: str, state: dict, route: str = "") -> tuple[str, int]:
             loader = True
         t = t.replace("</main>", "</main>" + block, 1)
         bands += 1
+
+    # display banner, inside the body (owner decision 2026-11-24).
+    #
+    # Same unit, second position: the loader gives every display slot its own
+    # iframe, so a repeat is contained rather than a duplicate container id.
+    # Rules: 55% of the way down <main>, at a real block boundary, never within
+    # 2,500 characters of the top native band, and never on a page with fewer
+    # than six paragraphs - an ad between two lines of text is worse than none.
+    if state["display"] and state["display"].get("inBody") and main_open:
+        d = state["display"]
+        m_body2 = re.search(r"<main[^>]*>([\s\S]*?)</main>", t)
+        at2 = -1
+        if m_body2:
+            start2, end2 = m_body2.start(1), m_body2.end(1)
+            paras2 = [pm for pm in re.finditer(r"<p\b[\s\S]*?</p>", t[start2:end2])
+                      if "adband" not in pm.group(0)]
+            if len(paras2) >= 6 and "adband-display-mid" not in t[start2:end2]:
+                # By byte position, not paragraph count: hubs pad the page with
+                # hundreds of short teaser paragraphs, so an index at 60% of the
+                # paragraph list can land at 90% of the page. 55% of the body
+                # span puts the ad where a reader scrolling actually meets it.
+                target2 = start2 + int((end2 - start2) * 0.55)
+                # Split at the paragraph end NEAREST the target, not the next
+                # one: a hub can run 80,000 characters between two </section>
+                # closers, and "the next band end" then parks the ad at 81% of
+                # the page. Nearest </p> keeps it where the reader is.
+                ends = [pm.end() for pm in re.finditer(r"</p>", t[start2:end2])]
+                if ends:
+                    best = min(ends, key=lambda off: abs((start2 + off) - target2))
+                    at2 = start2 + best
+                else:
+                    for close_tag in ("</section>", "</div>"):
+                        hit = t.find(close_tag, target2, end2)
+                        if hit != -1:
+                            at2 = hit + len(close_tag)
+                            break
+                top_at = t.find('data-placement="top"', start2)
+                if top_at != -1 and at2 != -1 and (at2 - top_at) <= 2500:
+                    at2 = -1
+        if at2 != -1:
+            block2 = (ADSTERRA_DISPLAY_BAND
+                      .replace('class="adband-display"', 'class="adband-display adband-display-mid"')
+                      .replace("{key}", d["key"]).replace("{host}", d["host"])
+                      .replace("{format}", d["format"])
+                      .replace("{width}", str(d["width"]))
+                      .replace("{height}", str(d["height"])))
+            if not loader:
+                block2 += LOADER_TAG
+                loader = True
+            t = t[:at2] + block2 + t[at2:]
+            bands += 1
 
     # social bar, before </body>. Marker div only: the loader appends the
     # network's external script under the same consent gate, and the script

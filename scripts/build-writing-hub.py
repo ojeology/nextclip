@@ -1323,6 +1323,12 @@ def homepage() -> None:
                     "by advertising, and every page says so."),
         "palette_btn": "Find one answer",
         "catalogue_href": "/catalogue/",
+        # The reading shelf: every live article with its own opening paragraph,
+        # so the front page shows the work rather than announcing it.
+        "articles_h": "Read the long ones",
+        "articles_p": ("Reported pieces and long reads from the same desk \u2014 free, no wall, "
+                       "sources listed at the foot of each one. Start anywhere; the button takes "
+                       "you into the piece."),
         "doors": [
             ("/start/", "Door 1 \u00b7 never published",
              "I have never been published",
@@ -1427,6 +1433,34 @@ def homepage() -> None:
 
     _art_cfg = _articles_content.load_config()
     _art_live = _articles_content.load_published(_art_cfg)
+
+    _essay_files = [p for p in (ROOT / "content" / "essays").glob("*.md")
+                    if p.name.lower() != "readme.md"]
+
+    # What is actually in here, counted, in one line under the doors.
+    _wr_cfg["registers"] = [
+        ("markets", "/writing/", "Paying markets", len(WRITING)),
+        ("guides", "/learn/", "Guides", len(GUIDES)),
+        ("tools", "/tools/", "Tools", len(TOOLS)),
+        ("essays", "/essays/", "Essays", len(_essay_files)),
+        ("articles", "/articles/", "Articles", len(_art_live)),
+        ("desk", "/catalogue/", "Everything",
+         len(WRITING) + len(GUIDES) + len(TOOLS) + len(_essay_files) + len(_art_live)),
+    ]
+
+    _wr_cfg["articles"] = [
+        {
+            "href": a["route"],
+            "kicker": (a.get("category") or {}).get("name", "BRYME Articles"),
+            "title": a["title"],
+            "teaser": a.get("teaser") or a.get("description", ""),
+            "cover": a.get("cover", ""),
+            "cover_w": a.get("cover_width", 640),
+            "cover_h": a.get("cover_height", 400),
+            "minutes": a.get("reading_minutes", ""),
+        }
+        for a in _art_live[:4]
+    ]
     body = ("<style>" + desk_hub_render.TECH_LOOK + "</style>"
             + desk_hub_render.render(arts, tools, WR_CATS, _wr_cfg, "", "Snapshot " + TODAY,
                                       ribbon_html=_bart.desk_ribbon(_art_cfg, _art_live))

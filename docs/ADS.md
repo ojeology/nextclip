@@ -12,7 +12,7 @@
 | Native Banner | middle of the article body | `adsterra.placements.middle` |
 | Native Banner | bottom of content pages (after `</main>`) | `adsterra.placements.bottom` |
 | Social Bar | floating widget, before `</body>` — LIVE, kept on by owner decision | `adsterra.socialBar.enabled` |
-| Classic display banner (300×250) | after `</main>` — LIVE | `adsterra.displayBanner.key`/`host` |
+| Classic display banner (300×250) | inside the body at 55% of `<main>`, and after `</main>` — LIVE ×2 | `adsterra.displayBanner.key`/`host` + `inBody` |
 
 ## The Social Bar, and the taps (2026-11-23)
 
@@ -74,3 +74,34 @@ third-party creative arrives with an inline `z-index` of its own choosing —
 commonly `999`, `9999` or `2147483647` — after first paint. At the old 50–200
 band the masthead lost that fight silently, and a reader cannot tell a
 nav-overlay from a frozen page.
+
+## Ads in more than one place (2026-11-24)
+
+Owner: *"Ads should be placed on multiple places of body not just one."*
+
+A long page now carries up to four ad surfaces, in this order down the page:
+
+1. **top** — the native banner just inside `<main>`, under the headline. Unchanged.
+2. **in-body display** — the same 300×250 unit, repeated at 55% of `<main>`, at a
+   real block boundary, never within 2,500 characters of the top band, and never
+   on a page with fewer than six paragraphs. Switch: `displayBanner.inBody`.
+3. **bottom display** — the 300×250 under `</main>`. Unchanged.
+4. **Social Bar** — the floating widget, unchanged.
+
+### Why the display unit may repeat and a native unit may not
+
+A native banner binds invoke.js to `#container-<key>`. Two copies of one key put
+two elements with the same id on the page and the network's install check can no
+longer tell which container it is verifying, so natives stay one-per-key
+(`adsterra.placements.middle` / `.bottom` still want units of their own).
+
+A display banner is not bound that way. `/assets/adsterra-loader.js` renders each
+display slot inside **its own iframe** with its own `atOptions`, so two slots are
+two independent documents. The loader used to dedupe loads by script URL; it now
+skips that dedupe for `data-ad-kind="display"` only, and keeps it for native and
+social, which act on page-level state.
+
+If a second, third or fourth *native* placement is wanted, create one Native
+Banner unit per placement in the Adsterra dashboard and paste each key/host into
+`adsterra.placements.middle` / `.bottom`; the slots are already wired, spaced and
+gated, and the build does the rest.

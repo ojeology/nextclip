@@ -238,8 +238,13 @@ html:not(.tm-js) .tm-noscript{display:block}
 
 /* ---------- mobile ---------- */
 @media(max-width:820px){
-  .tm-row{grid-template-columns:1fr auto}
-  .tm-row-side{grid-column:1/-1;justify-content:flex-start;margin-top:2px}
+  /* Rows are a 1fr/auto grid on a phone. The save control used to fall into
+     the second column and stretch to the full column width, which rendered as an
+     empty 348px pill under every teaser. Pin it to the right of the title, and
+     drop the date under the title on the left. */
+  .tm-row{grid-template-columns:minmax(0,1fr) auto;align-items:start}
+  .tm-row > .tm-save{grid-column:2;grid-row:1;justify-self:end;align-self:center;flex:0 0 auto}
+  .tm-row-side{grid-column:1;grid-row:2;justify-content:flex-start;margin-top:2px}
 }
 @media(max-width:640px){
   /* The family masthead squeezes its date+tagline edition line into a broken
@@ -252,7 +257,9 @@ html:not(.tm-js) .tm-noscript{display:block}
   .tm-eyebrow-r{margin-left:0;flex-basis:100%}
   .tm-gauges{grid-template-columns:repeat(2,1fr)}
   .tm-band-alt{margin:0 calc(50% - 50vw);padding-left:14px;padding-right:14px}
+  /* Icon-only save on a phone, but it still has to be a thumb-sized target. */
   .tm-save .tm-save-t{display:none}
+  .tm-row > .tm-save{min-width:38px;min-height:36px;justify-content:center;padding:8px 10px}
 }
 @media(prefers-reduced-motion:reduce){
   .tm-machine *{animation:none!important;transition:none!important}
@@ -495,3 +502,72 @@ html[data-theme="dark"] .tm-band-alt{background:#181d26}
 
 /* the job picker is the right place to be ochre: it is a guide to guides */
 #tm-needs{--reg:var(--reg-guides);--reg-tint:var(--reg-guides-tint)}
+
+/* ================================================================
+   the map line and the reading shelf (2026-11-24)
+   ----------------------------------------------------------------
+   Owner: "the home page doesn't tell a lot" and "articles should be
+   displayed with short epistle and a continuum reading button on the
+   home page, so the homepage covers everything we offer."
+
+   Two additions, in the same type-first language as v7:
+     .tm-regs   one line under the doors that says what is in here,
+                counted, and links all six registers;
+     .tm-arts   the article shelf: cover, kicker, title, the opening
+                paragraph, and a Continue reading control on every one.
+   ================================================================ */
+.tm-regs {
+  display: flex; flex-wrap: wrap; gap: 6px 20px; align-items: baseline;
+  margin: 0 0 16px; padding: 10px 0 0; border-top: 1px solid var(--rule);
+}
+.tm-regs a {
+  display: inline-flex; align-items: baseline; gap: 7px; text-decoration: none;
+  font: 700 12px var(--sans, sans-serif); letter-spacing: .02em; color: var(--ink);
+  border-bottom: 2px solid transparent; padding-bottom: 2px;
+}
+.tm-regs a::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--reg, var(--accent)); transform: translateY(-1px);
+}
+.tm-regs a span { font: 600 11px ui-monospace, Menlo, monospace; color: var(--muted); }
+.tm-regs a:hover { border-bottom-color: var(--reg, var(--accent)); }
+@media (max-width: 620px) {
+  .tm-regs { gap: 4px 16px; }
+  .tm-regs a { font-size: 11.5px; }
+}
+
+/* ---- the reading shelf ---- */
+.tm-arts { display: grid; gap: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(20px, 3vw, 44px); }
+@media (max-width: 860px) { .tm-arts { grid-template-columns: 1fr; } }
+.tm-art {
+  display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 16px; align-items: start;
+  padding: 18px 0; border-top: 1px solid var(--rule);
+}
+.tm-art-img { display: block; line-height: 0; }
+.tm-art-img img {
+  width: 100%; height: auto; display: block; border-radius: 2px;
+  filter: saturate(.92);
+}
+.tm-art:hover .tm-art-img img { filter: saturate(1); }
+.tm-art-k {
+  margin: 0 0 6px; font: 800 9.5px var(--sans, sans-serif); letter-spacing: .15em;
+  text-transform: uppercase; color: var(--reg-articles);
+}
+.tm-art h3 { margin: 0 0 7px; font: 700 clamp(17px, 1.7vw, 20px)/1.22 var(--display, var(--serif)); letter-spacing: -.012em; }
+.tm-art h3 a { text-decoration: none; color: var(--ink); }
+.tm-art h3 a:hover { color: var(--reg-articles); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.tm-art-s {
+  margin: 0 0 10px; font-size: 13.5px; line-height: 1.55; color: var(--muted);
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.tm-art-more {
+  display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
+  font: 800 11px var(--sans, sans-serif); letter-spacing: .09em; text-transform: uppercase;
+  color: var(--reg-articles); border-bottom: 2px solid var(--reg-articles);
+  padding-bottom: 3px; min-height: 30px;
+}
+.tm-art-more:hover { gap: 11px; }
+@media (max-width: 480px) {
+  .tm-art { grid-template-columns: 96px minmax(0, 1fr); gap: 12px; }
+  .tm-art-s { -webkit-line-clamp: 2; font-size: 13px; }
+}

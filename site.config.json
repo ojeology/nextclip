@@ -1,91 +1,92 @@
 {
-  "siteName": "BRYME",
-  "siteUrl": "https://thebryme.com",
-  "siteDescription": "Legitimate paid-writing opportunities, practical writing guides, browser tools, and BRYME's firsthand verification record.",
-  "indexNowKey": "1740cdb82c02b9af13911b38c853e85d2f708322fa0c2c55",
-  "adsense": {
-    "caId": "ca-pub-1881426210393009",
+ "siteName": "BRYME",
+ "siteUrl": "https://thebryme.com",
+ "siteDescription": "Legitimate paid-writing opportunities, practical writing guides, browser tools, and BRYME's firsthand verification record.",
+ "indexNowKey": "1740cdb82c02b9af13911b38c853e85d2f708322fa0c2c55",
+ "adsense": {
+  "caId": "ca-pub-1881426210393009",
+  "enabled": true,
+  "note": "Verification snippet live site-wide (2026-09-29). Ad UNITS remain unwired: nativeSlotId is empty. Keep Google-dashboard Auto ads OFF until approval. Ads must never resemble publication cards or tool buttons.",
+  "nativeSlotId": "",
+  "nativeFormat": "auto"
+ },
+ "analytics": {
+  "gaId": "G-0KEKJH9960",
+  "enabled": true,
+  "provider": "google-gtag",
+  "note": "GA4 stream for thebryme.com, owner-supplied 2026-09-22. Injected into every page ahead of the AdSense loader by scripts/inject-analytics.py and emitted by the desk generators. Consent Mode v2 defaults are scoped to the EEA/UK/CH so visitors elsewhere are unaffected; Google's own CMP (AdSense > Privacy & messaging) sends the matching consent update once the owner enables it. Replaces the earlier published claim that these pages run no analytics."
+ },
+ "pinterest": {
+  "domainVerification": "69f32b47370c197e72e39c8339160660",
+  "note": "Owner-supplied Pinterest domain verification value. Emit on the canonical homepage only."
+ },
+ "newsletter": {
+  "mode": "mailto",
+  "mailto": "hello@thebryme.com",
+  "endpoint": "",
+  "note": "mode 'mailto' = prefilled subscribe email to the mailbox (bootstrap). mode 'form' = endpoint must be the provider's form POST URL (Buttondown/MailerLite/ListMonk embeds work as-is with input name=email)."
+ },
+ "follow": {
+  "telegram": "",
+  "whatsapp": "",
+  "note": "Public channel URLs. A link renders only when set."
+ },
+ "affiliate": {
+  "enabled": false,
+  "note": "No affiliate links exist yet. Flip enabled=true only after provider accounts are live AND docs/revenue-rails.md placement rules have been applied. The disclosure note renders automatically on guides tagged 'affiliate: true' in front matter."
+ },
+ "parent": {
+  "name": "THE BRYME",
+  "url": ""
+ },
+ "adsterra": {
+  "enabled": true,
+  "key": "",
+  "host": "",
+  "format": "native-banner",
+  "note": "PRIMARY NETWORK (owner decision 2026-10-03, after the AdSense rejection). Live units 2026-10-03: placements.top (Native Banner), socialBar (Social Bar), displayBanner (classic atOptions banner). placements.middle still needs its own Native Banner unit from the Adsterra dashboard (paste key/host, rebuild). Adsterra's snippet contract is one container + invoke.js per unit. gateConsent: true keeps /assets/adsterra-loader.js in charge - immediate load outside the EEA/UK/CH, granted-consent load inside. All units load through the loader; nothing inline ever ships (CSP script-src 'self' https:, no unsafe-inline).",
+  "gateConsent": true,
+  "placements": {
+   "top": {
     "enabled": true,
-    "note": "Verification snippet live site-wide (2026-09-29). Ad UNITS remain unwired: nativeSlotId is empty. Keep Google-dashboard Auto ads OFF until approval. Ads must never resemble publication cards or tool buttons.",
-    "nativeSlotId": "",
-    "nativeFormat": "auto"
-  },
-  "analytics": {
-    "gaId": "G-0KEKJH9960",
-    "enabled": true,
-    "provider": "google-gtag",
-    "note": "GA4 stream for thebryme.com, owner-supplied 2026-09-22. Injected into every page ahead of the AdSense loader by scripts/inject-analytics.py and emitted by the desk generators. Consent Mode v2 defaults are scoped to the EEA/UK/CH so visitors elsewhere are unaffected; Google's own CMP (AdSense > Privacy & messaging) sends the matching consent update once the owner enables it. Replaces the earlier published claim that these pages run no analytics."
-  },
-  "pinterest": {
-    "domainVerification": "69f32b47370c197e72e39c8339160660",
-    "note": "Owner-supplied Pinterest domain verification value. Emit on the canonical homepage only."
-  },
-  "newsletter": {
-    "mode": "mailto",
-    "mailto": "hello@thebryme.com",
-    "endpoint": "",
-    "note": "mode 'mailto' = prefilled subscribe email to the mailbox (bootstrap). mode 'form' = endpoint must be the provider's form POST URL (Buttondown/MailerLite/ListMonk embeds work as-is with input name=email)."
-  },
-  "follow": {
-    "telegram": "",
-    "whatsapp": "",
-    "note": "Public channel URLs. A link renders only when set."
-  },
-  "affiliate": {
+    "key": "7cf8bb4b0854f64ff4f20a3a19146e91",
+    "host": "pl31572329.profitableratecpmnetwork.com",
+    "note": "LIVE unit moved from bottom to top (owner decision 2026-10-03)."
+   },
+   "middle": {
     "enabled": false,
-    "note": "No affiliate links exist yet. Flip enabled=true only after provider accounts are live AND docs/revenue-rails.md placement rules have been applied. The disclosure note renders automatically on guides tagged 'affiliate: true' in front matter."
-  },
-  "parent": {
-    "name": "THE BRYME",
-    "url": ""
-  },
-  "adsterra": {
-    "enabled": true,
     "key": "",
     "host": "",
-    "format": "native-banner",
-    "note": "PRIMARY NETWORK (owner decision 2026-10-03, after the AdSense rejection). Live units 2026-10-03: placements.top (Native Banner), socialBar (Social Bar), displayBanner (classic atOptions banner). placements.middle still needs its own Native Banner unit from the Adsterra dashboard (paste key/host, rebuild). Adsterra's snippet contract is one container + invoke.js per unit. gateConsent: true keeps /assets/adsterra-loader.js in charge - immediate load outside the EEA/UK/CH, granted-consent load inside. All units load through the loader; nothing inline ever ships (CSP script-src 'self' https:, no unsafe-inline).",
-    "gateConsent": true,
-    "placements": {
-      "top": {
-        "enabled": true,
-        "key": "7cf8bb4b0854f64ff4f20a3a19146e91",
-        "host": "pl31572329.profitableratecpmnetwork.com",
-        "note": "LIVE unit moved from bottom to top (owner decision 2026-10-03)."
-      },
-      "middle": {
-        "enabled": false,
-        "key": "",
-        "host": "",
-        "note": "Needs its own Adsterra Native Banner unit - paste key/host here."
-      },
-      "bottom": {
-        "enabled": false,
-        "key": "",
-        "host": "",
-        "note": "Switched off - the live unit now runs at the top. Re-enable once this placement has its own dashboard unit."
-      }
-    },
-    "socialBar": {
-      "enabled": true,
-      "script": "https://pl31572331.profitableratecpmnetwork.com/9d/30/54/9d3054f92545b438c60dac71c8c0c106.js",
-      "note": "LIVE (owner unit, pasted 2026-10-03). External script only, loaded by /assets/adsterra-loader.js under the same consent gate; the floating widget mounts itself once the script runs. Owner decision 2026-11-23: kept on despite the Articles-section tap reports - the masthead now sits in the 2147400000 z-index band so the widget's own layer stacks below it, but the widget chooses its geometry and 2147483647 would still beat us. If taps stop working again, set enabled:false here, rebuild, done - see docs/ADS.md."
-    },
-    "displayBanner": {
-      "enabled": true,
-      "key": "10aeabc178d8691f3dd0b82be8a9fc98",
-      "host": "www.highrevenueformat.com",
-      "format": "iframe",
-      "width": 300,
-      "height": 250,
-      "note": "LIVE (owner unit, pasted 2026-10-03): the classic atOptions 300x250 banner. The site CSP bans inline scripts, so the pasted snippet's inline atOptions config cannot ship verbatim; /assets/adsterra-loader.js sets the atOptions object inside a dedicated iframe and then loads invoke.js there, consent-gated like every other unit."
-    }
+    "note": "Needs its own Adsterra Native Banner unit - paste key/host here."
+   },
+   "bottom": {
+    "enabled": false,
+    "key": "",
+    "host": "",
+    "note": "Switched off - the live unit now runs at the top. Re-enable once this placement has its own dashboard unit."
+   }
   },
-  "ads": {
-    "providerOrder": [
-      "adsterra",
-      "adsense"
-    ],
-    "position": "adsterra native banner: top + middle + bottom of content pages; display banner before footer; social bar before </body>; adsense native band is the future-pivot fallback and stays off while nativeSlotId is empty"
+  "socialBar": {
+   "enabled": true,
+   "script": "https://pl31572331.profitableratecpmnetwork.com/9d/30/54/9d3054f92545b438c60dac71c8c0c106.js",
+   "note": "LIVE (owner unit, pasted 2026-10-03). External script only, loaded by /assets/adsterra-loader.js under the same consent gate; the floating widget mounts itself once the script runs. Owner decision 2026-11-23: kept on despite the Articles-section tap reports - the masthead now sits in the 2147400000 z-index band so the widget's own layer stacks below it, but the widget chooses its geometry and 2147483647 would still beat us. If taps stop working again, set enabled:false here, rebuild, done - see docs/ADS.md."
+  },
+  "displayBanner": {
+   "enabled": true,
+   "key": "10aeabc178d8691f3dd0b82be8a9fc98",
+   "host": "www.highrevenueformat.com",
+   "format": "iframe",
+   "width": 300,
+   "height": 250,
+   "note": "LIVE (owner unit, pasted 2026-10-03): the classic atOptions 300x250 banner. The site CSP bans inline scripts, so the pasted snippet's inline atOptions config cannot ship verbatim; /assets/adsterra-loader.js sets the atOptions object inside a dedicated iframe and then loads invoke.js there, consent-gated like every other unit. | 2026-11-24 owner decision: the same unit also renders inside the body (60% of the page, its own iframe), so a long page carries ads in several places instead of one. Set inBody:false to return to a single banner under the content.",
+   "inBody": true
   }
+ },
+ "ads": {
+  "providerOrder": [
+   "adsterra",
+   "adsense"
+  ],
+  "position": "adsterra native banner: top + middle + bottom of content pages; display banner before footer; social bar before </body>; adsense native band is the future-pivot fallback and stays off while nativeSlotId is empty"
+ }
 }

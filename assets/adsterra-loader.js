@@ -55,9 +55,17 @@
     done = true;
     slots.forEach(function (slot) {
       var src = slot.getAttribute("data-ad-src");
-      if (!src || loadedSrcs[src]) return;
-      loadedSrcs[src] = true;
+      if (!src) return;
       var kind = slot.getAttribute("data-ad-kind") || "native";
+      /* One load per unit, except display: each display slot renders inside its
+         own iframe with its own atOptions, so the same 300x250 unit can appear
+         twice on a long page without them colliding (owner decision 2026-11-24,
+         "ads in multiple places of the body"). Native and social keep the
+         dedupe: they act on page-level state and would double-fire. */
+      if (kind !== "display") {
+        if (loadedSrcs[src]) return;
+        loadedSrcs[src] = true;
+      }
       if (kind === "display") { loadDisplay(slot, src); return; }
       // native banner and social bar: both are plain external scripts; the
       // social bar script mounts its own floating widget once it runs.

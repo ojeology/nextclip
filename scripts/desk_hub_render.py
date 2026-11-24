@@ -340,6 +340,43 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
               '<button type="button" class="tm-mem-clear" data-tm-clear>Forget this desk on this device</button></p></div>')
 
     toolbox_href = esc(U(cfg.get("toolbox_href", "/tool/"), up))
+
+    # --- the reading shelf, and the map of the whole desk (2026-11-24) ----
+    # Owner: "Articles should be displayed with short epistle and a continuum
+    # reading button on the home page, so the homepage covers everything we
+    # offer." A ribbon with one headline is a promotion; this is the shelf -
+    # each piece with its own opening paragraph and its own Continue reading
+    # control, so a reader can decide from the front page instead of guessing.
+    arts_html = "".join(
+        '<article class="tm-art" style="--reg:var(--reg-articles)">'
+        + ('<a class="tm-art-img" href="' + esc(U(a["href"], up)) + '" tabindex="-1" aria-hidden="true">'
+           + '<img src="' + esc(U(a["cover"], up)) + '" alt="" loading="lazy" width="' + esc(a.get("cover_w", 640)) + '" height="' + esc(a.get("cover_h", 400)) + '"></a>'
+           if a.get("cover") else "")
+        + '<div class="tm-art-t"><p class="tm-art-k">' + esc(a.get("kicker", "")) + "</p>"
+        + '<h3><a href="' + esc(U(a["href"], up)) + '">' + esc(a["title"]) + "</a></h3>"
+        + '<p class="tm-art-s">' + esc(a.get("teaser", "")) + "</p>"
+        + '<a class="tm-art-more" href="' + esc(U(a["href"], up)) + '">Continue reading'
+        + '<span aria-hidden="true">&rarr;</span></a></div></article>'
+        for a in (cfg.get("articles") or []))
+    articles_band = ""
+    if arts_html:
+        articles_band = (
+            '<section class="tm-band" id="tm-articles" style="--reg:var(--reg-articles);'
+            '--reg-tint:var(--reg-articles-tint)"><header class="tm-band-h">'
+            "<h2>" + esc(cfg.get("articles_h", "Read the long ones")) + "</h2>"
+            "<p>" + cfg.get("articles_p", "") + "</p></header>"
+            '<div class="tm-arts">' + arts_html + "</div>"
+            '<p class="tm-band-f"><a href="' + esc(U("/articles/", up)) + '">Every BRYME Article &rarr;</a>'
+            ' &middot; <a href="' + esc(U("/essays/", up)) + '">The essays &rarr;</a></p></section>')
+
+    # One line that says what is actually in here, with the counts. The doors
+    # answer "where do I start"; this answers "what is on this site".
+    regs_html = "".join(
+        '<a href="' + esc(U(href, up)) + '" style="--reg:var(--reg-%s)">%s <span>%s</span></a>' % (
+            key, esc(label), esc(count))
+        for key, href, label, count in (cfg.get("registers") or []))
+    registers = ('<nav class="tm-regs" aria-label="Everything on this desk">' + regs_html + "</nav>"
+                 if regs_html else "")
     count_href = "#tm-core"
 
     # --- the front door ------------------------------------------------------
@@ -413,6 +450,7 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
            'See every page on this desk &rarr;</a>' if cfg.get("catalogue_href") else "")
         + "</div>",
         '<p class="tm-promise">' + cfg.get("promise", "") + "</p>",
+        registers,
         ribbon_slot,
         '<div class="tm-gauges">' + gauges + "</div>",
         memory,
@@ -453,6 +491,8 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
         "word \u2014 or ask us for it: the queue is built from reader questions, and the thin shelves above "
         "are the ones we are filling.</p>",
         "</section>",
+
+        articles_band,
 
         ('<section class="tm-band tm-band-alt" id="tm-toolbox"><header class="tm-band-h">'
          "<h2>" + esc(cfg.get("toolbox_h", "The toolbox.")) + "</h2><p>" + str(len(tools)) + " utilities that run entirely in your browser. No "
