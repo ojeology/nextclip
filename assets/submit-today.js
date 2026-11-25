@@ -46,6 +46,9 @@
   var root = document.querySelector("[data-st-today]");
   if (!root) return;
   if (/(^|\/)\d{4}-\d{2}-\d{2}\/$/.test(location.pathname)) return;
+  // Crawlers and link-preview fetchers get the page as built, at 200, on the
+  // URL that is in the index. Only a human is moved to their own day.
+  if (/bot|crawl|spider|slurp|facebookexternalhit|embedly|whatsapp|telegram|preview/i.test(navigator.userAgent)) return;
 
   var days = (root.getAttribute("data-st-days") || "").split(",").filter(Boolean);
   if (!days.length) return;
