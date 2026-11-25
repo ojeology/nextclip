@@ -4072,10 +4072,39 @@ ST_PAST = 14      # archive depth, in days
 ST_FUTURE = 21    # dated pages pre-rendered ahead of the build date
 
 
+_ST_FEE = re.compile(r"\b(reading|submission|entry|application)\s+fee\b", re.I)
+_ST_NEG = re.compile(r"\b(no|not|zero|free|without)\b[^.]{0,40}$", re.I)
+_ST_GATE = re.compile(r"(membership is a paid|members only|only accept[^.]{0,40}members"
+                       r"|subscribers? only|must be a (?:paying )?member)", re.I)
+
+
+def _st_costs_money(rec: dict) -> str:
+    """Does sending work here cost the writer money?
+
+    The brief tells readers, in a box they cannot miss, to never pay to submit,
+    so the day's pick must be free to enter. This returns the phrase that shows
+    the gate (a reading fee, a membership that is a paid subscription), or "".
+    "No submission fee" and "free to submit" are not gates - the negation check
+    looks back along the sentence before counting a fee.
+    """
+    for value in rec.values():
+        if not isinstance(value, str):
+            continue
+        for m in _ST_FEE.finditer(value):
+            if _ST_NEG.search(value[max(0, m.start() - 45):m.start()]):
+                continue
+            return value[max(0, m.start() - 20):m.end() + 20].strip()
+        m = _ST_GATE.search(value)
+        if m:
+            return value[max(0, m.start() - 20):m.end() + 20].strip()
+    return ""
+
+
 def _st_pool() -> list:
     return [r for r in WRITING
             if norm_status(r) in ("open", "rolling", "deadline")
-            and not deadline_passed(r)]
+            and not deadline_passed(r)
+            and not _st_costs_money(r)]
 
 
 def _st_rank(rec: dict) -> tuple:
@@ -4083,17 +4112,19 @@ def _st_rank(rec: dict) -> tuple:
     return (-(usd if usd is not None else -1), (rec.get("publication") or "").lower())
 
 
-def st_pick(day: _dt.date, recent: list[str] | None = None) -> tuple[dict | None, str]:
+def st_pick(day: _dt.date, recent: list[str] | None = None,
+            billed: set | None = None) -> tuple[dict | None, str]:
     """The market this page is about on a given day, and the honest reason."""
     recent = recent or []
+    billed = billed if billed is not None else set()
     pool = _st_pool()
     if not pool:
         return None, ""
 
-    # 1. a dated window closing inside three weeks, soonest first, as long as it
-    #    has not already carried a brief in the past week - otherwise the same
-    #    market would headline every day until its deadline, which is boring and
-    #    wastes the slot.
+    # 1. a real deadline inside the week wins the slot - once. A window that has
+    #    already had its day is skipped, otherwise the same market would headline
+    #    every single day until it closed: twenty identical briefs, twenty empty
+    #    slots, and a reader with no reason to come back tomorrow.
     dated = []
     for r in pool:
         dl = _dl_date(r)
@@ -4104,12 +4135,14 @@ def st_pick(day: _dt.date, recent: list[str] | None = None) -> tuple[dict | None
         except Exception:
             continue
         left = (d - day).days
-        if 0 <= left <= 21 and (r.get("publication") or "").lower() not in recent:
+        key = (r.get("publication") or "").lower()
+        if 0 <= left <= 7 and key not in billed and key not in recent:
             dated.append((left, r))
     if dated:
         left, rec = sorted(dated, key=lambda pair: (pair[0], pair[1].get("publication") or ""))[0]
-        return rec, (f"Closes in {left} day{'s' if left != 1 else ''} &mdash; the nearest "
-                     f"dated window still open in the record.")
+        billed.add((rec.get("publication") or "").lower())
+        return rec, (f"Closes in {left} day{'s' if left != 1 else ''} &mdash; a real deadline "
+                     f"inside the week, and the nearest one still open in the record.")
 
     # 2. rotation. Walk on past anything used in the past week; if the whole
     #    pool has been used (only possible on a tiny pool) take the rotation
@@ -4120,16 +4153,17 @@ def st_pick(day: _dt.date, recent: list[str] | None = None) -> tuple[dict | None
         rec = ordered[(start + step) % len(ordered)]
         if (rec.get("publication") or "").lower() not in recent:
             break
-    return rec, ("Open right now. Picked on rotation, so every open market gets its day and "
-                 "no market repeats inside a week. The paid ones come round more often.")
+    return rec, ("Open right now. Picked on rotation, so every open market in the record gets "
+                 "its day and no market repeats inside a week.")
 
 
 def st_plan(days: list[_dt.date]) -> dict:
     """Pick for every day in order, so 'do not repeat inside a week' holds."""
     out: dict = {}
     recent: list[str] = []
+    billed: set = set()
     for d in days:
-        rec, why = st_pick(d, recent)
+        rec, why = st_pick(d, recent, billed)
         if not rec:
             continue
         out[d] = (rec, why)
@@ -4137,6 +4171,21 @@ def st_plan(days: list[_dt.date]) -> dict:
         # calls, and "Longreads" two days running reads like a bug.
         recent = (recent + [(rec.get("publication") or "").lower()])[-7:]
     return out
+
+
+def _st_short(text: str, limit: int) -> str:
+    """One sentence, cut at a word boundary - the fact strip is a strip, and the
+    full eligibility text is two scrolls below it under The call."""
+    text = " ".join(str(text).split())
+    if len(text) <= limit:
+        return text
+    cut = text[:limit]
+    sentence = cut.split(". ")[0]
+    if len(sentence) >= 40:
+        cut = sentence
+    else:
+        cut = cut.rsplit(" ", 1)[0]
+    return cut.rstrip(" ,;:") + "\u2026"
 
 
 def _st_facts(rec: dict) -> str:
@@ -4155,7 +4204,7 @@ def _st_facts(rec: dict) -> str:
     rows = [
         ("Pays", pay.get("display") or "Not publicly stated", ""),
         ("Length", wc.get("display") or "Not stated", ""),
-        ("Who can send", el.get("summary") or "Not stated in the guideline", ""),
+        ("Who can send", _st_short(el.get("summary") or "Not stated in the guideline", 120), ""),
         ("Deadline", deadline_display, ""),
         ("They reply in", resp.get("label") or "Not stated", "official" if resp.get("official") else ""),
         ("AI policy", ai_display, ""),
@@ -4321,7 +4370,7 @@ def _st_body(rec: dict, day: _dt.date, why: str, *, main_page: bool,
 <div class="card-grid">{"".join(nav_bits)}</div>
 <h3 style="margin-top:26px">Earlier briefs</h3>
 <div class="st-archive">{archive_html}</div>
-<p class="tool-note" style="margin-top:16px">How the pick works: a dated closing window inside three weeks always wins; otherwise every open market in the record takes its turn, one a day. No market is promoted for money.</p>
+<p class="tool-note" style="margin-top:16px">How the pick works: a dated closing window inside three weeks always wins; otherwise every open market in the record takes its turn, one a day. Markets that charge a reading fee, or that only read work from paying members, are left out of the rotation &mdash; the brief tells readers never to pay to submit, so the pick cannot be a market that asks them to. No market is promoted for money.</p>
 </div></section></div>'''
 
 
