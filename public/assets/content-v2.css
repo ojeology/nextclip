@@ -1071,8 +1071,12 @@ html.cpick-ready .cpick-pop {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
-.st-fact { padding: 14px 16px 14px 0; border-right: 1px solid var(--line); }
+.st-fact { padding: 14px 18px 14px 0; border-right: 1px solid var(--line); }
 .st-fact:last-child { border-right: 0; }
+/* the label row sits in a 2-up grid on phones: give the second column air */
+.st-fact:nth-child(2n) { padding-left: 16px; }
+.st-fact:nth-child(2n+1) { padding-right: 16px; border-right: 1px solid var(--line); }
+
 .st-fact b {
   display: block;
   font: 700 10px/1 var(--sans);
