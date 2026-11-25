@@ -4188,6 +4188,57 @@ def _st_short(text: str, limit: int) -> str:
     return cut.rstrip(" ,;:") + "\u2026"
 
 
+def _st_needs(rec: dict) -> list[str]:
+    """What a writer actually needs in hand today, taken from the record only.
+
+    The landing feature promises 'all you need today is this', so every line has
+    to be something the guideline states - the pitch length it asks for, the
+    things it requires, the channel it accepts - not a made-up checklist.
+    Vague one-word methods ("Editorial pitch") are dropped: they tell nobody
+    what to do.
+    """
+    wc = rec.get("wordCount") or {}
+    out: list[str] = []
+
+    pitch = " ".join(str(wc.get("display") or "").split())
+    if "pitch" in pitch.lower():
+        first = pitch.split(".")[0]
+        if 8 <= len(first) <= 56:
+            out.append(first)
+
+    for item in (rec.get("requirements") or []):
+        item = " ".join(str(item).split()).rstrip(".")
+        if 8 <= len(item) <= 52:
+            out.append(item)
+
+    channel = (rec.get("applyEmail") or "").strip()
+    if channel:
+        out.append(f"An email to {channel}")
+    elif (rec.get("applyUrl") or "").startswith("http"):
+        out.append("Their online form")
+
+    method = " ".join(str(rec.get("applyMethod") or "").split()).rstrip(".")
+    if method and not re.fullmatch(r"(editorial|email|online|e-?mail)\s*(pitch|submission)?", method, re.I):
+        out.append(method if len(method) <= 56 else method.split(" or ")[0][:56].rstrip(" ,;"))
+
+    if str(rec.get("aiPolicy") or "") == "prohibited":
+        out.append("No AI anywhere in it")
+
+    seen, keep = set(), []
+    for item in out:
+        key = re.sub(r"[^a-z0-9 ]", "", item.lower())
+        if key in seen or any(key in s or s in key for s in seen if len(s) > 12):
+            continue
+        seen.add(key)
+        keep.append(item)
+    for filler in ("An idea they have not run", "Twenty minutes", "Your own name on it"):
+        if len(keep) >= 3:
+            break
+        if filler not in keep:
+            keep.append(filler)
+    return keep[:4]
+
+
 def _st_facts(rec: dict) -> str:
     pay = rec.get("pay") or {}
     wc = rec.get("wordCount") or {}
@@ -4424,6 +4475,13 @@ def submit_today_pages() -> None:
         "pay": pay,
         "verified": (rec.get("lastVerified") or "")[:10],
         "why": why.replace("&mdash;", "-"),
+        "genre": rec.get("title") or rec.get("writingTypeLabel") or "",
+        "who": _st_short((rec.get("eligibility") or {}).get("summary")
+                         or "No stated country restriction", 130).replace("\u2026", "\u2026"),
+        "method": " ".join(str(rec.get("applyMethod") or "").split()),
+        "needs": _st_needs(rec),
+        "deadline": (rec.get("deadline") or {}).get("display") if isinstance(rec.get("deadline"), dict) else "",
+        "free": True,
         "nextDate": (today + _dt.timedelta(days=1)).isoformat(),
         "nextPublication": (picks.get(today + _dt.timedelta(days=1)) or ({}, ""))[0].get("publication", "")
         if picks.get(today + _dt.timedelta(days=1)) else "",

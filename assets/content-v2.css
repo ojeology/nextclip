@@ -1265,6 +1265,132 @@ html.cpick-ready .cpick-pop {
    "full dossier" link gets its arrow from here. */
 .st-why a::after { content: " \2192"; }
 
+
+/* ==========================================================================
+   Submit today — the landing-page feature (house front page, 25 Nov 2026).
+   One market a day at lead-story scale: the question, the reason, and the
+   three things a writer needs in hand. Reads as editorial, never as an ad.
+   ========================================================================== */
+.st-feat {
+  margin: 26px 0 30px;
+  padding: 26px 0 30px;
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+.st-feat-k,
+.st-feat-lab {
+  font: 700 10px/1 var(--sans);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.st-feat-k .dot { color: var(--line); }
+.st-feat-k span + span:first-of-type { color: var(--ink); }
+
+.st-feat-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: start;
+}
+.st-feat-h {
+  margin: 0 0 16px;
+  font: 400 clamp(19px, 1.6vw, 23px)/1.32 var(--serif);
+  color: #4a4943;
+  letter-spacing: -.01em;
+}
+.st-feat-h a {
+  display: inline;
+  font: 700 clamp(31px, 3.8vw, 52px)/1.1 var(--serif);
+  letter-spacing: -.028em;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--lime);
+  text-decoration-thickness: .13em;
+  text-underline-offset: .12em;
+  text-decoration-skip-ink: none;
+}
+.st-feat-h a:hover { text-decoration-color: var(--ink); }
+.st-feat-dek {
+  margin: 0 0 12px;
+  font: 400 17px/1.55 var(--serif);
+  color: #35342f;
+  max-width: 54ch;
+}
+.st-feat-dek b { font-weight: 700; }
+.st-feat-why {
+  margin: 0;
+  font: 400 14px/1.55 var(--sans);
+  color: var(--muted);
+  max-width: 62ch;
+}
+.st-feat-why b { color: var(--ink); font-weight: 700; }
+.st-feat-meta {
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font: 400 13px/1.5 var(--sans);
+  color: var(--muted);
+}
+.st-feat-meta span { color: var(--line); margin: 0 4px; }
+.st-feat-meta b { color: var(--ink); font-weight: 700; }
+
+.st-feat-side {
+  border-left: 1px solid var(--line);
+  padding-left: clamp(16px, 2vw, 26px);
+}
+.st-needs { list-style: none; margin: 0 0 18px; padding: 0; }
+.st-needs li {
+  position: relative;
+  padding: 9px 0 9px 24px;
+  border-bottom: 1px solid var(--line);
+  font: 400 15px/1.45 var(--serif);
+  color: var(--ink);
+}
+.st-needs li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 16px;
+  width: 9px;
+  height: 9px;
+  background: var(--lime);
+}
+.st-needs li:first-child { border-top: 1px solid var(--line); }
+.st-needs-more { color: var(--muted); font-style: italic; }
+.st-needs-more::before { background: transparent; border: 1px solid var(--line); }
+
+.st-feat-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--ink);
+  color: #fff;
+  text-decoration: none;
+  font: 700 12px/1 var(--sans);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 14px 20px;
+}
+.st-feat-cta:hover { background: #000; color: #fff; }
+.st-feat-tom {
+  margin: 12px 0 0;
+  font: 400 13px/1.5 var(--sans);
+  color: var(--muted);
+}
+.st-feat-tom b { color: var(--ink); }
+
+@media (max-width: 860px) {
+  .st-feat-grid { grid-template-columns: 1fr; gap: 24px; }
+  .st-feat-side { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 20px; }
+  .st-feat-h a { font-size: clamp(32px, 9vw, 46px); }
+}
+
 /* Lean editorial compatibility layer — replaces the 263 KB legacy platform sheet. */
 .shell{width:min(calc(100% - 32px),var(--max));margin-inline:auto}
 .top{position:sticky;z-index:50;top:0;border-bottom:1px solid var(--line);background:rgba(7,16,13,.9);backdrop-filter:blur(18px)}

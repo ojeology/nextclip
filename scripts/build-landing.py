@@ -461,27 +461,66 @@ ARTICLES_SHELF = articles_shelf()
 # The daily line on the front door (owner, 2026-11-24). Read from the manifest
 # the Writing desk's build writes, so the two can never disagree about what
 # today's market is.
-def submit_today_strip() -> str:
+def submit_today_feature() -> str:
+    """Today's market, at front-page scale.
+
+    The owner's brief: on the landing page, every day, one featured magazine,
+    big, asking the reader why they are not pitching it - "all you need today
+    is this, this, this". Everything here comes from the manifest the Writers
+    desk writes, so the block is the same market as the brief it links to, and
+    it changes at midnight with the rest of the site.
+    """
     try:
         m = json.loads((ROOT / "content" / "submit-today.json").read_text(encoding="utf-8"))
     except Exception:
         return ""
     if not m.get("publication"):
         return ""
-    tail = " &middot; ".join(html.escape(b, quote=False)
-                            for b in (m.get("pay") or "", m.get("call") or "") if b)
-    return (
-        '<a class="st-today" href="/writers' + m["route"] + '">'
-        '<span class="st-today-k">Submit today &middot; '
-        + html.escape(m.get("dateHuman", ""), quote=False) + '</span>'
-        '<span class="st-today-t"><b>' + html.escape(m["publication"], quote=False) + '</b>'
-        + (' <span>&mdash; ' + tail + '</span>' if tail else '')
-        + '</span>'
-        '<span class="st-today-c">Open the brief &rarr;</span></a>'
-    )
+
+    esc = lambda s: html.escape(str(s or ""), quote=False)  # noqa: E731
+    href = "/writers" + (m.get("route") or "/submit-today/")
+
+    meta = ["Submit today", m.get("dateHuman") or "", "Free to enter", m.get("pay") or ""]
+    kicker = '<span class="dot">&middot;</span>'.join(
+        f"<span>{esc(x)}</span>" for x in meta if x)
+
+    needs = "".join(f"<li>{esc(n)}</li>" for n in (m.get("needs") or [])[:4])
+    if needs:
+        needs += '<li class="st-needs-more">&hellip;and the rest is on the brief</li>'
+
+    dek = m.get("genre") or ""
+    who = m.get("who") or ""
+    dek_line = (f'<p class="st-feat-dek"><b>{esc(dek)}</b>'
+                + (f' &mdash; {esc(who)}' if who and who.lower() not in dek.lower() else "")
+                + "</p>") if dek or who else ""
+
+    tomorrow = m.get("nextPublication") or ""
+    facts = [("Deadline", (m.get("deadline") or "").split("&mdash;")[0].strip() or "No closing date given"),
+             ("Cost", "no submission fee" if m.get("free") else "check the brief"),
+             ("Verified", m.get("verified") or "")]
+    meta_line = ('<p class="st-feat-meta">' + ' <span>&middot;</span> '.join(
+        f"{esc(k)}: <b>{esc(v)}</b>" for k, v in facts if v) + "</p>")
+
+    return f'''<section class="st-feat">
+  <p class="st-feat-k">{kicker}</p>
+  <div class="st-feat-grid">
+    <div class="st-feat-main">
+      <h2 class="st-feat-h">Why not pitch <a href="{href}">{esc(m["publication"])}</a> today?</h2>
+      {dek_line}
+      <p class="st-feat-why"><b>Why this one:</b> {esc(m.get("why") or "")}</p>
+      {meta_line}
+    </div>
+    <div class="st-feat-side">
+      <p class="st-feat-lab">All you need today</p>
+      <ul class="st-needs">{needs}</ul>
+      <a class="st-feat-cta" href="{href}">Open today&rsquo;s brief <span>&rarr;</span></a>
+      {f'<p class="st-feat-tom">Tomorrow: <b>{esc(tomorrow)}</b></p>' if tomorrow else ""}
+    </div>
+  </div>
+</section>'''
 
 
-SUBMIT_TODAY_STRIP = submit_today_strip()
+SUBMIT_TODAY_STRIP = submit_today_feature()
 
 HTML = f"""<!doctype html>
 <html lang="en"><head>
